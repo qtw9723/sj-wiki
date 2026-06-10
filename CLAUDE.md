@@ -158,3 +158,17 @@ sj-wiki/
 - **② 변경 후 push**: `wiki/`·`raw/`를 변경했으면 작업 마무리에 **반드시 커밋+푸시**한다: `git add -A && git commit -m "…" && git push`. ("위키화가 끝나면 반드시 push" — 사용자 요구.)
 - 커밋 전 `git status`로 회사 기밀/시크릿이 staged되지 않았는지 확인한다(`.gitignore` 안전망 있음).
 - 자동 위키화(launchd `.wiki-sync.sh`)는 **시작 시 pull --rebase → 위키화 성공 시 commit → pull --rebase → push**까지 자동 수행(실패 시 로그에 경고).
+
+## 9. 다른 기기에서 시작하기 (Bootstrap)
+이 vault를 새 기기에서 쓸 때(이 섹션도 git으로 함께 동기화됨):
+1. **클론**: `git clone https://github.com/qtw9723/sj-wiki.git`
+2. **Obsidian**: 폴더를 vault로 열어 보기·편집(단, Obsidian은 이 CLAUDE.md 규칙을 *실행하지 않음* — 단순 노트로 표시).
+3. **Claude Code**: **클론한 폴더를 작업 디렉토리로 Claude Code를 실행**하면 이 CLAUDE.md가 프로젝트 지침으로 자동 로드되어 하네스가 작동한다. 위키 운영(자료 넣기·질문·건강검진·프로젝트 업데이트)은 Claude Code로 한다.
+4. **git 규약(=§8)**: 작업 전 `git pull --rebase origin main`, 변경 후 `git add -A && git commit && git push`.
+5. **메모리 주의**: `~/.claude/.../memory`의 개인 메모는 이 repo에 포함되지 않는다(기기 종속). 다만 **운영 규칙 전부가 이 CLAUDE.md에 자급자족형으로** 있어 규칙 적용에는 문제없다. 새 기기에서 중요한 사실을 기억시키려면 그 기기에서 별도로 메모리에 저장.
+6. **자동 위키화(선택)**: 이 기기에서도 매일 자동 위키화를 원할 때만 launchd 재설정.
+   - `.wiki-sync.sh`의 `/Users/sangjun/...` 경로·PATH·claude 바이너리 위치를 그 기기에 맞게 수정.
+   - `~/Library/LaunchAgents/com.<user>.sj-wiki-sync.plist`(09:00·18:00)를 만들고 `launchctl bootstrap gui/<UID> <plist>`로 등록.
+   - 헤드리스 claude 인증은 로그인 세션 키체인 접근이 필요(맥 launchd는 가능). 비-GUI 환경은 `claude setup-token`.
+   - ⚠ 자동 위키화·자동 push는 **주 기기 1대에서만** 돌리는 걸 권장(여러 대 동시 push 충돌 방지). 나머지 기기는 수동 pull/push.
+7. **기밀 분리 재확인(=§1)**: 회사 기밀은 **PC 전용 `sj-wiki-work` vault**에만. 이 동기화 vault엔 절대 두지 않는다.
