@@ -53,6 +53,22 @@ if "$CLAUDE" -p "$PROMPT" \
   # 4) 성공 시에만 마커 갱신 (실패 시 다음 실행에서 재시도)
   touch "$MARKER"
   echo "$(date '+%F %T') 위키화 완료" >> "$LOG"
+
+  # 5) 위키화가 끝나면 반드시 git 커밋 & push (변경분이 있을 때만)
+  git add -A
+  if git diff --cached --quiet; then
+    echo "$(date '+%F %T') git: 변경 없음 — 커밋 스킵" >> "$LOG"
+  else
+    git commit -q -m "auto(wiki): $(date '+%F %H:%M') 자동 위키화" \
+      -m "Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>" >> "$LOG" 2>&1
+    # 원격 변경 먼저 반영 후 push (충돌 시 push 건너뛰고 경고)
+    git pull --rebase --autostash -q origin main >> "$LOG" 2>&1 || echo "$(date '+%F %T') ⚠ git pull 충돌 — 수동 확인 필요" >> "$LOG"
+    if git push -q origin main >> "$LOG" 2>&1; then
+      echo "$(date '+%F %T') ✅ git push 완료" >> "$LOG"
+    else
+      echo "$(date '+%F %T') ⚠ git push 실패 — 수동 push 필요" >> "$LOG"
+    fi
+  fi
 else
   echo "$(date '+%F %T') ERROR: claude 실행 실패 (마커 미갱신, 다음 회차 재시도)" >> "$LOG"
   exit 1
