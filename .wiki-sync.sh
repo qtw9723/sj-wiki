@@ -16,6 +16,9 @@ CLAUDE="/Users/sangjun/.local/bin/claude"
 
 cd "$WIKI" || { echo "$(date '+%F %T') ERROR: cd 실패" >> "$LOG"; exit 1; }
 
+# 0) 작업 전 원격 최신 반영 (다른 기기 변경 동기화 · 충돌 예방). 실패해도 로컬로 진행.
+git pull --rebase --autostash -q origin main >> "$LOG" 2>&1 || echo "$(date '+%F %T') ⚠ 작업 전 git pull 실패 — 로컬 상태로 진행" >> "$LOG"
+
 # 1) 마지막 동기화 이후 새로/변경된 raw 파일 탐지 (마커 없으면 전체)
 # 이미지/바이너리(스크린샷 등)는 자동 위키화 대상에서 제외 — 요청 시 수동 임베드한다.
 if [ -f "$MARKER" ]; then
