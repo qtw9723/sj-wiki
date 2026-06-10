@@ -1,0 +1,27 @@
+# === OS / 에디터 ===
+.DS_Store
+
+# === 자동 위키화 산출물 (기기 종속 · 로그) ===
+.wiki-sync.log
+.wiki-sync.launchd.log
+.last_wiki_sync
+.authtest*
+
+# === 인증 토큰 / 시크릿 (절대 커밋 금지) ===
+.sj-wiki-token
+*.token
+.env
+.env.*
+
+# === Obsidian 기기별 상태 (멀티 디바이스 충돌 방지) ===
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+
+# === 회사 기밀 안전망 ===
+# 정식 보관은 PC 전용 sj-wiki-work vault. 실수/자동생성으로 이 vault에 다시 나타나도 커밋되지 않게 차단.
+raw/meetings/
+raw/healthcare-*
+wiki/HealthCare-*
+wiki/OpenEMR.md
+wiki/챗봇-플랫폼-용어.md

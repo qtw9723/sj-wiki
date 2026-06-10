@@ -1,0 +1,199 @@
+{
+  "generated_at": "2026-06-09T13:00:00Z",
+  "total_projects": 7,
+  "projects": [
+    {
+      "id": "cogi-poc-generator-v1",
+      "name": "Cogi-POC-Generator-v1",
+      "description": "Cogi Dialog JSON Generator - POC 제너레이터",
+      "language": "JavaScript/Node.js",
+      "type": "Frontend",
+      "version": "1.0.1",
+      "package_name": "cogi-poc-generator-v1",
+      "tech_stack": [
+        "React 19",
+        "Vite 8",
+        "TypeScript",
+        "Tailwind CSS 4",
+        "Radix UI",
+        "Supabase",
+        "zod"
+      ],
+      "key_dependencies": [
+        "@supabase/supabase-js",
+        "@radix-ui/react-dialog",
+        "react-hook-form",
+        "react-router-dom",
+        "shadcn"
+      ],
+      "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "lint": "eslint . --ext .jsx,.js"
+      },
+      "path": "/Users/sangjun/IdeaProjects/Cogi-POC-Generator-v1",
+      "last_modified": "2026-05-27 10:31:33",
+      "has_readme": true,
+      "has_claude_md": false,
+      "has_deployment_docs": true
+    },
+    {
+      "id": "mailer",
+      "name": "mailer",
+      "description": "CS SmartHub - 메일러 애플리케이션",
+      "language": "JavaScript/Node.js",
+      "type": "Full-Stack",
+      "version": "0.1.0",
+      "package_name": "cs-smarthub",
+      "tech_stack": [
+        "React 19",
+        "Vite 8",
+        "Express.js",
+        "Tailwind CSS 4",
+        "Supabase",
+        "Nodemailer"
+      ],
+      "key_dependencies": [
+        "@supabase/supabase-js",
+        "express",
+        "nodemailer",
+        "cors",
+        "dotenv",
+        "@dnd-kit"
+      ],
+      "scripts": {
+        "dev": "concurrently \"vite\" \"node server/index.js\"",
+        "dev:client": "vite",
+        "dev:server": "node server/index.js",
+        "build": "vite build",
+        "test": "vitest run",
+        "test:watch": "vitest"
+      },
+      "path": "/Users/sangjun/IdeaProjects/mailer",
+      "last_modified": "2026-06-08 16:33:43",
+      "has_readme": true,
+      "has_claude_md": true,
+      "has_deployment_docs": false
+    },
+    {
+      "id": "notepad",
+      "name": "notepad",
+      "description": "마크다운 지원 메모장 애플리케이션 - Supabase 백엔드",
+      "language": "JavaScript/Node.js",
+      "type": "Frontend",
+      "version": "0.0.0",
+      "package_name": "notepad",
+      "tech_stack": [
+        "React 19",
+        "Vite 8",
+        "Tailwind CSS 4",
+        "Supabase",
+        "react-markdown",
+        "react-resizable-panels",
+        "@dnd-kit"
+      ],
+      "key_dependencies": [
+        "@supabase/supabase-js",
+        "react-markdown",
+        "react-resizable-panels",
+        "react-router-dom",
+        "lucide-react"
+      ],
+      "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "lint": "eslint .",
+        "preview": "vite preview"
+      },
+      "path": "/Users/sangjun/IdeaProjects/notepad",
+      "last_modified": "2026-05-04 16:36:13",
+      "has_readme": true,
+      "has_claude_md": true,
+      "has_deployment_docs": false,
+      "special_features": [
+        "마크다운 렌더링",
+        "다크 테마",
+        "태그 기반 필터링",
+        "자동 저장",
+        "공유 링크",
+        "이미지 업로드"
+      ]
+    },
+    {
+      "id": "schedule-reporter-kakao",
+      "name": "schedule-reporter-kakao",
+      "description": "일정 리포터 - 카카오톡 연동",
+      "language": "JavaScript/Node.js",
+      "type": "Full-Stack",
+      "version": "0.1.0",
+      "package_name": "schedule-reporter-kakao",
+      "tech_stack": [
+        "React 19",
+        "Vite 8",
+        "Express.js",
+        "Tailwind CSS 4",
+        "Supabase",
+        "Nodemailer"
+      ],
+      "key_dependencies": [
+        "@supabase/supabase-js",
+        "express",
+        "nodemailer",
+        "cors",
+        "dotenv",
+        "@dnd-kit"
+      ],
+      "scripts": {
+        "dev": "concurrently \"vite\" \"node server/index.js\"",
+        "dev:client": "vite",
+        "dev:server": "node server/index.js",
+        "build": "vite build",
+        "test": "vitest run",
+        "test:watch": "vitest"
+      },
+      "path": "/Users/sangjun/IdeaProjects/schedule-reporter-kakao",
+      "last_modified": "2026-06-08 16:27:48",
+      "has_readme": true,
+      "has_claude_md": true,
+      "has_deployment_docs": false
+    },
+    {
+      "id": "monster-collector",
+      "name": "MonsterCollector",
+      "description": "몬스터 수집 애플리케이션",
+      "language": "Unknown",
+      "type": "Unknown",
+      "path": "/Users/sangjun/IdeaProjects/MonsterCollector",
+      "last_modified": "2026-05-28 13:35:40",
+      "has_readme": false,
+      "has_claude_md": true,
+      "has_deployment_docs": false
+    },
+    {
+      "id": "monster-rank",
+      "name": "MonsterRank",
+      "description": "몬스터 랭크 시스템",
+      "language": "Unknown",
+      "type": "Unknown",
+      "path": "/Users/sangjun/IdeaProjects/MonsterRank",
+      "last_modified": "2026-03-18 09:29:00",
+      "has_readme": false,
+      "has_claude_md": false,
+      "has_deployment_docs": false
+    },
+    {
+      "id": "parking",
+      "name": "parking",
+      "description": "공용 프로젝트 - Supabase 설정 관리",
+      "language": "Unknown",
+      "type": "Backend/Infrastructure",
+      "path": "/Users/sangjun/IdeaProjects/parking",
+      "last_modified": "2026-03-19 13:26:31",
+      "has_readme": false,
+      "has_claude_md": true,
+      "has_deployment_docs": false,
+      "note": "주로 Supabase 마이그레이션과 Edge Functions 관리용"
+    }
+  ]
+}
