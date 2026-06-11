@@ -30,6 +30,7 @@ updated: 2026-06-09
 - [[에이전트-자동화-도구]] — 자동화/에이전트 도구군 (workflows · /goal · routines) → 내 업무 적용
 - [[내-MCP-커넥터-환경]] — 내가 쓰는 MCP 커넥터·Cowork 도구·업무 도구 환경
 - [[카카오-Play-MCP]] — 카카오 공식 MCP 8개 서비스 도구 사전 (지도·캘린더·검색·주식·유튜브)
+- [[웹-크롤링-기초]] — RSS/API/BeautifulSoup/Playwright 4가지 방식 + AI 뉴스 수집 시스템 구축
 
 ### 프로젝트
 - [[프로젝트-포트폴리오]] — IdeaProjects 7개 전체 개요·아키텍처 (시작점)

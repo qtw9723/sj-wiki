@@ -13,6 +13,13 @@ updated: 2026-06-10
 
 ---
 
+## [2026-06-12] 자료넣기 | 웹 크롤링 기초 학습 + AI 뉴스 수집 시스템 구축
+- 대화 기반 자료 → `raw/웹-크롤링-기초.md` 저장.
+- `wiki/웹-크롤링-기초.md` 신규 작성 (RSS/API/BeautifulSoup/Playwright 4방식 + ai-crawler 시스템).
+- Python RSS 크롤러(`D:\Projects\ai-crawler\crawler.py`) + Windows Task Scheduler(08:00 KST) 구축.
+- Claude 원격 에이전트(NaverSearch MCP, 09:00 KST) 등록 — `trig_0135s5oX7Xm2gn3NTrgXXQXM`.
+- `wiki/index.md` 도구/스킬 카테고리에 등록.
+
 ## [2026-06-12] 건강검진 | 위키 전체 점검 (15페이지)
 - 고아 페이지·분류 누락 없음. 발견 문제 3건:
   - ⚠️ `Claude-Code-업데이트-동향` W23~W24(6/1~6/12) 2주치 stale — raw 자료 대기 중.
