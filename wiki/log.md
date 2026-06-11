@@ -13,7 +13,9 @@ updated: 2026-06-10
 
 ---
 
-## [2026-06-10] 셋업 | 회사 기밀 분리 — 두 vault 체제 전환
+## [2026-06-10] 자료넣기 | 회사 전파사항 1건 → work vault로 라우팅 (이 vault 위키 변경 없음)
+- `raw/meetings/2026-06-10_전파사항.md`(회사 프로젝트 전파사항)가 이 vault에 들어옴 → **기밀 분리 원칙(CLAUDE.md §1)에 따라 이 vault에는 위키화하지 않고** work vault(`sj-wiki-work`)로 복사 후 거기서 기존 페이지 4곳 보강(상세 이력은 work vault log).
+- 이 vault 원본 파일은 읽기 전용 규칙대로 그대로 둠(`.gitignore`의 `raw/meetings/` 안전망으로 push 대상 아님). 🧠 권장: 원본은 work vault로 옮기고 이 vault에서는 삭제(사용자 작업).
 - 클라우드 동기화를 위해 **회사 기밀을 PC 전용 `sj-wiki-work` vault로 분리**(A안).
 - 이동: 회사 wiki 8p, 회사 raw(회의록·정의서·커넥터 원본 등), 기존 log 전체 → work vault.
 - 정리(redaction): 개인 vault 잔존 페이지들의 회사 참조(회사 페이지 링크·사내 플랫폼 용어·로컬 경로)를 제거/일반화.
