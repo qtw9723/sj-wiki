@@ -13,6 +13,12 @@ updated: 2026-06-10
 
 ---
 
+## [2026-06-12] 건강검진 | 위키 전체 점검 (15페이지)
+- 고아 페이지·분류 누락 없음. 발견 문제 3건:
+  - ⚠️ `Claude-Code-업데이트-동향` W23~W24(6/1~6/12) 2주치 stale — raw 자료 대기 중.
+  - ⚠️ `내-MCP-커넥터-환경` macOS 환경 기재 → 현재 Windows 기기 사용 (확인 필요).
+  - ✅ `schedule-reporter-kakao` 관련 문서에 `[[공통-기술스택]]` 교차참조 추가 (즉시 수정).
+
 ## [2026-06-10] 자료넣기 | 회사 전파사항 1건 → work vault로 라우팅 (이 vault 위키 변경 없음)
 - `raw/meetings/2026-06-10_전파사항.md`(회사 프로젝트 전파사항)가 이 vault에 들어옴 → **기밀 분리 원칙(CLAUDE.md §1)에 따라 이 vault에는 위키화하지 않고** work vault(`sj-wiki-work`)로 복사 후 거기서 기존 페이지 4곳 보강(상세 이력은 work vault log).
 - 이 vault 원본 파일은 읽기 전용 규칙대로 그대로 둠(`.gitignore`의 `raw/meetings/` 안전망으로 push 대상 아님). 🧠 권장: 원본은 work vault로 옮기고 이 vault에서는 삭제(사용자 작업).
