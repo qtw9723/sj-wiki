@@ -13,6 +13,12 @@ updated: 2026-06-10
 
 ---
 
+## [2026-06-12] 자료넣기 | AI 주간 소식 W24 위키화
+- `raw/ai-digest/2026-06-12.md` (RSS 수집 23건) 기반으로 `wiki/AI-주간-소식-2026-W24.md` 작성.
+- 주요 내용: OpenAI IPO S-1 · Codex+GPT-5.5 실사례(Nextdoor·Notion) · Gemma 4 12B · 멀티에이전트 안전 $10M.
+- 앞으로 주간 단위로 `AI-주간-소식-YYYY-WXX.md` 형식으로 위키화 예정.
+- `wiki/index.md` AI/업계 동향 카테고리에 등록.
+
 ## [2026-06-12] 자료넣기 | 웹 크롤링 기초 학습 + AI 뉴스 수집 시스템 구축
 - 대화 기반 자료 → `raw/웹-크롤링-기초.md` 저장.
 - `wiki/웹-크롤링-기초.md` 신규 작성 (RSS/API/BeautifulSoup/Playwright 4방식 + ai-crawler 시스템).
