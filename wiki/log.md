@@ -32,9 +32,11 @@ updated: 2026-06-10
 - claude.ai 원격 에이전트(`trig_0135s5oX7Xm2gn3NTrgXXQXM`): "멀티에이전트", "에이전트 AI" 키워드 추가 + auto_disabled 상태 재활성화.
 - `wiki/웹-크롤링-기초.md` 시스템 현황 갱신.
 
-## [2026-06-12] 자료넣기 | AI 주간 소식 W24 보강 (사용자 요청)
-- `wiki/AI-주간-소식-2026-W24.md`에 누락 4건 추가: Spaces 에이전트 체이닝, Oracle Cloud+OpenAI, Nemotron 3.5 안전 모델, Gemini RCT(시에라리온), MIT RAISE PATH.
-- 사용자 관점 takeaway 추가 (Cogi-POC-Generator 체이닝 패턴, 커리어 전환 흐름).
+## [2026-06-12] 자료넣기 | AI 주간 소식 W24 보강 + 크롤링↔주간소식 교차참조
+- 수동 보강(사용자 요청)과 18:06 자동 위키화가 같은 페이지를 보강 → rebase 충돌을 정보 보존 방향으로 병합 해결.
+- `wiki/AI-주간-소식-2026-W24.md`: raw 23건 중 누락분 반영 — HF Spaces 체이닝 에이전트·Nemotron 3.5 Content Safety는 본문 추가(에이전트/안전 섹션), Gemini RCT(시에라리온)·MIT RAISE PATH는 본문 전체 서술, LSEG·MIT 윤리 심포지엄은 "그 외 수집 항목"으로 기록(Oracle Cloud는 본문에 기존재).
+- 의외의 연결점 교차참조: W24 다이제스트가 [[웹-크롤링-기초]]의 ai-crawler 첫 산출물임을 양쪽 페이지에 상호 링크.
+- `index.md`는 변경 없음(두 페이지 모두 기등록).
 
 ## [2026-06-12] 자료넣기 | AI 주간 소식 W24 위키화
 - `raw/ai-digest/2026-06-12.md` (RSS 수집 23건) 기반으로 `wiki/AI-주간-소식-2026-W24.md` 작성.
