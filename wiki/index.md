@@ -3,7 +3,7 @@ title: 전체 목차 (Index)
 category: 시스템
 tags: [index, 목차]
 created: 2026-06-09
-updated: 2026-06-09
+updated: 2026-06-12
 ---
 
 > [!tip] 핵심 takeaway
@@ -32,6 +32,7 @@ updated: 2026-06-09
 - [[내-MCP-커넥터-환경]] — 내가 쓰는 MCP 커넥터·Cowork 도구·업무 도구 환경
 - [[카카오-Play-MCP]] — 카카오 공식 MCP 8개 서비스 도구 사전 (지도·캘린더·검색·주식·유튜브)
 - [[웹-크롤링-기초]] — RSS/API/BeautifulSoup/Playwright 4가지 방식 + AI 뉴스 수집 시스템 구축
+- [[Teams-Gmail-캘린더-Gemini-연동]] — Teams 회의 초대 이메일 → Gmail 자동 전달 → Gemini가 Google Calendar 자동 등록
 
 ### 프로젝트
 - [[프로젝트-포트폴리오]] — IdeaProjects 7개 전체 개요·아키텍처 (시작점)
@@ -43,7 +44,7 @@ updated: 2026-06-09
 - [[게임-프로젝트-MonsterCollector-MonsterRank]] — 취미/실험 게임 (정보 부족)
 
 ### 회의록
-_(개인 vault에는 없음)_
+- [[교회-백엔드-회의-2026-06-12]] — 교회 개발팀 백엔드 회의: 메인 개발 완료·개인 브랜치 전략·app/docs 문서화·Vercel용 개인 Git 배포 (다음 회의 6/17 수 21:00)
 
 ### 개념 / 지식
 _(아직 없음)_

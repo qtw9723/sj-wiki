@@ -13,7 +13,16 @@ updated: 2026-06-10
 
 ---
 
-## [2026-06-12] 셋업 | 자동 위키화 + 카카오 리포트 루틴 생성
+## [2026-06-12] 자료넣기 | Teams→Gmail→Calendar Gemini 연동 조사 위키화
+- 대화+서칭 결과 → `raw/Teams-Gmail-캘린더-Gemini-연동.md` 저장.
+- `wiki/Teams-Gmail-캘린더-Gemini-연동.md` 신규 작성 (.ics 감지·Gemini 분석·자동 초대 추가 3가지 방식, OWA 규칙 설정, 체크리스트).
+- `wiki/index.md` 도구/스킬 카테고리에 등록.
+
+## [2026-06-12] 자료넣기 | 교회 개발팀 백엔드 회의 위키화
+- 대화 기반 회의 내용 → `raw/교회-개발-백엔드-회의-2026-06-12.md` 저장(회사 아닌 교회 사이드 프로젝트 → 개인 vault 적합, `raw/meetings/` gitignore 회피해 raw 루트에 플랫 저장).
+- `wiki/교회-백엔드-회의-2026-06-12.md` 신규 작성 (현황·개인 브랜치 전략·app/docs 문서화·Vercel용 개인 Git 배포·액션아이템). 📄/🧠 구분 표기.
+- `wiki/index.md` "회의록" 카테고리 첫 등록(기존 "없음" 대체).
+- 투두메이트 "교회-개발"에 다음 회의(2026-06-17 수 21:00) 등록 완료.
 - claude.ai 원격 에이전트 `trig_01N49aP6vcKKxFJpzCb1nbpX` 생성: 매일 10:00 KST.
 - 동작: git pull → CLAUDE.md 규칙대로 위키화 → git push → KakaotalkChat MemoChat 리포트.
 - `wiki/웹-크롤링-기초.md` 전체 파이프라인 다이어그램 갱신.
