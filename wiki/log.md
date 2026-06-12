@@ -13,6 +13,15 @@ updated: 2026-06-10
 
 ---
 
+## [2026-06-12] 셋업 | 크롤러 멀티에이전트 소스 추가 + NaverSearch 재활성화
+- `D:\Projects\ai-crawler\crawler.py`: RSS 소스 6→9개 추가 (LangChain Blog, Microsoft Research, arXiv cs.MA), 멀티에이전트 키워드 10개 추가.
+- claude.ai 원격 에이전트(`trig_0135s5oX7Xm2gn3NTrgXXQXM`): "멀티에이전트", "에이전트 AI" 키워드 추가 + auto_disabled 상태 재활성화.
+- `wiki/웹-크롤링-기초.md` 시스템 현황 갱신.
+
+## [2026-06-12] 자료넣기 | AI 주간 소식 W24 보강 (사용자 요청)
+- `wiki/AI-주간-소식-2026-W24.md`에 누락 4건 추가: Spaces 에이전트 체이닝, Oracle Cloud+OpenAI, Nemotron 3.5 안전 모델, Gemini RCT(시에라리온), MIT RAISE PATH.
+- 사용자 관점 takeaway 추가 (Cogi-POC-Generator 체이닝 패턴, 커리어 전환 흐름).
+
 ## [2026-06-12] 자료넣기 | AI 주간 소식 W24 위키화
 - `raw/ai-digest/2026-06-12.md` (RSS 수집 23건) 기반으로 `wiki/AI-주간-소식-2026-W24.md` 작성.
 - 주요 내용: OpenAI IPO S-1 · Codex+GPT-5.5 실사례(Nextdoor·Notion) · Gemma 4 12B · 멀티에이전트 안전 $10M.
