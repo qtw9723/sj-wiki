@@ -13,6 +13,11 @@ updated: 2026-06-10
 
 ---
 
+## [2026-06-12] 셋업 | 자동 위키화 + 카카오 리포트 루틴 생성
+- claude.ai 원격 에이전트 `trig_01N49aP6vcKKxFJpzCb1nbpX` 생성: 매일 10:00 KST.
+- 동작: git pull → CLAUDE.md 규칙대로 위키화 → git push → KakaotalkChat MemoChat 리포트.
+- `wiki/웹-크롤링-기초.md` 전체 파이프라인 다이어그램 갱신.
+
 ## [2026-06-12] 셋업 | 크롤러 멀티에이전트 소스 추가 + NaverSearch 재활성화
 - `D:\Projects\ai-crawler\crawler.py`: RSS 소스 6→9개 추가 (LangChain Blog, Microsoft Research, arXiv cs.MA), 멀티에이전트 키워드 10개 추가.
 - claude.ai 원격 에이전트(`trig_0135s5oX7Xm2gn3NTrgXXQXM`): "멀티에이전트", "에이전트 AI" 키워드 추가 + auto_disabled 상태 재활성화.
