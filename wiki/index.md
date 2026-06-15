@@ -3,7 +3,7 @@ title: 전체 목차 (Index)
 category: 시스템
 tags: [index, 목차]
 created: 2026-06-09
-updated: 2026-06-12
+updated: 2026-06-15
 ---
 
 > [!tip] 핵심 takeaway

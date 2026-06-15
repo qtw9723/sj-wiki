@@ -3,7 +3,7 @@ title: 작업 이력 (Log)
 category: 시스템
 tags: [log, 이력]
 created: 2026-06-10
-updated: 2026-06-10
+updated: 2026-06-15
 ---
 
 > [!tip] 핵심 takeaway
@@ -20,6 +20,13 @@ updated: 2026-06-10
   - ⚠️ `Claude-Code-업데이트-동향` stale(W22까지, W23~W25 누락) → frontmatter에 stale 경고만 추가, 갱신은 raw 입수 후 보류(사용자 결정).
   - ⏸ `[[claude-api]]`(5곳 참조)는 작성후보로 유지(사용자 결정).
 - 별도: `.wiki-sync.sh` 충돌 내성 강화 + `.gitattributes`(log.md union 머지) 적용 — 한 번의 git 충돌이 자동 위키화를 영구 wedge시키던 문제 해결(자가 치유·abort·재시도·백업브랜치 복구).
+
+## [2026-06-15] 건강검진 | 전체 점검 (17페이지) + 교차참조·frontmatter 정리
+- 끊긴 링크·고아·분류 정합성 이상 없음(의심 후보 3종 모두 정상: `[[파일명]]`=규칙 설명 리터럴, 이미지 임베드=HTML 주석 내 예시, `claude-api`·`schedule-to-todomate`=index 등록 forward link).
+- 발견 3건 처리:
+  - ✅ frontmatter `updated` 미갱신 → `index.md`(06-12→06-15)·`log.md`(06-10→06-15) 갱신.
+  - ✅ 누락 교차참조 → [[Teams-Gmail-캘린더-Gemini-연동]]로 들어오는 콘텐츠 링크가 없던 것 보완: `schedule-reporter-kakao`·`에이전트-자동화-도구` 관련문서에 역링크 추가.
+  - ⏸ [[Claude-Code-업데이트-동향]] stale(W18~W22, 현재 ~W25 약 3주 뒤처짐) → frontmatter 경고 이미 현행화됨, 내용 갱신은 raw 입수 후 보류 유지.
 
 ## [2026-06-15] 셋업 | 연동 정상 동작 확인 (사용자 검증)
 사용자 확인: 메일(A2 전달)·일정(B1 구독)·Gemini 통합 조회 모두 문제없이 동작 중. 통합 구성 최종 검증 완료.
