@@ -1,0 +1,4 @@
+# log.md는 append-only(최신을 위로) 이력 파일이라, 여러 기기/자동 위키화가
+# 동시에 항목을 추가해도 내용이 충돌하지 않는다. union 머지로 양쪽 항목을 모두
+# 보존해 rebase/merge 충돌을 원천 차단한다. (자동화가 충돌로 wedge되는 것 방지)
+wiki/log.md merge=union
