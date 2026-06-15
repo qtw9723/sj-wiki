@@ -32,7 +32,7 @@ updated: 2026-06-12
 - [[내-MCP-커넥터-환경]] — 내가 쓰는 MCP 커넥터·Cowork 도구·업무 도구 환경
 - [[카카오-Play-MCP]] — 카카오 공식 MCP 8개 서비스 도구 사전 (지도·캘린더·검색·주식·유튜브)
 - [[웹-크롤링-기초]] — RSS/API/BeautifulSoup/Playwright 4가지 방식 + AI 뉴스 수집 시스템 구축
-- [[Teams-Gmail-캘린더-Gemini-연동]] — Teams 회의 초대 이메일 → Gmail 자동 전달 → Gemini가 Google Calendar 자동 등록
+- [[Teams-Gmail-캘린더-Gemini-연동]] — 회사(M365/Teams) 메일·일정을 구글로 모아 Gemini로 통합 읽기. 확정 설계: A1(Gmail POP3 가져오기)+B1(Outlook 캘린더 게시 구독), 읽기 전용
 
 ### 프로젝트
 - [[프로젝트-포트폴리오]] — IdeaProjects 7개 전체 개요·아키텍처 (시작점)

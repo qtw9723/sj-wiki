@@ -13,6 +13,9 @@ updated: 2026-06-10
 
 ---
 
+## [2026-06-15] 셋업 | Teams/M365→Gmail·캘린더→Gemini 통합 설계 확정
+브레인스토밍으로 통합 방향 확정(허브=개인 Gmail, 읽기 전용 단방향, 메일=A1 POP3 가져오기, 일정=B1 캘린더 게시 구독+B2 보완). 기존 [[Teams-Gmail-캘린더-Gemini-연동]] 페이지를 자동전달(A2) 중심에서 A1+B1 확정 설계 런북으로 재작성하고 A2/B2는 대체·보완안으로 보존. index.md 설명 갱신.
+
 ## [2026-06-12] 자료넣기 | Teams→Gmail→Calendar Gemini 연동 조사 위키화
 - 대화+서칭 결과 → `raw/Teams-Gmail-캘린더-Gemini-연동.md` 저장.
 - `wiki/Teams-Gmail-캘린더-Gemini-연동.md` 신규 작성 (.ics 감지·Gemini 분석·자동 초대 추가 3가지 방식, OWA 규칙 설정, 체크리스트).
