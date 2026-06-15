@@ -13,6 +13,11 @@ updated: 2026-06-15
 
 ---
 
+## [2026-06-15] 자료넣기 | AI 주간 소식 W25 위키화 (영문 RSS 34건)
+- `raw/ai-digest/2026-06-15.md` 기반 `wiki/AI-주간-소식-2026-W25.md` 신규 작성.
+- 주요: OpenAI Ona 인수(지속형 에이전트 환경) · WorkBench 2026(Claude Opus 1위) · MASLab · Gemini 3.5 Live Translate.
+- `wiki/index.md` AI/업계 동향에 W25 등록.
+
 ## [2026-06-15] 건강검진 | 전체 점검 (18페이지) + 자동 위키화 충돌 내성 강화
 - 고아·분류 정합성·신규 2페이지 형식 이상 없음. 발견 4건 처리:
   - ✅ 끊긴 링크 `[[schedule-to-todomate]]`(Teams 페이지 참조) → index.md "작성 후보(forward link)"로 등록(작성후보 강등).
