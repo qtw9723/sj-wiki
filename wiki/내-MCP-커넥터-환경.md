@@ -4,7 +4,7 @@ category: 도구/스킬
 tags: [mcp, 커넥터, cowork, 도구, 자동화, 본인정보]
 source: raw/my-connectors-and-techstack.md (회사 섹션 포함 원본은 sj-wiki-work vault로 이동)
 created: 2026-06-09
-updated: 2026-06-09
+updated: 2026-06-15
 ---
 
 > [!tip] 핵심 takeaway
@@ -13,8 +13,9 @@ updated: 2026-06-09
 > 의외의 포인트: 개인 [[카카오-Play-MCP]]·[[schedule-reporter-kakao]]의 알림/발송 자동화는 본업의 알림 업무 감각과도 통한다 — 같은 "결과를 사람에게 푸시" 전략.
 
 ## 환경
-- **OS/앱**: macOS + Claude Cowork 데스크탑 앱.
-- 정리일 2026-06-09.
+- **이중 기기 구성** 🧠: ① **Mac** — Claude Cowork 데스크탑 앱·이 sj-wiki 운영·MCP 커넥터 사용(이 페이지 내용). ② **Windows PC** — ai-crawler(`D:\Projects\ai-crawler`)를 Windows Task Scheduler로 자동 실행([[웹-크롤링-기초]]). 즉 위키/대화 작업은 Mac, 크롤링 자동화는 Windows에서 돈다.
+- **OS/앱(주 작업)**: macOS + Claude Cowork 데스크탑 앱.
+- 정리일 2026-06-09 (이중 기기 명시 2026-06-15).
 
 ## 1. MCP 커넥터
 ### 1-1. 카카오 Play MCP (카카오 공식)

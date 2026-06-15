@@ -13,6 +13,14 @@ updated: 2026-06-10
 
 ---
 
+## [2026-06-15] 건강검진 | 전체 점검 (18페이지) + 자동 위키화 충돌 내성 강화
+- 고아·분류 정합성·신규 2페이지 형식 이상 없음. 발견 4건 처리:
+  - ✅ 끊긴 링크 `[[schedule-to-todomate]]`(Teams 페이지 참조) → index.md "작성 후보(forward link)"로 등록(작성후보 강등).
+  - ✅ 이중 기기 구성 명시 → `내-MCP-커넥터-환경`에 Mac(Cowork/위키)+Windows(ai-crawler) 분리 운영 추가.
+  - ⚠️ `Claude-Code-업데이트-동향` stale(W22까지, W23~W25 누락) → frontmatter에 stale 경고만 추가, 갱신은 raw 입수 후 보류(사용자 결정).
+  - ⏸ `[[claude-api]]`(5곳 참조)는 작성후보로 유지(사용자 결정).
+- 별도: `.wiki-sync.sh` 충돌 내성 강화 + `.gitattributes`(log.md union 머지) 적용 — 한 번의 git 충돌이 자동 위키화를 영구 wedge시키던 문제 해결(자가 치유·abort·재시도·백업브랜치 복구).
+
 ## [2026-06-15] 셋업 | Teams/M365→Gmail·캘린더→Gemini 통합 설계 확정
 브레인스토밍으로 통합 방향 확정(허브=개인 Gmail, 읽기 전용 단방향, 메일=A1 POP3 가져오기, 일정=B1 캘린더 게시 구독+B2 보완). 기존 [[Teams-Gmail-캘린더-Gemini-연동]] 페이지를 자동전달(A2) 중심에서 A1+B1 확정 설계 런북으로 재작성하고 A2/B2는 대체·보완안으로 보존. index.md 설명 갱신.
 

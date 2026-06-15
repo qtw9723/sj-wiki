@@ -4,8 +4,11 @@ category: AI/업계 동향
 tags: [claude-code, 동향, 도구, llm, 자동화]
 source: "raw/What's new.md, raw/Week 18~22"
 created: 2026-06-09
-updated: 2026-06-09
+updated: 2026-06-15
 ---
+
+> [!warning] ⚠ stale — 갱신 대기 (2026-06-15 검진)
+> 이 페이지는 **W22(~5/29)까지만** 반영됨. 현재 W23~W25(6월 전반) 업데이트가 누락된 상태다. 정확한 갱신은 raw 자료(`What's new`·주차별 노트) 입수 후 진행 — 추측 작성을 피하기 위해 보류 중.
 
 > [!tip] 핵심 takeaway
 > 이 5주치 흐름의 한 줄: **"AI가 한 번에 더 큰 일을, 더 자율적으로, 더 안전하게"** — 모델(Opus 4.8)·오케스트레이션(workflows/goal)·안전망(auto mode/security plugin)이 동시에 강해졌다.

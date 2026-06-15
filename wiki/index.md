@@ -54,6 +54,7 @@ _(아직 없음)_
 
 > [!note] 작성 후보 (forward link)
 > - [[claude-api]] — LLM/에이전트 개발 시 참조용. [[Cogi-POC-Generator]]에 LLM을 붙일 때 작성 예정.
+> - [[schedule-to-todomate]] — 새 일정 → TodoMate(코워크) 등록 흐름. [[Teams-Gmail-캘린더-Gemini-연동]]에서 참조. (코워크 전용·CLI 미연결 → 작성 예정)
 
 ---
 
