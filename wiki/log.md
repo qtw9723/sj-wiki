@@ -13,6 +13,11 @@ updated: 2026-06-15
 
 ---
 
+## [2026-06-16] 자료넣기 | 헤르메스 개인비서 Hostinger 호스팅 검토
+- 웹 리서치로 Hostinger 가격·장단점(공유/KVM VPS/n8n/Docker, 갱신가 폭등 등) 정리.
+- 사용자 확정: 헤르메스=전반 업무 포함 개인비서 → 활용방안(n8n 오케스트레이션·LLM 에이전트 컨테이너·하이브리드(Supabase 유지)) 제시.
+- 새 페이지 [[헤르메스-개인비서-Hostinger]] 작성, index.md 프로젝트 카테고리 등록.
+
 ## [2026-06-15] 자료넣기 | AI 주간 소식 W25 위키화 (영문 RSS 34건)
 - `raw/ai-digest/2026-06-15.md` 기반 `wiki/AI-주간-소식-2026-W25.md` 신규 작성.
 - 주요: OpenAI Ona 인수(지속형 에이전트 환경) · WorkBench 2026(Claude Opus 1위) · MASLab · Gemini 3.5 Live Translate.

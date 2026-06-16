@@ -42,6 +42,7 @@ updated: 2026-06-15
 - [[schedule-reporter-kakao]] — 일정 리포터 + 카카오 (업무 자동화 축)
 - [[Cogi-POC-Generator]] — Dialog JSON Generator (⭐ 챗봇 시나리오 축, 핵심)
 - [[parking]] — Supabase 공유 인프라 (공용 백엔드)
+- [[헤르메스-개인비서-Hostinger]] — 🆕 개인비서 헤르메스 호스팅 검토: Hostinger KVM VPS 가격·장단점 + 활용방안(n8n·Docker·하이브리드)
 - [[게임-프로젝트-MonsterCollector-MonsterRank]] — 취미/실험 게임 (정보 부족)
 
 ### 회의록
