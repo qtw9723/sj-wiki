@@ -3,7 +3,7 @@ title: 전체 목차 (Index)
 category: 시스템
 tags: [index, 목차]
 created: 2026-06-09
-updated: 2026-06-15
+updated: 2026-06-16
 ---
 
 > [!tip] 핵심 takeaway
@@ -43,6 +43,7 @@ updated: 2026-06-15
 - [[Cogi-POC-Generator]] — Dialog JSON Generator (⭐ 챗봇 시나리오 축, 핵심)
 - [[parking]] — Supabase 공유 인프라 (공용 백엔드)
 - [[헤르메스-개인비서-Hostinger]] — 🆕 개인비서 헤르메스 호스팅 검토: Hostinger KVM VPS 가격·장단점 + 활용방안(n8n·Docker·하이브리드)
+- [[교회-일정공유-캘린더]] — 🆕 교회 일정 공유 캘린더 기획: 카테고리(팀/그룹) 소속 기반 노출 + RBAC×카테고리 2단계 권한, ERP(인력관리 제외)·모바일 확장 대비 (기획 3종 문서 작성)
 - [[게임-프로젝트-MonsterCollector-MonsterRank]] — 취미/실험 게임 (정보 부족)
 
 ### 회의록
