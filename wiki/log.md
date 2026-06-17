@@ -13,6 +13,13 @@ updated: 2026-06-17
 
 ---
 
+## [2026-06-17] 자료넣기 | 팀숲 회의록 위키화 + 설계 문서 업데이트
+- 교회 개발팀 2차 회의(2026-06-17) 내용 위키화: [[교회-개발-회의-2026-06-17]] 신규 생성
+- [[팀숲-bible-forest]] 프로젝트 페이지 신규 생성 (개요·스택·결정·일정)
+- [[프로젝트-포트폴리오]] 팀숲 항목 추가
+- [[index]] 팀숲 섹션 신설 + 회의록 2개 항목 정렬
+- `D:\Projects\bible_forest\app\docs\backend-decisions.md` 신규 결정 반영: A1 나무 회수 허용(번복)·A3 권 단위 bulk replace·B3 배치 나무 회수 가능·C1 기간 이후 조회 허용·D1 z_index 시퀀스 신규
+
 ## [2026-06-17] 자료넣기 | AI W25 보강 (06-17 34건) + 건강검진
 - `raw/ai-digest/2026-06-17.md` (34건) 수집 후 `wiki/AI-주간-소식-2026-W25.md`에 신규 6건 추가: OpenAI Deployment Simulation · Intelligence Entropy · ProvenanceGuard(MCP) · 멀티에이전트 동시성 이상 · Strands+LeRobot · DeepMind UK 주택 AI.
 - 건강검진 (22페이지): 고아 없음, 끊긴 링크 없음(mailer 이미지 기존 알려진 문제 유지). `웹-크롤링-기초.md` 파이프라인 현행화(WakeToRun · Resend 이메일 · Public 레포 반영).
