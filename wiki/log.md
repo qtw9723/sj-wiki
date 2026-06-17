@@ -13,6 +13,10 @@ updated: 2026-06-17
 
 ---
 
+## [2026-06-17] 자료넣기 | AI W25 보강 (06-17 34건) + 건강검진
+- `raw/ai-digest/2026-06-17.md` (34건) 수집 후 `wiki/AI-주간-소식-2026-W25.md`에 신규 6건 추가: OpenAI Deployment Simulation · Intelligence Entropy · ProvenanceGuard(MCP) · 멀티에이전트 동시성 이상 · Strands+LeRobot · DeepMind UK 주택 AI.
+- 건강검진 (22페이지): 고아 없음, 끊긴 링크 없음(mailer 이미지 기존 알려진 문제 유지). `웹-크롤링-기초.md` 파이프라인 현행화(WakeToRun · Resend 이메일 · Public 레포 반영).
+
 ## [2026-06-17] 자료넣기 | 교회 캘린더 와이어프레임 HTML 직접 검증·반영
 - 나열된 raw(docx 3종·디자인프롬프트.md·와이어프레임.zip)는 모두 직전 커밋에서 이미 위키화 완료 확인. `.DS_Store`·펼친 와이어프레임 폴더는 `.gitignore`대로 의도적 제외(zip만 커밋).
 - 펼친 와이어프레임 HTML을 직접 열람해 [[교회-일정공유-캘린더]] 「와이어프레임」 섹션 "포함 화면"을 정밀화(관리자 4화면·4단계 역할 매트릭스·마이페이지 카테고리별 역할 배지 명시).
