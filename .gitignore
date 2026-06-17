@@ -18,6 +18,9 @@
 .obsidian/workspace-mobile.json
 .obsidian/cache
 
+# === 대용량 펼친 아카이브 (zip만 커밋, 펼친 폴더는 로컬 열람용) ===
+raw/교회-일정공유캘린더-와이어프레임/
+
 # === 회사 기밀 안전망 ===
 # 정식 보관은 PC 전용 sj-wiki-work vault. 실수/자동생성으로 이 vault에 다시 나타나도 커밋되지 않게 차단.
 raw/meetings/
