@@ -23,7 +23,7 @@ updated: 2026-06-18
 - [[내-프로필]] — 커리어·강점·현재 관심사 (모든 답변의 관점 기준)
 
 ### AI / 업계 동향
-- [[AI-주간-소식-2026-W25]] — 2026 W25 (6/15~6/21): OpenAI Ona 인수·파트너 네트워크 · WorkBench 2026 · MASLab · Gemini 실시간 번역 · 에이전트 신뢰성/평가(LegalHalluLens·평가 인식·제안-검증 구조) · DRFLOW
+- [[AI-주간-소식-2026-W25]] — 2026 W25 (6/15~6/21): OpenAI Ona 인수·파트너 네트워크 · WorkBench 2026 · MASLab · Gemini 실시간 번역 · 에이전트 신뢰성/평가(LegalHalluLens·평가 인식·제안-검증 구조) · DRFLOW · 🇰🇷국내(앤트로픽 서울 오피스·네이버 Claude Code 도입·더존비즈온 도메인특화·포스코DX 1인 N에이전트)
 - [[AI-주간-소식-2026-W24]] — 2026 W24 (6/8~6/12): OpenAI IPO S-1 · Codex 실사례 · Gemma 4 12B · 멀티에이전트 안전 $10M
 - [[Claude-Code-업데이트-동향]] — Claude Code 2026 W18~W22 주요 업데이트 (Opus 4.8 · workflows · security plugin)
 
