@@ -33,6 +33,7 @@ updated: 2026-06-22
 - [[내-MCP-커넥터-환경]] — 내가 쓰는 MCP 커넥터·Cowork 도구·업무 도구 환경
 - [[카카오-Play-MCP]] — 카카오 공식 MCP 8개 서비스 도구 사전 (지도·캘린더·검색·주식·유튜브)
 - [[웹-크롤링-기초]] — RSS/API/BeautifulSoup/Playwright 4가지 방식 + AI 뉴스 수집 시스템 구축
+- [[모닝-브리핑-AppsScript]] — 매일 아침 "DAILY BRIEFING" 메일의 정체: Google Apps Script가 캘린더+Gmail을 개인 Gemini(무료분)로 요약·발송 + 드라이브 저장. [[Teams-Gmail-캘린더-Gemini-연동]] 위의 푸시층
 - [[Teams-Gmail-캘린더-Gemini-연동]] — ✅ 구성 완료(읽기 전용): 회사(M365/Teams) 메일·일정을 구글로 모아 Gemini로 통합 읽기. 메일=A2(Outlook 자동전달, POP은 앱 비번 차단), 일정=B1(캘린더 게시 구독), 통합조회=Gemini (B2 자동등록은 미적용)
 
 ### 프로젝트

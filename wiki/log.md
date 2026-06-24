@@ -13,6 +13,12 @@ updated: 2026-06-22
 
 ---
 
+## [2026-06-24] 자료넣기 | 모닝 브리핑(Apps Script) 위키화
+- 사용자가 매일 아침 받는 "DAILY BRIEFING" 메일의 정체 위키화 → 신규 [[모닝-브리핑-AppsScript]] 생성.
+- 메커니즘: **Google Apps Script** 시간 트리거 → 기본 캘린더(오늘 일정) + Gmail 받은편지함 → **개인 Gemini 무료분(gemini-2.5-flash)** 요약 → HTML 메일 발송(sjpark@) + 구글 드라이브(MWW/) 저장. 위클리는 일정만(Gemini 미사용).
+- 🔴 **보안**: 사용자 전달 원본에 Gemini API 키 평문 포함 → raw·wiki 모두 `<REDACTED>` 처리, 키 폐기·재발급 권고 명시. 실제 키는 스크립트 속성 `GEMINI_API_KEY`에만.
+- 교차참조: [[Teams-Gmail-캘린더-Gemini-연동]](수집/온디맨드층 ↔ 이건 푸시층) 양방향 링크, [[schedule-reporter-kakao]] 관련문서 추가, [[index]] 도구/스킬 등록. raw: `raw/모닝-브리핑-AppsScript.md`(키 redact).
+
 ## [2026-06-22] 건강검진 | 시연일 6/23→6/26 이동 미반영 정합성 점검
 - 전 23개 페이지 점검(완전 확인 원칙 적용 — 모든 섹션 교차 점검). **stale/모순 3건 해소** (시연일이 6/26로 이동했는데 잔존 "6/23"):
   - [[index]] 팀숲 설명 "6/23 시연 목표" → "6/26(금, 예상) 시연 목표".
