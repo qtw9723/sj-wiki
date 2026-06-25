@@ -13,6 +13,12 @@ updated: 2026-06-25
 
 ---
 
+## [2026-06-25] 자료넣기 | raw 프로젝트 4종 재점검 — mailer 누락 사실 2건 보강
+- 요청: raw/projects의 mailer·cogi·schedule-reporter·parking 4종을 CLAUDE.md 규칙대로 위키화. 작업 전 `git pull --rebase`.
+- **완전 확인 결과**: 4개 raw는 직전 커밋 `952dd12`(자료넣기)+`2929963`(건강검진)에서 이미 위키 4페이지·index·log에 정합 반영돼 있었음(working tree clean). 새 페이지 생성 X, 보강만.
+- **[[mailer]] 2건 보강**: ① **이중 인증 체계**(`auth` x-app-password 헤더 / `cronAuth` Bearer CRON_SECRET — pg_cron·dispatch용) ② **Supabase 마이그레이션 이력 7건**(스키마 진화 추적). 둘 다 raw엔 있었으나 위키 누락분.
+- [[Cogi-POC-Generator]]·[[schedule-reporter-kakao]]·[[parking]]·[[index]]: raw와 정합 — 변경 없음.
+
 ## [2026-06-25] 건강검진 | 프로젝트 갱신 후속 정합성 점검
 - 전체 25페이지 점검(사용자 승인 후 수정). 끊긴링크 실제 0건(검출 후보는 전부 false positive: 같은-페이지 앵커 `[[#..|..]]`, mailer png는 `<!-- -->` 주석 내 예시, `[[파일명]]` 규칙 리터럴, log 서술 리터럴, index 등록 forward-link). 고아 0건, index 분류 누락 0건.
 - **P1 모순 수정**: [[프로젝트-포트폴리오]]가 어제 갱신과 충돌 → 목록표 정정. schedule-reporter "풀스택(일정+카카오)"→"리포트 스케줄러(⚠️카카오 제거·Grafana 단일페이지)", Cogi "프론트/배포준비"→"풀스택(Edge Functions 백엔드)/POC 운영", mailer 비고 보강.
