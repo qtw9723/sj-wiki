@@ -3,7 +3,7 @@ title: 전체 목차 (Index)
 category: 시스템
 tags: [index, 목차]
 created: 2026-06-09
-updated: 2026-06-22
+updated: 2026-06-25
 ---
 
 > [!tip] 핵심 takeaway
@@ -39,10 +39,10 @@ updated: 2026-06-22
 ### 프로젝트
 - [[프로젝트-포트폴리오]] — IdeaProjects 7개 전체 개요·아키텍처 (시작점)
 - [[notepad]] — 마크다운 메모장 (레퍼런스 프로젝트, 프로덕션 안정)
-- [[mailer]] — ⭐ **CS SmartHub** (본인 기획·실사용자 CS팀 기반·진행중, 1순위 포트폴리오) ⚠️ 마이그레이션 예외
-- [[schedule-reporter-kakao]] — 일정 리포터 + 카카오 (업무 자동화 축)
-- [[Cogi-POC-Generator]] — Dialog JSON Generator (⭐ 챗봇 시나리오 축, 핵심)
-- [[parking]] — Supabase 공유 인프라 (공용 백엔드)
+- [[mailer]] — ⭐ **CS SmartHub** (본인 기획·실사용자 CS팀 기반·진행중, 1순위 포트폴리오, 179커밋). Mailer+Grafana 리포트(+Gemini LLM 로그분석)+Playwright 챗봇 모니터링(pg_cron 정시) 허브 ⚠️ 마이그레이션 예외
+- [[schedule-reporter-kakao]] — 리포트 스케줄러 (⚠️ 카카오 연동은 코드에서 제거됨, 현재 Grafana 리포트 설정 단일 페이지·[[mailer]] 형제)
+- [[Cogi-POC-Generator]] — Dialog JSON Generator (⭐ 챗봇 시나리오 축, 핵심). LLM 6단계 생성 파이프라인 + DB-구동 규칙엔진 + 시나리오/API 레퍼런스 라이브러리 + 테스터 OTP 인증 (OpenAI gpt-4o)
+- [[parking]] — Supabase 공유 인프라 (공용 백엔드) + parking API(data.go.kr 실시간 주차장) 연동 정보
 - [[헤르메스-개인비서-Hostinger]] — 🆕 개인비서 헤르메스 호스팅 검토: Hostinger KVM VPS 가격·장단점 + 활용방안(n8n·Docker·하이브리드)
 - [[교회-일정공유-캘린더]] — 🆕 교회 일정 공유 캘린더 기획(v1.1, 1차 대학부): 카테고리별 권한 + 영혼관리 연동·모바일 확장 대비, 기획 3종 + 디자인 웹 프롬프트(11종) + 클릭형 HTML 와이어프레임(로그인=이름+팀+비번)
 - [[게임-프로젝트-MonsterCollector-MonsterRank]] — 취미/실험 게임 (정보 부족)

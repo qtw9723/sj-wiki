@@ -4,7 +4,7 @@ category: 프로젝트
 tags: [인프라, supabase, edge-functions, 마이그레이션, 백엔드]
 source: raw/projects/parking.md
 created: 2026-06-09
-updated: 2026-06-09
+updated: 2026-06-25
 ---
 
 > [!tip] 핵심 takeaway
@@ -18,8 +18,8 @@ updated: 2026-06-09
 
 ## 역할
 - DB 마이그레이션 관리 (`supabase/migrations/`)
-- Edge Functions 배포 (`supabase/functions/notepad/` 등)
-- [[notepad]](Edge Function 호스팅), [[mailer]], [[schedule-reporter-kakao]]의 공유 백엔드
+- Edge Functions 배포 — 📄 현재 호스팅: `parking`·`notepad`·`todos`·`mailer`·`results`·`questions`·`admin`·`cogi-generator` 등. 한 프로젝트(ref `enawzdqroidrhtjqhpka`)에 여러 서비스가 공존.
+- [[notepad]]·[[mailer]]·[[schedule-reporter-kakao]]·[[Cogi-POC-Generator]]의 공유 백엔드 + DB
 
 ## 주요 명령어
 ```bash
@@ -36,5 +36,23 @@ supabase db pull                                  # 원격 스키마 동기화
 ## 개선 아이디어
 - README 부재 + 정책 불일치 → "마이그레이션 운영 규칙" 한 장으로 통일하면 [[mailer]]/[[notepad]]/[[schedule-reporter-kakao]] 전체의 사고 위험이 줄어든다.
 
+## parking API 연동 (Edge Function) 📄
+> 한국 공공데이터포털(data.go.kr) 실시간 주차장 데이터 서비스. 정적정보(이름·주소·좌표)는 `parking_lot` 테이블, 실시간 점유는 조회 시 data.go.kr에서 즉시 fetch해 병합하는 **이중 데이터 모델**. (`supabase/functions/parking/index.ts`·`data.ts`)
+
+**Base URL**: `https://enawzdqroidrhtjqhpka.supabase.co/functions/v1/parking`
+
+| 메서드 | 경로 | 설명 |
+|--------|------|------|
+| POST | `/init` | 주차장 ID 초기 적재(`PrkRealtimeInfo`) — **최초 1회 먼저** |
+| POST | `/initInfo` | 상세정보(이름/주소/좌표) 적재(`PrkSttusInfo`) — init 다음 |
+| GET | `/parking` | 전체 목록 + 실시간 병합(`realtime` 필드 부착) |
+| GET | `/parking?id={id}` | 단일 조회 + 실시간 병합(정제 응답), 없으면 404 |
+
+- **사용 순서** 📄: 조회 전 반드시 `POST /init` → `POST /initInfo`로 DB를 채워야 데이터가 나온다.
+- **인증** 🧠: `config.toml`에 `verify_jwt=false` 오버라이드가 없어 **JWT 검증 ON** → 호출 시 `Authorization: Bearer <ANON_KEY>` + `apikey: <ANON_KEY>` 헤더 필요. anon key는 parking/.env엔 없지만 **같은 프로젝트를 쓰는 [[mailer]]/[[notepad]]/[[schedule-reporter-kakao]]/[[Cogi-POC-Generator]]의 `.env`(`VITE_SUPABASE_ANON_KEY`)에 저장**돼 있어 그대로 재사용 가능(anon은 공개용 키라 안전, 진짜 비밀은 `SERVICE_ROLE_KEY`).
+- ⚠️ **CORS 미처리** 🧠: parking 함수엔 [[notepad]]과 달리 CORS 헤더가 없어 **브라우저 직접 호출 불가 → 서버사이드/프록시 전용**.
+- 단일 조회 응답: `prk_center_id, name, sido, sigungu, address, latitude, longitude, total_spaces, available_spaces, last_updated`.
+- ⚠️ 주의 🧠: ① `parking_lot` 생성 마이그레이션이 repo에 없음(수동 생성) ② data.go.kr 호출 `numOfRows=100` 고정(페이지네이션 없음) ③ `initInfo`가 DB `created_at` 순서 ↔ API index 순서로 매핑(`data.ts:92`)해 정렬 어긋나면 이름/주소 오결합 가능 — 실시간 수치가 항상 0이면 id 매칭(`data.ts:158`) 점검.
+
 ## 관련 문서
-- [[프로젝트-포트폴리오]] · [[notepad]] · [[mailer]] · [[schedule-reporter-kakao]] · [[공통-기술스택]]
+- [[프로젝트-포트폴리오]] · [[notepad]] · [[mailer]] · [[schedule-reporter-kakao]] · [[Cogi-POC-Generator]] · [[공통-기술스택]]

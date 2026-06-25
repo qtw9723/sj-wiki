@@ -3,7 +3,7 @@ title: 작업 이력 (Log)
 category: 시스템
 tags: [log, 이력]
 created: 2026-06-10
-updated: 2026-06-24
+updated: 2026-06-25
 ---
 
 > [!tip] 핵심 takeaway
@@ -12,6 +12,15 @@ updated: 2026-06-24
 > ⚠️ 이 vault는 **동기화 대상(개인/포트폴리오)**. 회사 기밀 이력은 PC 전용 `sj-wiki-work` vault의 log에 있다.
 
 ---
+
+## [2026-06-25] 자료넣기 | 프로젝트 업데이트 — mailer·Cogi 대규모 갱신 + parking API + schedule-reporter 정정
+- 사용자 요청: 라이브 저장소를 읽기전용으로 확인해 raw에 최신화 + 위키화(프로젝트 수정 중이라 repo는 미수정). 작업 전 `git pull --rebase`(최신).
+- **[[mailer]]** (06-10 이후 +80커밋, 99→179): 병렬 에이전트로 라이브 확인. NOC 관제콘솔 리디자인(디자인토큰·Cmd+K·하트비트·send_log), **Chatbot 모니터링 신설**(Playwright+GitHub Actions+pg_cron 08:30 정시 트리거), **Grafana 쿼리 UI 관리**(하드코딩→DB JSONB+테스트게이트), **Grafana LLM(Gemini) 로그분석**(요약+영속 로그유형+발생시각 보존). raw·wiki 갱신. 시크릿/회사기밀(챗봇 솔루션명·셀렉터·HUB_URL·키) redact·제외.
+- **[[Cogi-POC-Generator]]** (06-09 이후 ~200커밋): 병렬 에이전트로 확인. Flow 1급화(LLM 설계→결정론 전개), 6단계 생성 파이프라인, **데이터구동 규칙엔진(solution_rules SoT)**, 레퍼런스 학습(derive-node-specs/learn-rules), 시나리오/API 레퍼런스 라이브러리, **테스터 OTP 인증·승인·신뢰기기**, 토큰/비용 집계, features·값할당 레거시 제거. LLM=OpenAI gpt-4o(Gemini 아님·혼동 주의). 어드민 자격증명·SMTP 등 제외.
+- **[[parking]]**: 라이브 확인. **parking API 연동 정보** 추가(엔드포인트·init 순서·verify_jwt 인증·anon key는 형제 repo .env 공유·CORS 미처리·응답스키마·주의점) → raw·wiki. 인증키 질문 답: parking/.env엔 anon 없고 mailer/notepad/schedule/Cogi의 .env에 VITE_SUPABASE_ANON_KEY로 저장됨(공개키).
+- **[[schedule-reporter-kakao]]** 정정: 06-09 `simplify to schedule settings page only` 리팩터로 **카카오 코드 제거·GrafanaPage 단일페이지로 축소**됨을 확인 → 위키의 구버전 서술(카카오 연동·드래그앤드롭·일정리포팅) 현행화. raw·wiki·index 정정.
+- index 프로젝트 한줄설명 4건 현행화. notepad/MonsterCollector/MonsterRank는 06-09 이후 커밋 0 → 변경 없음.
+- ⚠️ raw 수정은 본래 Claude 금지(읽기전용)이나 이번엔 사용자 명시 지시("raw파일에 최신정보 넣어줘")로 진행.
 
 ## [2026-06-24] 자료넣기 | 모닝 브리핑(Apps Script) 전체 원본 반영 보강
 - raw가 요약본→**전체 원본 소스**로 확장됐으나 wiki가 미반영이던 상태 발견(완전 확인 원칙 교차 점검). [[모닝-브리핑-AppsScript]] "설계 포인트"에 소스 근거(📄) 디테일 보강: 메일 수집=스레드 마지막 메시지만+본문 앞 300자 snippet(토큰 절약), 위클리 요일별 그룹핑/종일 처리, 드라이브 폴더 자동생성·저장실패 무해화, 백오프 식(2^n)·muteHttpExceptions 분기, 보조함수(setGeminiKey/checkKey/diagnoseGemini).

@@ -66,5 +66,14 @@ npm run lint         # ESLint 실행
 - mailer는 일반적인 메일링, schedule-reporter-kakao는 일정 기반 리포팅 + 카카오톡 연동
 - 동일한 기술 스택 (React + Express + Supabase)
 
+## 2026-06-25 재확인 — 단순화/피벗 (위 정보는 2026-06-08 기준 구버전)
+- 2026-06-09 커밋 `refactor: simplify to schedule settings page only`로 **대폭 단순화**됨.
+- **카카오 연동 코드 제거됨**: src/server/api 어디에도 `kakao/카카오` 참조 없음(grep 0건). 프로젝트명에만 "kakao"가 잔존(원래 목표=카카오톡 Play MCP 스케줄 기능을 자체 서버로 마이그레이션 — README 기준).
+- **현재 앱**: `App.jsx` 라우트는 `/login`(LoginPage) + `/`(GrafanaPage, ProtectedRoute) 뿐. 사실상 **Grafana 리포트 스케줄 설정 단일 페이지**.
+- 구조가 [[mailer]]와 동일 계열로 정렬됨: `src/pages/`에 GrafanaPage·HubPage·MailerPage·ChatbotPage·LoginPage 존재(라우팅은 Grafana만), `src/components/grafana|mailer|shared`, `src/lib/api/grafana.js`.
+- README 설명: "카카오톡 플레이 MCP의 스케줄 기능을 자체 서버로 마이그레이션". 마이그레이션 체크리스트는 전부 미완([ ]). 스케줄링=Grafana 리포트 자동화(일일/주간).
+- 스택: React19/Vite8/Tailwind4 + Express + Supabase + Nodemailer(여전). 최근 커밋 2026-06-09.
+- 🧠 해석: mailer의 Grafana 리포트 기능을 떼어내 별도 앱으로 두려던 형제 프로젝트로 보이며, 현재는 mailer와 기능이 상당 부분 겹침.
+
 ## 상태
 현재 활발히 개발 중 (최근 수정: 2026-06-08)
