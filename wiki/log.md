@@ -13,6 +13,13 @@ updated: 2026-06-25
 
 ---
 
+## [2026-06-25] 건강검진 | 프로젝트 갱신 후속 정합성 점검
+- 전체 25페이지 점검(사용자 승인 후 수정). 끊긴링크 실제 0건(검출 후보는 전부 false positive: 같은-페이지 앵커 `[[#..|..]]`, mailer png는 `<!-- -->` 주석 내 예시, `[[파일명]]` 규칙 리터럴, log 서술 리터럴, index 등록 forward-link). 고아 0건, index 분류 누락 0건.
+- **P1 모순 수정**: [[프로젝트-포트폴리오]]가 어제 갱신과 충돌 → 목록표 정정. schedule-reporter "풀스택(일정+카카오)"→"리포트 스케줄러(⚠️카카오 제거·Grafana 단일페이지)", Cogi "프론트/배포준비"→"풀스택(Edge Functions 백엔드)/POC 운영", mailer 비고 보강.
+- **P2 stale 보강**: [[공통-기술스택]]에 Cogi가 프론트전용→**풀스택(Edge Functions)** 반영, Edge Functions 사용처(Cogi·mailer·notepad)·스택매핑 행 추가.
+- **P3 forward-link 등록**: [[mailer]]발 신규 끊긴링크 `[[Gemini]]`·`[[Playwright]]`·`[[GitHub Actions]]`을 [[index]] 작성후보 노트에 등록(끊긴링크=추적됨 불변식 유지).
+- 팀숲 시연일 6/26 일관·미래(오늘 6/25)로 정상. 영향: 프로젝트-포트폴리오·공통-기술스택·index·log.
+
 ## [2026-06-25] 자료넣기 | 프로젝트 업데이트 — mailer·Cogi 대규모 갱신 + parking API + schedule-reporter 정정
 - 사용자 요청: 라이브 저장소를 읽기전용으로 확인해 raw에 최신화 + 위키화(프로젝트 수정 중이라 repo는 미수정). 작업 전 `git pull --rebase`(최신).
 - **[[mailer]]** (06-10 이후 +80커밋, 99→179): 병렬 에이전트로 라이브 확인. NOC 관제콘솔 리디자인(디자인토큰·Cmd+K·하트비트·send_log), **Chatbot 모니터링 신설**(Playwright+GitHub Actions+pg_cron 08:30 정시 트리거), **Grafana 쿼리 UI 관리**(하드코딩→DB JSONB+테스트게이트), **Grafana LLM(Gemini) 로그분석**(요약+영속 로그유형+발생시각 보존). raw·wiki 갱신. 시크릿/회사기밀(챗봇 솔루션명·셀렉터·HUB_URL·키) redact·제외.
