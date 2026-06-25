@@ -3,7 +3,7 @@ title: 작업 이력 (Log)
 category: 시스템
 tags: [log, 이력]
 created: 2026-06-10
-updated: 2026-06-22
+updated: 2026-06-24
 ---
 
 > [!tip] 핵심 takeaway
@@ -12,6 +12,10 @@ updated: 2026-06-22
 > ⚠️ 이 vault는 **동기화 대상(개인/포트폴리오)**. 회사 기밀 이력은 PC 전용 `sj-wiki-work` vault의 log에 있다.
 
 ---
+
+## [2026-06-24] 자료넣기 | 모닝 브리핑(Apps Script) 전체 원본 반영 보강
+- raw가 요약본→**전체 원본 소스**로 확장됐으나 wiki가 미반영이던 상태 발견(완전 확인 원칙 교차 점검). [[모닝-브리핑-AppsScript]] "설계 포인트"에 소스 근거(📄) 디테일 보강: 메일 수집=스레드 마지막 메시지만+본문 앞 300자 snippet(토큰 절약), 위클리 요일별 그룹핑/종일 처리, 드라이브 폴더 자동생성·저장실패 무해화, 백오프 식(2^n)·muteHttpExceptions 분기, 보조함수(setGeminiKey/checkKey/diagnoseGemini).
+- 기존 페이지 보강만(신규 생성 X). index는 변경 없음(이미 등록·설명 정확).
 
 ## [2026-06-24] 자료넣기 | 모닝 브리핑(Apps Script) 위키화
 - 사용자가 매일 아침 받는 "DAILY BRIEFING" 메일의 정체 위키화 → 신규 [[모닝-브리핑-AppsScript]] 생성.
