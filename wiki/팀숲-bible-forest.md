@@ -4,7 +4,7 @@ category: 프로젝트
 tags: [프로젝트, 교회-개발, bible-forest, next.js, supabase, 협업개발]
 source: (대화 기반, D:\Projects\bible_forest\app\docs\ + 2026-06-22 디스코드 확정)
 created: 2026-06-17
-updated: 2026-06-22
+updated: 2026-06-26
 ---
 
 > [!tip] 핵심 takeaway
@@ -207,6 +207,7 @@ challenges (is_active=true인 1건이 체크 기간 제약 기준)
 - 🧠 API-First 설계(FE는 API 결과만 표시) → 역할 분리가 명확해 협업 마찰 최소화. [[mailer]]나 [[schedule-reporter-kakao]] 혼자 개발할 때와 다른 협업 패턴 경험.
 
 ## 관련 문서
+- [[팀숲-베타-시연-시나리오]] — 6/26 시연용 대본·체크리스트 (비개발자 대상)
 - [[교회-백엔드-회의-2026-06-12]] — 1차 회의 (백엔드 완료·브랜치 전략)
 - [[교회-개발-회의-2026-06-17]] — 2차 회의 (설계 변경·일정 확정)
 - [[교회-일정공유-캘린더]] — 같은 교회 개발팀의 별개 프로젝트

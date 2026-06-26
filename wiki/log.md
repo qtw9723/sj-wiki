@@ -3,7 +3,7 @@ title: 작업 이력 (Log)
 category: 시스템
 tags: [log, 이력]
 created: 2026-06-10
-updated: 2026-06-25
+updated: 2026-06-26
 ---
 
 > [!tip] 핵심 takeaway
@@ -12,6 +12,20 @@ updated: 2026-06-25
 > ⚠️ 이 vault는 **동기화 대상(개인/포트폴리오)**. 회사 기밀 이력은 PC 전용 `sj-wiki-work` vault의 log에 있다.
 
 ---
+
+## [2026-06-26] 자료넣기 + 건강검진 | 팀숲 베타 시연 시나리오 등록 + 전체 점검 (26페이지)
+
+### 자료넣기
+- `wiki/팀숲-베타-시연-시나리오.md` (미커밋 상태) 등록: 교회 리더·대학부(비개발자)용 6/26 베타 시연 대본 + 장면별 체크리스트 8장면.
+- [[index]] 팀숲 카테고리에 `[[팀숲-베타-시연-시나리오]]` 등록.
+- [[팀숲-bible-forest]] 관련 문서에 `[[팀숲-베타-시연-시나리오]]` 역링크 추가.
+
+### 건강검진 결과
+- ✅ 고아 페이지 해소: `팀숲-베타-시연-시나리오`(인커밍 0) → index·bible-forest에 링크 추가 완료.
+- ✅ 분류 정합성: index 팀숲 카테고리에 시나리오 페이지 추가 완료.
+- ⚠️ 보고(미수정): `팀숲-베타시연-발표.pptx`가 repo 루트에 있음 → raw/ 규칙상 `raw/`에 있어야 하나 사용자 영역이므로 이동 보류. 사용자가 옮겨주면 raw/에 보관.
+- ⚠️ stale 유지: [[Claude-Code-업데이트-동향]] W22까지만(W23~W26 누락). raw 자료 없어 보류 유지.
+- ✅ 이상 없음: 끊긴 링크(claude-api·schedule-to-todomate·Gemini·Playwright·GitHub Actions 모두 index 등록 forward-link로 정상), 나머지 분류 정합성 이상 없음.
 
 ## [2026-06-25] 자료넣기 | raw 프로젝트 4종 재점검 — mailer 누락 사실 2건 보강
 - 요청: raw/projects의 mailer·cogi·schedule-reporter·parking 4종을 CLAUDE.md 규칙대로 위키화. 작업 전 `git pull --rebase`.
