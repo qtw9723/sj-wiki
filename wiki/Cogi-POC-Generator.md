@@ -4,7 +4,7 @@ category: 프로젝트
 tags: [프로젝트, 챗봇, 시나리오, dialog-json, llm, openai, supabase, 핵심]
 source: raw/projects/cogi-poc-generator-v1.md
 created: 2026-06-09
-updated: 2026-06-25
+updated: 2026-06-29
 ---
 
 > [!tip] 핵심 takeaway
@@ -19,33 +19,46 @@ updated: 2026-06-25
 
 ## 주요 기능
 - 📄 **LLM 다단계 생성 파이프라인** (`supabase/functions/cogi-generator`): designFlow → expandWithSpecs → fillNodeValues(2.5) → deriveEsdSchemas → deriveApiDefs(2.6) → output 멘트 패스. 단계마다 검증·재시도.
-- 📄 **데이터구동 규칙 엔진**: 생성 규칙을 코드에 박지 않고 `solution_rules`(DB, 7 카테고리)에 두고 단계별 프롬프트에 주입. 어드민 또는 레퍼런스 학습으로 규칙 추가. (`CLAUDE.md`)
+- 📄 **반복 루프 생성** (`flow/wrapValidationLoops.ts`, `loopBehavior.ts`): Stage1 LLM이 시나리오 의도에 따라 `loop` 노드(body/exitVar/max)를 *설계* → `expandWithSpecs`가 subdialog JSON으로 결정론 변환(조건식·flag 초기화·안전카운트) → validate/repair가 본문 도달성·exitVar set 존재를 검증. 입력 검증 실패 시 재질문 루프 자동 생성. 루프 노드는 코드 내장, 동작 파라미터(탈출 비교·flag 자동초기화·최대횟수·포맷 정규식)는 `Loop Rule` 카테고리에서 튜닝.
+- 📄 **데이터구동 규칙 엔진**: 생성 규칙을 코드에 박지 않고 `solution_rules`(DB, **8 카테고리**: Solution / System Variable / Node Usage / Variable Usage / Value Generation / Output Message / Condition / **Loop Rule**)에 두고 단계별 프롬프트에 주입(`RULE_STAGE_BY_CATEGORY` 매핑). 어드민 또는 레퍼런스 학습으로 규칙 추가. (`CLAUDE.md`)
+- 📄 **규칙 학습 + 정합화** (`learn-solution-rules`): 자연어나 예시 봇 JSON에서 생성 규칙을 도출하고, 기존 규칙과 충돌 시 교체/유지/수정으로 정합화. 솔루션 규칙 탭 상단 패널로 통합.
 - 📄 **레퍼런스 학습**: `derive-node-specs`(결정론적 노드 추출 → LLM 일반화 → closed-world 검증), `learn-rules`(레퍼런스 JSON 구조 학습). (`supabase/functions/`)
 - 📄 **시나리오 레퍼런스 라이브러리** (`/scenarios`, `cogi_scenario_references`): 산업군별(금융/물류/소매/도매/의료/기타) 미니봇 학습자료. Stage1 few-shot 예시로 주입 + 사용자 단일선택/조립.
-- 📄 **API 레퍼런스 라이브러리** (`cogi_api_references`): import용 API 정의 관리(엔드포인트당 1행) + 어드민에서 실제 호출 test(프록시).
+- 📄 **API 레퍼런스 라이브러리** (`cogi_api_references`): import용 API 정의 관리(엔드포인트당 1행) + 어드민에서 실제 호출 test(프록시). 쿼리 파라미터·JSON 통째 바디·필수/선택 구분 지원, 이름 비우면 LLM 생성, 이름 검증(한글·특수문자·공백 불가), 테스트 통과 후 수동 등록(자동등록 폐기), 미통과 시 위치 안내·자동 이동.
 - 📄 **테스터 인증·승인** (`testers`, `trusted-device`): 이메일 OTP 로그인 → 승인 게이트(pending→approved) → 계정별 결과(RLS) → 신뢰기기 등록 후 이메일만으로 재로그인(30일).
 - 📄 **LLM 토큰 사용량·예상비용 집계·표시** (`flow/usage.ts`).
 - 📄 **사용자 피드백**: 플로팅 버튼 → 우측하단 팝오버, 어드민 피드백 관리 탭(미완료 배지).
-- 📄 어드민 8탭: questions / references / templates / solution-rules / rules / scenario-references / api-references / feedback / testers.
+- 📄 어드민 **8탭**: 질문 / 참고자료 / 템플릿 / 솔루션 규칙(규칙 학습·정합화 패널 내장) / 피드백(미완료 배지) / 시나리오 레퍼런스 / API 레퍼런스 / 테스터. (레거시 `rules`=필드정의 학습은 라우트로만 잔존, 메인 네비에서 제외)
 
 ## 기술 스택
 [[공통-기술스택]] 기반 + 풀스택 확장:
 - 📄 **프론트**: React 19.2, Vite 8, React Router 7, Tailwind CSS 4, Radix UI + shadcn, lucide-react. 폼/검증 = react-hook-form + **zod**(Dialog JSON 구조 검증의 핵심).
-- 📄 **백엔드**: Supabase Edge Functions(Deno/TypeScript) 20개, Postgres(40 마이그레이션, RLS). ([[parking]])
+- 📄 **백엔드**: Supabase Edge Functions(Deno/TypeScript) **21개**, Postgres(**49 마이그레이션**, RLS). 순수 함수(flow/*)는 `deno test`로 단위 테스트. ([[parking]])
 - 📄 **LLM**: **OpenAI `gpt-4o`** (temperature 0.1). ⚠ GEMINI는 mailer/grafana용이고 Cogi와 무관(혼동 금지).
 - 📄 **배포**: 프론트 Vercel(main 푸시 자동), 엣지함수 `supabase functions deploy`, DB `supabase db push`.
 
 ## 아키텍처
 - 🧠 **3계층**: React SPA(설문·결과·라이브러리·어드민) ↔ Supabase Edge Functions(생성·학습·CRUD·인증) ↔ Postgres(규칙·레퍼런스·결과·테스터). LLM 호출은 전부 엣지함수 안에서만(키 노출 차단).
-- 📄 **Flow 1급화**: Stage1 LLM이 플로우를 *설계*(FlowSpec)하고 reachability 검증·repair, Stage2가 노드에디터 JSON으로 *결정론적 전개*. 과거의 "통째 JSON을 LLM이 뱉는" 경로는 제거 — 🧠 LLM은 설계만, 구조 정합성은 코드가 보장하는 **하이브리드(LLM+결정론)** 패턴.
+- 📄 **Flow 1급화**: Stage1 LLM이 플로우를 *설계*(FlowSpec)하고 reachability 검증·repair, Stage2가 노드에디터 JSON으로 *결정론적 전개*. 과거의 "통째 JSON을 LLM이 뱉는" 경로는 제거 — 🧠 LLM은 설계만, 구조 정합성은 코드가 보장하는 **하이브리드(LLM+결정론)** 패턴. 2026-06-29 **반복 루프**(LLM이 loop 설계 → 코드가 subdialog로 결정론 전개·탈출 검증)도 같은 골격의 최신 사례.
 - 📄 **규칙 = 데이터, 로직 = 코드**: 7개 규칙 카테고리가 생성 단계(flow/config/output/condition)에 매핑돼 주입. 단 결정론적 안전장치(루트 stack 제거, 변수 use-before-declare 차단 등)는 코드에 잔존. (`CLAUDE.md`)
 - 📄 **레퍼런스 일원화**: 2026-06-16 `features` 레이어 제거 → 레퍼런스 중심으로 통합. 2026-06-17 레거시 값-할당 3탭(필드스키마/조건패턴/값할당) 제거.
 
-## 진행 현황 (2026-06-25)
-- 🧠 **상태: 사내 테스터 대상 POC 운영 단계.** 생성 파이프라인·규칙엔진·레퍼런스 학습·인증/승인이 모두 갖춰져, 코드 없이 어드민에서 규칙·시나리오·API를 학습/관리하는 형태로 성숙.
-- 🧠 남은 결: 규칙·학습자료를 카테고리별로 하나씩 채워가는 운영형 작업(시나리오 레퍼런스 → API 레퍼런스 순으로 진행 중), 폼 도움말 등 UX 다듬기.
+## 진행 현황 (2026-06-29)
+- 📄 **규모**: 총 **575 커밋** (2026-05-14 ~ 2026-06-29, 현재진행). 버전 1.0.1. 엣지함수 21개 · 마이그레이션 49개 · solution_rules 8 카테고리.
+- 🧠 **상태: 사내 테스터 대상 POC 운영 단계.** 생성 파이프라인·규칙엔진·레퍼런스 학습·인증/승인이 모두 갖춰져, 코드 없이 어드민에서 규칙·시나리오·API를 학습/관리하는 형태로 성숙. 최근(6/25~)엔 **반복 루프 생성**과 **규칙 학습+정합화**가 추가돼 표현력·운영성이 한 단계 올라감.
+- 🧠 남은 결: 규칙·학습자료를 카테고리별로 하나씩 채워가는 운영형 작업, 분기 조건·변수명 정확도(항목명 날조/누수) 다듬기, 폼 도움말 등 UX. 🧠 **루프 런타임 탈출 의미 검증은 미완**(코드 내장+규칙 튜닝까지 배포됐으나 실제 대화 런타임에서 탈출 동작은 미검증).
+- 🧠 **보고/매뉴얼 작성 시 활용 포인트**: 위 "주요 기능"·"아키텍처"가 프로젝트 개요의 골격. 자랑 축 3개(프롬프트 오케스트레이션 / DB-구동 규칙 / 풀스택 운영)는 takeaway 박스 참고.
 
 ## 진행사항 업데이트 로그
+### 2026-06-29 — 루프 생성·규칙 학습 정합화·API 고도화 (📄 git log, PR #42~#67)
+- **반복 루프 생성 (가장 큰 신규, PR #57·60·63~67)**: LLM이 시나리오 의도대로 `loop` 노드를 *설계*하고, flag 변수 탈출 규약 + 결정론적 subdialog 변환·검증으로 정확성 보장. 입력 검증 실패 시 재질문 루프 자동 생성. 동작 파라미터는 `Loop Rule` 카테고리(루프 동작 설정)에서 튜닝. → 🧠 "LLM 설계 + 코드 검증" 하이브리드 패턴을 반복 제어까지 확장.
+- **규칙 학습 + 정합화 (PR #52·53)**: `learn-solution-rules` 엣지함수 신설 — 자연어/예시 JSON에서 규칙 도출 → 기존 규칙과 충돌 시 교체/유지/수정. 별도 화면 → 솔루션 규칙 탭 상단 패널로 통합.
+- **API 레퍼런스 고도화 (PR #46~#49·54·55)**: 쿼리 파라미터·JSON 통째 바디·필수/선택 구분, 이름 비우면 LLM 생성, 이름 검증(한글·특수문자·공백 불가), 테스트 통과 후 수동 등록(자동등록 폐기), 테스트 게이트 위치 안내·자동 이동, '보낼 정보'에서 자기 결과 제외.
+- **변수명 규칙 고도화 (PR #56·58·59)**: 수집 정보 **항목명↔변수명 분리**, 변수명 규칙을 condition 단계에도 주입(분기에서 항목명 새던 버그·날조 차단).
+- **생성 신뢰성 픽스**: 메인 welcome 보장(#57), `_result` 노드내부 전용·스코프 시나리오내부=local(#51).
+- **UX**: 시나리오 폼 전체 필드 도움말(#44·45), 결과 응답 긴 텍스트 박스 넘침 해결(#50), 어드민 로그인 진입·탭 배지 줄바꿈 방지(#42·43).
+- **구조 수치**: 엣지함수 20→21(`learn-solution-rules`), 마이그레이션 40→49, solution_rules 7→8 카테고리(`Loop Rule`), 어드민 9→8탭(규칙 학습 통합).
+
 ### 2026-06-25 — 2주간(2026-06-09~) ~200커밋, POC가 풀스택 제품으로 (📄 git log)
 - **Flow 단계 1급화**: Stage1 LLM 플로우 설계 → Stage2 결정론적 JSON 전개. legacy 전체-JSON 경로 제거, reachability 검증·repair·다중 루트 지원.
 - **레퍼런스→노드스펙 파생**(derive-node-specs, closed-world 검증) + 판별 유니온 variant 다중 선택.
