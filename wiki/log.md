@@ -3,7 +3,7 @@ title: 작업 이력 (Log)
 category: 시스템
 tags: [log, 이력]
 created: 2026-06-10
-updated: 2026-06-26
+updated: 2026-06-29
 ---
 
 > [!tip] 핵심 takeaway
@@ -12,6 +12,12 @@ updated: 2026-06-26
 > ⚠️ 이 vault는 **동기화 대상(개인/포트폴리오)**. 회사 기밀 이력은 PC 전용 `sj-wiki-work` vault의 log에 있다.
 
 ---
+
+## [2026-06-29] 자료넣기 | AI 주간 소식 W26 신규 작성 (영문 다이제스트 2건)
+- 요청: `raw/ai-digest/2026-06-27.md`·`2026-06-29.md`(ai-crawler 자동수집)를 위키화. 작업 전 pull(승인필요 안내).
+- 내용이 6/22~6/26에 집중 → **W26(6/22~6/28)** 주차. W26 페이지 부재 → 주차별 패턴(W24·W25)대로 **[[AI-주간-소식-2026-W26]] 신규 작성**. 6/27 파일이 6/29의 상위집합(arXiv 멀티에이전트 섹션·삼성 추가 포함)이라 둘 합쳐 중복 제거.
+- 핵심 픽([[내-프로필]] 관점): ① **Instruction Bleed**(2606.26356, 프롬프트 모듈 간 간섭) → [[Cogi-POC-Generator]] 6단계 파이프라인 직격 ② **OpenAI Daybreak**(Codex Security·GPT-5.5-Cyber) → [[Claude-Code-업데이트-동향]] security plugin과 동궤 ③ **Gemini 3.5 Flash 컴퓨터 사용** → [[웹-크롤링-기초]] Playwright 보강. + Semantic Early-Stopping·CUGA·삼성 Codex 전사배포 등.
+- [[index]] AI/업계동향에 W26 등록(맨 위), updated 6/29. [[AI-주간-소식-2026-W25]] 관련문서에 다음 주(W26) 역링크 추가.
 
 ## [2026-06-26] 자료넣기 + 건강검진 | 팀숲 베타 시연 시나리오 등록 + 전체 점검 (26페이지)
 
