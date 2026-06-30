@@ -56,6 +56,14 @@ updated: 2026-06-30
 - 🌐 **공개 URL (무계정 열람·공유용)**: **https://cogi-overview.vercel.app** — Claude 무관 정적 호스팅. 자기완결 HTML(이미지·CSS·JS 전부 내장).
   - ⚠ 긴 배포-전용 URL(`cogi-overview-xxxx-...vercel.app`)은 Vercel 보호(302)로 막힘 → **반드시 짧은 `cogi-overview.vercel.app`만 공유**.
 - 🧩 **원본(편집용)**: claude.ai 아티팩트 `https://claude.ai/code/artifact/1e30660a-4c19-4a59-9f19-198bed774f7d` (단일 HTML, 개요/사용매뉴얼/관리자 3탭).
+- 🎨 **파비콘**: 배포 디렉토리에 `favicon.svg`(워드마크 브랜드 마크 = 검정 라운드 사각형 `#11162A` + 앰버 가로바 `#B5701B` + 흰 세로바)를 두고, head에 `<link rel="icon" type="image/svg+xml" href="/favicon.svg">`. **재배포 디렉토리엔 `index.html`과 `favicon.svg` 둘 다** 있어야 한다(스크래치패드는 세션 임시 → 새 세션은 아래 원본으로 favicon.svg 재생성).
+  ```svg
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="Cogi">
+    <rect width="32" height="32" rx="10" fill="#11162A"/>
+    <rect x="7" y="10" width="13.5" height="4.2" rx="2" fill="#B5701B"/>
+    <rect x="13" y="10" width="4.2" height="13.5" rx="2" fill="#FFFFFF"/>
+  </svg>
+  ```
 - 🛠 **재배포 절차** (📄 확인된 동작):
   1. HTML 수정(스크래치패드 작업본 또는 아티팩트 갱신).
   2. `index.html`로 복사한 배포 디렉토리에서 `vercel deploy --prod` (Vercel 계정 `qtw9723`, 프로젝트 **`cogi-overview`**).
