@@ -3,8 +3,13 @@ title: 작업 이력 (Log)
 category: 시스템
 tags: [log, 이력]
 created: 2026-06-10
-updated: 2026-06-30
+updated: 2026-07-01
 ---
+
+## [2026-07-01] 프로젝트 업데이트 | 헤르메스 §7-2 구현체 dev-pipeline 반영 + notepad 테스트 인프라
+- 라이브 저장소 확인(운영 D): flagship [[mailer]](6/25)·[[Cogi-POC-Generator]](6/30)는 이미 최신. 뒤처진 2건 갱신.
+- [[헤르메스-개인비서-Hostinger]] §7-2: "구상/미구축" → **로컬 구현체 `IdeaProjects/dev-pipeline`**(6/29~30) 반영. 기획자(메티스) 추가된 4역할·5단계·상태파일·헤드리스 자동실행/자율 트리아지·Phase3 미구현 등 📄 정리. 구현현황 callout+표 추가.
+- [[notepad]]: 6/29 커밋(vitest+`verify` 게이트, 태그 순수함수 추출) 반영 — dev-pipeline의 `VERIFY_CMD` 검증 대상으로 준비됨(교차링크).
 
 > [!tip] 핵심 takeaway
 > 위키에 무슨 일이 있었는지 시간순으로 쌓는 기록장. 최신 항목이 맨 위.
