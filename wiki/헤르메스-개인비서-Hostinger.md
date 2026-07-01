@@ -124,8 +124,9 @@ updated: 2026-07-01
 
 코드 작업 시 에이전트가 서로 검증·개선하게 하고 싶다. 단, **"LLM 둘이 토론"이 아니라 "실행되는 테스트 위에서 싸우게"** 하는 게 핵심(LLM끼리는 서로 동의하며 버그를 함께 놓치는 경향).
 
-> [!success] 구현 현황 — 로컬 버전 완성됨 (📄 2026-06-29~30, `IdeaProjects/dev-pipeline`)
+> [!success] 구현 현황 — 로컬 버전 완성됨 (📄 2026-06-29~30, `IdeaProjects/dev-pipeline` → 정식화 [[올림푸스-Olympus]])
 > 이 §7-2는 더 이상 순수 구상이 아니다. 헤르메스(VPS)로 올리기 전 단계로, **로컬에서 Claude Code 세션들이 협업하는 범용 오케스트레이터 `dev-pipeline`** 가 실제로 만들어졌다. 아래 "구현 현황" 참조. (멀티 페르소나 §7-1은 여전히 구상 단계)
+> 📄 **후속(2026-07-01)**: 이 `dev-pipeline`은 이후 **[[올림푸스-Olympus]]**(`~/IdeaProjects/olympus`, GitHub `qtw9723/olympus`)로 이름·구조가 정리되고, **Mindboard(React+FastAPI 풀스택) 실전 테스트 T1~T12 전부 green으로 검증 완료**됐다. 상세는 [[올림푸스-Olympus]] 페이지 참조(이 §7-2는 씨앗·초기 구현 이력으로 보존).
 
 #### 구현 현황 — `dev-pipeline` (📄 저장소에서 확인)
 

@@ -19,7 +19,7 @@ updated: 2026-07-01
 - **vitest 도입** + `test`/`test:run`/**`verify`(=lint && test && build)** 스크립트, `vitest.config.js`.
 - 태그 로직을 `src/lib/tags.js` **순수함수로 추출**(동작 보존) + 단위테스트 10개, `noteConfig.test.js` 등.
 - 기존 lint 에러 14건 정리 → **verify green** (baseline 확보).
-- 🧠 **의미**: 이 `verify` 게이트가 곧 [[헤르메스-개인비서-Hostinger]] §7-2 `dev-pipeline`의 `VERIFY_CMD` 대상이 된다 — notepad가 "문서화 잘 된 검증용 첫 대상"으로 준비된 것. 생성↔비평 루프의 그라운드 트루스(테스트/타입/린트/빌드)를 여기서 확보.
+- 🧠 **의미**: 이 `verify` 게이트가 곧 [[올림푸스-Olympus]](=[[헤르메스-개인비서-Hostinger]] §7-2 `dev-pipeline`의 정식판)의 `VERIFY_CMD` 대상이 된다 — notepad가 "문서화 잘 된 검증용 첫(로컬 PoC) 대상"으로 준비된 것. 생성↔비평 루프의 그라운드 트루스(테스트/타입/린트/빌드)를 여기서 확보.
 
 ## 기술 스택
 [[공통-기술스택]] 기반 + 특화 라이브러리:
@@ -42,4 +42,4 @@ updated: 2026-07-01
 배경 #0d1117 / 사이드바 #0d0d14 / 강조 #7c6af5(보라) / 텍스트 #e6edf3. 폰트 Pretendard·Noto Sans KR·SF Mono.
 
 ## 관련 문서
-- [[프로젝트-포트폴리오]] · [[parking]] · [[공통-기술스택]] · [[mailer]] · [[헤르메스-개인비서-Hostinger]](§7-2 dev-pipeline 검증 대상)
+- [[프로젝트-포트폴리오]] · [[parking]] · [[공통-기술스택]] · [[mailer]] · [[올림푸스-Olympus]](=dev-pipeline, notepad가 검증용 첫 대상) · [[헤르메스-개인비서-Hostinger]](§7-2)
