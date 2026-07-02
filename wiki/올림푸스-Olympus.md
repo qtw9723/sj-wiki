@@ -11,7 +11,7 @@ updated: 2026-07-02
 > [!tip] 핵심 takeaway
 > 🧠 [[내-프로필]]의 **"비개발→개발 전환"·"업무 자동화"·"LLM 활용"** 세 축이 한 프로젝트에서 만나는 결과물이다. "AI가 코드를 짜준다"에서 한 발 더 나아가, **여러 Claude 세션이 역할을 나눠 협업하고 실행되는 테스트가 심판이 되게** 직접 오케스트레이션을 설계·구현했다 → 단순 사용자가 아니라 **에이전트 파이프라인을 만드는 사람**이라는 포트폴리오 근거.
 > 🧠 핵심 통찰 하나면 충분: **"LLM 둘이 토론"이 아니라 "실행되는 게이트(lint·test·build) 위에서 싸우게"** 한다. LLM 합의가 아니라 실행 결과가 유일한 진실 → [[Cogi-POC-Generator]]의 zod 출력 검증, [[mailer]]의 Playwright E2E 게이트와 같은 "LLM을 실행으로 검증한다" 철학의 연장.
-> 📄 이건 [[헤르메스-개인비서-Hostinger]] §7-2의 `dev-pipeline`이 **정식 이름(올림푸스)을 얻고 독립 프로젝트로 졸업한 것**이다(같은 코드 계보). 헤르메스(클라우드)로 올리기 전 **로컬 헤드리스로 동작·검증 완료**.
+> 📄 이건 [[헤르메스-개인비서-Hostinger]] §7-2의 `dev-pipeline`이 **정식 이름(올림푸스)을 얻고 독립 프로젝트로 졸업한 것**이다(같은 코드 계보). 헤르메스(클라우드)로 올리기 전 **로컬 헤드리스로 동작·검증 완료**. 2026-07-02 리네임 확정 → 실제 저장소·디렉토리 모두 `olympus`.
 
 ## 한 줄 정의
 📄 **기획서 폴더(`spec/<프로젝트>/`)만 넣고 `bash run.sh` 하면, 여러 Claude Code 세션(기획자·생성자·비평가)이 협업해 스펙을 분석·분해·개발하고, 실행되는 테스트(게이트)가 심판이 되어 완성까지 자동으로 굴리는 로컬 오케스트레이터.**
@@ -19,7 +19,7 @@ updated: 2026-07-02
 > [!info] 계보 = 헤르메스 §7-2 `dev-pipeline`의 졸업판 📄
 > [[헤르메스-개인비서-Hostinger]] §7-2 "코드 자가개선 루프(생성자↔비평가)"의 로컬 구현이 이 도구다. 역할 4종(메티스·헤파이스토스·모모스·헤르메스)·`verify.sh` 그라운드 트루스·자율 트리아지·사람 승인 1회 설계가 그대로 이어진다. → 헤르메스 페이지 §7-2는 "구상+초기 구현", 이 페이지는 "검증까지 끝난 현재 상태"로 읽으면 된다.
 >
-> ⚠️ **이름·저장소 현황 (2026-07-02 저장소 확인 📄)**: 실제 저장소는 여전히 **`~/IdeaProjects/dev-pipeline` / GitHub `qtw9723/dev-pipeline`**(private, 2026-07-01 생성)이다. **"Olympus(올림푸스)"는 제품명이며, 리네임은 아직 커밋되지 않은 워킹트리 수정뿐**이다(README 제목·`config.sh`·`run.sh`의 `olympus/` 참조가 `git diff`에만 존재, 미커밋·미푸시). `olympus`라는 이름의 repo·로컬 디렉토리는 로컬·GitHub 어디에도 없다. → 이 페이지에서 "올림푸스"는 이 dev-pipeline 도구를 가리키는 이름으로 읽으면 된다.
+> ✅ **이름·저장소 현황 (2026-07-02 리네임 완료 📄)**: 실제 저장소·로컬 디렉토리 모두 **`~/IdeaProjects/olympus` / GitHub `qtw9723/olympus`**(private)로 리네임 완료. README 제목·`config.sh`·`run.sh`의 `olympus/` 참조 커밋(`640bc3a`)·푸시, 로컬 dir `mv`, `gh repo rename olympus`까지 반영. (이전 이름 `dev-pipeline`은 계보/커밋 이력에만 남음 — GitHub redirect로 옛 URL도 당분간 접근 가능.)
 
 ## 배경 / 동기 📄
 - [[헤르메스-개인비서-Hostinger]] §7-2의 "코드 자가개선 루프(생성자↔비평가)" 아이디어를, **헤르메스(클라우드)로 올리기 전에 로컬에서 먼저 검증**하려고 만든 PoC.
@@ -87,16 +87,23 @@ spec/<프로젝트>/  ─▶ [메티스] 요구사항 분석(필수) → require
 - state 파일 공유로 세션 간 통신 → 헤르메스(클라우드)에선 외부 영속 상태(Supabase 등)로 승격 예정.
 
 ## 현재 상태 / 다음 📄
-- ✅ 로컬 도구로 동작·검증 완료. GitHub `qtw9723/dev-pipeline`(private)에 push(마지막 커밋 `e651607`, 2026-07-01).
-- 🚧 **"Olympus" 리네임 진행 중(미커밋)**: README 제목·`config.sh`·`run.sh`의 도구 폴더명이 `dev-pipeline→olympus`로 바뀐 워킹트리 수정이 있으나 아직 커밋·푸시 안 됨(§계보 박스 ⚠ 참조).
+- ✅ 로컬 도구로 동작·검증 완료. GitHub `qtw9723/olympus`(private)에 push(리네임 커밋 `640bc3a`, 2026-07-02).
+- ✅ **"Olympus" 리네임 완료**: 로컬 dir `~/IdeaProjects/olympus`, GitHub repo `qtw9723/olympus`, 코드 내 참조·spec 하위폴더 규칙 정렬까지 반영(§계보 박스 ✅ 참조).
 - ⏸ 헤르메스(클라우드 상시)로는 아직 안 올림 — 당분간 로컬 헤드리스로 사용.
 - 다음 후보: Phase 3(요구사항 완료 후 추가기능 제안·교차검증, README §헤르메스로의 매핑에 "미구현—다음 확장 후보"로 명시됨), 게이트 강화(tsc -b), 다중 대상 병행.
 
 ## 진행사항 업데이트 로그
-### 2026-07-02 (저장소 확인 📄, `qtw9723/dev-pipeline`)
+### 2026-07-02 (이름 정리 = dev-pipeline → Olympus 리네임 완료 📄)
+- **로컬 디렉토리**: `~/IdeaProjects/dev-pipeline` → `~/IdeaProjects/olympus` (`mv`).
+- **GitHub repo**: `qtw9723/dev-pipeline` → `qtw9723/olympus` (`gh repo rename`, remote URL 자동 갱신, 옛 URL은 redirect 유지). private 유지.
+- **코드 참조 커밋**(`640bc3a`, push 완료): README 제목·`config.sh`·`run.sh`의 도구 폴더명 `dev-pipeline→olympus`, 옛 `spec/00-overview.md` 삭제.
+- **spec 하위폴더 규칙 정렬**: 도구 자체 규칙(`spec/_README.md`: "프로젝트마다 하위 폴더 하나")에 맞춰 Mindboard 기획서를 **`spec/Mindboard/`** 로 이동(01~06 + 00_README). `spec/*`는 gitignore(가이드 `_README.md`만 추적)라 git 영향 없음.
+- **로컬 파일 gitignore 추가**: `.DS_Store`, `.claude/`.
+
+### 2026-07-02 (저장소 확인 📄, 당시 `qtw9723/dev-pipeline`)
 - **역할별 모델 배치 확인** (`config.sh`, "비대칭 역할" 원칙 #2의 구체 증거): 기획자(메티스)·비평가(모모스) = `claude-opus-4-8`, 생성자(헤파이스토스) = `claude-sonnet-4-6`. 생성자≠비평가 다른 모델로 실제 구성됨. 기본 게이트 `VERIFY_CMD="bash verify.sh"`, `GIT_BRANCH=auto`(brownfield 작업브랜치 자동), `PROJECTS_DIR=~/IdeaProjects`, `TARGET_REPO`는 spec 폴더명으로 자동.
 - **커밋 이력(6개, 2026-06-29~07-01)**: `dev-pipeline` 초기 구현(다세션 루프, 메티스+Builder↔Critic) → spec/ 폴더 입력 전환 → 헤드리스 자동실행+자율 트리아지+심판 무결성 → state 런타임 분리(git 미추적) → `spec/<프로젝트>/`만 넣으면 대상 repo 자동 생성(git init+범용 게이트).
-- **spec/ 현황**: 현재 spec/에 Mindboard 검증(아래 §검증)용 기획서 세트가 담겨 있음 — `01_기획개요(PRD)`·`02_기능명세`·`03_디자인가이드`·`04_기술아키텍처_API`·`05_화면설계`·`06_개발태스크`. ⚠ 단, 도구 자체 규칙(`spec/_README.md`: "프로젝트마다 하위 폴더 하나")과 달리 현재는 **플랫 파일**로 들어 있음(옛 `spec/00-overview.md`는 삭제, 미커밋). 이름 리네임과 함께 정리 대상.
+- **spec/ 현황**: Mindboard 검증(아래 §검증)용 기획서 세트가 담겨 있음 — `01_기획개요(PRD)`·`02_기능명세`·`03_디자인가이드`·`04_기술아키텍처_API`·`05_화면설계`·`06_개발태스크`. (이후 위 리네임 작업에서 `spec/Mindboard/` 하위폴더로 정렬 완료.)
 
 ## 의외의 연결점 🧠
 - **올림푸스로 내 다른 프로젝트를 개발**: Mindboard 검증 대상이 **React+FastAPI 풀스택(인증·CRUD·RBAC 유사)**이었다는 건, 형태가 거의 같은 [[콜링]](React + Node/Spring, 로그인·카테고리 권한·일정 CRUD)이나 [[팀숲-bible-forest]]를 **올림푸스의 spec으로 넣어 자동 개발**하는 게 현실적이라는 뜻. brownfield 모드로 [[mailer]]·[[notepad]] 기능 추가에도 붙일 수 있다.

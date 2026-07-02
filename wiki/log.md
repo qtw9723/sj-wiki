@@ -6,6 +6,10 @@ created: 2026-06-10
 updated: 2026-07-02
 ---
 
+## [2026-07-02] 프로젝트업데이트 | 올림푸스 리네임 완료 (dev-pipeline → olympus)
+- 사용자 지시로 실제 이름 정리 수행: 로컬 dir `~/IdeaProjects/dev-pipeline→olympus`(mv), GitHub `qtw9723/dev-pipeline→olympus`(gh repo rename), 코드 참조 커밋+push(`640bc3a`), spec를 `spec/Mindboard/` 하위폴더로 정렬, `.DS_Store`·`.claude/` gitignore.
+- [[올림푸스-Olympus]] §계보 ⚠박스→✅로 전환, 현재상태·진행로그에 리네임 완료 반영.
+
 ## [2026-07-02] 프로젝트업데이트 | 올림푸스 라이브 저장소 반영 + 이름·저장소 정정
 - 라이브 저장소(`~/IdeaProjects/dev-pipeline`, GitHub `qtw9723/dev-pipeline`) 직접 확인 후 [[올림푸스-Olympus]] 보강.
 - ⚠ 정정: 위키가 `qtw9723/olympus`로 이름·구조 정리·push 완료라 기술했으나, 실제로는 **repo·로컬 디렉토리 모두 여전히 dev-pipeline**이고 "Olympus" 리네임은 **미커밋 워킹트리 수정**(README 제목·config.sh·run.sh)뿐임을 §계보 ⚠박스로 명시.
