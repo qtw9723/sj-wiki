@@ -6,6 +6,11 @@ created: 2026-06-10
 updated: 2026-07-02
 ---
 
+## [2026-07-02] 프로젝트업데이트 | 올림푸스 라이브 저장소 반영 + 이름·저장소 정정
+- 라이브 저장소(`~/IdeaProjects/dev-pipeline`, GitHub `qtw9723/dev-pipeline`) 직접 확인 후 [[올림푸스-Olympus]] 보강.
+- ⚠ 정정: 위키가 `qtw9723/olympus`로 이름·구조 정리·push 완료라 기술했으나, 실제로는 **repo·로컬 디렉토리 모두 여전히 dev-pipeline**이고 "Olympus" 리네임은 **미커밋 워킹트리 수정**(README 제목·config.sh·run.sh)뿐임을 §계보 ⚠박스로 명시.
+- 신규 `## 진행사항 업데이트 로그`: 역할별 모델(planner/critic=opus-4-8, builder=sonnet-4-6=비대칭 원칙 증거), 커밋 이력 6개(06-29~07-01), spec/의 Mindboard 기획서가 도구 규칙과 달리 플랫 배치(미커밋)임 기록.
+
 ## [2026-07-02] 건강검진 | 전체 점검 (31페이지)
 - 링크그래프 스크립트 점검: **고아 0 · index 미등록 0 · 실질 끊긴링크 0**(모든 페이지 incoming ≥2, 연결성 양호). 끊긴링크 후보 26건은 이전 검진들과 동일하게 전부 정상 — forward-link(`claude-api`·`schedule-to-todomate`·`Gemini`·`GitHub Actions`·`Playwright`·`ProvenanceGuard`), 백틱 리터럴(`![[파일명]]`·`[[개발-위시리스트-<항목>]]`), cross-vault 참조(`sj-wiki-work`), 스크린샷 대기 임베드(mailer `cs-smarthub_*.png`).
 - 모순 정밀확인: Cogi LLM 모델 gpt-4o가 [[공통-기술스택]]·[[Cogi-POC-Generator]] 일치 / [[콜링]] 리네임 후 옛이름 본문 잔존 0 / [[팀숲-bible-forest]]·[[팀숲-베타-시연-시나리오]]의 "비밀번호 없음"은 콜링 아닌 팀숲 자체 사양이라 모순 아님. stale 낮음(최고 3주, 동향 Opus 4.8 현행).
