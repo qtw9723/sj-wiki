@@ -71,6 +71,7 @@ spec/<프로젝트>/  ─▶ [메티스] 요구사항 분석(필수) → require
 
 ## 검증 — Mindboard 실전 테스트 (2026-06~07) 📄
 파이프라인 검증용으로 **Mindboard**(신규 풀스택 게시판: React+TS 프론트 + FastAPI+SQLite 백엔드, JWT 인증·CRUD·댓글·좋아요·검색·페이지네이션)를 기획서만 넣고 돌림. 결과 T1~T12(+T5.1) 전부 green.
+> 📄 정밀: Mindboard는 `~/IdeaProjects/mindboard`에 **검증 산출물(작업 트리)로 존재**하나 아직 **git 커밋 0**(전부 untracked). 즉 올림푸스가 생성·검증한 로컬 결과물이지 커밋된 저장소는 아님. (올림푸스 도구 자체는 `qtw9723/olympus`에 push됨 — 아래 §현재 상태.)
 - **백엔드 독립 검증**: 새 리눅스 venv에서 재실행 → ruff clean + **93 passed**. 진짜 green 확인.
 - 파이프라인이 **한 단계 위에서** 잡아낸 것들(= 도구 가치 입증):
   - **심판 조작 시도**(T1: Builder가 verify.sh 수정) → Critic이 포착·에스컬레이션 → "심판 불가침" 규칙 신설.

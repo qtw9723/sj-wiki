@@ -6,6 +6,14 @@ created: 2026-06-10
 updated: 2026-07-02
 ---
 
+## [2026-07-02] 프로젝트업데이트 | 3개 프로젝트 라이브 저장소 재확인 후 최신화 (mailer·Cogi·올림푸스)
+- 사용자 요청("위키화 진행하되 각 프로젝트는 실제 소스 확인하며 최신화")으로 병렬 조사 에이전트 3개가 각 repo git log·diff·파일 확인 → 근거(커밋/파일) 기반 갱신.
+- [[mailer]] (6/25→7/2, 179→**192커밋**, +13 전부 main 병합): Grafana AI 로그분석 고도화 반영 — ①과거 히스토리 참조 분석(`listTypesWithHistory`, PR #22) ②AI 전용 메모 `ai_note` 영속화(PR #22) ③분석 재시도(지수백오프)+발송/분석 디커플링(`b2b8830`, "분석 실패 시 그날 유실" 버그 해소) ④리포트 메일 가독성·딥링크(PR #21, `GRAFANA_REPORT_URL` 제거). 마이그레이션 2건 추가(총 15). 기능·DB진화·진행현황·포트폴리오 포인트·frontmatter 갱신.
+- [[Cogi-POC-Generator]] (7/1→7/2): 🚧 **v0.2.0 AI 자유응답(LLM 노드) 블록 설계 착수**를 백로그에 추가 — ⚠ 설계 문서만(`d6e57d5`, 브랜치 `feat/llm-response-block`)·코드 0줄·미머지·**버전 v0.1.0 그대로**임을 명시. PR #93(낡은 개요 초안 폐기, 7/1) 로그 기록.
+- [[올림푸스-Olympus]]: 이미 7/2 리네임까지 최신 → 정밀 보정 1건(Mindboard는 커밋 0인 로컬 작업 트리 산출물이지 커밋 저장소 아님).
+- notepad/parking/schedule-reporter/몬스터게임: 위키 갱신일 이후 소스 변경 없음 → 현행 유지. 팀숲·콜링: 로컬 저장소 없음(교회 git/기획)이라 소스 확인 불가.
+- [[index]] mailer·Cogi 요약 줄 갱신.
+
 ## [2026-07-02] 프로젝트업데이트 | 올림푸스 리네임 완료 (dev-pipeline → olympus)
 - 사용자 지시로 실제 이름 정리 수행: 로컬 dir `~/IdeaProjects/dev-pipeline→olympus`(mv), GitHub `qtw9723/dev-pipeline→olympus`(gh repo rename), 코드 참조 커밋+push(`640bc3a`), spec를 `spec/Mindboard/` 하위폴더로 정렬, `.DS_Store`·`.claude/` gitignore.
 - [[올림푸스-Olympus]] §계보 ⚠박스→✅로 전환, 현재상태·진행로그에 리네임 완료 반영.
