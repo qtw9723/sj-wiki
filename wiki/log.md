@@ -3,8 +3,13 @@ title: 작업 이력 (Log)
 category: 시스템
 tags: [log, 이력]
 created: 2026-06-10
-updated: 2026-07-01
+updated: 2026-07-02
 ---
+
+## [2026-07-02] 건강검진 | 전체 점검 (31페이지)
+- 링크그래프 스크립트 점검: **고아 0 · index 미등록 0 · 실질 끊긴링크 0**(모든 페이지 incoming ≥2, 연결성 양호). 끊긴링크 후보 26건은 이전 검진들과 동일하게 전부 정상 — forward-link(`claude-api`·`schedule-to-todomate`·`Gemini`·`GitHub Actions`·`Playwright`·`ProvenanceGuard`), 백틱 리터럴(`![[파일명]]`·`[[개발-위시리스트-<항목>]]`), cross-vault 참조(`sj-wiki-work`), 스크린샷 대기 임베드(mailer `cs-smarthub_*.png`).
+- 모순 정밀확인: Cogi LLM 모델 gpt-4o가 [[공통-기술스택]]·[[Cogi-POC-Generator]] 일치 / [[콜링]] 리네임 후 옛이름 본문 잔존 0 / [[팀숲-bible-forest]]·[[팀숲-베타-시연-시나리오]]의 "비밀번호 없음"은 콜링 아닌 팀숲 자체 사양이라 모순 아님. stale 낮음(최고 3주, 동향 Opus 4.8 현행).
+- 수정사항 없음(건강함). 소프트 항목: AI 주간소식 W26까지 → W27 자료 대기(콘텐츠 인제스트 대상, 건강 이상 아님).
 
 ## [2026-07-01] 자료넣기 | 올림푸스(Olympus) 위키화 + 콜링 새 데모 HTML 보강
 - `raw/projects/olympus.md` 위키화 → **신규 페이지 [[올림푸스-Olympus]] 생성**(로컬 다세션 자율 개발 파이프라인). 발견: 이 프로젝트 = [[헤르메스-개인비서-Hostinger]] §7-2 `dev-pipeline`의 정식화/졸업판(같은 4역할·verify.sh 계보). 헤르메스 §7-2 콜아웃·notepad 페이지에 [[올림푸스-Olympus]] 교차참조 추가. 의외의 연결점: [[콜링]]·[[팀숲-bible-forest]] 자동 개발 후보, "LLM을 실행으로 검증"([[Cogi-POC-Generator]]·[[mailer]]) 계열, [[에이전트-자동화-도구]]/[[Claude-Code-업데이트-동향]] workflows를 bash로 손수 구현.
