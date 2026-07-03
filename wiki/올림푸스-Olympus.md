@@ -105,7 +105,7 @@ spec/<프로젝트>/  ─▶ [메티스] 요구사항 분석(필수) → require
 - **구현**: `inbox_imap.py`(IMAP 폴링 `--await` + 파싱 `--parse`), `remote.sh`의 `remote_approve_email`(remote_ask와 계약 호환), `run.sh` `APPROVE_VIA_EMAIL` 분기 + IMAP 불가 시 GitHub 자동 폴백, `config.sh` 노브 2종. spec/plan(docs/superpowers).
 - **견고화**: 제목 토큰 `‹OLY-<id>›`·대기시작 **UIDNEXT 기준선**(실계정 자기발신 UNSEEN 47건 확인 후 추가)·인용부 이전 첫 줄 whole-line 파싱·From 화이트리스트.
 - **검증**: 단위(파싱 14 + 래퍼/회귀 11) green + IMAP 로그인 스모크 + **라이브 E2E**(발송→폰 y 답장→감지→y/rc0). 🧠 E2E가 단위테스트로 못 잡은 실버그(무링크 `remote_notify`가 macOS bash 3.2+`set -u`에서 빈 배열 crash) 포착·수정 — "실행으로 검증한다" 철학이 자기 도구에서도 값을 함.
-- 🧠 **의미**: [[cafe24-daily-monitoring-cron|클램셸 절전]]류 실행 영속성(b)은 여전히 로컬 종속이지만, 이번 변경은 결정 원격화(a)의 **마찰만** 낮춘 것 — Phase 2(Supabase+Vercel 웹앱)는 실행이 랩탑에 묶인 채라 ROI 낮다고 판단해 보류. `feat/email-reply-approval` PR #2(머지 대기).
+- 🧠 **의미**: [[cafe24-daily-monitoring-cron|클램셸 절전]]류 실행 영속성(b)은 여전히 로컬 종속이지만, 이번 변경은 결정 원격화(a)의 **마찰만** 낮춘 것 — Phase 2(Supabase+Vercel 웹앱)는 실행이 랩탑에 묶인 채라 ROI 낮다고 판단해 보류. PR #2 **스쿼시 머지 완료**(main `5178882`).
 
 ### 2026-07-03 (무인 실행 안정성 — 토큰 소진 자동 대기·재개 📄)
 - 신규 `resilience.sh`(`claude_guarded`): `claude -p`가 **사용량 한도**로 실패하면 출력 패턴(`You've hit your`, 종료코드 미의존) 감지 → 리셋까지 대기 → **동일 호출 자동 재개**. run.sh의 메티스/헤파이스토스 **두 호출부만** 이 래퍼 경유하도록 배선.
