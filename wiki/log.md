@@ -6,6 +6,9 @@ created: 2026-06-10
 updated: 2026-07-03
 ---
 
+## [2026-07-03] 프로젝트 업데이트 | 팀숲 Bible Forest — 배포 완료·운영 중 반영
+- GitHub `seongjinYU/bible_forest`(public) 직접 확인해 [[팀숲-bible-forest]] 갱신: **7/1 배포 완료(dev→main PR #4), 라이브 bible-forest-lake.vercel.app 운영 중**. 시연 피드백 4건 중 2건 구현(닉네임 중복→"이어가기 팝업" 방식, 닉네임 수정), 배경보기·도감은 미구현 추정. 가중치 랜덤+랭크 B/A/S(65/30/5%) 구현, 파비콘 완료. z_index serial 이슈는 `Date.now()` 방식으로 종결, 동시성·타임존 버그 5건 수정(concurrency-fixes.md), troubleshooting.md(포트폴리오용 템플릿) 신설 반영.
+
 ## [2026-07-03] 자료넣기 | 올림푸스 실행 런북(세션 세팅 체크리스트) 신설
 - 실제 개발 실행 시 참고할 세팅 문서 요청 → [[올림푸스-실행-런북]] 신설. config.sh·run.sh·reset.sh 직접 확인해 작성(일회성 준비/매실행 env·spec·노브 표/폰 개입/복붙 체크리스트). 일회성 준비(.env.local·olympus-inbox 클론)는 이 PC 완료 명시, 여러 spec 폴더 시 TARGET_REPO 명시 주의 포함. index 등록 + [[올림푸스-Olympus]]·[[올림푸스-기획요청서-작성요령]] 상호링크.
 
