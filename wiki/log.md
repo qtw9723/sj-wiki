@@ -10,7 +10,7 @@ updated: 2026-07-03
 - 브리지 과설계/토큰/더 나은 방식 고민 → "구조 유지, 최종 승인(잦은 yes/no)만 경량화" 결론. 블로커·의도질문=GitHub 유지, 최종 승인=**메일 답장 첫 줄 y/n**(신규 서비스 0, SMTP 앱비번 IMAP 재사용). `inbox_imap.py`+`remote_approve_email`+`run.sh` 분기, 라이브 E2E 통과(발송→폰 y→감지). 실버그 1건(bash 3.2 빈배열 crash) E2E로 포착·수정. 올림푸스 repo PR #2 스쿼시 머지 완료(main `5178882`). [[올림푸스-Olympus]]·[[올림푸스-기획요청서-작성요령]] 갱신.
 
 ## [2026-07-03] 질문 | Cogi v0.2.0 머지 전 최종 검증(전 기능 매트릭스) — 버그 1건 발견·수정 후 전수 통과
-- dev API로 시나리오 4종(docs/general/mixed+수집·검증루프/미사용)+전역 둘 다(docs)를 한 봇으로 생성해 54항목 전수 점검. **메뉴 llmloop 주입이 시나리오 llmloop에 가려지는 결합 버그** 발견 → TDD 수정(`9a5e96a`, deno 185 tests) → 재생성 `ebad50d0` 전 항목 통과. [[Cogi-POC-Generator]] 홀드 지점을 `9a5e96a`로 갱신.
+- dev API로 시나리오 6종(docs/general/mixed+수집·검증루프/미사용/API 연동/ESD 연동+LLM 결합)+전역 둘 다(docs)를 한 봇으로 생성해 전수 점검. **메뉴 llmloop 주입이 시나리오 llmloop에 가려지는 결합 버그** 발견 → TDD 수정(`9a5e96a`, deno 185 tests) → 최종 `8598c9c5` 전 항목 통과(API 정의·ESD 스키마는 generation_tiers 별도 산출물임도 확인). [[Cogi-POC-Generator]] 홀드 지점을 `9a5e96a`로 갱신.
 
 ## [2026-07-03] 프로젝트업데이트 | Cogi v0.2.0 확장(지식소스·시나리오 LLM) 후 홀드 기록
 - [[Cogi-POC-Generator]] 갱신(라이브 repo git log + dev API 실생성 검증 근거): 7/3 오후 확장 — 생성 결함 3건 수정(anythingelse 1회성 STAGE 3.65·챗봇 정보 prompt·레퍼런스 풀 body), LLM 지식소스 3종(문서/일반/혼합)+시나리오별 LLM(하이브리드 배치), apiKey·model·storeId 빈 값 불변식. **v0.2.0을 `3ca4282`(650커밋·마이그레이션 62)에서 홀드**(사용자 지시) — 진행 현황·v0.2.0 블록·머지 주의(미적용 마이그레이션 5개)·업데이트 로그 반영.
