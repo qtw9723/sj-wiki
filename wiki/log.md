@@ -9,8 +9,9 @@ updated: 2026-07-03
 ## [2026-07-03] 프로젝트 업데이트 | 팀숲 Bible Forest — 배포 완료·운영 중 반영
 - GitHub `seongjinYU/bible_forest`(public) 직접 확인해 [[팀숲-bible-forest]] 갱신: **7/1 배포 완료(dev→main PR #4), 라이브 bible-forest-lake.vercel.app 운영 중**. 시연 피드백 4건 중 2건 구현(닉네임 중복→"이어가기 팝업" 방식, 닉네임 수정), 배경보기·도감은 미구현 추정. 가중치 랜덤+랭크 B/A/S(65/30/5%) 구현, 파비콘 완료. z_index serial 이슈는 `Date.now()` 방식으로 종결, 동시성·타임존 버그 5건 수정(concurrency-fixes.md), troubleshooting.md(포트폴리오용 템플릿) 신설 반영.
 
-## [2026-07-03] 자료넣기 | 올림푸스 실행 런북(세션 세팅 체크리스트) 신설
-- 실제 개발 실행 시 참고할 세팅 문서 요청 → [[올림푸스-실행-런북]] 신설. config.sh·run.sh·reset.sh 직접 확인해 작성(일회성 준비/매실행 env·spec·노브 표/폰 개입/복붙 체크리스트). 일회성 준비(.env.local·olympus-inbox 클론)는 이 PC 완료 명시, 여러 spec 폴더 시 TARGET_REPO 명시 주의 포함. index 등록 + [[올림푸스-Olympus]]·[[올림푸스-기획요청서-작성요령]] 상호링크.
+## [2026-07-03] 자료넣기 | 올림푸스 실행 런북 + 새 환경 부트스트랩 신설
+- 실행 세팅 문서 요청 → [[올림푸스-실행-런북]] 신설(config.sh·run.sh·reset.sh 직접 확인): 매실행 env·spec·노브 표·폰 개입·복붙 체크리스트. index 등록 + [[올림푸스-Olympus]]·[[올림푸스-기획요청서-작성요령]] 상호링크.
+- 추가 요청 "새 환경 세팅법" → §A를 **새 기기 부트스트랩 전체 절차**로 확장: 사전요구→repo 클론→claude CLI(setup-token)→gh→.env.local(SMTP=IMAP 공용)→olympus-inbox 클론(자동클론 안 됨 주의)→검증 스모크(run_tests·notify dry-run·IMAP 로그인). 의존성 최소(bash·git·python3 stdlib·claude·gh), macOS bash 3.2 대응 명시.
 
 ## [2026-07-03] 질문 | 올림푸스 원격 브리지 재검토 → 최종 승인 Gmail 답장 경로 구현·E2E
 - 브리지 과설계/토큰/더 나은 방식 고민 → "구조 유지, 최종 승인(잦은 yes/no)만 경량화" 결론. 블로커·의도질문=GitHub 유지, 최종 승인=**메일 답장 첫 줄 y/n**(신규 서비스 0, SMTP 앱비번 IMAP 재사용). `inbox_imap.py`+`remote_approve_email`+`run.sh` 분기, 라이브 E2E 통과(발송→폰 y→감지). 실버그 1건(bash 3.2 빈배열 crash) E2E로 포착·수정. 올림푸스 repo PR #2 스쿼시 머지 완료(main `5178882`). [[올림푸스-Olympus]]·[[올림푸스-기획요청서-작성요령]] 갱신.
