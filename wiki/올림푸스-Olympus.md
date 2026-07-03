@@ -5,7 +5,7 @@ category: 프로젝트
 tags: [프로젝트, 올림푸스, 에이전트, 멀티에이전트, 오케스트레이션, claude-code, 자동화, 개발도구, 포트폴리오, bash, 생성자-비평가, 자가개선]
 source: raw/projects/olympus.md
 created: 2026-07-01
-updated: 2026-07-02
+updated: 2026-07-03
 ---
 
 > [!tip] 핵심 takeaway
@@ -65,6 +65,8 @@ spec/<프로젝트>/  ─▶ [메티스] 요구사항 분석(필수) → require
 - `PERMISSION_FLAG`(무인 시 `--dangerously-skip-permissions`), 실행 로그(`state/runs/`), `turn=human` 자동중단(`pause_if_human`), `AUTO_APPROVE`(최종 승인까지 생략).
 - `reset.sh`: 새 작업용 state 초기화. state는 런타임(git 미추적), 도구만 버전관리 → 지속 재사용.
 - 기획자 상시성: `--session-id`/`--resume`로 세션 유지(안 되면 durable 파일로 맥락 유지).
+- **원격 결정 브리지(`REMOTE=1`)** 📄: 사람 개입(진짜 블로커·의도 질문·최종 머지 승인)을 **폰으로** 원격화 — `olympus-inbox` repo 폴링 + Gmail 버튼 알림으로 답을 받아 이어감. 끄면 터미널에서 처리.
+- **토큰 소진 자동 대기·재개(`TOKEN_WAIT=1`, 기본 켜짐)** 📄: 무인 실행 중 Claude Code **사용량 한도**(5시간/주간)에 걸리면 출력 패턴(`You've hit your`)으로 감지 → 리셋까지 대기 → **그 자리에서 자동 재개**. `resilience.sh`의 `claude_guarded`가 메티스/헤파이스토스의 `claude -p` 호출을 감싼다. 대기 중 토큰 ≈0(한도 거부는 추론 전 게이트), 429/일시적 과부하는 CLI 워치독(`CLAUDE_CODE_RETRY_WATCHDOG`)에 위임. macOS·Windows(Git Bash/WSL) 동작. ⚠ 한계: 대기는 실행 중 프로세스 안에서만 → 프로세스가 죽으면 유실, `bash run.sh` 재실행으로 state에서 재개(외부 supervisor 자동재실행은 후속 B안).
 
 ## 구성 파일 📄
 - `config.sh`(TARGET_REPO·VERIFY_CMD·모델·GIT_BRANCH·권한·예산), `run.sh`(오케스트레이터), `reset.sh`, `templates/verify.sh`(범용 게이트), `roles/{metis,builder,critic}.md`, `spec/<프로젝트>/*.md`(입력), `state/*`(런타임: requirements·backlog·task·ask-planner·findings·questions·open-questions·critic-feedback·verify.txt·handoff.json·runs/).
@@ -90,10 +92,18 @@ spec/<프로젝트>/  ─▶ [메티스] 요구사항 분석(필수) → require
 ## 현재 상태 / 다음 📄
 - ✅ 로컬 도구로 동작·검증 완료. GitHub `qtw9723/olympus`(private)에 push(리네임 커밋 `640bc3a`, 2026-07-02).
 - ✅ **"Olympus" 리네임 완료**: 로컬 dir `~/IdeaProjects/olympus`, GitHub repo `qtw9723/olympus`, 코드 내 참조·spec 하위폴더 규칙 정렬까지 반영(§계보 박스 ✅ 참조).
+- ✅ **무인 실행 안정성 강화(2026-07)**: 원격 결정 브리지(`REMOTE`, 폰 승인)·**토큰 소진 자동 대기·재개(`TOKEN_WAIT`, `resilience.sh`)** 추가 → 장시간 무인 실행이 **사람 부재·토큰 한도에도 안 끊기고** 이어짐(§헤드리스 무인 실행).
 - ⏸ 헤르메스(클라우드 상시)로는 아직 안 올림 — 당분간 로컬 헤드리스로 사용.
-- 다음 후보: Phase 3(요구사항 완료 후 추가기능 제안·교차검증, README §헤르메스로의 매핑에 "미구현—다음 확장 후보"로 명시됨), 게이트 강화(tsc -b), 다중 대상 병행.
+- 다음 후보: Phase 3(요구사항 완료 후 추가기능 제안·교차검증, README §헤르메스로의 매핑에 "미구현—다음 확장 후보"로 명시됨), 게이트 강화(tsc -b), 다중 대상 병행, **토큰 대기 B안**(프로세스 죽어도 자동 재실행하는 외부 supervisor).
 
 ## 진행사항 업데이트 로그
+### 2026-07-03 (무인 실행 안정성 — 토큰 소진 자동 대기·재개 📄)
+- 신규 `resilience.sh`(`claude_guarded`): `claude -p`가 **사용량 한도**로 실패하면 출력 패턴(`You've hit your`, 종료코드 미의존) 감지 → 리셋까지 대기 → **동일 호출 자동 재개**. run.sh의 메티스/헤파이스토스 **두 호출부만** 이 래퍼 경유하도록 배선.
+- `config.sh` 노브 5종: `TOKEN_WAIT`(기본 1)·`TOKEN_RETRY_SEC`(1200)·`TOKEN_RESET_BUFFER_SEC`(60)·`TOKEN_WAIT_CHUNK_SEC`(1800)·`TOKEN_MAX_WAIT_SEC`(0=무제한). 429/529는 `CLAUDE_CODE_RETRY_WATCHDOG=1`로 CLI에 위임.
+- **크로스플랫폼**(macOS BSD + Windows Git Bash/WSL): 리셋시각 파싱은 best-effort, 실패 시 간격 폴링으로 폴백(macOS). 대기 중 **토큰 ≈0**(한도 거부=추론 전 게이트, 무료). 재확인은 경량 프로브(`claude -p ok`)로.
+- 프로세스: brainstorming→스펙→계획→**subagent-driven TDD 5태스크**(태스크별 리뷰)→최종 whole-branch 리뷰(Opus, **MERGE-READY**, 하한클램프 1건 반영)→main 머지·푸시. 사용법은 저장소 `README.md`·`spec/_README.md`에 문서화.
+- 🧠 한계(A안): 대기는 실행 중 프로세스 안에서만 — 프로세스 종료 시 유실, `bash run.sh` 재실행으로 durable state에서 재개. 프로세스 죽어도 자동 재실행하는 외부 supervisor는 후속 B안 후보.
+
 ### 2026-07-02 (이름 정리 = dev-pipeline → Olympus 리네임 완료 📄)
 - **로컬 디렉토리**: `~/IdeaProjects/dev-pipeline` → `~/IdeaProjects/olympus` (`mv`).
 - **GitHub repo**: `qtw9723/dev-pipeline` → `qtw9723/olympus` (`gh repo rename`, remote URL 자동 갱신, 옛 URL은 redirect 유지). private 유지.
