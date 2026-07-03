@@ -6,6 +6,9 @@ created: 2026-06-10
 updated: 2026-07-03
 ---
 
+## [2026-07-03] 질문 | Cogi — STAGE 3.75 api 결과 예외 처리 보장 추가, 홀드 지점 c4b97bf
+- 사용자 요구("api 결과에는 항상 예외 처리") 반영: 레퍼런스(한화 봇) 관용구 [성공 자식(저장 변수 조건)→catch-all 실패 output]을 모든 api 노드에 결정론 보장(apiResultGuard.ts, deno 203 tests). dev 재검증 `d7083216` 통과. [[Cogi-POC-Generator]] 홀드 지점 `c4b97bf` 갱신.
+
 ## [2026-07-03] 질문 | Cogi — LLM-구동 플로우 체인(수집형 새 규격) 구현·검증, 홀드 지점 886f55f로 갱신
 - 사용자 재정의(시나리오 LLM은 Q&A 부착이 아니라 llmloop이 플로우 자체를 구성 — 항목별 전담 llmloop·tool 분기·기본 응답) 반영: `llmFlowChain.ts` 체인 규격 구현(TDD 197 tests), 루트 부재 결정론 보장, docsearch 카탈로그 제외, 규칙·마이그레이션(130000). dev API 매트릭스 `bc678750` 전수 통과(2단계 체인+ESD 재배선+전 경로 회귀). [[Cogi-POC-Generator]] v0.2.0 블록에 "확장 2" 추가, 홀드 지점 `886f55f`.
 
