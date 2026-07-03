@@ -65,7 +65,9 @@ spec/<프로젝트>/  ─▶ [메티스] 요구사항 분석(필수) → require
 - `PERMISSION_FLAG`(무인 시 `--dangerously-skip-permissions`), 실행 로그(`state/runs/`), `turn=human` 자동중단(`pause_if_human`), `AUTO_APPROVE`(최종 승인까지 생략).
 - `reset.sh`: 새 작업용 state 초기화. state는 런타임(git 미추적), 도구만 버전관리 → 지속 재사용.
 - 기획자 상시성: `--session-id`/`--resume`로 세션 유지(안 되면 durable 파일로 맥락 유지).
-- **원격 결정 브리지(`REMOTE=1`)** 📄: 사람 개입(진짜 블로커·의도 질문·최종 머지 승인)을 **폰으로** 원격화 — `olympus-inbox` repo 폴링 + Gmail 버튼 알림으로 답을 받아 이어감. 끄면 터미널에서 처리.
+- **원격 결정 브리지(`REMOTE=1`)** 📄: 사람 개입(진짜 블로커·의도 질문·최종 머지 승인)을 **폰으로** 원격화. 끄면 터미널에서 처리. **개입 종류에 따라 채널을 분리**한다(2026-07-03):
+  - **블로커·의도질문**(자유서술 필요) → `olympus-inbox` repo 폴링. 폰 GitHub 앱에서 `## 답변` 채워 commit.
+  - **최종 머지 승인**(가장 잦은 yes/no) → **메일 답장 경량 경로**(`APPROVE_VIA_EMAIL=1`, 기본): 승인 요청 메일에 **답장 첫 줄 `y`**(보류 `n`)만 보내면, run.sh가 **발송과 같은 Gmail 계정 IMAP**(SMTP 앱비번 재사용, 신규 서비스 0)을 폴링해 감지. GitHub 파일 편집보다 마찰↓. 견고화: 제목 토큰 `‹OLY-<id>›` run 매칭·대기시작 UIDNEXT 기준선으로 옛 메일 배제·인용부 이전 첫 줄 whole-line 파싱(인용 속 키워드 무시)·`APPROVE_FROM` 발신자 화이트리스트(위조 차단). IMAP 비밀 없음/접속 실패면 **GitHub 승인 경로로 자동 폴백**. `inbox_imap.py`·`remote_approve_email`, 라이브 E2E(발송→폰 y 답장→감지→머지) 검증 완료.
 - **토큰 소진 자동 대기·재개(`TOKEN_WAIT=1`, 기본 켜짐)** 📄: 무인 실행 중 Claude Code **사용량 한도**(5시간/주간)에 걸리면 출력 패턴(`You've hit your`)으로 감지 → 리셋까지 대기 → **그 자리에서 자동 재개**. `resilience.sh`의 `claude_guarded`가 메티스/헤파이스토스의 `claude -p` 호출을 감싼다. 대기 중 토큰 ≈0(한도 거부는 추론 전 게이트), 429/일시적 과부하는 CLI 워치독(`CLAUDE_CODE_RETRY_WATCHDOG`)에 위임. macOS·Windows(Git Bash/WSL) 동작. ⚠ 한계: 대기는 실행 중 프로세스 안에서만 → 프로세스가 죽으면 유실, `bash run.sh` 재실행으로 state에서 재개(외부 supervisor 자동재실행은 후속 B안).
 
 ## 구성 파일 📄
@@ -97,6 +99,14 @@ spec/<프로젝트>/  ─▶ [메티스] 요구사항 분석(필수) → require
 - 다음 후보: Phase 3(요구사항 완료 후 추가기능 제안·교차검증, README §헤르메스로의 매핑에 "미구현—다음 확장 후보"로 명시됨), 게이트 강화(tsc -b), 다중 대상 병행, **토큰 대기 B안**(프로세스 죽어도 자동 재실행하는 외부 supervisor).
 
 ## 진행사항 업데이트 로그
+### 2026-07-03 (최종 승인 경량화 — Gmail 답장 경로 📄)
+- **동기**: 원격 브리지 재검토(과설계/토큰/더 나은 방식 고민) → 결론 "구조는 유지, **가장 잦은 최종 승인만** 더 가벼운 채널로". 블로커·의도질문(자유서술)은 GitHub 유지, 최종 승인(yes/no)만 분리.
+- **선택**: 신규 서비스 0 위해 **Gmail 답장 키워드**(Telegram 대신) — 이미 발송에 쓰는 계정의 IMAP 재사용. fragile 지점(스레드 매칭·인용 오탐·위조)은 설계로 잠금.
+- **구현**: `inbox_imap.py`(IMAP 폴링 `--await` + 파싱 `--parse`), `remote.sh`의 `remote_approve_email`(remote_ask와 계약 호환), `run.sh` `APPROVE_VIA_EMAIL` 분기 + IMAP 불가 시 GitHub 자동 폴백, `config.sh` 노브 2종. spec/plan(docs/superpowers).
+- **견고화**: 제목 토큰 `‹OLY-<id>›`·대기시작 **UIDNEXT 기준선**(실계정 자기발신 UNSEEN 47건 확인 후 추가)·인용부 이전 첫 줄 whole-line 파싱·From 화이트리스트.
+- **검증**: 단위(파싱 14 + 래퍼/회귀 11) green + IMAP 로그인 스모크 + **라이브 E2E**(발송→폰 y 답장→감지→y/rc0). 🧠 E2E가 단위테스트로 못 잡은 실버그(무링크 `remote_notify`가 macOS bash 3.2+`set -u`에서 빈 배열 crash) 포착·수정 — "실행으로 검증한다" 철학이 자기 도구에서도 값을 함.
+- 🧠 **의미**: [[cafe24-daily-monitoring-cron|클램셸 절전]]류 실행 영속성(b)은 여전히 로컬 종속이지만, 이번 변경은 결정 원격화(a)의 **마찰만** 낮춘 것 — Phase 2(Supabase+Vercel 웹앱)는 실행이 랩탑에 묶인 채라 ROI 낮다고 판단해 보류. `feat/email-reply-approval` PR #2(머지 대기).
+
 ### 2026-07-03 (무인 실행 안정성 — 토큰 소진 자동 대기·재개 📄)
 - 신규 `resilience.sh`(`claude_guarded`): `claude -p`가 **사용량 한도**로 실패하면 출력 패턴(`You've hit your`, 종료코드 미의존) 감지 → 리셋까지 대기 → **동일 호출 자동 재개**. run.sh의 메티스/헤파이스토스 **두 호출부만** 이 래퍼 경유하도록 배선.
 - `config.sh` 노브 5종: `TOKEN_WAIT`(기본 1)·`TOKEN_RETRY_SEC`(1200)·`TOKEN_RESET_BUFFER_SEC`(60)·`TOKEN_WAIT_CHUNK_SEC`(1800)·`TOKEN_MAX_WAIT_SEC`(0=무제한). 429/529는 `CLAUDE_CODE_RETRY_WATCHDOG=1`로 CLI에 위임.
