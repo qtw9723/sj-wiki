@@ -3,7 +3,7 @@ title: 전체 목차 (Index)
 category: 시스템
 tags: [index, 목차]
 created: 2026-06-09
-updated: 2026-07-03
+updated: 2026-07-05
 ---
 
 > [!tip] 핵심 takeaway
@@ -23,6 +23,7 @@ updated: 2026-07-03
 - [[내-프로필]] — 커리어·강점·현재 관심사 (모든 답변의 관점 기준)
 
 ### AI / 업계 동향
+- [[AI-주간-소식-2026-W27]] — 2026 W27 (6/29~7/5): SkillOpt(스킬을 학습 가능 파라미터로) · Memora(에이전트 메모리, 저장·검색 분리) · ScarfBench(엔터프라이즈 Java 마이그레이션 에이전트 벤치마크) · Gemma 4 실시간 음성 · Nano Banana 2 Lite/Gemini Omni Flash · GeneBench-Pro · HP Frontier
 - [[AI-주간-소식-2026-W26]] — 2026 W26 (6/22~6/28): Instruction Bleed(프롬프트 모듈 간 간섭) · OpenAI Daybreak(Codex Security·GPT-5.5-Cyber) · GPT-5.6 Sol 프리뷰 · Gemini 3.5 Flash 컴퓨터 사용 · Semantic Early-Stopping · 삼성 ChatGPT+Codex 전사 배포
 - [[AI-주간-소식-2026-W25]] — 2026 W25 (6/15~6/21): OpenAI Ona 인수·파트너 네트워크 · WorkBench 2026 · MASLab · Gemini 실시간 번역 · 에이전트 신뢰성/평가(LegalHalluLens·평가 인식·제안-검증 구조) · DRFLOW · 🇰🇷국내(앤트로픽 서울 오피스·네이버 Claude Code 도입·더존비즈온 도메인특화·포스코DX 1인 N에이전트)
 - [[AI-주간-소식-2026-W24]] — 2026 W24 (6/8~6/12): OpenAI IPO S-1 · Codex 실사례 · Gemma 4 12B · 멀티에이전트 안전 $10M
