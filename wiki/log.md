@@ -6,6 +6,11 @@ created: 2026-06-10
 updated: 2026-07-06
 ---
 
+## [2026-07-06] 자료넣기 | Cogi 시나리오 레퍼런스 dev 사본 체계 구축 — dev_cogi_scenario_references + 승격 규약
+- 📄 사용자 확정: 레퍼런스 등록은 **dev 사본에서 테스트 후 프로덕션으로 마이그레이션(승격)**. `dev_cogi_scenario_references` 생성(프로덕션 미러, 0건) + generator·scenario-references 함수 T() 배선 + `scenario-references-dev` 슬러그 + 프론트 devable 전환 + 러너 `--only` 필터. 승격·리셋 절차를 저장소 CLAUDE.md DEV 규약에 명문화(dev 테이블 3→4개, 래퍼 5→6개).
+- 📄 **dev 스모크 전수 통과**: 등록→dev 1건/프로덕션 0건(격리)→조립→few-shot 생성 `injected=true`·`picked=[스모크-진료예약봇]`→정리(dev 0건 복귀, 프로덕션 0건 재확인). 프론트 빌드 그린. 브랜치 `feat/v0.3.0-observability-regression`에 2커밋 추가(총 16), origin 푸시.
+- ⚠ DDL은 Management API 토큰(과거 방식: `mailer/.env`의 `SUPABASE_ACCESS_TOKEN`)이 자동 모드에서 차단돼 사용자가 `!`로 직접 실행 — 다음부터 Cogi `.env.local`에 토큰 두면 자동화 가능. → [[Cogi-POC-Generator]] 갱신. 다음 단계 = 로드맵 항목 1(산업군별 레퍼런스 제작·dev 등록).
+
 ## [2026-07-06] 질문 | Instruction Bleed 개선 논의 → Cogi 생성 관측성 + 프롬프트 회귀 하네스 구현 (dev 전용)
 - [[AI-주간-소식-2026-W26]]의 **Instruction Bleed**(프롬프트 모듈 교차 간섭)를 [[Cogi-POC-Generator]]에 적용할 개선안 논의 → 사용자 승인으로 **설계→계획→구현까지 완료**. 📄 브랜치 `feat/v0.3.0-observability-regression`(13커밋, origin 푸시 완료, main 미머지 — dev 전용 규약 준수).
 - **Part C 관측성**: 모든 생성 결과 `generation_tiers`에 `scenario_examples`(few-shot 주입 기록 — "조용한 skip" 제거)·`rules_snapshot`(규칙 세트 SHA-256 지문 + 스테이지별 해시 = 다단계 규칙 blast radius 노출) 기록. DDL 없음.

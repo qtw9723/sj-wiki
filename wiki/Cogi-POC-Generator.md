@@ -160,6 +160,13 @@ updated: 2026-07-06
 🧠 (참고) 위 둘 외 이미 기록된 한계: **변수/JSON 출력 처리 미숙**(JSON 자동 출력 불가→키 직접 지정), 둘 다 위 [[#현재 상태 스냅샷 — v0.1.0 프로토타입 배포 (2026-06-30)|현재 상태 스냅샷]] 한계 참고.
 
 ## 진행사항 업데이트 로그
+### 2026-07-06 (저녁) — 시나리오 레퍼런스 dev 사본 체계 구축 (📄 git log·dev 스모크 검증)
+- **배경 (📄 사용자 확정)**: 로드맵 항목 1(레퍼런스 등록)을 프로덕션 공유 테이블이 아닌 **dev 사본에서 테스트 후 승격(데이터 마이그레이션)**하는 방식으로.
+- **구축 내용**: ① `dev_cogi_scenario_references` 테이블(프로덕션 미러, `LIKE … INCLUDING ALL` — 기존 dev 테이블처럼 repo 마이그레이션 없이 DB 직접 생성) ② generator Mode A·scenario-references 함수 5곳을 `T()` 경유로(dev 슬러그만 dev 테이블, 프로덕션 무변경) ③ `scenario-references-dev` 래퍼 + 프론트 `SCENARIO_REFERENCES` devable 전환 ④ 회귀 러너 `--only <fixture>` 필터 ⑤ 저장소 CLAUDE.md DEV 규약 갱신(dev 테이블 4개·래퍼 6개·**승격 절차**: 사용자 선별 확인 → INSERT…SELECT(id 유지) → 재조회 검증 → 머지 후 미러 리셋).
+- **dev 스모크 전수 통과**: 등록(의료 카테고리)→dev 목록 1건·**프로덕션 0건(격리 ①)**→조립 정상→few-shot 생성 `injected=true`·`picked=[스모크-진료예약봇]`(관측성 스냅샷으로 확인 — 오전 구축분과 맞물림)→정리 후 dev 0건·**프로덕션 0건 재확인(격리 ②)**. 프론트 빌드 그린. 기존 fixture 기대값 오염 방지를 위해 스모크는 의료 카테고리 사용(fixture는 금융).
+- ⚠ **운영 메모**: DB 직접 SQL(DDL·승격·리셋)은 Management API + `mailer/.env`의 `SUPABASE_ACCESS_TOKEN` 방식(과거 세션 방식 재발견) — 자동 모드 분류기가 타 프로젝트 env를 차단하므로 사용자 `!` 실행 또는 Cogi `.env.local`에 토큰 복사 필요.
+- 🧠 다음 단계: 로드맵 항목 1 — 산업군별 미니봇 레퍼런스 제작·dev 등록 → 항목 2 — collect-loop fixture `injected: true` 갱신 후 기준선("전") 대비 "후" 실행 비교.
+
 ### 2026-07-06 (오후) — 생성 관측성 + 프롬프트 회귀 하네스 구현 (Instruction Bleed 대응, dev 전용) (📄 git log·dev 실행 검증)
 - **배경**: [[AI-주간-소식-2026-W26]]의 Instruction Bleed(프롬프트 모듈 교차 간섭) 논의에서 출발 — 📄 코드 확인으로 Cogi의 실제 bleed 벡터 확인(`Variable Usage Rule`이 flow·config·output·condition 4단계 동시 주입 / 규칙 학습이 규칙 교체 / v0.3.0 few-shot 주입이 Stage 1의 새 벡터). W26의 처방("단계별 회귀 테스트")을 실구현한 것.
 - **Part C — 생성 관측성** (`flow/observability.ts` + index.ts): 모든 생성 결과 `generation_tiers`에 ① `scenario_examples`(산업군·후보 수·선택 레퍼런스·주입 여부·skip 사유 — few-shot "조용한 skip" 제거, 로드맵 항목 2·4의 전제) ② `rules_snapshot`(규칙 세트 SHA-256 지문 — `ruleText` 기반이라 content-폴백 규칙 수정도 포착 + **스테이지별 해시**로 다단계 규칙의 blast radius 노출 + examples 해시·모델) 기록. DDL 없음(jsonb 관례), 실패해도 생성 무해(try/catch).
