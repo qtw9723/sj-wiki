@@ -6,6 +6,13 @@ created: 2026-06-10
 updated: 2026-07-06
 ---
 
+## [2026-07-06] 질문 | Instruction Bleed 개선 논의 → Cogi 생성 관측성 + 프롬프트 회귀 하네스 구현 (dev 전용)
+- [[AI-주간-소식-2026-W26]]의 **Instruction Bleed**(프롬프트 모듈 교차 간섭)를 [[Cogi-POC-Generator]]에 적용할 개선안 논의 → 사용자 승인으로 **설계→계획→구현까지 완료**. 📄 브랜치 `feat/v0.3.0-observability-regression`(13커밋, origin 푸시 완료, main 미머지 — dev 전용 규약 준수).
+- **Part C 관측성**: 모든 생성 결과 `generation_tiers`에 `scenario_examples`(few-shot 주입 기록 — "조용한 skip" 제거)·`rules_snapshot`(규칙 세트 SHA-256 지문 + 스테이지별 해시 = 다단계 규칙 blast radius 노출) 기록. DDL 없음.
+- **Part A-lite 회귀 하네스**: `scripts/prompt-regression/` — fixture 3종(수집형+검증루프/LLM Q&A/API+ESD) × 속성 어서션(welcome 루트·anythingelse 1회성·단일부모·도달성·llmloop 빈 키/모델·**flag 루프 탈출 set 존재**(백로그 "육안 확인"의 자동화)·placeholder leak). `cogi-generator-dev` 실호출, 질문 text 매칭(dev 리셋 id 재발급 대응).
+- **기준선 확보**: 레퍼런스 등록 前 3 fixture 전부 PASS(`runs/2026-07-06-baseline.json`) = 로드맵 항목 2 "전/후 비교"의 '전' 데이터. 서브에이전트 구동 개발(태스크 6개+리뷰 게이트, 최종 판정 Ready).
+- ⚠ 발견: `.env.local`의 `VITE_SUPABASE_SERVICE_ROLE_KEY` **무효(401)** — anon 키로 우회(dev_questions 읽기 가능). 재발급 필요 시 대비 기록. / 기존 코드-스키마 불일치(`deriveApiDefs.ts`의 'API 이름'·'받을 정보' 필드가 현 템플릿에 없음) — 별도 백로그.
+
 ## [2026-07-06] 자료넣기 | Cogi v0.3.0 로드맵 수립 — 시나리오 레퍼런스 라이브러리 테스트·고도화
 - 📄 사용자 확정: **v0.3.0 = 시나리오 라이브러리 테스트·고도화**(레퍼런스 0건·조립 미테스트 → 라이브러리 활용 결과 생성 테스트). 단 **v0.3.0 작업은 프로덕션 무배포·dev 전용**(같은 날 정정 확정) — 배포는 로드맵 문서만. [[Cogi-POC-Generator]]에 로드맵 섹션 신설 + 진행 현황·업데이트 로그 갱신, 기존 v0.3 후보는 백로그(버전 미정)로 이동.
 - 저장소: `ROADMAP.md` 신설 + CLAUDE.md 포인터 — **PR #99 머지 완료**(사용자 승인, main `14cca10`, 문서만). 공개 개요 페이지에 v0.3.0(계획) 행 **재배포 완료**(200 확인) + claude.ai 아티팩트 원본 동기화.

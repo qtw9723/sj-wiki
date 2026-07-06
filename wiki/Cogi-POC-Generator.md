@@ -113,7 +113,7 @@ updated: 2026-07-06
 
 **작업 항목** (🧠 사용자 목표를 세분화한 제안 — 상세는 저장소 ROADMAP.md)
 1. **레퍼런스 등록** — 산업군별 미니봇 제작·등록(산업군당 최소 1개부터).
-2. **단일 레퍼런스 생성 테스트** — few-shot 주입이 Stage 1 설계에 실제 반영되는지(주입 전/후 비교).
+2. **단일 레퍼런스 생성 테스트** — few-shot 주입이 Stage 1 설계에 실제 반영되는지(주입 전/후 비교). ✅ 📄 (2026-07-06) **실행 수단 구현 완료**: 관측성(`scenario_examples.injected` 기록)·회귀 하네스·**등록 前 기준선**까지 확보 — 아래 [[#진행사항 업데이트 로그|2026-07-06 오후 로그]] 참고. 남은 것은 레퍼런스 등록 후 "후" 실행·비교.
 3. **조립(조합) 생성 테스트** — 여러 레퍼런스 조립 산출물의 정합성·실사용 검증.
 4. **선택 로직 검증** — `extractCategory`(산업군 추출)·`selectExamples`(이름 관련도 스코어)가 의도한 레퍼런스를 고르는지.
 5. **v0.2.0 기능과 결합 회귀** — LLM 노드(지식소스·시나리오별 LLM)·API·ESD 병행 생성.
@@ -160,6 +160,14 @@ updated: 2026-07-06
 🧠 (참고) 위 둘 외 이미 기록된 한계: **변수/JSON 출력 처리 미숙**(JSON 자동 출력 불가→키 직접 지정), 둘 다 위 [[#현재 상태 스냅샷 — v0.1.0 프로토타입 배포 (2026-06-30)|현재 상태 스냅샷]] 한계 참고.
 
 ## 진행사항 업데이트 로그
+### 2026-07-06 (오후) — 생성 관측성 + 프롬프트 회귀 하네스 구현 (Instruction Bleed 대응, dev 전용) (📄 git log·dev 실행 검증)
+- **배경**: [[AI-주간-소식-2026-W26]]의 Instruction Bleed(프롬프트 모듈 교차 간섭) 논의에서 출발 — 📄 코드 확인으로 Cogi의 실제 bleed 벡터 확인(`Variable Usage Rule`이 flow·config·output·condition 4단계 동시 주입 / 규칙 학습이 규칙 교체 / v0.3.0 few-shot 주입이 Stage 1의 새 벡터). W26의 처방("단계별 회귀 테스트")을 실구현한 것.
+- **Part C — 생성 관측성** (`flow/observability.ts` + index.ts): 모든 생성 결과 `generation_tiers`에 ① `scenario_examples`(산업군·후보 수·선택 레퍼런스·주입 여부·skip 사유 — few-shot "조용한 skip" 제거, 로드맵 항목 2·4의 전제) ② `rules_snapshot`(규칙 세트 SHA-256 지문 — `ruleText` 기반이라 content-폴백 규칙 수정도 포착 + **스테이지별 해시**로 다단계 규칙의 blast radius 노출 + examples 해시·모델) 기록. DDL 없음(jsonb 관례), 실패해도 생성 무해(try/catch).
+- **Part A-lite — 프롬프트 회귀 하네스** (`scripts/prompt-regression/`): fixture 3종(수집형+전화번호 검증루프 / LLM Q&A docs+폴백 / API+ESD) → `cogi-generator-dev` 실호출 → **속성 어서션**(exact-match 금지: welcome 루트·anythingelse 1회성·단일부모 트리·도달성·llmloop apiKey/model 빈 값·tool→body 골격·**flag 루프 탈출 set 존재**·placeholder leak). 질문은 **text로 매칭**(dev 리셋 시 id 재발급 대응). exit 규약: 실패 1 / 환경 미비 2. 🧠 백로그 1번 "flag 루프 탈출 set 육안 확인"이 이 어서션으로 자동화됨.
+- **기준선 확보**: 레퍼런스 등록 前 3 fixture **전부 PASS**(`runs/2026-07-06-baseline.json`, injected=false) — 로드맵 항목 2 "주입 전/후 비교"의 '전' 데이터 완료. 하네스 자체 검증(기대값 변조→FAIL 검출) 통과.
+- **규모·상태**: 브랜치 `feat/v0.3.0-observability-regression` 13커밋(스펙·계획 문서 포함), **origin 푸시 완료·main 미머지**(dev 전용 규약 — v0.2.0 때 `feat/llm-v0.2.0-testing` 패턴과 동일). deno 테스트 211+14 전부 통과, `cogi-generator-dev` 재배포됨. 서브에이전트 구동 개발(태스크 6개, 태스크별 리뷰 + 최종 브랜치 리뷰 **Ready**).
+- ⚠ **발견 2건**: ① `.env.local`의 `VITE_SUPABASE_SERVICE_ROLE_KEY` **무효(401)** — dev_questions는 anon 키로 읽혀 우회했으나, 서비스 키가 진짜 필요한 작업 전에 재발급 필요. ② 기존 코드-스키마 불일치: `deriveApiDefs.ts`가 참조하는 'API 이름'·'받을 정보' 필드가 현 시나리오 템플릿에 없음(이번 범위 밖, 백로그).
+
 ### 2026-07-06 — v0.3.0 로드맵 수립(시나리오 라이브러리) + ROADMAP.md 신설·문서 전체 배포 (📄 사용자 지시)
 - **v0.3.0(계획) = 시나리오 레퍼런스 라이브러리 테스트·고도화**로 확정(사용자). 레퍼런스 0건·조립 미테스트 상태 → 라이브러리를 활용한 결과 생성 테스트가 목표. 상세는 위 [[#로드맵 — v0.3.0 (계획): 시나리오 레퍼런스 라이브러리 테스트·고도화|로드맵 섹션]].
 - 📄 **사용자 확정(같은 날 정정)**: v0.3.0 작업 자체는 **프로덕션 무배포·dev 전용**. 배포 대상은 로드맵 "문서"뿐 — ROADMAP.md에 명문화(`3082ca9`).
