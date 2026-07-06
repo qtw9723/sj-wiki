@@ -3,8 +3,12 @@ title: 작업 이력 (Log)
 category: 시스템
 tags: [log, 이력]
 created: 2026-06-10
-updated: 2026-07-05
+updated: 2026-07-06
 ---
+
+## [2026-07-06] 자료넣기 | AI 다이제스트 2026-07-06 위키화 검증 — W27에 이미 전량 반영 (중복 작업 없음)
+- raw/ai-digest/2026-07-06.md(자동 수집 13건, 6/29~7/1 기사)를 [[AI-주간-소식-2026-W27]]과 전수 대조: 📄 **13건 전부 07-05 다이제스트(14건)와 동일 항목**(07-05에만 있던 HP Frontier 1건이 빠졌을 뿐 신규 기사 0건)이라 이미 W27 페이지에 반영 완료 확인. 새 페이지·본문 수정 없음, W27 frontmatter `source:`에 07-06.md 추가·updated 갱신만 수행.
+- 🧠 RSS 수집 window가 겹쳐 연속 다이제스트에 중복이 생기는 구조 — 다음 위키화 때도 직전 다이제스트와 먼저 diff 후 신규 항목만 처리하면 됨.
 
 ## [2026-07-05] 자료넣기 | AI 주간 소식 2026-W27 위키화 (영문 다이제스트 14건)
 - raw/ai-digest/2026-07-05.md(자동 수집, 6/29~7/1 기사 14건) → [[AI-주간-소식-2026-W27]] 신설. 빅 이슈: **SkillOpt**(에이전트 스킬을 학습 가능 파라미터로 — W26 Instruction Bleed의 해법 방향) · **Memora**(저장·검색 분리 에이전트 메모리 — 이 vault 철학과 동일) · **ScarfBench**(엔터프라이즈 Java 마이그레이션 벤치마크 — 내 SM 레거시 경력 접점). 그 외 Gemma 4 실시간 음성, Nano Banana 2 Lite/Gemini Omni Flash(저비용 라인업 지속), Every Eval Ever·GeneBench-Pro(벤치마크 도메인 특화), HP Frontier(엔터프라이즈 레퍼런스), OpenAI 코어덤프 역학조사 디버깅.
