@@ -6,6 +6,11 @@ created: 2026-06-10
 updated: 2026-07-06
 ---
 
+## [2026-07-06] 자료넣기 | Cogi 시나리오 레퍼런스 6종 제작·등록 + few-shot 전/후 비교 (로드맵 항목 1·2 완료)
+- 📄 산업군별 미니봇 6종(계좌 잔액 조회/배송 조회/반품 접수/대량주문 견적/진료 예약/이용 안내 FAQ)을 **생성기 초안→수동 교정→품질 게이트→dev 등록**으로 제작. 게이트 6/6 PASS, dev 6건·프로덕션 0건(격리 유지).
+- 📄 **few-shot 첫 실검증**: 전/후 비교에서 3개 fixture 전부 `injected=true`, 산업군별 올바른 레퍼런스 선택(picked), `rules_hash` 완전 동일(순수 레퍼런스 효과 분리 — 관측성 스냅샷의 실전 성과). ROADMAP 항목 1·2 ✅, 항목 4 부분 완료.
+- ⚠ 발견 2건: ① 도매 초안에서 **백로그 1번(LLM flag 루프 탈출 set 누락)이 실재현** — 하네스가 잡아내고 교정으로 해소(하네스 실전 첫 성과) ② few-shot 도입 후 api-esd에 `placeholder-leak` 신규 FAIL — Instruction Bleed형 부작용을 하네스가 포착, 항목 6 백로그. → [[Cogi-POC-Generator]] 갱신.
+
 ## [2026-07-06] 자료넣기 | Cogi 시나리오 레퍼런스 dev 사본 체계 구축 — dev_cogi_scenario_references + 승격 규약
 - 📄 사용자 확정: 레퍼런스 등록은 **dev 사본에서 테스트 후 프로덕션으로 마이그레이션(승격)**. `dev_cogi_scenario_references` 생성(프로덕션 미러, 0건) + generator·scenario-references 함수 T() 배선 + `scenario-references-dev` 슬러그 + 프론트 devable 전환 + 러너 `--only` 필터. 승격·리셋 절차를 저장소 CLAUDE.md DEV 규약에 명문화(dev 테이블 3→4개, 래퍼 5→6개).
 - 📄 **dev 스모크 전수 통과**: 등록→dev 1건/프로덕션 0건(격리)→조립→few-shot 생성 `injected=true`·`picked=[스모크-진료예약봇]`→정리(dev 0건 복귀, 프로덕션 0건 재확인). 프론트 빌드 그린. 브랜치 `feat/v0.3.0-observability-regression`에 2커밋 추가(총 16), origin 푸시.

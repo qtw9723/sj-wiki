@@ -160,6 +160,12 @@ updated: 2026-07-06
 🧠 (참고) 위 둘 외 이미 기록된 한계: **변수/JSON 출력 처리 미숙**(JSON 자동 출력 불가→키 직접 지정), 둘 다 위 [[#현재 상태 스냅샷 — v0.1.0 프로토타입 배포 (2026-06-30)|현재 상태 스냅샷]] 한계 참고.
 
 ## 진행사항 업데이트 로그
+### 2026-07-06 (밤) — 레퍼런스 6종 제작·등록 + few-shot 첫 실검증 (로드맵 항목 1·2 ✅) (📄 dev 실행·git log)
+- **제작**: 산업군별 미니봇 6종을 "생성기 초안(6회 생성) → 수동 교정 → 품질 게이트(`scripts/scenario-refs/gate.ts` = checkBot+scenarioPortion) → `scenario-references-dev` 등록". 게이트 6/6 PASS, dev 6건·**프로덕션 0건 유지**. 도구로 러너 `--save-json`·게이트 CLI 추가(커밋), 미니봇 JSON은 미커밋(dev 테이블이 소스, 승격 시 데이터 마이그레이션).
+- **few-shot 전/후 비교 (항목 2)**: 기준선(전) vs `runs/2026-07-06-after-refs.json`(후) — 3개 fixture 전부 `injected` false→true, **산업군별 올바른 레퍼런스 선택 확인**(금융→계좌 잔액 조회봇/소매→반품 접수봇/물류→배송 조회봇 — 항목 4 부분 완료), **`rules_hash` 완전 동일**(규칙 무변경 상태에서 순수 레퍼런스 효과만 분리 — 관측성 스냅샷 설계 의도 그대로 실증).
+- ⚠ **발견 2건 (하네스 실전 성과)**: ① 도매 초안에서 **백로그 1번 "LLM flag 루프 탈출 set 누락"이 실재현** — `loop-exit-set` 어서션이 자동 검출("육안 확인"의 자동화가 실제로 작동), 교정에서 종료 발화 분기+탈출 set 추가로 해소. ② few-shot 도입 후 api-esd 생성에 `placeholder-leak` 신규 FAIL — **few-shot 주입이 다른 출력 품질에 영향을 주는 Instruction Bleed형 부작용**을 하네스가 포착. 로드맵 항목 6(고도화) 백로그로 이동.
+- 🧠 남은 결: 항목 3(조립 생성 테스트), 항목 4 잔여(산업군당 다중 레퍼런스 시 관련도 스코어), 항목 5(v0.2.0 결합 회귀), 항목 6(placeholder-leak 원인·도매 배열 누적·레퍼런스 품질 가이드).
+
 ### 2026-07-06 (저녁) — 시나리오 레퍼런스 dev 사본 체계 구축 (📄 git log·dev 스모크 검증)
 - **배경 (📄 사용자 확정)**: 로드맵 항목 1(레퍼런스 등록)을 프로덕션 공유 테이블이 아닌 **dev 사본에서 테스트 후 승격(데이터 마이그레이션)**하는 방식으로.
 - **구축 내용**: ① `dev_cogi_scenario_references` 테이블(프로덕션 미러, `LIKE … INCLUDING ALL` — 기존 dev 테이블처럼 repo 마이그레이션 없이 DB 직접 생성) ② generator Mode A·scenario-references 함수 5곳을 `T()` 경유로(dev 슬러그만 dev 테이블, 프로덕션 무변경) ③ `scenario-references-dev` 래퍼 + 프론트 `SCENARIO_REFERENCES` devable 전환 ④ 회귀 러너 `--only <fixture>` 필터 ⑤ 저장소 CLAUDE.md DEV 규약 갱신(dev 테이블 4개·래퍼 6개·**승격 절차**: 사용자 선별 확인 → INSERT…SELECT(id 유지) → 재조회 검증 → 머지 후 미러 리셋).
