@@ -6,6 +6,10 @@ created: 2026-06-10
 updated: 2026-07-06
 ---
 
+## [2026-07-07] 질문 | 예산 ~$20 제약 해법 (§4.7, 사용자 확정)
+- 📄 확정: 현재 Claude Pro $20, 그 이상 지출 의향 없음 → Max/GLM Max 옵션 배제.
+- 🧠 핵심: GLM 무료 Flash($0)가 지렛대. 추천 ①Claude Pro 유지+잡일(헤파이스토스)만 GLM 무료 Flash 오프로드(추가 $0) ②GLM Coding Plan Lite $18로 갈아타기(프롬프트쿼터 테스트) ③전역할 Flash 무료 실험. verify.sh 게이트라 싼 구현모델 안전.
+
 ## [2026-07-07] 질문 | GLM vs Claude 예상비용 시나리오 (§4.6)
 - 📄 단가표(Opus$5/$25·Sonnet인트로$2/$10·GLM-4.6$0.6/$2.2·Air$0.2/$1.1·Flash무료) + 🧠 "1 표준 run" 가정(신규3M+캐시30M+출력2M)으로 run당 추정: Opus≈$80 / GLM-4.6≈$9.5 / Air≈$3.7 → **1/8~1/20**.
 - 🧠 월 강도별 총비용표. 결론: Claude구독=정액이나 캡 벽, 무거우면 GLM Coding Plan Max$160<Claude$200 / 캡 싫으면 GLM API. 비율은 견고, 절대값은 /usage 실측 후 재보정 권고.
