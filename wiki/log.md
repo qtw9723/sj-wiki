@@ -6,6 +6,10 @@ created: 2026-06-10
 updated: 2026-07-06
 ---
 
+## [2026-07-07] 셋업 | 올림푸스 자체 토큰 로깅(run.sh, 브랜치)
+- 📄 요구 정정: 외부 조회 도구 말고 **올림푸스가 돌며 자동 기록** → 최적화 검토용. run.sh에 log_usage() + metis/worker 래핑(호출 직후 세션 jsonl usage 합산→state/usage.tsv, run/round/role별). claude 호출·한도감지 불변(가산형). USAGE_TRACK 토글.
+- 📄 브랜치 feat/usage-logging 커밋(cf07d17, main 미머지·미푸시). bash -n 통과, 집계=usage-report 합계 일치 검증. 런북 §F ④ 추가. ⚠E2E는 다음 실행 때.
+
 ## [2026-07-07] 자료넣기 | usage-report.sh --html 브라우저 대시보드
 - 📄 `--html [일수]` 모드 추가: 자기완결 다크 텔레메트리 HTML(프로젝트별 소비막대·요약스탯·tabular-nums) → usage.html 생성·자동 open. 재실행 시 최신 갱신. 런북 §F ③ 추가.
 - 🧠 현 시점 스냅샷은 Artifact로도 발행(정적). 상시최신=로컬 재실행.
