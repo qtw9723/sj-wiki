@@ -6,6 +6,10 @@ created: 2026-06-10
 updated: 2026-07-06
 ---
 
+## [2026-07-07] 셋업 | 올림푸스 토큰로깅 완료메일 첨부 + main 머지
+- 📄 usage_summary() 추가: state/usage.tsv에서 이번 RUN_ID 역할별 집계 → 완료(승인)메일 본문($APPROVE_Q)·완료 콘솔에 표시. 모니터링 3곳(완료메일/tsv/로그).
+- 📄 feat/usage-logging → main 머지(71a360e, no-ff, 미push), 브랜치 삭제. ⚠머지에 사용자 본인 선행커밋 1506c40(마일스톤알림 스펙·문서만) 동반 — 무해, 완료메일과 겹치는 설계. push 여부 사용자 확인 대기.
+
 ## [2026-07-07] 셋업 | 올림푸스 자체 토큰 로깅(run.sh, 브랜치)
 - 📄 요구 정정: 외부 조회 도구 말고 **올림푸스가 돌며 자동 기록** → 최적화 검토용. run.sh에 log_usage() + metis/worker 래핑(호출 직후 세션 jsonl usage 합산→state/usage.tsv, run/round/role별). claude 호출·한도감지 불변(가산형). USAGE_TRACK 토글.
 - 📄 브랜치 feat/usage-logging 커밋(cf07d17, main 미머지·미푸시). bash -n 통과, 집계=usage-report 합계 일치 검증. 런북 §F ④ 추가. ⚠E2E는 다음 실행 때.
