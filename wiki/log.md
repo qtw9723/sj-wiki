@@ -6,6 +6,10 @@ created: 2026-06-10
 updated: 2026-07-06
 ---
 
+## [2026-07-07] 셋업 | 올림푸스 마일스톤 진행도 알림 구현 + push
+- 📄 "전부 진행" 지시: ①토큰로깅+완료메일 커밋 origin push(71a360e) ②사용자 스펙(마일스톤 진행도 알림) 구현.
+- 📄 milestones.sh 신설(backlog_progress/titles/milestone_notify, 무중단 계약) + config NOTIFY_MILESTONES + run.sh 훅 3곳(분석완료/작업n·N/전체완료). test 13개+전체스위트 통과. main 머지·push(40cf52b). 런북 §G 추가.
+
 ## [2026-07-07] 셋업 | 올림푸스 토큰로깅 완료메일 첨부 + main 머지
 - 📄 usage_summary() 추가: state/usage.tsv에서 이번 RUN_ID 역할별 집계 → 완료(승인)메일 본문($APPROVE_Q)·완료 콘솔에 표시. 모니터링 3곳(완료메일/tsv/로그).
 - 📄 feat/usage-logging → main 머지(71a360e, no-ff, 미push), 브랜치 삭제. ⚠머지에 사용자 본인 선행커밋 1506c40(마일스톤알림 스펙·문서만) 동반 — 무해, 완료메일과 겹치는 설계. push 여부 사용자 확인 대기.
