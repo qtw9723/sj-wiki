@@ -6,6 +6,10 @@ created: 2026-06-10
 updated: 2026-07-06
 ---
 
+## [2026-07-07] 자료넣기 | usage-report.sh 개요모드(전 프로젝트 누적)
+- 📄 usage-report.sh 확장: 인자없음=전 프로젝트 누적 개요(프로젝트별 호출·출력·총tok·환산$·사용기간, 소비순), 숫자=개요+기간, 문자=상세. 라벨정리(홈-CLI세션 등). 런북 §F 갱신.
+- 📄 개요 실측: 홈-CLI 최다 / Cogi $274·sj-wiki $235·올림푸스(dev-pipeline) $101·mailer $88.
+
 ## [2026-07-07] 자료넣기 | 올림푸스 토큰 사용량 관측(모델은 Claude 유지)
 - 📄 `~/IdeaProjects/olympus/usage-report.sh` 신규(read-only, 파이프라인 무수정). ~/.claude/projects/*.jsonl(assistant 라인 .message.usage) 집계 → 모델별·일자별·환산$. bash3.2/BSD awk 호환(mapfile·asorti 제거) 검증 완료.
 - 📄 실측: 올림푸스(dev-pipeline 폴더) 6/30~7/2 3일=998호출·Opus환산≈$100 → 캡 부딪힘 정량 확인. ⚠폴더명 pipeline로 조회(리네임 전). [[올림푸스-실행-런북]] §F 신설, /usage·/cost 병기.
