@@ -35,6 +35,7 @@ updated: 2026-07-05
 - [[내-MCP-커넥터-환경]] — 내가 쓰는 MCP 커넥터·Cowork 도구·업무 도구 환경
 - [[카카오-Play-MCP]] — 카카오 공식 MCP 8개 서비스 도구 사전 (지도·캘린더·검색·주식·유튜브)
 - [[웹-크롤링-기초]] — RSS/API/BeautifulSoup/Playwright 4가지 방식 + AI 뉴스 수집 시스템 구축
+- [[GLM-Zhipu-Z-ai]] — 🆕 중국 Zhipu(Z.ai) 오픈소스 LLM. "클로드급 코딩을 1/5~1/10 가격"이 셀링포인트. **Coding Plan 월 $18~**(Claude Code·Cline에 연결) + **API 입력 $0.6/출력 $2.2**(무료 Flash 모델도) → [[올림푸스-Olympus]] 토큰비·[[Cogi-POC-Generator]] 백엔드 절감 후보. ⚠ 중국 모델이라 회사 데이터엔 거버넌스 확인 전까지 부적합
 - [[MSW-개발-레퍼런스]] — 🆕 메이플스토리 월드(Lua) 함수/패턴 사전(Entity/Component·이벤트 함수·서버/클라 실행모드·DataStorage 저장·UI 컴포넌트). [[개발-위시리스트-메이플스토리|몬스터북 사가]] 개발용, 04 §4.5 확인항목 대응표 포함
 - [[모닝-브리핑-AppsScript]] — 매일 아침 "DAILY BRIEFING" 메일의 정체: Google Apps Script가 캘린더+Gmail을 개인 Gemini(무료분)로 요약·발송 + 드라이브 저장. [[Teams-Gmail-캘린더-Gemini-연동]] 위의 푸시층
 - [[Teams-Gmail-캘린더-Gemini-연동]] — ✅ 구성 완료(읽기 전용): 회사(M365/Teams) 메일·일정을 구글로 모아 Gemini로 통합 읽기. 메일=A2(Outlook 자동전달, POP은 앱 비번 차단), 일정=B1(캘린더 게시 구독), 통합조회=Gemini (B2 자동등록은 미적용)
