@@ -6,6 +6,10 @@ created: 2026-06-10
 updated: 2026-07-06
 ---
 
+## [2026-07-07] 질문 | GLM vs Claude 예상비용 시나리오 (§4.6)
+- 📄 단가표(Opus$5/$25·Sonnet인트로$2/$10·GLM-4.6$0.6/$2.2·Air$0.2/$1.1·Flash무료) + 🧠 "1 표준 run" 가정(신규3M+캐시30M+출력2M)으로 run당 추정: Opus≈$80 / GLM-4.6≈$9.5 / Air≈$3.7 → **1/8~1/20**.
+- 🧠 월 강도별 총비용표. 결론: Claude구독=정액이나 캡 벽, 무거우면 GLM Coding Plan Max$160<Claude$200 / 캡 싫으면 GLM API. 비율은 견고, 절대값은 /usage 실측 후 재보정 권고.
+
 ## [2026-07-07] 질문 | Claude 플랜 vs GLM 비교 + 올림푸스 효율 문제
 - 📄 [[GLM-Zhipu-Z-ai]] §4.5 신설: Claude 구독(Pro $20/Max5x $100/Max20x $200, 주당 Opus~40h/Sonnet~480h) vs GLM 비교표. 사용자 관찰(올림푸스 4세션 병렬→Opus시간 캡 빨리 소진, "토큰 너무 적음") 확정 기록.
 - 🧠 제안: ①GLM API 종량제(주당 캡 없음)로 올림푸스 백엔드 ②GLM Coding Plan Max($160<$200) ③심판/설계=Claude·구현=GLM 이중화(verify.sh 게이트라 교체 안전). index takeaway 갱신.
