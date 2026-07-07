@@ -6,6 +6,10 @@ created: 2026-06-10
 updated: 2026-07-06
 ---
 
+## [2026-07-07] 자료넣기 | 올림푸스 GLM 백엔드 연동 구현 가이드
+- 📄 신규 [[올림푸스-GLM-백엔드-연동]]: repo(config.sh·run.sh·resilience.sh) 직접 확인 후 작성. 역할 순차실행·각 역할 별도 claude 프로세스 → 빌더 서브셸에만 z.ai env 주입해 구현만 GLM/설계·심판 Claude Pro 유지.
+- 🧠 정확한 diff(config.sh BUILDER_MODEL=glm-4.6·ZAI_BASE_URL, run.sh worker() case glm-* env주입, .env.local ZAI_API_KEY) + 무료 Flash 미확인→테스트 절차 + 롤백. 사용자가 이 문서 보고 개발 예정.
+
 ## [2026-07-07] 질문 | 예산 ~$20 제약 해법 (§4.7, 사용자 확정)
 - 📄 확정: 현재 Claude Pro $20, 그 이상 지출 의향 없음 → Max/GLM Max 옵션 배제.
 - 🧠 핵심: GLM 무료 Flash($0)가 지렛대. 추천 ①Claude Pro 유지+잡일(헤파이스토스)만 GLM 무료 Flash 오프로드(추가 $0) ②GLM Coding Plan Lite $18로 갈아타기(프롬프트쿼터 테스트) ③전역할 Flash 무료 실험. verify.sh 게이트라 싼 구현모델 안전.

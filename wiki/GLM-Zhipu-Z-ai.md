@@ -170,6 +170,7 @@ updated: 2026-07-07
 - **Claude Code 병행**: 지금 주력은 Claude(Opus 4.8, [[Claude-Code-업데이트-동향]]). GLM은 "고빈도 저위험 코딩은 싼 모델, 어려운 건 Claude"식 이중 전략의 저가 축으로 유용.
 
 ## 관련 문서
+- [[올림푸스-GLM-백엔드-연동]] — 🆕 **실제 구현 가이드**: 올림푸스 빌더 역할만 GLM으로 오프로드(config.sh·run.sh diff). §4.5~4.7의 실행판
 - [[Claude-Code-업데이트-동향]] — 주력 코딩 에이전트(Claude). GLM Coding Plan이 이 툴에 붙는다
 - [[Cogi-POC-Generator]] — LLM 백엔드(gpt-4o) 대체 후보로 GLM API 검토 대상
 - [[올림푸스-Olympus]] — 다세션 자율 개발, 토큰비 절감 관점에서 GLM 후보
