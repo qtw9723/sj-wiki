@@ -6,6 +6,10 @@ created: 2026-06-10
 updated: 2026-07-06
 ---
 
+## [2026-07-07] 질문 | Claude 플랜 vs GLM 비교 + 올림푸스 효율 문제
+- 📄 [[GLM-Zhipu-Z-ai]] §4.5 신설: Claude 구독(Pro $20/Max5x $100/Max20x $200, 주당 Opus~40h/Sonnet~480h) vs GLM 비교표. 사용자 관찰(올림푸스 4세션 병렬→Opus시간 캡 빨리 소진, "토큰 너무 적음") 확정 기록.
+- 🧠 제안: ①GLM API 종량제(주당 캡 없음)로 올림푸스 백엔드 ②GLM Coding Plan Max($160<$200) ③심판/설계=Claude·구현=GLM 이중화(verify.sh 게이트라 교체 안전). index takeaway 갱신.
+
 ## [2026-07-07] 자료넣기 | GLM(Zhipu/Z.ai) 모델·요금 웹 스크랩 정리
 - 📄 신규 페이지 [[GLM-Zhipu-Z-ai]]: 모델 라인업(GLM-4.5~5.2·무료 Flash) + API 요금표(공식 z.ai) + Coding Plan 3티어(Lite $18/Pro $72/Max $160) + GLM-4.6 스펙(200K·357B MoE·MIT).
 - 🧠 사용자 관점 적용: [[올림푸스-Olympus]] 토큰비·[[Cogi-POC-Generator]] 백엔드(현 gpt-4o) 저가 대체 후보로 프레이밍. ⚠ 중국 모델→회사 데이터 거버넌스 주의 명시. index.md 도구/스킬에 등록.
