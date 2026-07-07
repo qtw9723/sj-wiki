@@ -6,6 +6,10 @@ created: 2026-06-10
 updated: 2026-07-06
 ---
 
+## [2026-07-07] 자료넣기 | 올림푸스 토큰 사용량 관측(모델은 Claude 유지)
+- 📄 `~/IdeaProjects/olympus/usage-report.sh` 신규(read-only, 파이프라인 무수정). ~/.claude/projects/*.jsonl(assistant 라인 .message.usage) 집계 → 모델별·일자별·환산$. bash3.2/BSD awk 호환(mapfile·asorti 제거) 검증 완료.
+- 📄 실측: 올림푸스(dev-pipeline 폴더) 6/30~7/2 3일=998호출·Opus환산≈$100 → 캡 부딪힘 정량 확인. ⚠폴더명 pipeline로 조회(리네임 전). [[올림푸스-실행-런북]] §F 신설, /usage·/cost 병기.
+
 ## [2026-07-07] 자료넣기 | 올림푸스 GLM 백엔드 연동 구현 가이드
 - 📄 신규 [[올림푸스-GLM-백엔드-연동]]: repo(config.sh·run.sh·resilience.sh) 직접 확인 후 작성. 역할 순차실행·각 역할 별도 claude 프로세스 → 빌더 서브셸에만 z.ai env 주입해 구현만 GLM/설계·심판 Claude Pro 유지.
 - 🧠 정확한 diff(config.sh BUILDER_MODEL=glm-4.6·ZAI_BASE_URL, run.sh worker() case glm-* env주입, .env.local ZAI_API_KEY) + 무료 Flash 미확인→테스트 절차 + 롤백. 사용자가 이 문서 보고 개발 예정.
