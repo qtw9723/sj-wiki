@@ -6,6 +6,9 @@ created: 2026-06-10
 updated: 2026-07-08
 ---
 
+## [2026-07-08] 질문 | Cogi v0.2.1 핫픽스 — ESD 스키마 파생 버그 (발표 준비 중 발견)
+- 데모 봇에서 ESD 산출물(esd_schemas)이 항상 빈 배열 → 원인=collectEsdFields의 schemaName 경로 버그(config.query.schemaName). 수정+회귀테스트, PR #100 머지·tag v0.2.1·프로덕션 cogi-generator 재배포·재생성 검증(e72f4e26). 공개 cogi-overview·아티팩트·[[Cogi-POC-Generator]]·시연대본 v0.2.1 반영.
+
 ## [2026-07-08] 질문 | Cogi 생성 파이프라인 스테이지 라벨 함수명化
 - 누적 삽입 뜀번호(2.9·3.65·3.75 등) → 함수명 라벨 일괄 치환(17파일), index.ts에 이름↔레거시번호 매핑표 추가(이력 추적). deno 221 green. v0.3.0 dev 브랜치(feat/v0.3.0-observability-regression)에 ff-머지·push(7cf1d75), main·프로덕션 미반영. [[Cogi-POC-Generator]] 진행로그 기록.
 
