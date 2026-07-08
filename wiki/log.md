@@ -7,7 +7,7 @@ updated: 2026-07-08
 ---
 
 ## [2026-07-08] 질문 | Cogi 생성 파이프라인 스테이지 라벨 함수명化
-- 누적 삽입 뜀번호(2.9·3.65·3.75 등) → 함수명 라벨 일괄 치환(17파일), index.ts에 이름↔레거시번호 매핑표 추가(이력 추적). deno 221 green, 브랜치 refactor/stage-name-labels(7cf1d75), main 미머지. [[Cogi-POC-Generator]] 진행로그 기록.
+- 누적 삽입 뜀번호(2.9·3.65·3.75 등) → 함수명 라벨 일괄 치환(17파일), index.ts에 이름↔레거시번호 매핑표 추가(이력 추적). deno 221 green. v0.3.0 dev 브랜치(feat/v0.3.0-observability-regression)에 ff-머지·push(7cf1d75), main·프로덕션 미반영. [[Cogi-POC-Generator]] 진행로그 기록.
 
 ## [2026-07-08] 질문 | Cogi 발표용 공개 개요 페이지 v0.3.0 진행분 반영
 - 오늘 발표(공개 문서·사내 실무/보고 톤)용으로 [[Cogi-POC-Generator]] 현 개발분(프로덕션 v0.2.0 + v0.3.0 dev 진행)까지 정리해 공개 페이지 **cogi-overview.vercel.app** 재배포(200) + claude.ai 아티팩트(1e30660a) 동기화.
