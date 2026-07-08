@@ -3,8 +3,12 @@ title: 작업 이력 (Log)
 category: 시스템
 tags: [log, 이력]
 created: 2026-06-10
-updated: 2026-07-07
+updated: 2026-07-08
 ---
+
+## [2026-07-08] 질문 | Cogi 발표용 공개 개요 페이지 v0.3.0 진행분 반영
+- 오늘 발표(공개 문서·사내 실무/보고 톤)용으로 [[Cogi-POC-Generator]] 현 개발분(프로덕션 v0.2.0 + v0.3.0 dev 진행)까지 정리해 공개 페이지 **cogi-overview.vercel.app** 재배포(200) + claude.ai 아티팩트(1e30660a) 동기화.
+- 갱신: 히어로 배지·통계(713커밋/29함수/64마이그레이션)·"진행 현황"에 v0.3.0 진행 섹션 신설·버전 히스토리 v0.3.0 (계획→개발 중). 위키 버전표·진행 로그 미러 갱신.
 
 ## [2026-07-08] 자료넣기 | Cogi 결정 대기 3건 사용자 결정·집행
 - 📄 사용자 결정: ① node_modules 6,780파일 → **v0.3.0 브랜치에서** 추적 해제(`209995d` push, 머지 PR에 -6,780 포함 감수) ② AGENTS.md → .gitignore 등록(같은 커밋) ③ "LLM 노드 샘플 (7/2 발췌)" → **지금 파생 실행**: `derive-node-specs` 호출, pending→completed(노드 7종·경고 0) 재조회 검증 — cogi_references 4건 전부 completed. [[Cogi-POC-Generator]] 해소 표시 갱신.
