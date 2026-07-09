@@ -6,6 +6,9 @@ created: 2026-06-10
 updated: 2026-07-09
 ---
 
+## [2026-07-09] 자료넣기 | 올림푸스 메일에 응답 방법 명시 (사용자 요구)
+- 📄 승인 요청 메일에 "어디서 어떻게 응답하는지" 안내가 없어 혼동 → 올림푸스 발신 메일 전 경로에 응답 방법 블록 추가(승인=이 메일 답장 첫 줄 y/n·제목 토큰 유지, 질문 대기=답장 무효·GitHub ## 답변 편집, 진행·토큰대기 알림=회신 불필요). remote.sh·milestones.sh·resilience.sh, 테스트 전체 green, push(`8d7919b`). [[올림푸스-기획요청서-작성요령]] §5 갱신.
+
 ## [2026-07-09] 자료넣기 | v0.4.0 기획서 작성 — 레퍼런스 플로우 시각화 (올림푸스 자율 개발용)
 - 📄 사용자: v0.4.0은 올림푸스로 개발 — 기획요청서만 제작. `olympus/spec/CogInsight-Generator-v0.4.0/기획.md` 작성(구조 다이어그램+usecase 흐름도(산출물 품질·PNG 내보내기)+풀스크린 피그마류 UX+v0.5 편집 대비, react-flow 도입 확정, AC=deno fixture 테스트+빌드, main 머지·배포 금지).
 - 버전 포함 spec 폴더 규약 신설 → [[올림푸스-기획요청서-작성요령]] §4에 추가(PROJECT+TARGET_REPO 동시 지정). dev 브랜치 `feat/v0.4.0-reference-visualization`·0.4.0 선반영·CHANGELOG 섹션 준비 완료. [[CogInsight-Generator]] 진행 로그 기록.
