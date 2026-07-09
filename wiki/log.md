@@ -6,6 +6,10 @@ created: 2026-06-10
 updated: 2026-07-09
 ---
 
+## [2026-07-09] 자료넣기 | PR #102 머지(표기 통일) + 공식 링크 모음 페이지 신설
+- 📄 사용자 지시로 PR #102("CogInsight POC Generator"→"CogInsight Generator" 표기 통일) 머지(main `7c597a7`), dev 브랜치 main 동기화, Vercel 재배포로 앱 타이틀 "CogInsight Generator" 확인.
+- [[CogInsight-Generator-링크]] 신설 — 접속 검증된 현행 링크(공개 개요/테스터 앱/소유자 전용) + 구 URL 폐기 고지 + 재안내 문구. [[index]]·[[CogInsight-Generator]]에서 연결.
+
 ## [2026-07-09] 자료넣기 | 프로젝트명 전면 변경 — CogInsight Generator (v0.2.2 릴리스 + 전 인프라·위키·메모리 리네임)
 - 📄 사용자 확정: 구명(4글자 코드네임)이 **사용 불가 판정** → "모든 곳의 모든 흔적" 변경 지시. 범위=라이브 인프라까지 전부 + raw/ 수정 예외 승인, git 이력은 유지.
 - 집행: ① 저장소 main 리네임(122파일)+PR #101 머지·tag v0.2.2·Release ② 라이브 DB 객체 48건 rename(데이터 무손실 검증) ③ 엣지함수 25종 재배포·신규 슬러그 `coginsight-generator(-dev)`·구 슬러그 삭제 ④ GitHub repo `CogInsight-Generator`·로컬 폴더 rename ⑤ Vercel 앱 `coginsight-generator.vercel.app`·개요 `coginsight-overview.vercel.app`(구 URL 폐기·404 확인)+아티팩트 동기화 ⑥ v0.3.0 dev 브랜치 동일 적용(134파일, deno 228 green)+dev 래퍼 7종 재배포 ⑦ 위키 23파일 치환+페이지 파일명 `CogInsight-Generator.md`+raw 4파일(파일명 1건 포함) ⑧ 메모리 갱신.
