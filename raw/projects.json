@@ -3,13 +3,13 @@
   "total_projects": 7,
   "projects": [
     {
-      "id": "cogi-poc-generator-v1",
-      "name": "Cogi-POC-Generator-v1",
-      "description": "Cogi Dialog JSON Generator - POC 제너레이터",
+      "id": "coginsight-generator",
+      "name": "CogInsight-Generator",
+      "description": "CogInsight Dialog JSON Generator - POC 제너레이터",
       "language": "JavaScript/Node.js",
       "type": "Frontend",
       "version": "1.0.1",
-      "package_name": "cogi-poc-generator-v1",
+      "package_name": "coginsight-generator",
       "tech_stack": [
         "React 19",
         "Vite 8",
@@ -32,7 +32,7 @@
         "preview": "vite preview",
         "lint": "eslint . --ext .jsx,.js"
       },
-      "path": "/Users/sangjun/IdeaProjects/Cogi-POC-Generator-v1",
+      "path": "/Users/sangjun/IdeaProjects/CogInsight-Generator",
       "last_modified": "2026-05-27 10:31:33",
       "has_readme": true,
       "has_claude_md": false,

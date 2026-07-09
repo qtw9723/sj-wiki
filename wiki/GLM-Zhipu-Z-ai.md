@@ -10,7 +10,7 @@ updated: 2026-07-07
 > [!tip] 핵심 takeaway
 > GLM은 중국 **Zhipu AI(Z.ai)**의 오픈소스 LLM 계열로, **"클로드급 코딩 성능을 1/5~1/10 가격에"**가 셀링포인트다. 너에게 의미 있는 두 갈래:
 > - **① Claude Code 대체·병행용** → GLM Coding Plan **월 $18(Lite)**부터, Claude Code·Cline 등에 API 물려 쓴다. Anthropic 구독 대비 파격가라 사이드 프로젝트([[올림푸스-Olympus]]·[[개발-위시리스트]])의 토큰 비용 방어책. **올림푸스가 Claude 플랜에서 한도(주당 Opus시간)에 자꾸 걸리는 문제 → §4.5에 Claude 플랜 비교·해법 정리(핵심: GLM API는 주당 캡이 없음).**
-> - **② LLM 앱 백엔드용** → [[Cogi-POC-Generator]]가 지금 OpenAI gpt-4o를 쓰는데, GLM API는 **입력 $0.6 / 출력 $2.2** (플래그십도 $1.4/$4.4)로 훨씬 싸다. **무료 모델(GLM-4.7-Flash 등)**도 있어 실험/POC 부담이 없다.
+> - **② LLM 앱 백엔드용** → [[CogInsight-Generator]]가 지금 OpenAI gpt-4o를 쓰는데, GLM API는 **입력 $0.6 / 출력 $2.2** (플래그십도 $1.4/$4.4)로 훨씬 싸다. **무료 모델(GLM-4.7-Flash 등)**도 있어 실험/POC 부담이 없다.
 >
 > 🧠 단, 중국 회사 모델이라 **회사(MWW) 데이터·사내 챗봇엔 데이터 거버넌스 확인 전까지 부적합**. 개인/포트폴리오·오픈소스 실험용으로 먼저 보는 게 맞다.
 
@@ -50,7 +50,7 @@ updated: 2026-07-07
 
 **비전 모델**: GLM-4.6V $0.3/$0.9, GLM-OCR $0.03/$0.03, **GLM-4.6V-Flash 무료**.
 
-🧠 비교 감: OpenAI gpt-4o가 대략 입력 $2.5 / 출력 $10 수준인데, GLM-4.6는 **$0.6/$2.2**로 1/4~1/5. [[Cogi-POC-Generator]]처럼 생성 파이프라인을 여러 번 도는 앱에서 토큰비 절감폭이 크다.
+🧠 비교 감: OpenAI gpt-4o가 대략 입력 $2.5 / 출력 $10 수준인데, GLM-4.6는 **$0.6/$2.2**로 1/4~1/5. [[CogInsight-Generator]]처럼 생성 파이프라인을 여러 번 도는 앱에서 토큰비 절감폭이 크다.
 
 ## 4. GLM Coding Plan (구독형, 코딩 툴용)
 📄 API 종량제 대신 **정액 구독**으로 Claude Code·Cline 등에 붙여 쓰는 상품. 출처: `docs.z.ai/devpack` + aipricing.guru/felloai (2026-07-07).
@@ -165,14 +165,14 @@ updated: 2026-07-07
 
 ## 6. 너에게의 적용 (🧠 판단)
 - **사이드/오픈소스 프로젝트**: [[올림푸스-Olympus]]는 여러 Claude 세션이 병렬로 도는 구조라 토큰 소모가 크다. GLM Coding Plan(월 $18~)이나 GLM API를 백엔드 옵션으로 두면 실험 비용을 크게 낮출 수 있다. (단 올림푸스는 verify.sh 심판 구조라 모델 교체가 비교적 자유로움)
-- **[[Cogi-POC-Generator]] 백엔드**: 현재 OpenAI gpt-4o. GLM API(또는 무료 Flash)로 A/B 해볼 가치. 생성 품질만 받쳐주면 운영비가 급감. ⚠ 단 Cogi는 사내 POC라 **회사 데이터 거버넌스**부터 확인.
+- **[[CogInsight-Generator]] 백엔드**: 현재 OpenAI gpt-4o. GLM API(또는 무료 Flash)로 A/B 해볼 가치. 생성 품질만 받쳐주면 운영비가 급감. ⚠ 단 CogInsight는 사내 POC라 **회사 데이터 거버넌스**부터 확인.
 - **회사(MWW) 사내 챗봇**: ⚠ 중국 회사 모델 → 사내 기밀·고객 데이터엔 신중. 셀프호스팅(MIT라 가능)으로 데이터를 외부로 안 내보내는 옵션은 있으나 GPU 비용·검토 필요. 이 판단·상세는 [[내-프로필]] 회사 맥락상 개인 vault엔 원칙만 남긴다.
 - **Claude Code 병행**: 지금 주력은 Claude(Opus 4.8, [[Claude-Code-업데이트-동향]]). GLM은 "고빈도 저위험 코딩은 싼 모델, 어려운 건 Claude"식 이중 전략의 저가 축으로 유용.
 
 ## 관련 문서
 - [[올림푸스-GLM-백엔드-연동]] — 🆕 **실제 구현 가이드**: 올림푸스 빌더 역할만 GLM으로 오프로드(config.sh·run.sh diff). §4.5~4.7의 실행판
 - [[Claude-Code-업데이트-동향]] — 주력 코딩 에이전트(Claude). GLM Coding Plan이 이 툴에 붙는다
-- [[Cogi-POC-Generator]] — LLM 백엔드(gpt-4o) 대체 후보로 GLM API 검토 대상
+- [[CogInsight-Generator]] — LLM 백엔드(gpt-4o) 대체 후보로 GLM API 검토 대상
 - [[올림푸스-Olympus]] — 다세션 자율 개발, 토큰비 절감 관점에서 GLM 후보
 - [[공통-기술스택]] · [[에이전트-자동화-도구]]
 - [[claude-api]] — (작성 예정) LLM API 일반 참조

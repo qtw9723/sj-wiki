@@ -3,7 +3,7 @@ title: 전체 목차 (Index)
 category: 시스템
 tags: [index, 목차]
 created: 2026-06-09
-updated: 2026-07-05
+updated: 2026-07-09
 ---
 
 > [!tip] 핵심 takeaway
@@ -45,7 +45,7 @@ updated: 2026-07-05
 - [[notepad]] — 마크다운 메모장 (레퍼런스 프로젝트, 프로덕션 안정)
 - [[mailer]] — ⭐ **CS SmartHub** (본인 기획·실사용자 CS팀 기반·진행중, 1순위 포트폴리오, 192커밋). Mailer+Grafana 리포트(+Gemini LLM 로그분석: 07-02 과거 히스토리 참조·AI 메모 영속화·재시도 복원력)+Playwright 챗봇 모니터링(pg_cron 정시) 허브 ⚠️ 마이그레이션 예외
 - [[schedule-reporter-kakao]] — 리포트 스케줄러 (⚠️ 카카오 연동은 코드에서 제거됨, 현재 Grafana 리포트 설정 단일 페이지·[[mailer]] 형제)
-- [[Cogi-POC-Generator]] — Dialog JSON Generator (⭐ 챗봇 시나리오 축, 핵심). LLM 6단계 생성 파이프라인 + DB-구동 규칙엔진 + 시나리오/API 레퍼런스 라이브러리 + 테스터 OTP 인증 (OpenAI gpt-4o). **프로덕션 v0.2.0**(07-03 릴리스, AI 자유응답 LLM 노드) · **v0.3.0 dev 진행 중**(시나리오 라이브러리 테스트·고도화 — 레퍼런스 6종·구조 시드·피드백 스크린샷, 프로덕션 무배포)
+- [[CogInsight-Generator]] — Dialog JSON Generator (⭐ 챗봇 시나리오 축, 핵심). LLM 6단계 생성 파이프라인 + DB-구동 규칙엔진 + 시나리오/API 레퍼런스 라이브러리 + 테스터 OTP 인증 (OpenAI gpt-4o). **프로덕션 v0.2.2**(07-09 프로젝트명 전면 변경 CogInsight Generator — 구명 사용 불가 판정; 기능 기준선 v0.2.0 AI 자유응답 + v0.2.1 ESD 핫픽스) · **v0.3.0 dev 진행 중**(시나리오 라이브러리 테스트·고도화 — 레퍼런스 6종·구조 시드·피드백 스크린샷, 프로덕션 무배포)
 - [[parking]] — Supabase 공유 인프라 (공용 백엔드) + parking API(data.go.kr 실시간 주차장) 연동 정보
 - [[헤르메스-개인비서-Hostinger]] — 🆕 개인비서 헤르메스 호스팅 검토: Hostinger KVM VPS 가격·장단점 + 활용방안(n8n·Docker·하이브리드). §7-2 `dev-pipeline` → 정식화 [[올림푸스-Olympus]]
 - [[올림푸스-Olympus]] — 🆕 **올림푸스(Olympus)**, 로컬 다세션 자율 개발 파이프라인. 기획서만 넣으면 4역할(메티스·헤파이스토스·모모스·헤르메스) Claude 세션이 협업 개발, **실행 게이트(verify.sh)가 심판**. 헤르메스 §7-2 dev-pipeline의 졸업판, Mindboard(React+FastAPI) T1~T12 green 검증 완료. ✅ 로컬 동작·GitHub push
@@ -73,7 +73,7 @@ _(아직 없음)_
 > 회사(사내 AI 챗봇) 기밀 콘텐츠는 **PC 전용 `sj-wiki-work` vault**에 분리 보관한다. 이 vault(클라우드 동기화 대상)에는 절대 두지 않는다.
 
 > [!note] 작성 후보 (forward link)
-> - [[claude-api]] — LLM/에이전트 개발 시 참조용. [[Cogi-POC-Generator]]에 LLM을 붙일 때 작성 예정.
+> - [[claude-api]] — LLM/에이전트 개발 시 참조용. [[CogInsight-Generator]]에 LLM을 붙일 때 작성 예정.
 > - [[schedule-to-todomate]] — 새 일정 → TodoMate(코워크) 등록 흐름. [[Teams-Gmail-캘린더-Gemini-연동]]에서 참조. (코워크 전용·CLI 미연결 → 작성 예정)
 > - [[Gemini]] · [[Playwright]] · [[GitHub Actions]] — [[mailer]]에서 쓰는 도구(LLM 로그분석·E2E 챗봇체크·CI). 범용 도구라 페이지는 필요 시에만, 현재는 의도된 끊긴 forward-link.
 

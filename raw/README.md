@@ -15,7 +15,7 @@
 | **notepad** | 프론트엔드 | 2026-05-04 | ✅ 프로덕션 안정 |
 | **mailer** | 풀스택 | 2026-06-08 | 🔄 개발 중 |
 | **schedule-reporter-kakao** | 풀스택 | 2026-06-08 | 🔄 개발 중 |
-| **Cogi-POC-Generator-v1** | 프론트엔드 | 2026-05-27 | ✅ 배포 준비 |
+| **CogInsight-Generator** | 프론트엔드 | 2026-05-27 | ✅ 배포 준비 |
 
 ### 기타 프로젝트 (3개)
 
@@ -32,7 +32,7 @@ raw/
 ├── README.md              # 이 파일
 ├── projects.json          # 전체 프로젝트 메타데이터 (JSON)
 └── projects/
-    ├── cogi-poc-generator-v1.md
+    ├── coginsight-generator.md
     ├── mailer.md
     ├── notepad.md
     ├── schedule-reporter-kakao.md
@@ -86,7 +86,7 @@ raw/
 
 ### 상세 문서 있음
 - ✅ **notepad**: CLAUDE.md (매우 상세)
-- ✅ **Cogi-POC-Generator-v1**: 배포 문서 완비
+- ✅ **CogInsight-Generator**: 배포 문서 완비
 - ✅ **mailer/schedule-reporter-kakao**: CLAUDE.md (Vercel 모범 사례)
 
 ### 부분 문서

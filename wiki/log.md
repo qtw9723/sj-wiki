@@ -3,38 +3,44 @@ title: 작업 이력 (Log)
 category: 시스템
 tags: [log, 이력]
 created: 2026-06-10
-updated: 2026-07-08
+updated: 2026-07-09
 ---
 
-## [2026-07-08] 질문 | Cogi v0.2.1 핫픽스 — ESD 스키마 파생 버그 (발표 준비 중 발견)
-- 데모 봇에서 ESD 산출물(esd_schemas)이 항상 빈 배열 → 원인=collectEsdFields의 schemaName 경로 버그(config.query.schemaName). 수정+회귀테스트, PR #100 머지·tag v0.2.1·프로덕션 cogi-generator 재배포·재생성 검증(e72f4e26). 공개 cogi-overview·아티팩트·[[Cogi-POC-Generator]]·시연대본 v0.2.1 반영.
+## [2026-07-09] 자료넣기 | 프로젝트명 전면 변경 — CogInsight Generator (v0.2.2 릴리스 + 전 인프라·위키·메모리 리네임)
+- 📄 사용자 확정: 구명(4글자 코드네임)이 **사용 불가 판정** → "모든 곳의 모든 흔적" 변경 지시. 범위=라이브 인프라까지 전부 + raw/ 수정 예외 승인, git 이력은 유지.
+- 집행: ① 저장소 main 리네임(122파일)+PR #101 머지·tag v0.2.2·Release ② 라이브 DB 객체 48건 rename(데이터 무손실 검증) ③ 엣지함수 25종 재배포·신규 슬러그 `coginsight-generator(-dev)`·구 슬러그 삭제 ④ GitHub repo `CogInsight-Generator`·로컬 폴더 rename ⑤ Vercel 앱 `coginsight-generator.vercel.app`·개요 `coginsight-overview.vercel.app`(구 URL 폐기·404 확인)+아티팩트 동기화 ⑥ v0.3.0 dev 브랜치 동일 적용(134파일, deno 228 green)+dev 래퍼 7종 재배포 ⑦ 위키 23파일 치환+페이지 파일명 `CogInsight-Generator.md`+raw 4파일(파일명 1건 포함) ⑧ 메모리 갱신.
+- ⚠ 소급 치환 고지: log.md 과거 항목·위키 본문 속 구명·구 URL·구 테이블명도 새 이름으로 일괄 치환됨(append-only 원칙의 승인된 예외 — 사실 관계는 불변, 명칭만 현행화). 의도 잔존 = 양 저장소 git 커밋 이력.
+- 영향 페이지: [[CogInsight-Generator]](스냅샷·버전표·진행로그) · [[index]] · [[프로젝트-포트폴리오]] · [[parking]] 외 링크 페이지 15종(문자열 치환).
 
-## [2026-07-08] 질문 | Cogi 생성 파이프라인 스테이지 라벨 함수명化
-- 누적 삽입 뜀번호(2.9·3.65·3.75 등) → 함수명 라벨 일괄 치환(17파일), index.ts에 이름↔레거시번호 매핑표 추가(이력 추적). deno 221 green. v0.3.0 dev 브랜치(feat/v0.3.0-observability-regression)에 ff-머지·push(7cf1d75), main·프로덕션 미반영. [[Cogi-POC-Generator]] 진행로그 기록.
+## [2026-07-08] 질문 | CogInsight v0.2.1 핫픽스 — ESD 스키마 파생 버그 (발표 준비 중 발견)
+- 데모 봇에서 ESD 산출물(esd_schemas)이 항상 빈 배열 → 원인=collectEsdFields의 schemaName 경로 버그(config.query.schemaName). 수정+회귀테스트, PR #100 머지·tag v0.2.1·프로덕션 coginsight-generator 재배포·재생성 검증(e72f4e26). 공개 coginsight-overview·아티팩트·[[CogInsight-Generator]]·시연대본 v0.2.1 반영.
 
-## [2026-07-08] 질문 | Cogi 발표용 공개 개요 페이지 v0.3.0 진행분 반영
-- 오늘 발표(공개 문서·사내 실무/보고 톤)용으로 [[Cogi-POC-Generator]] 현 개발분(프로덕션 v0.2.0 + v0.3.0 dev 진행)까지 정리해 공개 페이지 **cogi-overview.vercel.app** 재배포(200) + claude.ai 아티팩트(1e30660a) 동기화.
+## [2026-07-08] 질문 | CogInsight 생성 파이프라인 스테이지 라벨 함수명化
+- 누적 삽입 뜀번호(2.9·3.65·3.75 등) → 함수명 라벨 일괄 치환(17파일), index.ts에 이름↔레거시번호 매핑표 추가(이력 추적). deno 221 green. v0.3.0 dev 브랜치(feat/v0.3.0-observability-regression)에 ff-머지·push(7cf1d75), main·프로덕션 미반영. [[CogInsight-Generator]] 진행로그 기록.
+
+## [2026-07-08] 질문 | CogInsight 발표용 공개 개요 페이지 v0.3.0 진행분 반영
+- 오늘 발표(공개 문서·사내 실무/보고 톤)용으로 [[CogInsight-Generator]] 현 개발분(프로덕션 v0.2.0 + v0.3.0 dev 진행)까지 정리해 공개 페이지 **coginsight-overview.vercel.app** 재배포(200) + claude.ai 아티팩트(1e30660a) 동기화.
 - 갱신: 히어로 배지·통계(713커밋/29함수/64마이그레이션)·"진행 현황"에 v0.3.0 진행 섹션 신설·버전 히스토리 v0.3.0 (계획→개발 중). 위키 버전표·진행 로그 미러 갱신.
-- 추가(사용자 요청): 공개 doc "생성 내부 로직"의 뜀 번호(2.9·2.95·3.65·3.75)를 **①설계→②전개→③안전장치 3단계 계층 번호**(앞자리=단계, 2.1~2.3·3.1~3.8)로 정리, 표에 단계 그룹 헤더 추가·함수명 유지. ⚠ 공개 doc는 **표시용 간소 번호**, 실제 코드 스테이지 번호(위키 [[Cogi-POC-Generator]] §주요기능·§생성 파이프라인은 2.9/3.65/3.75 유지)와 의도적 분리 — 함수명이 대응 앵커. 재배포·아티팩트 동기화 완료.
+- 추가(사용자 요청): 공개 doc "생성 내부 로직"의 뜀 번호(2.9·2.95·3.65·3.75)를 **①설계→②전개→③안전장치 3단계 계층 번호**(앞자리=단계, 2.1~2.3·3.1~3.8)로 정리, 표에 단계 그룹 헤더 추가·함수명 유지. ⚠ 공개 doc는 **표시용 간소 번호**, 실제 코드 스테이지 번호(위키 [[CogInsight-Generator]] §주요기능·§생성 파이프라인은 2.9/3.65/3.75 유지)와 의도적 분리 — 함수명이 대응 앵커. 재배포·아티팩트 동기화 완료.
 
-## [2026-07-08] 자료넣기 | Cogi 결정 대기 3건 사용자 결정·집행
-- 📄 사용자 결정: ① node_modules 6,780파일 → **v0.3.0 브랜치에서** 추적 해제(`209995d` push, 머지 PR에 -6,780 포함 감수) ② AGENTS.md → .gitignore 등록(같은 커밋) ③ "LLM 노드 샘플 (7/2 발췌)" → **지금 파생 실행**: `derive-node-specs` 호출, pending→completed(노드 7종·경고 0) 재조회 검증 — cogi_references 4건 전부 completed. [[Cogi-POC-Generator]] 해소 표시 갱신.
+## [2026-07-08] 자료넣기 | CogInsight 결정 대기 3건 사용자 결정·집행
+- 📄 사용자 결정: ① node_modules 6,780파일 → **v0.3.0 브랜치에서** 추적 해제(`209995d` push, 머지 PR에 -6,780 포함 감수) ② AGENTS.md → .gitignore 등록(같은 커밋) ③ "LLM 노드 샘플 (7/2 발췌)" → **지금 파생 실행**: `derive-node-specs` 호출, pending→completed(노드 7종·경고 0) 재조회 검증 — coginsight_references 4건 전부 completed. [[CogInsight-Generator]] 해소 표시 갱신.
 - 🧠 잔여(결정 아님·사용자 실행 몫): 서비스 롤 키 재발급, 피드백 스크린샷 로컬 화면 실검증, llmloop 런타임 검증.
 
-## [2026-07-07] 자료넣기 | Cogi 오늘 작업 문서 전체 정합화 (프로젝트 업데이트)
-- 📄 라이브 저장소 대조(마지막 커밋 17:51 `8471c0c` ≤ 위키 갱신 17:59): 메인 페이지 진행 로그는 최신 확인. 뒤처진 문서 정합화 — ①[[Cogi-POC-Generator]] 진행 현황 헤더를 7/7(v0.2.0 유지·v0.3.0 dev 진행)로, 로드맵 작업 항목을 저장소 ROADMAP.md 미러로(1·2 ✅, 3 시드 추가 구현, 4 🔶 부분), 버전표 v0.3.0 행·피드백 기능 줄 보강, 깨진 진행 현황 앵커 수정 ②[[프로젝트-포트폴리오]]·[[index]]의 Cogi 상태가 "v0.1.0 동결·v0.2.0 설계만"으로 낡아 있던 것을 현행(v0.2.0 릴리스·v0.3.0 dev)으로 갱신.
+## [2026-07-07] 자료넣기 | CogInsight 오늘 작업 문서 전체 정합화 (프로젝트 업데이트)
+- 📄 라이브 저장소 대조(마지막 커밋 17:51 `8471c0c` ≤ 위키 갱신 17:59): 메인 페이지 진행 로그는 최신 확인. 뒤처진 문서 정합화 — ①[[CogInsight-Generator]] 진행 현황 헤더를 7/7(v0.2.0 유지·v0.3.0 dev 진행)로, 로드맵 작업 항목을 저장소 ROADMAP.md 미러로(1·2 ✅, 3 시드 추가 구현, 4 🔶 부분), 버전표 v0.3.0 행·피드백 기능 줄 보강, 깨진 진행 현황 앵커 수정 ②[[프로젝트-포트폴리오]]·[[index]]의 CogInsight 상태가 "v0.1.0 동결·v0.2.0 설계만"으로 낡아 있던 것을 현행(v0.2.0 릴리스·v0.3.0 dev)으로 갱신.
 - 📄 저장소 CHANGELOG [0.3.0]에 7/7 누락분 보강 커밋·push(`5e8e487`): 시드 UX 3건·드롭다운 렌더 경로 픽스·피드백 스크린샷 첨부. (ROADMAP.md·CLAUDE.md는 이미 최신, 공개 개요 페이지는 dev 상세 비공개 원칙이라 무변경)
 
-## [2026-07-07] 자료넣기 | Cogi 피드백 스크린샷 첨부 구현 — 체크 시 뷰포트 캡처·미리보기·어드민 확대 (dev 전용)
-- 📄 사용자 제안: 팝오버 체크박스 → 체크 시점 DOM 캡처(html-to-image, 피드백 UI 제외)·미리보기·best-effort 전송. `dev_cogi_feedback` 사본(+screenshot 컬럼)·`feedback-dev` 슬러그·프로덕션 마이그레이션 파일(작성만). dev API 검증 4종+격리 통과. [[Cogi-POC-Generator]] 갱신.
+## [2026-07-07] 자료넣기 | CogInsight 피드백 스크린샷 첨부 구현 — 체크 시 뷰포트 캡처·미리보기·어드민 확대 (dev 전용)
+- 📄 사용자 제안: 팝오버 체크박스 → 체크 시점 DOM 캡처(html-to-image, 피드백 UI 제외)·미리보기·best-effort 전송. `dev_coginsight_feedback` 사본(+screenshot 컬럼)·`feedback-dev` 슬러그·프로덕션 마이그레이션 파일(작성만). dev API 검증 4종+격리 통과. [[CogInsight-Generator]] 갱신.
 - ⚠ 별건 발견: node_modules 6,780파일 git 추적 중(기존 결함 — 정리 여부 사용자 결정 대기), 루트 미추적 AGENTS.md(타 도구 생성 추정).
 
-## [2026-07-07] 자료넣기 | Cogi v0.4.0 계획(레퍼런스 다이어그램 시각화) 문서 전체 반영
+## [2026-07-07] 자료넣기 | CogInsight v0.4.0 계획(레퍼런스 다이어그램 시각화) 문서 전체 반영
 - 📄 사용자 지시("전체 문서에도 적용"): v0.4.0 계획을 ①저장소 ROADMAP.md(기반영) ②공개 개요 페이지 버전 히스토리에 "v0.4.0 (예정)" 행 추가 → **`vercel --prod` 재배포**(200·행 라이브 확인) ③claude.ai 아티팩트 원본 동기화(label `v0.4.0-plan-row`) ④위키 버전표에 v0.4.0(예정)·v0.3.0(계획) 행 추가(공개 페이지 mirror 규칙 — 위키표에 v0.3.0 행이 누락돼 있던 것도 정합화).
 
-## [2026-07-07] 자료넣기 | Cogi 레퍼런스 구조 시드 생성 구현 — 설문에서 레퍼런스 선택 → 결정론 복제 생성
+## [2026-07-07] 자료넣기 | CogInsight 레퍼런스 구조 시드 생성 구현 — 설문에서 레퍼런스 선택 → 결정론 복제 생성
 - 📄 사용자 제안 기능: 설문 시나리오 항목에 "레퍼런스 선택" 드롭다운(프론트 주입 — 공유 templates 무접촉) → 선택 시 STAGE 3.68이 레퍼런스 플로우를 구조 시드(결정론 복제, 진입 발화만 설문 값). `scenario_examples.seeded` 관측성 + 하네스 실측 어서션 + fixture. dev 전용(브랜치 25커밋, main 미머지).
-- ⚠ 최종 브랜치 리뷰가 결함 3건 발견·수정: 이중 트리거 게이트(설문 발화≠레퍼런스 트리거면 도달 불가) / 3.7 수집형 체인의 시드 파괴 / 동어반복 어서션 — **3중 검증이 같은 사각지대를 공유**했던 사례. 다른 진입 발화 실검증 PASS 후 Ready. [[Cogi-POC-Generator]] 갱신.
+- ⚠ 최종 브랜치 리뷰가 결함 3건 발견·수정: 이중 트리거 게이트(설문 발화≠레퍼런스 트리거면 도달 불가) / 3.7 수집형 체인의 시드 파괴 / 동어반복 어서션 — **3중 검증이 같은 사각지대를 공유**했던 사례. 다른 진입 발화 실검증 PASS 후 Ready. [[CogInsight-Generator]] 갱신.
 
 ## [2026-07-07] 셋업 | 올림푸스 마일스톤 진행도 알림 구현 + push
 - 📄 "전부 진행" 지시: ①토큰로깅+완료메일 커밋 origin push(71a360e) ②사용자 스펙(마일스톤 진행도 알림) 구현.
@@ -54,7 +60,7 @@ updated: 2026-07-08
 
 ## [2026-07-07] 자료넣기 | usage-report.sh 개요모드(전 프로젝트 누적)
 - 📄 usage-report.sh 확장: 인자없음=전 프로젝트 누적 개요(프로젝트별 호출·출력·총tok·환산$·사용기간, 소비순), 숫자=개요+기간, 문자=상세. 라벨정리(홈-CLI세션 등). 런북 §F 갱신.
-- 📄 개요 실측: 홈-CLI 최다 / Cogi $274·sj-wiki $235·올림푸스(dev-pipeline) $101·mailer $88.
+- 📄 개요 실측: 홈-CLI 최다 / CogInsight $274·sj-wiki $235·올림푸스(dev-pipeline) $101·mailer $88.
 
 ## [2026-07-07] 자료넣기 | 올림푸스 토큰 사용량 관측(모델은 Claude 유지)
 - 📄 `~/IdeaProjects/olympus/usage-report.sh` 신규(read-only, 파이프라인 무수정). ~/.claude/projects/*.jsonl(assistant 라인 .message.usage) 집계 → 모델별·일자별·환산$. bash3.2/BSD awk 호환(mapfile·asorti 제거) 검증 완료.
@@ -78,27 +84,27 @@ updated: 2026-07-08
 
 ## [2026-07-07] 자료넣기 | GLM(Zhipu/Z.ai) 모델·요금 웹 스크랩 정리
 - 📄 신규 페이지 [[GLM-Zhipu-Z-ai]]: 모델 라인업(GLM-4.5~5.2·무료 Flash) + API 요금표(공식 z.ai) + Coding Plan 3티어(Lite $18/Pro $72/Max $160) + GLM-4.6 스펙(200K·357B MoE·MIT).
-- 🧠 사용자 관점 적용: [[올림푸스-Olympus]] 토큰비·[[Cogi-POC-Generator]] 백엔드(현 gpt-4o) 저가 대체 후보로 프레이밍. ⚠ 중국 모델→회사 데이터 거버넌스 주의 명시. index.md 도구/스킬에 등록.
+- 🧠 사용자 관점 적용: [[올림푸스-Olympus]] 토큰비·[[CogInsight-Generator]] 백엔드(현 gpt-4o) 저가 대체 후보로 프레이밍. ⚠ 중국 모델→회사 데이터 거버넌스 주의 명시. index.md 도구/스킬에 등록.
 
-## [2026-07-06] 자료넣기 | Cogi 시나리오 레퍼런스 6종 제작·등록 + few-shot 전/후 비교 (로드맵 항목 1·2 완료)
+## [2026-07-06] 자료넣기 | CogInsight 시나리오 레퍼런스 6종 제작·등록 + few-shot 전/후 비교 (로드맵 항목 1·2 완료)
 - 📄 산업군별 미니봇 6종(계좌 잔액 조회/배송 조회/반품 접수/대량주문 견적/진료 예약/이용 안내 FAQ)을 **생성기 초안→수동 교정→품질 게이트→dev 등록**으로 제작. 게이트 6/6 PASS, dev 6건·프로덕션 0건(격리 유지).
 - 📄 **few-shot 첫 실검증**: 전/후 비교에서 3개 fixture 전부 `injected=true`, 산업군별 올바른 레퍼런스 선택(picked), `rules_hash` 완전 동일(순수 레퍼런스 효과 분리 — 관측성 스냅샷의 실전 성과). ROADMAP 항목 1·2 ✅, 항목 4 부분 완료.
-- ⚠ 발견 2건: ① 도매 초안에서 **백로그 1번(LLM flag 루프 탈출 set 누락)이 실재현** — 하네스가 잡아내고 교정으로 해소(하네스 실전 첫 성과) ② few-shot 도입 후 api-esd에 `placeholder-leak` 신규 FAIL — Instruction Bleed형 부작용을 하네스가 포착, 항목 6 백로그. → [[Cogi-POC-Generator]] 갱신.
+- ⚠ 발견 2건: ① 도매 초안에서 **백로그 1번(LLM flag 루프 탈출 set 누락)이 실재현** — 하네스가 잡아내고 교정으로 해소(하네스 실전 첫 성과) ② few-shot 도입 후 api-esd에 `placeholder-leak` 신규 FAIL — Instruction Bleed형 부작용을 하네스가 포착, 항목 6 백로그. → [[CogInsight-Generator]] 갱신.
 
-## [2026-07-06] 자료넣기 | Cogi 시나리오 레퍼런스 dev 사본 체계 구축 — dev_cogi_scenario_references + 승격 규약
-- 📄 사용자 확정: 레퍼런스 등록은 **dev 사본에서 테스트 후 프로덕션으로 마이그레이션(승격)**. `dev_cogi_scenario_references` 생성(프로덕션 미러, 0건) + generator·scenario-references 함수 T() 배선 + `scenario-references-dev` 슬러그 + 프론트 devable 전환 + 러너 `--only` 필터. 승격·리셋 절차를 저장소 CLAUDE.md DEV 규약에 명문화(dev 테이블 3→4개, 래퍼 5→6개).
+## [2026-07-06] 자료넣기 | CogInsight 시나리오 레퍼런스 dev 사본 체계 구축 — dev_coginsight_scenario_references + 승격 규약
+- 📄 사용자 확정: 레퍼런스 등록은 **dev 사본에서 테스트 후 프로덕션으로 마이그레이션(승격)**. `dev_coginsight_scenario_references` 생성(프로덕션 미러, 0건) + generator·scenario-references 함수 T() 배선 + `scenario-references-dev` 슬러그 + 프론트 devable 전환 + 러너 `--only` 필터. 승격·리셋 절차를 저장소 CLAUDE.md DEV 규약에 명문화(dev 테이블 3→4개, 래퍼 5→6개).
 - 📄 **dev 스모크 전수 통과**: 등록→dev 1건/프로덕션 0건(격리)→조립→few-shot 생성 `injected=true`·`picked=[스모크-진료예약봇]`→정리(dev 0건 복귀, 프로덕션 0건 재확인). 프론트 빌드 그린. 브랜치 `feat/v0.3.0-observability-regression`에 2커밋 추가(총 16), origin 푸시.
-- ⚠ DDL은 Management API 토큰(과거 방식: `mailer/.env`의 `SUPABASE_ACCESS_TOKEN`)이 자동 모드에서 차단돼 사용자가 `!`로 직접 실행 — 다음부터 Cogi `.env.local`에 토큰 두면 자동화 가능. → [[Cogi-POC-Generator]] 갱신. 다음 단계 = 로드맵 항목 1(산업군별 레퍼런스 제작·dev 등록).
+- ⚠ DDL은 Management API 토큰(과거 방식: `mailer/.env`의 `SUPABASE_ACCESS_TOKEN`)이 자동 모드에서 차단돼 사용자가 `!`로 직접 실행 — 다음부터 CogInsight `.env.local`에 토큰 두면 자동화 가능. → [[CogInsight-Generator]] 갱신. 다음 단계 = 로드맵 항목 1(산업군별 레퍼런스 제작·dev 등록).
 
-## [2026-07-06] 질문 | Instruction Bleed 개선 논의 → Cogi 생성 관측성 + 프롬프트 회귀 하네스 구현 (dev 전용)
-- [[AI-주간-소식-2026-W26]]의 **Instruction Bleed**(프롬프트 모듈 교차 간섭)를 [[Cogi-POC-Generator]]에 적용할 개선안 논의 → 사용자 승인으로 **설계→계획→구현까지 완료**. 📄 브랜치 `feat/v0.3.0-observability-regression`(13커밋, origin 푸시 완료, main 미머지 — dev 전용 규약 준수).
+## [2026-07-06] 질문 | Instruction Bleed 개선 논의 → CogInsight 생성 관측성 + 프롬프트 회귀 하네스 구현 (dev 전용)
+- [[AI-주간-소식-2026-W26]]의 **Instruction Bleed**(프롬프트 모듈 교차 간섭)를 [[CogInsight-Generator]]에 적용할 개선안 논의 → 사용자 승인으로 **설계→계획→구현까지 완료**. 📄 브랜치 `feat/v0.3.0-observability-regression`(13커밋, origin 푸시 완료, main 미머지 — dev 전용 규약 준수).
 - **Part C 관측성**: 모든 생성 결과 `generation_tiers`에 `scenario_examples`(few-shot 주입 기록 — "조용한 skip" 제거)·`rules_snapshot`(규칙 세트 SHA-256 지문 + 스테이지별 해시 = 다단계 규칙 blast radius 노출) 기록. DDL 없음.
-- **Part A-lite 회귀 하네스**: `scripts/prompt-regression/` — fixture 3종(수집형+검증루프/LLM Q&A/API+ESD) × 속성 어서션(welcome 루트·anythingelse 1회성·단일부모·도달성·llmloop 빈 키/모델·**flag 루프 탈출 set 존재**(백로그 "육안 확인"의 자동화)·placeholder leak). `cogi-generator-dev` 실호출, 질문 text 매칭(dev 리셋 id 재발급 대응).
+- **Part A-lite 회귀 하네스**: `scripts/prompt-regression/` — fixture 3종(수집형+검증루프/LLM Q&A/API+ESD) × 속성 어서션(welcome 루트·anythingelse 1회성·단일부모·도달성·llmloop 빈 키/모델·**flag 루프 탈출 set 존재**(백로그 "육안 확인"의 자동화)·placeholder leak). `coginsight-generator-dev` 실호출, 질문 text 매칭(dev 리셋 id 재발급 대응).
 - **기준선 확보**: 레퍼런스 등록 前 3 fixture 전부 PASS(`runs/2026-07-06-baseline.json`) = 로드맵 항목 2 "전/후 비교"의 '전' 데이터. 서브에이전트 구동 개발(태스크 6개+리뷰 게이트, 최종 판정 Ready).
 - ⚠ 발견: `.env.local`의 `VITE_SUPABASE_SERVICE_ROLE_KEY` **무효(401)** — anon 키로 우회(dev_questions 읽기 가능). 재발급 필요 시 대비 기록. / 기존 코드-스키마 불일치(`deriveApiDefs.ts`의 'API 이름'·'받을 정보' 필드가 현 템플릿에 없음) — 별도 백로그.
 
-## [2026-07-06] 자료넣기 | Cogi v0.3.0 로드맵 수립 — 시나리오 레퍼런스 라이브러리 테스트·고도화
-- 📄 사용자 확정: **v0.3.0 = 시나리오 라이브러리 테스트·고도화**(레퍼런스 0건·조립 미테스트 → 라이브러리 활용 결과 생성 테스트). 단 **v0.3.0 작업은 프로덕션 무배포·dev 전용**(같은 날 정정 확정) — 배포는 로드맵 문서만. [[Cogi-POC-Generator]]에 로드맵 섹션 신설 + 진행 현황·업데이트 로그 갱신, 기존 v0.3 후보는 백로그(버전 미정)로 이동.
+## [2026-07-06] 자료넣기 | CogInsight v0.3.0 로드맵 수립 — 시나리오 레퍼런스 라이브러리 테스트·고도화
+- 📄 사용자 확정: **v0.3.0 = 시나리오 라이브러리 테스트·고도화**(레퍼런스 0건·조립 미테스트 → 라이브러리 활용 결과 생성 테스트). 단 **v0.3.0 작업은 프로덕션 무배포·dev 전용**(같은 날 정정 확정) — 배포는 로드맵 문서만. [[CogInsight-Generator]]에 로드맵 섹션 신설 + 진행 현황·업데이트 로그 갱신, 기존 v0.3 후보는 백로그(버전 미정)로 이동.
 - 저장소: `ROADMAP.md` 신설 + CLAUDE.md 포인터 — **PR #99 머지 완료**(사용자 승인, main `14cca10`, 문서만). 공개 개요 페이지에 v0.3.0(계획) 행 **재배포 완료**(200 확인) + claude.ai 아티팩트 원본 동기화.
 
 ## [2026-07-06] 자료넣기 | AI 다이제스트 2026-07-06 위키화 검증 — W27에 이미 전량 반영 (중복 작업 없음)
@@ -116,22 +122,22 @@ updated: 2026-07-08
 ## [2026-07-03] 자료넣기 | 팀숲 raw 2건 위키화 검증 — index.md 최신화
 - raw/팀숲-배포후-현황·이펙트-역제안(2026-07-03) 2건은 [[팀숲-bible-forest]]·log에 이미 반영 완료 확인(중복 작업 없음). 다만 index의 팀숲 항목이 "7/1 배포 예정"으로 stale → **7/2 배포 완료·서비스 중, 다음 작업(②랭크·이펙트→①도감, ③신약 1독 리워드 기획), 협업 규칙(디자인은 디자이너 경유)** 기준으로 갱신.
 
-## [2026-07-03] 질문 | Cogi 공개 페이지 그림 A-3 교체 — v0.2.0 UI 실캡처(Playwright CDP)
+## [2026-07-03] 질문 | CogInsight 공개 페이지 그림 A-3 교체 — v0.2.0 UI 실캡처(Playwright CDP)
 - 사용자 Chrome 로그인 세션을 임시 프로필(Local Storage·쿠키)로 이전해 CDP(9223)+playwright-core로 프로덕션 앱 설문을 자동 구성(수집·ESD 연동·AI 자유응답=예/문서 검색) → 외부 연동~AI 지식소스 영역을 2x 클립 캡처. 그림 A-3 이미지·캡션("AI 자유응답 필드 — 사용=예 선택 시 지식소스 표시") 교체 — 사용자 피드백으로 조각 크롭 → **앱 전체 화면 캡처**(헤더·v0.2.0 배지 포함, 1440×1200@2x)로 재교체, vercel 재배포·아티팩트 동기화. 캡처 후 임시 프로필(쿠키 사본) 삭제. ⚠ 기본 프로필 CDP는 최신 Chrome에서 차단 — 이 우회가 재사용 패턴.
 
-## [2026-07-03] 질문 | Cogi 공개 페이지 본문을 v0.2.0 기준으로 개정·재배포
-- cogi-overview.vercel.app 본문 개정: 배지 "현재 버전 v0.2.0", 통계 갱신, 파이프라인에 Stage 3.65/3.7/3.75, 신규 "v0.2.0 — AI 자유응답(LLM 노드)" 섹션(지식소스 표·수집형 체인·키 입력 안내), 매뉴얼 A-2/A-5 보강. 라이브 200·내용 확인, claude.ai 아티팩트 원본 동기화. [[Cogi-POC-Generator]] SoP 섹션 기록.
+## [2026-07-03] 질문 | CogInsight 공개 페이지 본문을 v0.2.0 기준으로 개정·재배포
+- coginsight-overview.vercel.app 본문 개정: 배지 "현재 버전 v0.2.0", 통계 갱신, 파이프라인에 Stage 3.65/3.7/3.75, 신규 "v0.2.0 — AI 자유응답(LLM 노드)" 섹션(지식소스 표·수집형 체인·키 입력 안내), 매뉴얼 A-2/A-5 보강. 라이브 200·내용 확인, claude.ai 아티팩트 원본 동기화. [[CogInsight-Generator]] SoP 섹션 기록.
 
-## [2026-07-03] 프로젝트업데이트 | Cogi v0.2.0 프로덕션 릴리스 — 4축 완료·dev 리셋·버전 히스토리 갱신
+## [2026-07-03] 프로젝트업데이트 | CogInsight v0.2.0 프로덕션 릴리스 — 4축 완료·dev 리셋·버전 히스토리 갱신
 - **릴리스 수행**: PR #98 머지(`36d0181`, 충돌은 롤백 무효화 merge로 해소 — 잘못 태깅된 v0.2.0을 삭제 후 재태깅), tag `v0.2.0`+GitHub Release, DB 마이그레이션 6개 push·재조회 검증(AI 질문 3행·규칙 2행 dev 일치), 프로덕션 함수 5종 배포, **프로덕션 스모크 생성 전수 통과 후 삭제**, Vercel 번들 v0.2.0 확인.
 - **dev 리셋(규약)**: dev_ 테이블 프로덕션 미러 재시드(diff 0)·results 비움. ⚠ 질문 id 재발급 — 이후 dev 테스트는 새 id.
-- **문서**: [[Cogi-POC-Generator]] 릴리스 기준 전면 갱신(스냅샷·진행 현황·v0.2.0 블록·버전표), 공개 페이지(cogi-overview.vercel.app) 버전 히스토리에 v0.2.0 행 추가·재배포(200 확인).
+- **문서**: [[CogInsight-Generator]] 릴리스 기준 전면 갱신(스냅샷·진행 현황·v0.2.0 블록·버전표), 공개 페이지(coginsight-overview.vercel.app) 버전 히스토리에 v0.2.0 행 추가·재배포(200 확인).
 
-## [2026-07-03] 질문 | Cogi — STAGE 3.75 api 결과 예외 처리 보장 추가, 홀드 지점 c4b97bf
-- 사용자 요구("api 결과에는 항상 예외 처리") 반영: 레퍼런스(한화 봇) 관용구 [성공 자식(저장 변수 조건)→catch-all 실패 output]을 모든 api 노드에 결정론 보장(apiResultGuard.ts, deno 203 tests). dev 재검증 `d7083216` 통과. [[Cogi-POC-Generator]] 홀드 지점 `c4b97bf` 갱신.
+## [2026-07-03] 질문 | CogInsight — STAGE 3.75 api 결과 예외 처리 보장 추가, 홀드 지점 c4b97bf
+- 사용자 요구("api 결과에는 항상 예외 처리") 반영: 레퍼런스(한화 봇) 관용구 [성공 자식(저장 변수 조건)→catch-all 실패 output]을 모든 api 노드에 결정론 보장(apiResultGuard.ts, deno 203 tests). dev 재검증 `d7083216` 통과. [[CogInsight-Generator]] 홀드 지점 `c4b97bf` 갱신.
 
-## [2026-07-03] 질문 | Cogi — LLM-구동 플로우 체인(수집형 새 규격) 구현·검증, 홀드 지점 886f55f로 갱신
-- 사용자 재정의(시나리오 LLM은 Q&A 부착이 아니라 llmloop이 플로우 자체를 구성 — 항목별 전담 llmloop·tool 분기·기본 응답) 반영: `llmFlowChain.ts` 체인 규격 구현(TDD 197 tests), 루트 부재 결정론 보장, docsearch 카탈로그 제외, 규칙·마이그레이션(130000). dev API 매트릭스 `bc678750` 전수 통과(2단계 체인+ESD 재배선+전 경로 회귀). [[Cogi-POC-Generator]] v0.2.0 블록에 "확장 2" 추가, 홀드 지점 `886f55f`.
+## [2026-07-03] 질문 | CogInsight — LLM-구동 플로우 체인(수집형 새 규격) 구현·검증, 홀드 지점 886f55f로 갱신
+- 사용자 재정의(시나리오 LLM은 Q&A 부착이 아니라 llmloop이 플로우 자체를 구성 — 항목별 전담 llmloop·tool 분기·기본 응답) 반영: `llmFlowChain.ts` 체인 규격 구현(TDD 197 tests), 루트 부재 결정론 보장, docsearch 카탈로그 제외, 규칙·마이그레이션(130000). dev API 매트릭스 `bc678750` 전수 통과(2단계 체인+ESD 재배선+전 경로 회귀). [[CogInsight-Generator]] v0.2.0 블록에 "확장 2" 추가, 홀드 지점 `886f55f`.
 
 ## [2026-07-03] 자료넣기 | 팀숲 — 랭크 이펙트 진행 방식 확정 (사용자 구두 확정)
 - 이펙트는 **프론트(유혁상)가 공개 에셋/라이브러리 조사 후 역제안**, 2026-07-03 밤 진행 예정. raw/팀숲-이펙트-역제안-사용자전달-2026-07-03.md 보관, [[팀숲-bible-forest]] 다음 작업 표 갱신.
@@ -149,11 +155,11 @@ updated: 2026-07-08
 ## [2026-07-03] 질문 | 올림푸스 원격 브리지 재검토 → 최종 승인 Gmail 답장 경로 구현·E2E
 - 브리지 과설계/토큰/더 나은 방식 고민 → "구조 유지, 최종 승인(잦은 yes/no)만 경량화" 결론. 블로커·의도질문=GitHub 유지, 최종 승인=**메일 답장 첫 줄 y/n**(신규 서비스 0, SMTP 앱비번 IMAP 재사용). `inbox_imap.py`+`remote_approve_email`+`run.sh` 분기, 라이브 E2E 통과(발송→폰 y→감지). 실버그 1건(bash 3.2 빈배열 crash) E2E로 포착·수정. 올림푸스 repo PR #2 스쿼시 머지 완료(main `5178882`). [[올림푸스-Olympus]]·[[올림푸스-기획요청서-작성요령]] 갱신.
 
-## [2026-07-03] 질문 | Cogi v0.2.0 머지 전 최종 검증(전 기능 매트릭스) — 버그 1건 발견·수정 후 전수 통과
-- dev API로 시나리오 6종(docs/general/mixed+수집·검증루프/미사용/API 연동/ESD 연동+LLM 결합)+전역 둘 다(docs)를 한 봇으로 생성해 전수 점검. **메뉴 llmloop 주입이 시나리오 llmloop에 가려지는 결합 버그** 발견 → TDD 수정(`9a5e96a`, deno 185 tests) → 최종 `8598c9c5` 전 항목 통과(API 정의·ESD 스키마는 generation_tiers 별도 산출물임도 확인). [[Cogi-POC-Generator]] 홀드 지점을 `9a5e96a`로 갱신.
+## [2026-07-03] 질문 | CogInsight v0.2.0 머지 전 최종 검증(전 기능 매트릭스) — 버그 1건 발견·수정 후 전수 통과
+- dev API로 시나리오 6종(docs/general/mixed+수집·검증루프/미사용/API 연동/ESD 연동+LLM 결합)+전역 둘 다(docs)를 한 봇으로 생성해 전수 점검. **메뉴 llmloop 주입이 시나리오 llmloop에 가려지는 결합 버그** 발견 → TDD 수정(`9a5e96a`, deno 185 tests) → 최종 `8598c9c5` 전 항목 통과(API 정의·ESD 스키마는 generation_tiers 별도 산출물임도 확인). [[CogInsight-Generator]] 홀드 지점을 `9a5e96a`로 갱신.
 
-## [2026-07-03] 프로젝트업데이트 | Cogi v0.2.0 확장(지식소스·시나리오 LLM) 후 홀드 기록
-- [[Cogi-POC-Generator]] 갱신(라이브 repo git log + dev API 실생성 검증 근거): 7/3 오후 확장 — 생성 결함 3건 수정(anythingelse 1회성 STAGE 3.65·챗봇 정보 prompt·레퍼런스 풀 body), LLM 지식소스 3종(문서/일반/혼합)+시나리오별 LLM(하이브리드 배치), apiKey·model·storeId 빈 값 불변식. **v0.2.0을 `3ca4282`(650커밋·마이그레이션 62)에서 홀드**(사용자 지시) — 진행 현황·v0.2.0 블록·머지 주의(미적용 마이그레이션 5개)·업데이트 로그 반영.
+## [2026-07-03] 프로젝트업데이트 | CogInsight v0.2.0 확장(지식소스·시나리오 LLM) 후 홀드 기록
+- [[CogInsight-Generator]] 갱신(라이브 repo git log + dev API 실생성 검증 근거): 7/3 오후 확장 — 생성 결함 3건 수정(anythingelse 1회성 STAGE 3.65·챗봇 정보 prompt·레퍼런스 풀 body), LLM 지식소스 3종(문서/일반/혼합)+시나리오별 LLM(하이브리드 배치), apiKey·model·storeId 빈 값 불변식. **v0.2.0을 `3ca4282`(650커밋·마이그레이션 62)에서 홀드**(사용자 지시) — 진행 현황·v0.2.0 블록·머지 주의(미적용 마이그레이션 5개)·업데이트 로그 반영.
 - 특이 기록: 공유 templates 테이블에 시나리오 AI 필드 2개 라이브 반영(사용자 승인), dev 최종 샘플 결과 `09bde7a9`(지식검증봇_V5).
 
 ## [2026-07-03] 프로젝트업데이트 | 올림푸스 토큰 소진 자동 대기·재개 반영
@@ -161,8 +167,8 @@ updated: 2026-07-08
 - [[올림푸스-기획요청서-작성요령]] §6 실행에 `TOKEN_WAIT` 사용법(런타임 기능·요청서에 쓸 필요 없음·끄기/간격 노브) 반영.
 - 근거: `qtw9723/olympus` main 머지·푸시(`d3fd8bb`, 사용법 doc `6ed7db8`). 크로스플랫폼(macOS+Windows), 대기 중 토큰≈0. 한계=프로세스 종료 시 유실→재실행으로 재개(B안 후속).
 
-## [2026-07-03] 프로젝트업데이트 | Cogi v0.2.0 구현→롤백→dev 테스트 체제 반영 + apiKey 마스킹 기록
-- [[Cogi-POC-Generator]] 갱신(라이브 repo git log + Supabase DB 직접 조회 근거): v0.2.0 섹션을 "설계만"→"구현 완료·main 롤백(PR #97)·dev 테스트 중"으로 교체, DEV 테이블 모드·워크플로우 규약(저장소 CLAUDE.md `5c4bb3d`) 기록, 진행 현황 수치 갱신(커밋 646·엣지함수 26·마이그레이션 60), 7/3 로그 추가.
+## [2026-07-03] 프로젝트업데이트 | CogInsight v0.2.0 구현→롤백→dev 테스트 체제 반영 + apiKey 마스킹 기록
+- [[CogInsight-Generator]] 갱신(라이브 repo git log + Supabase DB 직접 조회 근거): v0.2.0 섹션을 "설계만"→"구현 완료·main 롤백(PR #97)·dev 테스트 중"으로 교체, DEV 테이블 모드·워크플로우 규약(저장소 CLAUDE.md `5c4bb3d`) 기록, 진행 현황 수치 갱신(커밋 646·엣지함수 26·마이그레이션 60), 7/3 로그 추가.
 - 보안 정리 기록: 레퍼런스·결과 JSON의 비어있지 않은 apiKey 8건 전수 마스킹(재스캔 0건). ⚠ 프로덕션 머지 시 llm 마이그레이션 3개 미적용·no-op 주의를 위키에 명시.
 
 ## [2026-07-02] 자료넣기 | MSW 개발 레퍼런스 작성 + 게임 컨셉 확정·기획서 이관
@@ -170,13 +176,13 @@ updated: 2026-07-08
 - 올림푸스용 기획서 6종 작성 → **정본을 `sj-wiki/specs/MonsterBookSaga/`로 이관**(동기화·타기기 진행용, 올림푸스 spec은 gitignore).
 - [[MSW-개발-레퍼런스]] 신설: 공식 API+커뮤니티 실코드 종합(Entity/Component·이벤트 함수·서버/클라 실행모드·DataStorage·UI 컴포넌트). 기획서 04 §4.5 확인항목 대응표(문서확인/hands-on 구분) 포함. index 도구/스킬에 등록.
 
-## [2026-07-02] 프로젝트업데이트 | 3개 프로젝트 라이브 저장소 재확인 후 최신화 (mailer·Cogi·올림푸스)
+## [2026-07-02] 프로젝트업데이트 | 3개 프로젝트 라이브 저장소 재확인 후 최신화 (mailer·CogInsight·올림푸스)
 - 사용자 요청("위키화 진행하되 각 프로젝트는 실제 소스 확인하며 최신화")으로 병렬 조사 에이전트 3개가 각 repo git log·diff·파일 확인 → 근거(커밋/파일) 기반 갱신.
 - [[mailer]] (6/25→7/2, 179→**192커밋**, +13 전부 main 병합): Grafana AI 로그분석 고도화 반영 — ①과거 히스토리 참조 분석(`listTypesWithHistory`, PR #22) ②AI 전용 메모 `ai_note` 영속화(PR #22) ③분석 재시도(지수백오프)+발송/분석 디커플링(`b2b8830`, "분석 실패 시 그날 유실" 버그 해소) ④리포트 메일 가독성·딥링크(PR #21, `GRAFANA_REPORT_URL` 제거). 마이그레이션 2건 추가(총 15). 기능·DB진화·진행현황·포트폴리오 포인트·frontmatter 갱신.
-- [[Cogi-POC-Generator]] (7/1→7/2): 🚧 **v0.2.0 AI 자유응답(LLM 노드) 블록 설계 착수**를 백로그에 추가 — ⚠ 설계 문서만(`d6e57d5`, 브랜치 `feat/llm-response-block`)·코드 0줄·미머지·**버전 v0.1.0 그대로**임을 명시. PR #93(낡은 개요 초안 폐기, 7/1) 로그 기록.
+- [[CogInsight-Generator]] (7/1→7/2): 🚧 **v0.2.0 AI 자유응답(LLM 노드) 블록 설계 착수**를 백로그에 추가 — ⚠ 설계 문서만(`d6e57d5`, 브랜치 `feat/llm-response-block`)·코드 0줄·미머지·**버전 v0.1.0 그대로**임을 명시. PR #93(낡은 개요 초안 폐기, 7/1) 로그 기록.
 - [[올림푸스-Olympus]]: 이미 7/2 리네임까지 최신 → 정밀 보정 1건(Mindboard는 커밋 0인 로컬 작업 트리 산출물이지 커밋 저장소 아님).
 - notepad/parking/schedule-reporter/몬스터게임: 위키 갱신일 이후 소스 변경 없음 → 현행 유지. 팀숲·콜링: 로컬 저장소 없음(교회 git/기획)이라 소스 확인 불가.
-- [[index]] mailer·Cogi 요약 줄 갱신.
+- [[index]] mailer·CogInsight 요약 줄 갱신.
 
 ## [2026-07-02] 프로젝트업데이트 | 올림푸스 리네임 완료 (dev-pipeline → olympus)
 - 사용자 지시로 실제 이름 정리 수행: 로컬 dir `~/IdeaProjects/dev-pipeline→olympus`(mv), GitHub `qtw9723/dev-pipeline→olympus`(gh repo rename), 코드 참조 커밋+push(`640bc3a`), spec를 `spec/Mindboard/` 하위폴더로 정렬, `.DS_Store`·`.claude/` gitignore.
@@ -189,11 +195,11 @@ updated: 2026-07-08
 
 ## [2026-07-02] 건강검진 | 전체 점검 (31페이지)
 - 링크그래프 스크립트 점검: **고아 0 · index 미등록 0 · 실질 끊긴링크 0**(모든 페이지 incoming ≥2, 연결성 양호). 끊긴링크 후보 26건은 이전 검진들과 동일하게 전부 정상 — forward-link(`claude-api`·`schedule-to-todomate`·`Gemini`·`GitHub Actions`·`Playwright`·`ProvenanceGuard`), 백틱 리터럴(`![[파일명]]`·`[[개발-위시리스트-<항목>]]`), cross-vault 참조(`sj-wiki-work`), 스크린샷 대기 임베드(mailer `cs-smarthub_*.png`).
-- 모순 정밀확인: Cogi LLM 모델 gpt-4o가 [[공통-기술스택]]·[[Cogi-POC-Generator]] 일치 / [[콜링]] 리네임 후 옛이름 본문 잔존 0 / [[팀숲-bible-forest]]·[[팀숲-베타-시연-시나리오]]의 "비밀번호 없음"은 콜링 아닌 팀숲 자체 사양이라 모순 아님. stale 낮음(최고 3주, 동향 Opus 4.8 현행).
+- 모순 정밀확인: CogInsight LLM 모델 gpt-4o가 [[공통-기술스택]]·[[CogInsight-Generator]] 일치 / [[콜링]] 리네임 후 옛이름 본문 잔존 0 / [[팀숲-bible-forest]]·[[팀숲-베타-시연-시나리오]]의 "비밀번호 없음"은 콜링 아닌 팀숲 자체 사양이라 모순 아님. stale 낮음(최고 3주, 동향 Opus 4.8 현행).
 - 수정사항 없음(건강함). 소프트 항목: AI 주간소식 W26까지 → W27 자료 대기(콘텐츠 인제스트 대상, 건강 이상 아님).
 
 ## [2026-07-01] 자료넣기 | 올림푸스(Olympus) 위키화 + 콜링 새 데모 HTML 보강
-- `raw/projects/olympus.md` 위키화 → **신규 페이지 [[올림푸스-Olympus]] 생성**(로컬 다세션 자율 개발 파이프라인). 발견: 이 프로젝트 = [[헤르메스-개인비서-Hostinger]] §7-2 `dev-pipeline`의 정식화/졸업판(같은 4역할·verify.sh 계보). 헤르메스 §7-2 콜아웃·notepad 페이지에 [[올림푸스-Olympus]] 교차참조 추가. 의외의 연결점: [[콜링]]·[[팀숲-bible-forest]] 자동 개발 후보, "LLM을 실행으로 검증"([[Cogi-POC-Generator]]·[[mailer]]) 계열, [[에이전트-자동화-도구]]/[[Claude-Code-업데이트-동향]] workflows를 bash로 손수 구현.
+- `raw/projects/olympus.md` 위키화 → **신규 페이지 [[올림푸스-Olympus]] 생성**(로컬 다세션 자율 개발 파이프라인). 발견: 이 프로젝트 = [[헤르메스-개인비서-Hostinger]] §7-2 `dev-pipeline`의 정식화/졸업판(같은 4역할·verify.sh 계보). 헤르메스 §7-2 콜아웃·notepad 페이지에 [[올림푸스-Olympus]] 교차참조 추가. 의외의 연결점: [[콜링]]·[[팀숲-bible-forest]] 자동 개발 후보, "LLM을 실행으로 검증"([[CogInsight-Generator]]·[[mailer]]) 계열, [[에이전트-자동화-도구]]/[[Claude-Code-업데이트-동향]] workflows를 bash로 손수 구현.
 - `raw/교회-일정캘린더-와이어프레임-데모.html`(최신 단일 데모) 정밀 확인 → [[콜링]] 「와이어프레임」에 "새 데모 HTML 상세" 소섹션 신설(인증 3화면·캘린더·일정 모달·관리자 4화면·임시 비밀번호 모달). 설계 정합 2건 부각: **반복 드롭다운=절기(반복 등록) 시연 가능**, **7/17 장소충돌=관리 용이성 라이브 시연**.
 - [[index]] 프로젝트 카테고리에 [[올림푸스-Olympus]] 등록, 헤르메스·발표대본 항목 주석 갱신.
 
@@ -212,8 +218,8 @@ updated: 2026-07-08
 - [[교회-캘린더-제안-발표-대본]] 갱신: 제안서 출처 명시, "개발 기간" Q&A·체크리스트에 제안서의 가정치(파일럿 MVP 2~3개월) 반영(단, 제안서 자체가 "가정"이라 밝힌 값이라 재검토 필요 표시).
 - **사용자 요청(2026-07-01)으로 프로젝트명을 콜링으로 정정**: 페이지 파일명 `교회-일정공유-캘린더.md` → **`콜링.md`**로 rename, frontmatter title·aliases(구 이름 보존) 갱신. 백링크 8개 파일([[index]]·[[프로젝트-포트폴리오]]·[[개발-위시리스트]]·[[교회-백엔드-회의-2026-06-12]]·[[팀숲-bible-forest]]·[[교회-개발-회의-2026-06-17]]·log·[[교회-캘린더-제안-발표-대본]]) 전부 `[[콜링]]`으로 갱신, 조사(은/는·과/와) 교정. [[팀숲-bible-forest]]의 "콜링=비밀번호 없음" 옛 설명도 최신(비밀번호+승인제)으로 함께 정정. ⚠️ git add/commit/push는 사용자가 직접 진행(로컬 git lock 이슈로 Claude 쪽 커밋 불가 상태였음).
 
-## [2026-07-01] 프로젝트 업데이트 | Cogi 개요 공개 페이지 v0.1.0 changelog 교정 (3 surface 동기화)
-- cogi-overview.vercel.app 검수: v0.1.0 changelog에 **앱 버전 배지**가 잘못 포함(실제 PR #85=태그 이후 Unreleased, CHANGELOG.md 기준)·커밋수 612(태그 실제 610).
+## [2026-07-01] 프로젝트 업데이트 | CogInsight 개요 공개 페이지 v0.1.0 changelog 교정 (3 surface 동기화)
+- coginsight-overview.vercel.app 검수: v0.1.0 changelog에 **앱 버전 배지**가 잘못 포함(실제 PR #85=태그 이후 Unreleased, CHANGELOG.md 기준)·커밋수 612(태그 실제 610).
 - 3개 surface 동일 교정: ① 라이브 페이지(vercel --prod 재배포, favicon.svg 동반 복구) ② 편집 아티팩트 1e30660a(동일 URL 재배포) ③ 위키 버전표(70·101·21·69: 612→610, 배지는 v0.1.0 기준선에서 빼고 PR #85로 명시). 배지 사실은 line 114에 이미 정확.
 - 낡은 로컬 초안 docs/…초안.md(버전 "1.0.1" 오기) 폐기 — PR #93 머지.
 
@@ -241,7 +247,7 @@ updated: 2026-07-08
 - 내용은 전부 [[콜링]] 기획(📄) 근거, 대본 문구·Q&A판단은 🧠. 개발기간·운영책임·실비는 ⚠️로 발표자 사전 확정 표시. index 등록.
 
 ## [2026-07-01] 프로젝트 업데이트 | 헤르메스 §7-2 구현체 dev-pipeline 반영 + notepad 테스트 인프라
-- 라이브 저장소 확인(운영 D): flagship [[mailer]](6/25)·[[Cogi-POC-Generator]](6/30)는 이미 최신. 뒤처진 2건 갱신.
+- 라이브 저장소 확인(운영 D): flagship [[mailer]](6/25)·[[CogInsight-Generator]](6/30)는 이미 최신. 뒤처진 2건 갱신.
 - [[헤르메스-개인비서-Hostinger]] §7-2: "구상/미구축" → **로컬 구현체 `IdeaProjects/dev-pipeline`**(6/29~30) 반영. 기획자(메티스) 추가된 4역할·5단계·상태파일·헤드리스 자동실행/자율 트리아지·Phase3 미구현 등 📄 정리. 구현현황 callout+표 추가.
 - [[notepad]]: 6/29 커밋(vitest+`verify` 게이트, 태그 순수함수 추출) 반영 — dev-pipeline의 `VERIFY_CMD` 검증 대상으로 준비됨(교차링크).
 
@@ -252,33 +258,33 @@ updated: 2026-07-08
 
 ---
 
-## [2026-06-30] 자료넣기 | Cogi 다음 버전 확인·개선 항목(백로그) 기록
+## [2026-06-30] 자료넣기 | CogInsight 다음 버전 확인·개선 항목(백로그) 기록
 - 사용자가 다음 버전에 확인할 2건 제시: ①탈출 set 누락(LLM 의존, 미해결·우선) ②자동 회귀 검증 부재(시뮬 하네스, 급하지 않음).
-- [[Cogi-POC-Generator]]에 "다음 버전 확인·개선 항목 (v0.1.0 이후 백로그)" 섹션 신설(공개 페이지 미노출 명시). 메모리 cogi-llm-flag-loops에 백로그 포인터 추가.
+- [[CogInsight-Generator]]에 "다음 버전 확인·개선 항목 (v0.1.0 이후 백로그)" 섹션 신설(공개 페이지 미노출 명시). 메모리 coginsight-llm-flag-loops에 백로그 포인터 추가.
 
-## [2026-06-30] 자료넣기 | Cogi 한계 추가 — 변수/JSON 출력 처리 미숙
+## [2026-06-30] 자료넣기 | CogInsight 한계 추가 — 변수/JSON 출력 처리 미숙
 - 사용자: 변수 처리 미숙 → 솔루션이 JSON을 자동으로 못 뿌려서 JSON 열어 내부 데이터를 키로 직접 써야 함, 개선 필요.
-- [[Cogi-POC-Generator]] "현재 상태 스냅샷" 한계 + "남은 결"에 항목 추가. 개요 공개 페이지(cogi-overview.vercel.app) 한계에도 일반화해 반영·재배포(아티팩트 동기화). 기존 메모리(함수 금지·정확한 키 참조)에 개선필요 노트 추가.
+- [[CogInsight-Generator]] "현재 상태 스냅샷" 한계 + "남은 결"에 항목 추가. 개요 공개 페이지(coginsight-overview.vercel.app) 한계에도 일반화해 반영·재배포(아티팩트 동기화). 기존 메모리(함수 금지·정확한 키 참조)에 개선필요 노트 추가.
 
-## [2026-06-30] 자료넣기 | Cogi v0.1.0 프로토타입 배포 — 현재 상태 스냅샷
+## [2026-06-30] 자료넣기 | CogInsight v0.1.0 프로토타입 배포 — 현재 상태 스냅샷
 - 사용자: "지금 v0.1.0 상태 그대로 프로토타입 배포할 거야, 지금까지 상황 정리해둬".
-- [[Cogi-POC-Generator]] 상단에 "현재 상태 스냅샷 — v0.1.0 프로토타입 배포" 섹션 추가: 앱(cogi-poc-generator-v1.vercel.app)·개요문서(cogi-overview.vercel.app) 둘 다 200 확인, 코드 기준선(tag v0.1.0·엣지 v87·612커밋·마이그 54), 버전관리 원칙, 검증/미검증(루프 런타임 탈출 미검증), 이번 세션 한 일 요약.
+- [[CogInsight-Generator]] 상단에 "현재 상태 스냅샷 — v0.1.0 프로토타입 배포" 섹션 추가: 앱(coginsight-generator.vercel.app)·개요문서(coginsight-overview.vercel.app) 둘 다 200 확인, 코드 기준선(tag v0.1.0·엣지 v87·612커밋·마이그 54), 버전관리 원칙, 검증/미검증(루프 런타임 탈출 미검증), 이번 세션 한 일 요약.
 
-## [2026-06-30] 자료넣기 | Cogi 개요·매뉴얼 공개 배포 SoP + 버전 히스토리
-- 📄 Cogi "개요 및 매뉴얼" 아티팩트를 공개 정적 호스팅으로 배포: **https://cogi-overview.vercel.app** (무계정 열람, Vercel `qtw9723`/프로젝트 `cogi-overview`, 200 확인). 원본 아티팩트 `1e30660a…`와 mirror.
-- [[Cogi-POC-Generator]]에 "공개 배포 — 개요·매뉴얼 페이지 (운영 SoP)" 섹션 추가: 공개 URL·재배포 절차(`vercel deploy --prod`)·**버전 히스토리 표**(v0.1.0). 공개 페이지에도 "버전 히스토리" 섹션 추가(둘 mirror).
+## [2026-06-30] 자료넣기 | CogInsight 개요·매뉴얼 공개 배포 SoP + 버전 히스토리
+- 📄 CogInsight "개요 및 매뉴얼" 아티팩트를 공개 정적 호스팅으로 배포: **https://coginsight-overview.vercel.app** (무계정 열람, Vercel `qtw9723`/프로젝트 `coginsight-overview`, 200 확인). 원본 아티팩트 `1e30660a…`와 mirror.
+- [[CogInsight-Generator]]에 "공개 배포 — 개요·매뉴얼 페이지 (운영 SoP)" 섹션 추가: 공개 URL·재배포 절차(`vercel deploy --prod`)·**버전 히스토리 표**(v0.1.0). 공개 페이지에도 "버전 히스토리" 섹션 추가(둘 mirror).
 - 메모리 저장: "이 문서 수정해서 적용"=공개 페이지 재배포+아티팩트 동기화+버전표 갱신.
 
-## [2026-06-30] 프로젝트 업데이트 | Cogi POC Generator v0.1.0 동결 반영
+## [2026-06-30] 프로젝트 업데이트 | CogInsight Generator v0.1.0 동결 반영
 - 사용자 요청: 프로젝트 업데이트 내용 반영 + 공유용 문서 현행화.
-- 📄 라이브(`Cogi-POC-Generator-v1`) 확인: 총 **612커밋**, 6/29 이후 PR #76~#85. **v0.1.0 프로토타입 동결**(tag `v0.1.0`, package.json 0.1.0, GitHub Release, 엣지함수 cogi-generator **v87** 기준) + 앱 버전 배지. 결정론 안전장치 체인(Stage 2.9~3.6: 루프 탈출변수 정합화·반복수집 결정론화·검증루프·무의미 컨디션 제거·누적배열 초기화) + API 결과 멘트 노출·placeholder 정리. 마이그레이션 49→54.
-- [[Cogi-POC-Generator]] 보강(신규 X): 개요 버전 1.0.1→v0.1.0, 파이프라인을 안전장치 체인까지 확장, 백엔드 마이그레이션 수치, 진행 현황(6/30)·진행사항 로그(PR #76~#85) 추가. frontmatter updated 6/30.
-- [[프로젝트-포트폴리오]](공유용) 현행화: Cogi 상태 v0.1.0 동결 반영, 팀숲 "6/26 예상 시연"→"베타 시연 완료". updated 6/30.
+- 📄 라이브(`CogInsight-Generator`) 확인: 총 **612커밋**, 6/29 이후 PR #76~#85. **v0.1.0 프로토타입 동결**(tag `v0.1.0`, package.json 0.1.0, GitHub Release, 엣지함수 coginsight-generator **v87** 기준) + 앱 버전 배지. 결정론 안전장치 체인(Stage 2.9~3.6: 루프 탈출변수 정합화·반복수집 결정론화·검증루프·무의미 컨디션 제거·누적배열 초기화) + API 결과 멘트 노출·placeholder 정리. 마이그레이션 49→54.
+- [[CogInsight-Generator]] 보강(신규 X): 개요 버전 1.0.1→v0.1.0, 파이프라인을 안전장치 체인까지 확장, 백엔드 마이그레이션 수치, 진행 현황(6/30)·진행사항 로그(PR #76~#85) 추가. frontmatter updated 6/30.
+- [[프로젝트-포트폴리오]](공유용) 현행화: CogInsight 상태 v0.1.0 동결 반영, 팀숲 "6/26 예상 시연"→"베타 시연 완료". updated 6/30.
 
-## [2026-06-29] 프로젝트 업데이트 | Cogi POC Generator 최신화 (보고/매뉴얼 작성용)
-- 사용자 요청: 곧 작성할 프로젝트 개요·매뉴얼(보고용) 준비 위해 라이브 저장소(`Cogi-POC-Generator-v1`) 확인 → 위키 최신화.
+## [2026-06-29] 프로젝트 업데이트 | CogInsight Generator 최신화 (보고/매뉴얼 작성용)
+- 사용자 요청: 곧 작성할 프로젝트 개요·매뉴얼(보고용) 준비 위해 라이브 저장소(`CogInsight-Generator`) 확인 → 위키 최신화.
 - 📄 확인: 총 **575커밋**(~6/29), 06-25 이후 PR #42~#67. 엣지함수 20→21·마이그레이션 40→49·solution_rules 7→8 카테고리(`Loop Rule`)·어드민 9→8탭(규칙 학습이 솔루션 규칙 탭에 통합).
-- [[Cogi-POC-Generator]] 보강(신규 페이지 X): 주요 기능에 **반복 루프 생성**·**규칙 학습+정합화** 추가, API 레퍼런스 고도화·변수명 규칙 반영, 기술스택 수치·어드민 탭 갱신, 아키텍처에 루프 하이브리드 사례 추가, 진행 현황(6/29)·진행사항 로그(PR #42~#67) 갱신. frontmatter updated 6/29.
+- [[CogInsight-Generator]] 보강(신규 페이지 X): 주요 기능에 **반복 루프 생성**·**규칙 학습+정합화** 추가, API 레퍼런스 고도화·변수명 규칙 반영, 기술스택 수치·어드민 탭 갱신, 아키텍처에 루프 하이브리드 사례 추가, 진행 현황(6/29)·진행사항 로그(PR #42~#67) 갱신. frontmatter updated 6/29.
 
 ## [2026-06-29] 질문 | 헤르메스 §7-2 확장 — 스펙주도 생성↔비평 개발 파이프라인 방향
 - 사용자 요청: "기획서 넣으면 LLM이 자체검증하며 개발 → 두 세션 교차검증·수정 → 요구사항 완료 후 추가기능 추천·상호검증·개발" 파이프라인 방향 설계.
@@ -292,7 +298,7 @@ updated: 2026-07-08
 ## [2026-06-29] 자료넣기 | AI 주간 소식 W26 신규 작성 (영문 다이제스트 2건)
 - 요청: `raw/ai-digest/2026-06-27.md`·`2026-06-29.md`(ai-crawler 자동수집)를 위키화. 작업 전 pull(승인필요 안내).
 - 내용이 6/22~6/26에 집중 → **W26(6/22~6/28)** 주차. W26 페이지 부재 → 주차별 패턴(W24·W25)대로 **[[AI-주간-소식-2026-W26]] 신규 작성**. 6/27 파일이 6/29의 상위집합(arXiv 멀티에이전트 섹션·삼성 추가 포함)이라 둘 합쳐 중복 제거.
-- 핵심 픽([[내-프로필]] 관점): ① **Instruction Bleed**(2606.26356, 프롬프트 모듈 간 간섭) → [[Cogi-POC-Generator]] 6단계 파이프라인 직격 ② **OpenAI Daybreak**(Codex Security·GPT-5.5-Cyber) → [[Claude-Code-업데이트-동향]] security plugin과 동궤 ③ **Gemini 3.5 Flash 컴퓨터 사용** → [[웹-크롤링-기초]] Playwright 보강. + Semantic Early-Stopping·CUGA·삼성 Codex 전사배포 등.
+- 핵심 픽([[내-프로필]] 관점): ① **Instruction Bleed**(2606.26356, 프롬프트 모듈 간 간섭) → [[CogInsight-Generator]] 6단계 파이프라인 직격 ② **OpenAI Daybreak**(Codex Security·GPT-5.5-Cyber) → [[Claude-Code-업데이트-동향]] security plugin과 동궤 ③ **Gemini 3.5 Flash 컴퓨터 사용** → [[웹-크롤링-기초]] Playwright 보강. + Semantic Early-Stopping·CUGA·삼성 Codex 전사배포 등.
 - [[index]] AI/업계동향에 W26 등록(맨 위), updated 6/29. [[AI-주간-소식-2026-W25]] 관련문서에 다음 주(W26) 역링크 추가.
 
 ## [2026-06-26] 자료넣기 + 건강검진 | 팀숲 베타 시연 시나리오 등록 + 전체 점검 (26페이지)
@@ -310,23 +316,23 @@ updated: 2026-07-08
 - ✅ 이상 없음: 끊긴 링크(claude-api·schedule-to-todomate·Gemini·Playwright·GitHub Actions 모두 index 등록 forward-link로 정상), 나머지 분류 정합성 이상 없음.
 
 ## [2026-06-25] 자료넣기 | raw 프로젝트 4종 재점검 — mailer 누락 사실 2건 보강
-- 요청: raw/projects의 mailer·cogi·schedule-reporter·parking 4종을 CLAUDE.md 규칙대로 위키화. 작업 전 `git pull --rebase`.
+- 요청: raw/projects의 mailer·coginsight·schedule-reporter·parking 4종을 CLAUDE.md 규칙대로 위키화. 작업 전 `git pull --rebase`.
 - **완전 확인 결과**: 4개 raw는 직전 커밋 `952dd12`(자료넣기)+`2929963`(건강검진)에서 이미 위키 4페이지·index·log에 정합 반영돼 있었음(working tree clean). 새 페이지 생성 X, 보강만.
 - **[[mailer]] 2건 보강**: ① **이중 인증 체계**(`auth` x-app-password 헤더 / `cronAuth` Bearer CRON_SECRET — pg_cron·dispatch용) ② **Supabase 마이그레이션 이력 7건**(스키마 진화 추적). 둘 다 raw엔 있었으나 위키 누락분.
-- [[Cogi-POC-Generator]]·[[schedule-reporter-kakao]]·[[parking]]·[[index]]: raw와 정합 — 변경 없음.
+- [[CogInsight-Generator]]·[[schedule-reporter-kakao]]·[[parking]]·[[index]]: raw와 정합 — 변경 없음.
 
 ## [2026-06-25] 건강검진 | 프로젝트 갱신 후속 정합성 점검
 - 전체 25페이지 점검(사용자 승인 후 수정). 끊긴링크 실제 0건(검출 후보는 전부 false positive: 같은-페이지 앵커 `[[#..|..]]`, mailer png는 `<!-- -->` 주석 내 예시, `[[파일명]]` 규칙 리터럴, log 서술 리터럴, index 등록 forward-link). 고아 0건, index 분류 누락 0건.
-- **P1 모순 수정**: [[프로젝트-포트폴리오]]가 어제 갱신과 충돌 → 목록표 정정. schedule-reporter "풀스택(일정+카카오)"→"리포트 스케줄러(⚠️카카오 제거·Grafana 단일페이지)", Cogi "프론트/배포준비"→"풀스택(Edge Functions 백엔드)/POC 운영", mailer 비고 보강.
-- **P2 stale 보강**: [[공통-기술스택]]에 Cogi가 프론트전용→**풀스택(Edge Functions)** 반영, Edge Functions 사용처(Cogi·mailer·notepad)·스택매핑 행 추가.
+- **P1 모순 수정**: [[프로젝트-포트폴리오]]가 어제 갱신과 충돌 → 목록표 정정. schedule-reporter "풀스택(일정+카카오)"→"리포트 스케줄러(⚠️카카오 제거·Grafana 단일페이지)", CogInsight "프론트/배포준비"→"풀스택(Edge Functions 백엔드)/POC 운영", mailer 비고 보강.
+- **P2 stale 보강**: [[공통-기술스택]]에 CogInsight가 프론트전용→**풀스택(Edge Functions)** 반영, Edge Functions 사용처(CogInsight·mailer·notepad)·스택매핑 행 추가.
 - **P3 forward-link 등록**: [[mailer]]발 신규 끊긴링크 `[[Gemini]]`·`[[Playwright]]`·`[[GitHub Actions]]`을 [[index]] 작성후보 노트에 등록(끊긴링크=추적됨 불변식 유지).
 - 팀숲 시연일 6/26 일관·미래(오늘 6/25)로 정상. 영향: 프로젝트-포트폴리오·공통-기술스택·index·log.
 
-## [2026-06-25] 자료넣기 | 프로젝트 업데이트 — mailer·Cogi 대규모 갱신 + parking API + schedule-reporter 정정
+## [2026-06-25] 자료넣기 | 프로젝트 업데이트 — mailer·CogInsight 대규모 갱신 + parking API + schedule-reporter 정정
 - 사용자 요청: 라이브 저장소를 읽기전용으로 확인해 raw에 최신화 + 위키화(프로젝트 수정 중이라 repo는 미수정). 작업 전 `git pull --rebase`(최신).
 - **[[mailer]]** (06-10 이후 +80커밋, 99→179): 병렬 에이전트로 라이브 확인. NOC 관제콘솔 리디자인(디자인토큰·Cmd+K·하트비트·send_log), **Chatbot 모니터링 신설**(Playwright+GitHub Actions+pg_cron 08:30 정시 트리거), **Grafana 쿼리 UI 관리**(하드코딩→DB JSONB+테스트게이트), **Grafana LLM(Gemini) 로그분석**(요약+영속 로그유형+발생시각 보존). raw·wiki 갱신. 시크릿/회사기밀(챗봇 솔루션명·셀렉터·HUB_URL·키) redact·제외.
-- **[[Cogi-POC-Generator]]** (06-09 이후 ~200커밋): 병렬 에이전트로 확인. Flow 1급화(LLM 설계→결정론 전개), 6단계 생성 파이프라인, **데이터구동 규칙엔진(solution_rules SoT)**, 레퍼런스 학습(derive-node-specs/learn-rules), 시나리오/API 레퍼런스 라이브러리, **테스터 OTP 인증·승인·신뢰기기**, 토큰/비용 집계, features·값할당 레거시 제거. LLM=OpenAI gpt-4o(Gemini 아님·혼동 주의). 어드민 자격증명·SMTP 등 제외.
-- **[[parking]]**: 라이브 확인. **parking API 연동 정보** 추가(엔드포인트·init 순서·verify_jwt 인증·anon key는 형제 repo .env 공유·CORS 미처리·응답스키마·주의점) → raw·wiki. 인증키 질문 답: parking/.env엔 anon 없고 mailer/notepad/schedule/Cogi의 .env에 VITE_SUPABASE_ANON_KEY로 저장됨(공개키).
+- **[[CogInsight-Generator]]** (06-09 이후 ~200커밋): 병렬 에이전트로 확인. Flow 1급화(LLM 설계→결정론 전개), 6단계 생성 파이프라인, **데이터구동 규칙엔진(solution_rules SoT)**, 레퍼런스 학습(derive-node-specs/learn-rules), 시나리오/API 레퍼런스 라이브러리, **테스터 OTP 인증·승인·신뢰기기**, 토큰/비용 집계, features·값할당 레거시 제거. LLM=OpenAI gpt-4o(Gemini 아님·혼동 주의). 어드민 자격증명·SMTP 등 제외.
+- **[[parking]]**: 라이브 확인. **parking API 연동 정보** 추가(엔드포인트·init 순서·verify_jwt 인증·anon key는 형제 repo .env 공유·CORS 미처리·응답스키마·주의점) → raw·wiki. 인증키 질문 답: parking/.env엔 anon 없고 mailer/notepad/schedule/CogInsight의 .env에 VITE_SUPABASE_ANON_KEY로 저장됨(공개키).
 - **[[schedule-reporter-kakao]]** 정정: 06-09 `simplify to schedule settings page only` 리팩터로 **카카오 코드 제거·GrafanaPage 단일페이지로 축소**됨을 확인 → 위키의 구버전 서술(카카오 연동·드래그앤드롭·일정리포팅) 현행화. raw·wiki·index 정정.
 - index 프로젝트 한줄설명 4건 현행화. notepad/MonsterCollector/MonsterRank는 06-09 이후 커밋 0 → 변경 없음.
 - ⚠️ raw 수정은 본래 Claude 금지(읽기전용)이나 이번엔 사용자 명시 지시("raw파일에 최신정보 넣어줘")로 진행.

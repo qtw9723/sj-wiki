@@ -1,10 +1,10 @@
-# Cogi-POC-Generator-v1
+# CogInsight-Generator
 
 ## 프로젝트 개요
-- **설명**: Cogi Dialog JSON Generator — 챗봇 시나리오(대화 흐름) JSON을 LLM으로 생성하는 POC 제너레이터 + 학습/관리 어드민
+- **설명**: CogInsight Dialog JSON Generator — 챗봇 시나리오(대화 흐름) JSON을 LLM으로 생성하는 POC 제너레이터 + 학습/관리 어드민
 - **유형**: 풀스택 (프론트 React SPA + Supabase Edge Functions 백엔드 + Postgres)
 - **버전**: 1.0.1
-- **경로**: `/Users/sangjun/IdeaProjects/Cogi-POC-Generator-v1`
+- **경로**: `/Users/sangjun/IdeaProjects/CogInsight-Generator`
 - **마지막 raw 갱신**: 2026-06-25 (커밋 ~203개 / 2026-06-09 이후)
 
 ## 기술 스택 (확인: package.json, README, supabase/functions)
@@ -12,10 +12,10 @@
 - **폼/검증**: react-hook-form 7.76 + zod 4.4
 - **백엔드**: Supabase Edge Functions (Deno/TypeScript) — 20개 함수
 - **DB**: Supabase Postgres (40개 마이그레이션, RLS)
-- **LLM**: OpenAI `gpt-4o` (temperature 0.1) — cogi-generator / derive-node-specs / learn-rules / admin-solution-rules. (주의: GEMINI는 mailer/grafana 프로젝트용, Cogi 아님)
+- **LLM**: OpenAI `gpt-4o` (temperature 0.1) — coginsight-generator / derive-node-specs / learn-rules / admin-solution-rules. (주의: GEMINI는 mailer/grafana 프로젝트용, CogInsight 아님)
 - **배포**: 프론트 Vercel(main 푸시 자동), 엣지함수 `supabase functions deploy`, DB `supabase db push`
 
-## 생성 파이프라인 (cogi-generator, 다단계)
+## 생성 파이프라인 (coginsight-generator, 다단계)
 1. designFlow (Stage 1) — LLM이 플로우 설계(FlowSpec). 검증(reachability)·repair·1회 재요청
 2. expandWithSpecs (Stage 2) — FlowSpec → 노드에디터 JSON 결정론적 전개, variant(판별 유니온) 소비
 3. fillNodeValues (Stage 2.5) — set/esd/api config 값 채우기 (전담 패스 + 재시도)
@@ -31,7 +31,7 @@
 - 예외: 결정론적 안전장치(repairFlow의 루트 stack 제거, 변수 선언강제 등)는 코드에 유지
 
 ## Edge Functions (20)
-- 생성/학습: cogi-generator, derive-node-specs(노드스펙 결정론 추출+LLM 일반화+closed-world 검증), learn-rules(레퍼런스 JSON 구조 학습)
+- 생성/학습: coginsight-generator, derive-node-specs(노드스펙 결정론 추출+LLM 일반화+closed-world 검증), learn-rules(레퍼런스 JSON 구조 학습)
 - 레퍼런스 라이브러리: scenario-references(시나리오 미니봇 CRUD+조립), api-references(API 정의 CRUD+실호출 test 프록시)
 - 어드민 CRUD: admin-questions, admin-references, admin-results, admin-solution-rules, admin-templates, admin-testers, admin-rule-field-definitions, admin-rule-templates, admin-rule-value-generators
 - 공개/사용자: questions, references, results
@@ -41,11 +41,11 @@
 ## DB 테이블 (주요)
 - questions, templates — 설문/질문 템플릿(role: required_context/optional_context/constraint/intent/preference, group_list 중첩)
 - solution_rules — 생성 규칙(7 카테고리)
-- cogi_references — 학습용 마스터 레퍼런스(basic_rules/nodeSpecs/generation_template, master-child)
-- cogi_results — 생성 결과(generated_json, user_responses, user_id, reference_id) — 계정별 스코프
-- cogi_scenario_references — 시나리오 미니봇 학습자료(category: 금융/물류/소매/도매/의료/기타, flow_json, integration_method/api_fields/api_param_hint)
-- cogi_api_references — import용 API 정의(엔드포인트당 1행)
-- cogi_feedback — 사용자 피드백
+- coginsight_references — 학습용 마스터 레퍼런스(basic_rules/nodeSpecs/generation_template, master-child)
+- coginsight_results — 생성 결과(generated_json, user_responses, user_id, reference_id) — 계정별 스코프
+- coginsight_scenario_references — 시나리오 미니봇 학습자료(category: 금융/물류/소매/도매/의료/기타, flow_json, integration_method/api_fields/api_param_hint)
+- coginsight_api_references — import용 API 정의(엔드포인트당 1행)
+- coginsight_feedback — 사용자 피드백
 - features — (구) 기능 메타. features 레이어는 2026-06-16에 제거되어 레퍼런스로 일원화
 - testers — 테스터 계정 승인 워크플로(status: pending/approved/blocked, approved_by/at)
 - trusted_devices — 신뢰기기 토큰(sha256 token_hash, 30일 TTL)

@@ -70,12 +70,12 @@ updated: 2026-07-01
 
 ## 5. 헤르메스 활용방안 (🧠 — 내 스택에 맞춤)
 
-> 전제: 기존 자산 = [[공통-기술스택]](React19/Vite/Tailwind/Supabase), [[parking]](Supabase 공유 백엔드), 자동화 라인([[mailer]]·[[schedule-reporter-kakao]]), 챗봇 라인([[Cogi-POC-Generator]]).
+> 전제: 기존 자산 = [[공통-기술스택]](React19/Vite/Tailwind/Supabase), [[parking]](Supabase 공유 백엔드), 자동화 라인([[mailer]]·[[schedule-reporter-kakao]]), 챗봇 라인([[CogInsight-Generator]]).
 
 1. **n8n을 헤르메스의 오케스트레이션 척추로** — Hostinger 원클릭 n8n VPS에 설치. 메일·카카오·캘린더·TodoMate를 노드로 연결해 "수신 → 판단(LLM) → 행동(알림/등록/리포트)" 워크플로를 GUI로 구성. 🧠 [[에이전트-자동화-도구]]의 routine/goal 개념을 실제 상시 서비스로 구현하는 자리.
 2. **기존 자동화 라인을 영구 서비스로 승격** — [[mailer]]·[[schedule-reporter-kakao]]의 cron/리포트를 Supabase Edge Function의 시간 제약 없이 VPS의 진짜 cron + 장수명 프로세스로 운영. 🧠 Edge는 단발/경량, VPS는 상시/무거운 작업으로 역할 분담.
-3. **LLM 에이전트 컨테이너** — Python/Node 개인비서 에이전트를 Docker로 띄우고 Claude/Gemini API 연동 + 상태(메모리) 영속화. 🧠 [[Cogi-POC-Generator]]에서 익힌 zod 스키마 검증을 LLM 출력 검증에 재사용. (참조 예정 [[claude-api]])
-4. **단일 도메인 게이트웨이(Nginx + 무료 SSL)** — [[notepad]]·[[mailer]]·[[Cogi-POC-Generator]]를 한 도메인 서브패스/서브도메인으로 묶어 "표준화된 개인 플랫폼"([[프로젝트-포트폴리오]])을 실제 포트폴리오 URL로 노출. 🧠
+3. **LLM 에이전트 컨테이너** — Python/Node 개인비서 에이전트를 Docker로 띄우고 Claude/Gemini API 연동 + 상태(메모리) 영속화. 🧠 [[CogInsight-Generator]]에서 익힌 zod 스키마 검증을 LLM 출력 검증에 재사용. (참조 예정 [[claude-api]])
+4. **단일 도메인 게이트웨이(Nginx + 무료 SSL)** — [[notepad]]·[[mailer]]·[[CogInsight-Generator]]를 한 도메인 서브패스/서브도메인으로 묶어 "표준화된 개인 플랫폼"([[프로젝트-포트폴리오]])을 실제 포트폴리오 URL로 노출. 🧠
 5. **하이브리드 아키텍처 고정** — 🧠 **데이터·Auth는 [[parking]](Supabase) 유지(이전 금지)**, Hostinger는 컴퓨트/오케스트레이션 평면만. 정적 프론트(React/Vite)는 Vercel 유지 or Nginx 정적 서빙 중 택1(정적은 VPS 필수 아님).
 
 ### 권장 아키텍처 (🧠)
@@ -116,7 +116,7 @@ updated: 2026-07-01
 
 **이 설계를 원하는 이유(🧠)**: **페르소나 경계 = 보안 경계**. 아테나만 비동기화·로컬 환경에 가두면 "헤르메스 본체는 회사 기밀에 못 닿는다"가 구조로 강제됨(§1 기밀분리 원칙을 코드로). 부수효과로 각자 최소 권한 자격증명만 보유.
 
-**전제 조건(🧠)**: ① 공유 메모리 = [[parking]](Supabase)로 컨텍스트 파편화 방지, ② 헤르메스→페르소나 핸드오프를 **zod 스키마로 고정**([[Cogi-POC-Generator]] 재사용), ③ 라우팅은 싼 모델·실작업만 좋은 모델.
+**전제 조건(🧠)**: ① 공유 메모리 = [[parking]](Supabase)로 컨텍스트 파편화 방지, ② 헤르메스→페르소나 핸드오프를 **zod 스키마로 고정**([[CogInsight-Generator]] 재사용), ③ 라우팅은 싼 모델·실작업만 좋은 모델.
 
 **리스크(🧠)**: 1인 운영 과설계 위험 → **2명부터**(헤르메스 라우터 + 이리스), 검증되면 증설. 아테나는 맨 마지막에 분리 환경.
 
@@ -187,7 +187,7 @@ updated: 2026-07-01
 - **예산·반복 상한**: 작업당 재시도 N회·토큰/비용 한도. 초과 시 헤르메스가 사람에게 에스컬레이션.
 - **다른 모델·다른 프롬프트**: 생성자/비평가 분리(동일 모델 금지).
 - **외부 상태/메모리**: 진행상태를 [[parking]](Supabase) 등 외부에 영속화 → 세션이 죽어도 이어감.
-- **핸드오프 스키마 고정**: 세션 간 메시지를 zod 스키마로 검증([[Cogi-POC-Generator]] 재사용).
+- **핸드오프 스키마 고정**: 세션 간 메시지를 zod 스키마로 검증([[CogInsight-Generator]] 재사용).
 
 #### 언어 무관(범용) 만들기 🧠
 
@@ -212,7 +212,7 @@ updated: 2026-07-01
 ## 관련 문서
 
 - [[index]] · [[내-프로필]] · [[프로젝트-포트폴리오]] · [[공통-기술스택]]
-- [[parking]] · [[mailer]] · [[schedule-reporter-kakao]] · [[Cogi-POC-Generator]]
+- [[parking]] · [[mailer]] · [[schedule-reporter-kakao]] · [[CogInsight-Generator]]
 - [[에이전트-자동화-도구]] · [[내-MCP-커넥터-환경]] · [[카카오-Play-MCP]] · [[Teams-Gmail-캘린더-Gemini-연동]]
 - 작성 예정: [[claude-api]]
 

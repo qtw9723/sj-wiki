@@ -10,7 +10,7 @@ updated: 2026-07-03
 
 > [!tip] 핵심 takeaway
 > 🧠 [[내-프로필]]의 **"비개발→개발 전환"·"업무 자동화"·"LLM 활용"** 세 축이 한 프로젝트에서 만나는 결과물이다. "AI가 코드를 짜준다"에서 한 발 더 나아가, **여러 Claude 세션이 역할을 나눠 협업하고 실행되는 테스트가 심판이 되게** 직접 오케스트레이션을 설계·구현했다 → 단순 사용자가 아니라 **에이전트 파이프라인을 만드는 사람**이라는 포트폴리오 근거.
-> 🧠 핵심 통찰 하나면 충분: **"LLM 둘이 토론"이 아니라 "실행되는 게이트(lint·test·build) 위에서 싸우게"** 한다. LLM 합의가 아니라 실행 결과가 유일한 진실 → [[Cogi-POC-Generator]]의 zod 출력 검증, [[mailer]]의 Playwright E2E 게이트와 같은 "LLM을 실행으로 검증한다" 철학의 연장.
+> 🧠 핵심 통찰 하나면 충분: **"LLM 둘이 토론"이 아니라 "실행되는 게이트(lint·test·build) 위에서 싸우게"** 한다. LLM 합의가 아니라 실행 결과가 유일한 진실 → [[CogInsight-Generator]]의 zod 출력 검증, [[mailer]]의 Playwright E2E 게이트와 같은 "LLM을 실행으로 검증한다" 철학의 연장.
 > 📄 이건 [[헤르메스-개인비서-Hostinger]] §7-2의 `dev-pipeline`이 **정식 이름(올림푸스)을 얻고 독립 프로젝트로 졸업한 것**이다(같은 코드 계보). 헤르메스(클라우드)로 올리기 전 **로컬 헤드리스로 동작·검증 완료**. 2026-07-02 리네임 확정 → 실제 저장소·디렉토리 모두 `olympus`.
 
 ## 한 줄 정의
@@ -128,7 +128,7 @@ spec/<프로젝트>/  ─▶ [메티스] 요구사항 분석(필수) → require
 
 ## 의외의 연결점 🧠
 - **올림푸스로 내 다른 프로젝트를 개발**: Mindboard 검증 대상이 **React+FastAPI 풀스택(인증·CRUD·RBAC 유사)**이었다는 건, 형태가 거의 같은 [[콜링]](React + Node/Spring, 로그인·카테고리 권한·일정 CRUD)이나 [[팀숲-bible-forest]]를 **올림푸스의 spec으로 넣어 자동 개발**하는 게 현실적이라는 뜻. brownfield 모드로 [[mailer]]·[[notepad]] 기능 추가에도 붙일 수 있다.
-- **"LLM을 실행으로 검증한다" 철학의 계열**: [[Cogi-POC-Generator]](zod 스키마로 LLM JSON 출력 검증) · [[mailer]](Playwright E2E로 챗봇 정상 여부 판정) · 올림푸스(verify.sh로 코드 판정) — 셋 다 "LLM 말을 믿지 않고 실행 결과로 판단"하는 같은 근육.
+- **"LLM을 실행으로 검증한다" 철학의 계열**: [[CogInsight-Generator]](zod 스키마로 LLM JSON 출력 검증) · [[mailer]](Playwright E2E로 챗봇 정상 여부 판정) · 올림푸스(verify.sh로 코드 판정) — 셋 다 "LLM 말을 믿지 않고 실행 결과로 판단"하는 같은 근육.
 - **[[에이전트-자동화-도구]] / [[Claude-Code-업데이트-동향]] workflows와의 관계**: Claude Code의 dynamic workflows(다중 에이전트 오케스트레이션)가 하는 일을 **bash+헤드리스 CLI로 직접 손으로 구현**한 셈 → 내장 도구를 쓰기 전에 원리를 밑바닥부터 만들어 본 경험(포트폴리오 스토리로 강함).
 - **[[내-프로필]] 경력 합류**: SM/인프라(bash·프로세스·게이트 운영) + NLP/LLM(에이전트 설계)이 한 도구에서 만난다.
 
@@ -137,7 +137,7 @@ spec/<프로젝트>/  ─▶ [메티스] 요구사항 분석(필수) → require
 - [[index]] · [[내-프로필]] · [[프로젝트-포트폴리오]]
 - [[헤르메스-개인비서-Hostinger]] — §7-2 생성자↔비평가 루프(=올림푸스의 씨앗), dev-pipeline 초기 구현 이력
 - [[notepad]] — 초기 로컬 PoC 대상(vitest + `verify` 게이트 도입)
-- [[Cogi-POC-Generator]] · [[mailer]] — "LLM을 실행으로 검증" 계열 / brownfield 개발 대상 후보
+- [[CogInsight-Generator]] · [[mailer]] — "LLM을 실행으로 검증" 계열 / brownfield 개발 대상 후보
 - [[콜링]] · [[팀숲-bible-forest]] — 올림푸스 spec 투입 후보(풀스택 웹앱)
 - [[에이전트-자동화-도구]] · [[Claude-Code-업데이트-동향]] · [[AI-주간-소식-2026-W25]] — 멀티에이전트·제안-검증 구조 동향
 - 원본: `raw/projects/olympus.md`

@@ -51,11 +51,11 @@ supabase db pull
   - `POST /initInfo` — 상세(이름/주소/좌표) 적재
   - `GET /parking` — 전체 + realtime
   - `GET /parking?id={id}` — 단일 + realtime(정제 응답: prk_center_id,name,sido,sigungu,address,latitude,longitude,total_spaces,available_spaces,last_updated)
-- 인증: verify_jwt ON(config.toml 오버라이드 없음) → `Authorization: Bearer <ANON_KEY>` + `apikey` 헤더 필요. anon key는 parking/.env엔 없고 mailer/notepad/schedule-reporter/Cogi의 .env(VITE_SUPABASE_ANON_KEY)에 있음(같은 프로젝트라 공유 가능, anon은 공개용 키).
+- 인증: verify_jwt ON(config.toml 오버라이드 없음) → `Authorization: Bearer <ANON_KEY>` + `apikey` 헤더 필요. anon key는 parking/.env엔 없고 mailer/notepad/schedule-reporter/CogInsight의 .env(VITE_SUPABASE_ANON_KEY)에 있음(같은 프로젝트라 공유 가능, anon은 공개용 키).
 - CORS 미처리(notepad과 달리) → 브라우저 직접 호출 불가, 서버사이드 전용.
 - env(.env): SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, PUBLIC_DATA_SERVICE_KEY (anon key 없음).
 - 주의: parking_lot 생성 마이그레이션 repo에 없음(수동 생성), numOfRows=100 고정(페이지네이션 없음), initInfo는 created_at↔API index 순서 매핑(data.ts:92), 실시간 매칭 data.ts:158(0으로만 나오면 점검).
-- 현재 호스팅 함수: parking·notepad·todos·mailer·results·questions·admin·cogi-generator 등.
+- 현재 호스팅 함수: parking·notepad·todos·mailer·results·questions·admin·coginsight-generator 등.
 
 ## 상태
 인프라 관리용 프로젝트로, 다른 프로젝트들의 백엔드 역할을 수행.

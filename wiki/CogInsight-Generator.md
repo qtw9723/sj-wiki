@@ -1,10 +1,10 @@
 ---
-title: Cogi-POC-Generator (Dialog JSON Generator)
+title: CogInsight-Generator (Dialog JSON Generator)
 category: 프로젝트
 tags: [프로젝트, 챗봇, 시나리오, dialog-json, llm, openai, supabase, 핵심]
-source: raw/projects/cogi-poc-generator-v1.md
+source: raw/projects/coginsight-generator.md
 created: 2026-06-09
-updated: 2026-07-08
+updated: 2026-07-09
 ---
 
 > [!tip] 핵심 takeaway
@@ -15,12 +15,13 @@ updated: 2026-07-08
 > [!note] 마일스톤: "지금 상태 그대로 프로토타입 배포"
 > 📄 2026-06-30, **현재 v0.1.0 상태를 그대로 프로토타입으로 배포(릴리스)**하기로 결정. 보고·테스트용 첫 기준선이다. 이 시점의 상황 정리:
 > ✅ (2026-07-03 저녁 갱신) **v0.2.0 프로덕션 릴리스 완료** — 이 v0.1.0 스냅샷은 역사 기준선. 현재 프로덕션 = **v0.2.0**(PR #98 머지 `36d0181`, tag `v0.2.0` + GitHub Release, DB 마이그레이션 6개 적용, 프로덕션 함수 5종 배포, Vercel 번들 v0.2.0 확인, dev 리셋 완료) — 아래 [[#✅ v0.2.0 — AI 자유응답(LLM 노드) 블록 (2026-07-03 프로덕션 릴리스)|v0.2.0 블록]] 참고.
-> ✅ (2026-07-08) **현재 프로덕션 = v0.2.1** — ESD 스키마 파생 핫픽스(PR #100, tag v0.2.1, `cogi-generator` 재배포). 상세는 [[#진행사항 업데이트 로그|진행 로그 2026-07-08 v0.2.1]].
+> ✅ (2026-07-08) v0.2.1 — ESD 스키마 파생 핫픽스(PR #100, tag v0.2.1). 상세는 [[#진행사항 업데이트 로그|진행 로그 2026-07-08 v0.2.1]].
+> ✅ (2026-07-09) **현재 프로덕션 = v0.2.2 — 프로젝트명 전면 변경: CogInsight Generator**. 📄 **확정 사항(2026-07-09, 사용자 확인)**: 구명(코드네임 4글자, 이 vault에서 표기 금지)은 **사용 불가 판정** → 코드·DB·함수 슬러그·Vercel·GitHub·위키·메모리 전체 리네임. **구 URL 전부 폐기**(공유했던 링크는 재안내 필요). 상세는 [[#진행사항 업데이트 로그|진행 로그 2026-07-09]]. ⚠ 이 페이지의 과거 로그·버전표 속 명칭·URL·테이블명도 새 이름으로 소급 치환됨(사실 관계는 동일, 이름만 현행화).
 
 **무엇이 어디에 (모두 라이브 확인 200)**
-- 📄 **앱 프로토타입**: https://cogi-poc-generator-v1.vercel.app — 실제 생성기 앱(테스터 이메일 OTP 인증 게이트). Vercel 프로젝트 `cogi-poc-generator-v1`.
-- 📄 **개요·매뉴얼 공개 문서**: https://cogi-overview.vercel.app — 무계정 공개, 브랜드 파비콘·버전 히스토리 포함. 편집 원본은 claude.ai 아티팩트 `1e30660a…`. (상세 [[#공개 배포 — 개요·매뉴얼 페이지 (운영 SoP)|공개 배포 SoP]])
-- 📄 **코드 기준선**: git tag **`v0.1.0`** + GitHub Release, `package.json` 0.1.0, 엣지함수 cogi-generator **v87**, 610커밋 · 마이그레이션 54 · solution_rules 8 카테고리.
+- 📄 **앱 프로토타입**: https://coginsight-generator.vercel.app — 실제 생성기 앱(테스터 이메일 OTP 인증 게이트). Vercel 프로젝트 `coginsight-generator`.
+- 📄 **개요·매뉴얼 공개 문서**: https://coginsight-overview.vercel.app — 무계정 공개, 브랜드 파비콘·버전 히스토리 포함. 편집 원본은 claude.ai 아티팩트 `1e30660a…`. (상세 [[#공개 배포 — 개요·매뉴얼 페이지 (운영 SoP)|공개 배포 SoP]])
+- 📄 **코드 기준선**: git tag **`v0.1.0`** + GitHub Release, `package.json` 0.1.0, 엣지함수 coginsight-generator **v87**, 610커밋 · 마이그레이션 54 · solution_rules 8 카테고리.
 
 **버전 관리**
 - 📄 SemVer 0.x로 버전 관리 시작. ⚠ **동결 버전은 임의로 바꾸지 않는다**(테스트·보고는 이 태그 기준). 다음 변경은 새 버전으로.
@@ -36,19 +37,19 @@ updated: 2026-07-08
 - 개요·매뉴얼 문서를 무계정 공개 페이지로 배포 + 운영 SoP·버전 히스토리·브랜드 파비콘 정리.
 
 ## 개요
-- 📄 설명: Cogi **Dialog JSON Generator** — 챗봇 대화 시나리오(플로우)를 LLM으로 생성하는 POC 제너레이터 + 학습/관리 어드민. (`README.md`)
+- 📄 설명: CogInsight **Dialog JSON Generator** — 챗봇 대화 시나리오(플로우)를 LLM으로 생성하는 POC 제너레이터 + 학습/관리 어드민. (`README.md`)
 - 📄 유형: **풀스택**. 프론트(React SPA) + Supabase Edge Functions(Deno) 백엔드 + Postgres. **버전 v0.2.0**(2026-07-03 릴리스 — `package.json` 0.2.0, annotated tag `v0.2.0` + GitHub Release; v0.1.0은 2026-06-30 첫 동결 기준선).
-- 📄 생성 흐름: 사용자가 레퍼런스 선택 → 맞춤 질문(설문) 응답 → 학습된 템플릿/규칙 기반으로 Cogi Dialog JSON 생성 → 결과 저장·다운로드. (`README.md`)
+- 📄 생성 흐름: 사용자가 레퍼런스 선택 → 맞춤 질문(설문) 응답 → 학습된 템플릿/규칙 기반으로 CogInsight Dialog JSON 생성 → 결과 저장·다운로드. (`README.md`)
 - 🧠 2026-06-09 위키 작성 시점엔 "배포 준비된 프론트 POC"였으나, 2주간 ~200커밋으로 **백엔드·LLM 파이프라인·인증이 본격화된 제품**이 됐다.
 
 ## 주요 기능
-- 📄 **LLM 다단계 생성 파이프라인** (`supabase/functions/cogi-generator`, 엣지함수 **v87** 배포 기준): Stage1 추상 플로우 설계(LLM) → Stage2 결정론적 노드 전개(LLM 0콜) → Stage2.5 값 채우기(LLM) → Stage2.6 ESD 스키마·API 정의 파생(LLM) → **결정론적 안전장치 체인** Stage2.9 루프 탈출변수 정합화 → 2.95 반복수집 루프 래핑 → 3 검증 재시도 루프 래핑 → 3.5 무의미 컨디션 노드 제거 → 3.6 루프 누적 배열 자동 초기화 → output 멘트 패스(placeholder leak 정리·필드 미상 힌트). 🧠 LLM은 설계·값해석만, **구조 정합성·안전장치는 코드(결정론)가 보장**.
+- 📄 **LLM 다단계 생성 파이프라인** (`supabase/functions/coginsight-generator`, 엣지함수 **v87** 배포 기준): Stage1 추상 플로우 설계(LLM) → Stage2 결정론적 노드 전개(LLM 0콜) → Stage2.5 값 채우기(LLM) → Stage2.6 ESD 스키마·API 정의 파생(LLM) → **결정론적 안전장치 체인** Stage2.9 루프 탈출변수 정합화 → 2.95 반복수집 루프 래핑 → 3 검증 재시도 루프 래핑 → 3.5 무의미 컨디션 노드 제거 → 3.6 루프 누적 배열 자동 초기화 → output 멘트 패스(placeholder leak 정리·필드 미상 힌트). 🧠 LLM은 설계·값해석만, **구조 정합성·안전장치는 코드(결정론)가 보장**.
 - 📄 **반복 루프 생성** (`flow/wrapValidationLoops.ts`, `loopBehavior.ts`): Stage1 LLM이 시나리오 의도에 따라 `loop` 노드(body/exitVar/max)를 *설계* → `expandWithSpecs`가 subdialog JSON으로 결정론 변환(조건식·flag 초기화·안전카운트) → validate/repair가 본문 도달성·exitVar set 존재를 검증. 입력 검증 실패 시 재질문 루프 자동 생성. 루프 노드는 코드 내장, 동작 파라미터(탈출 비교·flag 자동초기화·최대횟수·포맷 정규식)는 `Loop Rule` 카테고리에서 튜닝.
 - 📄 **데이터구동 규칙 엔진**: 생성 규칙을 코드에 박지 않고 `solution_rules`(DB, **8 카테고리**: Solution / System Variable / Node Usage / Variable Usage / Value Generation / Output Message / Condition / **Loop Rule**)에 두고 단계별 프롬프트에 주입(`RULE_STAGE_BY_CATEGORY` 매핑). 어드민 또는 레퍼런스 학습으로 규칙 추가. (`CLAUDE.md`)
 - 📄 **규칙 학습 + 정합화** (`learn-solution-rules`): 자연어나 예시 봇 JSON에서 생성 규칙을 도출하고, 기존 규칙과 충돌 시 교체/유지/수정으로 정합화. 솔루션 규칙 탭 상단 패널로 통합.
 - 📄 **레퍼런스 학습**: `derive-node-specs`(결정론적 노드 추출 → LLM 일반화 → closed-world 검증), `learn-rules`(레퍼런스 JSON 구조 학습). (`supabase/functions/`)
-- 📄 **시나리오 레퍼런스 라이브러리** (`/scenarios`, `cogi_scenario_references`): 산업군별(금융/물류/소매/도매/의료/기타) 미니봇 학습자료. Stage1 few-shot 예시로 주입 + 사용자 단일선택/조립.
-- 📄 **API 레퍼런스 라이브러리** (`cogi_api_references`): import용 API 정의 관리(엔드포인트당 1행) + 어드민에서 실제 호출 test(프록시). 쿼리 파라미터·JSON 통째 바디·필수/선택 구분 지원, 이름 비우면 LLM 생성, 이름 검증(한글·특수문자·공백 불가), 테스트 통과 후 수동 등록(자동등록 폐기), 미통과 시 위치 안내·자동 이동.
+- 📄 **시나리오 레퍼런스 라이브러리** (`/scenarios`, `coginsight_scenario_references`): 산업군별(금융/물류/소매/도매/의료/기타) 미니봇 학습자료. Stage1 few-shot 예시로 주입 + 사용자 단일선택/조립.
+- 📄 **API 레퍼런스 라이브러리** (`coginsight_api_references`): import용 API 정의 관리(엔드포인트당 1행) + 어드민에서 실제 호출 test(프록시). 쿼리 파라미터·JSON 통째 바디·필수/선택 구분 지원, 이름 비우면 LLM 생성, 이름 검증(한글·특수문자·공백 불가), 테스트 통과 후 수동 등록(자동등록 폐기), 미통과 시 위치 안내·자동 이동.
 - 📄 **테스터 인증·승인** (`testers`, `trusted-device`): 이메일 OTP 로그인 → 승인 게이트(pending→approved) → 계정별 결과(RLS) → 신뢰기기 등록 후 이메일만으로 재로그인(30일).
 - 📄 **LLM 토큰 사용량·예상비용 집계·표시** (`flow/usage.ts`).
 - 📄 **사용자 피드백**: 플로팅 버튼 → 우측하단 팝오버, 어드민 피드백 관리 탭(미완료 배지). (v0.3.0 dev, 미머지: "지금 보는 화면 첨부" 체크 시 뷰포트 캡처 첨부 + 어드민 썸네일·클릭 확대 — [[#진행사항 업데이트 로그|7/7 저녁 로그]])
@@ -58,7 +59,7 @@ updated: 2026-07-08
 [[공통-기술스택]] 기반 + 풀스택 확장:
 - 📄 **프론트**: React 19.2, Vite 8, React Router 7, Tailwind CSS 4, Radix UI + shadcn, lucide-react. 폼/검증 = react-hook-form + **zod**(Dialog JSON 구조 검증의 핵심).
 - 📄 **백엔드**: Supabase Edge Functions(Deno/TypeScript) **21개**, Postgres(**54 마이그레이션**, RLS). 순수 함수(flow/*)는 `deno test`로 단위 테스트. ([[parking]])
-- 📄 **LLM**: **OpenAI `gpt-4o`** (temperature 0.1). ⚠ GEMINI는 mailer/grafana용이고 Cogi와 무관(혼동 금지).
+- 📄 **LLM**: **OpenAI `gpt-4o`** (temperature 0.1). ⚠ GEMINI는 mailer/grafana용이고 CogInsight와 무관(혼동 금지).
 - 📄 **배포**: 프론트 Vercel(main 푸시 자동), 엣지함수 `supabase functions deploy`, DB `supabase db push`.
 
 ## 아키텍처
@@ -69,20 +70,20 @@ updated: 2026-07-08
 
 ## 진행 현황 (2026-07-07 — 프로덕션 v0.2.0 유지 · v0.3.0 dev 사이클 진행 중)
 - 📄 **v0.3.0 dev 진행 (2026-07-06~07)**: 브랜치 `feat/v0.3.0-observability-regression`(main 미머지·프로덕션 무배포, 배지 `v0.3.0 DEV` 선반영). 관측성·회귀 하네스·dev 레퍼런스 6종·few-shot 전/후 검증(로드맵 항목 1·2 ✅, 항목 4 부분)에 이어 7/7 **레퍼런스 구조 시드 생성(STAGE 3.68) + 시드 UX 5건 + 피드백 스크린샷 첨부**까지 누적 — 상세는 [[#진행사항 업데이트 로그|업데이트 로그]]·[[#로드맵 — v0.3.0 (계획): 시나리오 레퍼런스 라이브러리 테스트·고도화|로드맵]].
-- 📄 **v0.2.0 프로덕션 릴리스 (2026-07-03)**: 4축 규약 전체 수행 — ① 코드: PR #98 머지(`36d0181`, PR #97 롤백을 릴리스로 의도적 무효화), annotated tag `v0.2.0` + GitHub Release, CHANGELOG [0.2.0] 정리 ② DB: 미적용 llm 마이그레이션 6개 push + 프로덕션 재조회 검증(AI 질문 3행·llmloop 규칙 2행 dev와 완전 일치, 템플릿 멱등 확인) ③ 엣지함수: 프로덕션 슬러그 5종(cogi-generator·admin-questions·admin-results·admin-solution-rules·results) 배포 + **프로덕션 스모크 생성 1회 전수 통과**(chained 2·guarded 1, 결과는 검증 후 삭제) ④ 프론트: Vercel 자동 배포, 번들 v0.2.0 확인.
-- 📄 **머지 후 dev 리셋 완료(규약)**: dev_questions·dev_solution_rules를 프로덕션 미러로 재시드(diff 0 검증), dev_cogi_results 비움. ⚠ 질문 id가 재발급됨 — 이후 dev 테스트 요청은 새 id 기준.
+- 📄 **v0.2.0 프로덕션 릴리스 (2026-07-03)**: 4축 규약 전체 수행 — ① 코드: PR #98 머지(`36d0181`, PR #97 롤백을 릴리스로 의도적 무효화), annotated tag `v0.2.0` + GitHub Release, CHANGELOG [0.2.0] 정리 ② DB: 미적용 llm 마이그레이션 6개 push + 프로덕션 재조회 검증(AI 질문 3행·llmloop 규칙 2행 dev와 완전 일치, 템플릿 멱등 확인) ③ 엣지함수: 프로덕션 슬러그 5종(coginsight-generator·admin-questions·admin-results·admin-solution-rules·results) 배포 + **프로덕션 스모크 생성 1회 전수 통과**(chained 2·guarded 1, 결과는 검증 후 삭제) ④ 프론트: Vercel 자동 배포, 번들 v0.2.0 확인.
+- 📄 **머지 후 dev 리셋 완료(규약)**: dev_questions·dev_solution_rules를 프로덕션 미러로 재시드(diff 0 검증), dev_coginsight_results 비움. ⚠ 질문 id가 재발급됨 — 이후 dev 테스트 요청은 새 id 기준.
 - 📄 **규모**: 총 **662 커밋**, 마이그레이션 63(전부 적용), 엣지함수 26(프로덕션 21 + dev 5), solution_rules 8 카테고리(prod 30행 = dev).
-- 🧠 남은 결: **런타임 검증**(Cogi 솔루션에 올려 llmloop 대화 동작 — apiKey·model·docsearch storeId는 사용자가 직접 입력), 규칙·학습자료 운영형 보강, 변수/JSON 출력 처리 고도화(v0.1.0부터의 과제), 수집형 체인의 분기·이탈 tool(~~v0.3 후보~~ → 백로그. 📄 2026-07-06 사용자 확정으로 **v0.3.0 = 시나리오 라이브러리** — 아래 [[#로드맵 — v0.3.0 (계획): 시나리오 레퍼런스 라이브러리 테스트·고도화|로드맵]]).
+- 🧠 남은 결: **런타임 검증**(CogInsight 솔루션에 올려 llmloop 대화 동작 — apiKey·model·docsearch storeId는 사용자가 직접 입력), 규칙·학습자료 운영형 보강, 변수/JSON 출력 처리 고도화(v0.1.0부터의 과제), 수집형 체인의 분기·이탈 tool(~~v0.3 후보~~ → 백로그. 📄 2026-07-06 사용자 확정으로 **v0.3.0 = 시나리오 라이브러리** — 아래 [[#로드맵 — v0.3.0 (계획): 시나리오 레퍼런스 라이브러리 테스트·고도화|로드맵]]).
 
 ## 공개 배포 — 개요·매뉴얼 페이지 (운영 SoP)
 > 📄 이 프로젝트의 **"개요 및 매뉴얼" 한 장짜리 문서**를 공개 웹페이지로 배포해 둠. **이 문서 내용을 수정·반영하라고 하면 → 아래 공개 페이지에 재배포**한다(사용자 지시, 2026-06-30).
 
-- 🌐 **공개 URL (무계정 열람·공유용)**: **https://cogi-overview.vercel.app** — Claude 무관 정적 호스팅. 자기완결 HTML(이미지·CSS·JS 전부 내장).
-  - ⚠ 긴 배포-전용 URL(`cogi-overview-xxxx-...vercel.app`)은 Vercel 보호(302)로 막힘 → **반드시 짧은 `cogi-overview.vercel.app`만 공유**.
+- 🌐 **공개 URL (무계정 열람·공유용)**: **https://coginsight-overview.vercel.app** — Claude 무관 정적 호스팅. 자기완결 HTML(이미지·CSS·JS 전부 내장).
+  - ⚠ 긴 배포-전용 URL(`coginsight-overview-xxxx-...vercel.app`)은 Vercel 보호(302)로 막힘 → **반드시 짧은 `coginsight-overview.vercel.app`만 공유**.
 - 🧩 **원본(편집용)**: claude.ai 아티팩트 `https://claude.ai/code/artifact/1e30660a-4c19-4a59-9f19-198bed774f7d` (단일 HTML, 개요/사용매뉴얼/관리자 3탭).
 - 🎨 **파비콘**: 배포 디렉토리에 `favicon.svg`(워드마크 브랜드 마크 = 검정 라운드 사각형 `#11162A` + 앰버 가로바 `#B5701B` + 흰 세로바)를 두고, head에 `<link rel="icon" type="image/svg+xml" href="/favicon.svg">`. **재배포 디렉토리엔 `index.html`과 `favicon.svg` 둘 다** 있어야 한다(스크래치패드는 세션 임시 → 새 세션은 아래 원본으로 favicon.svg 재생성).
   ```svg
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="Cogi">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="CogInsight">
     <rect width="32" height="32" rx="10" fill="#11162A"/>
     <rect x="7" y="10" width="13.5" height="4.2" rx="2" fill="#B5701B"/>
     <rect x="13" y="10" width="4.2" height="13.5" rx="2" fill="#FFFFFF"/>
@@ -90,11 +91,11 @@ updated: 2026-07-08
   ```
 - 🛠 **재배포 절차** (📄 확인된 동작):
   1. HTML 수정(스크래치패드 작업본 또는 아티팩트 갱신).
-  2. `index.html`로 복사한 배포 디렉토리에서 `vercel deploy --prod` (Vercel 계정 `qtw9723`, 프로젝트 **`cogi-overview`**).
-  3. `curl -s -o /dev/null -w "%{http_code}" https://cogi-overview.vercel.app` 가 **200**인지 확인(인증 벽 없음).
+  2. `index.html`로 복사한 배포 디렉토리에서 `vercel deploy --prod` (Vercel 계정 `qtw9723`, 프로젝트 **`coginsight-overview`**).
+  3. `curl -s -o /dev/null -w "%{http_code}" https://coginsight-overview.vercel.app` 가 **200**인지 확인(인증 벽 없음).
   4. 같은 변경을 claude.ai 아티팩트에도 반영(`url=` 동일 아티팩트로 재배포)하면 원본·공개본 동기화.
 - 🧠 수정 시 **아래 버전 히스토리 표 + 공개 페이지의 "버전 히스토리" 섹션**을 함께 갱신한다(둘이 mirror).
-- 📄 (2026-07-03) **본문을 v0.2.0 기준으로 개정**: 히어로 배지·통계(662커밋·26함수·63마이그레이션)·파이프라인 rail/표에 Stage 3.65/3.7/3.75 추가, 신규 섹션 "v0.2.0 — AI 자유응답(LLM 노드)"(지식소스 표·시나리오별 LLM·생성 후 키 입력 안내), 매뉴얼 A-2(AI 설문 항목)·A-5(파일명 cogi-봇이름.json·키 입력) 보강. 아티팩트 원본도 동기화.
+- 📄 (2026-07-03) **본문을 v0.2.0 기준으로 개정**: 히어로 배지·통계(662커밋·26함수·63마이그레이션)·파이프라인 rail/표에 Stage 3.65/3.7/3.75 추가, 신규 섹션 "v0.2.0 — AI 자유응답(LLM 노드)"(지식소스 표·시나리오별 LLM·생성 후 키 입력 안내), 매뉴얼 A-2(AI 설문 항목)·A-5(파일명 coginsight-봇이름.json·키 입력) 보강. 아티팩트 원본도 동기화.
 
 ### 버전 히스토리 (문서·릴리스 기준선)
 새 버전을 동결/배포할 때마다 **이 표**와 **공개 페이지의 버전 히스토리 섹션**에 한 줄씩 추가한다.
@@ -103,9 +104,10 @@ updated: 2026-07-08
 |---|---|---|---|
 | **v0.4.0 (예정)** | 미정 | 계획 수립 2026-07-07 | **레퍼런스 시각화** — 레퍼런스 대화 플로우를 보이는 다이어그램으로(선택·미리보기에서 흐름·수집·분기 구조를 그림으로). v0.3.0의 텍스트 흐름 요약(`refSummary.js`)을 다이어그램으로 발전. |
 | **v0.3.0 (개발 중)** | 진행 중 (2026-07-06~) | dev 전용(프로덕션 미반영) · 713커밋 | **시나리오 레퍼런스 라이브러리 테스트·고도화** — 산업군별 레퍼런스 6종 등록·few-shot 실검증(항목 1·2 ✅), 구조 시드 생성·시드 UX 5건·피드백 스크린샷 첨부(추가 구현), 조립·결합 회귀·고도화 잔여. 전 과정 dev 전용. |
-| **v0.2.1** | 2026-07-08 | main `46bb57f` · PR #100 · tag v0.2.1 | **ESD 스키마 파생 핫픽스** — `collectEsdFields`가 schemaName을 `config.query.schemaName`에서 읽도록 교정(그전엔 `config.schemaName`만 봐서 ESD 노드 스킵 → `esd_schemas` 항상 빈 배열) + 바인딩된 필드만 수집(레퍼런스 잔재 빈필드 제외). 프로덕션 `cogi-generator` 재배포, 재생성 검증(id e72f4e26, 상담기록 스키마 정상). deno 223 green. |
+| **v0.2.2** | 2026-07-09 | main `9a99e18` · PR #101 · tag v0.2.2 | **프로젝트명 전면 변경 — CogInsight Generator**(구명 사용 불가 판정). 코드·문서 122파일 치환, 엣지함수 슬러그 `coginsight-generator(-dev)` 신규 배포·구 슬러그 삭제, DB 객체(테이블 8·제약 12·인덱스 20·정책 8) rename(라이브 직접 실행), GitHub repo `CogInsight-Generator`, Vercel `coginsight-generator`·`coginsight-overview`(구 URL 폐기). 기능 무변경, deno 210 green. |
+| **v0.2.1** | 2026-07-08 | main `46bb57f` · PR #100 · tag v0.2.1 | **ESD 스키마 파생 핫픽스** — `collectEsdFields`가 schemaName을 `config.query.schemaName`에서 읽도록 교정(그전엔 `config.schemaName`만 봐서 ESD 노드 스킵 → `esd_schemas` 항상 빈 배열) + 바인딩된 필드만 수집(레퍼런스 잔재 빈필드 제외). 프로덕션 `coginsight-generator` 재배포, 재생성 검증(id e72f4e26, 상담기록 스키마 정상). deno 223 green. |
 | **v0.2.0** | 2026-07-03 | main `36d0181` · 662커밋 · 마이그레이션 63 | **AI 자유응답(LLM 노드) 블록** — 지식소스 3종(문서/일반/혼합) 전역·시나리오별 선택, 시나리오별 LLM(Q&A형 + 수집형 **LLM-구동 플로우 체인**), llmloop 레퍼런스 골격(ask_docs+docsearch 2패스), STAGE 3.65(anythingelse 1회성)·3.75(api 결과 예외 처리) 안전장치, DEV 테이블 모드, apiKey·model·storeId 사용자 입력 불변식. |
-| **v0.1.0** | 2026-06-30 | 엣지함수 cogi-generator **v87** · 610커밋 · 마이그레이션 54 | 프로토타입 동결(SemVer 0.x 시작, tag·GitHub Release). 결정론 생성 안전장치 체인(Stage 2.9~3.6) 완비, API 결과 멘트 노출·placeholder 정리. **첫 보고·테스트 기준선.** |
+| **v0.1.0** | 2026-06-30 | 엣지함수 coginsight-generator **v87** · 610커밋 · 마이그레이션 54 | 프로토타입 동결(SemVer 0.x 시작, tag·GitHub Release). 결정론 생성 안전장치 체인(Stage 2.9~3.6) 완비, API 결과 멘트 노출·placeholder 정리. **첫 보고·테스트 기준선.** |
 
 ## 로드맵 — v0.3.0 (계획): 시나리오 레퍼런스 라이브러리 테스트·고도화
 > 📄 **2026-07-06 사용자 확정**: v0.3.0에서는 **시나리오 라이브러리 기능을 테스트하고 고도화**한다. 현재 레퍼런스가 하나도 등록돼 있지 않아 이 기능으로 테스트된 적이 없고, 조합(조립) 사용 테스트도 미진행 — v0.3.0에서 **시나리오 라이브러리를 활용한 결과 생성**을 테스트한다.
@@ -113,11 +115,11 @@ updated: 2026-07-08
 > ⚠ 📄 **v0.3.0 작업은 프로덕션 무배포 (2026-07-06 사용자 확정)** — 테스트·고도화 전 과정 **dev 전용**(테스트 브랜치·`dev_` 테이블·`-dev` 슬러그·`VITE_DEV_TABLES=true`). 프로덕션 반영은 사용자가 "프로덕션에 머지"를 명시 요청할 때만(4축 절차). 이번에 배포된 것은 **로드맵 문서뿐**.
 
 **배경 (📄 코드 확인, 2026-07-06)** — 라이브러리는 v0.1.0부터 두 경로로 구현돼 있으나, 레퍼런스 0건이라 둘 다 실데이터 검증이 없음:
-1. **생성 파이프라인 few-shot 주입(Mode A)**: 설문 응답에서 산업군(금융/물류/소매/도매/의료/기타) 추출 → `cogi_scenario_references`에서 사용자 시나리오 이름 관련도 상위 3개 선택 → 보일러플레이트(welcome·anythingelse) 제외한 시나리오 부분을 Stage 1 프롬프트 예시로 주입(`flow/scenarioExamples.ts`). **레퍼런스가 없으면 조용히 skip → 지금까지의 모든 생성은 few-shot 없이 이뤄졌다.**
+1. **생성 파이프라인 few-shot 주입(Mode A)**: 설문 응답에서 산업군(금융/물류/소매/도매/의료/기타) 추출 → `coginsight_scenario_references`에서 사용자 시나리오 이름 관련도 상위 3개 선택 → 보일러플레이트(welcome·anythingelse) 제외한 시나리오 부분을 Stage 1 프롬프트 예시로 주입(`flow/scenarioExamples.ts`). **레퍼런스가 없으면 조용히 skip → 지금까지의 모든 생성은 few-shot 없이 이뤄졌다.**
 2. **사용자 라이브러리 `/scenarios`**(`ScenarioLibrary.jsx`): 카테고리별 미니봇 탐색, 단일 다운로드 또는 여러 개 조립(조립 경고 안내 포함).
 
 **작업 항목** (🧠 사용자 목표를 세분화한 제안 — SoT·상세는 저장소 ROADMAP.md. 진행 표시는 2026-07-07 기준 ROADMAP 미러)
-1. ✅ **레퍼런스 등록** (2026-07-06, dev) — 산업군별 미니봇 6종 제작(생성기 초안→수동 교정→품질 게이트)·`dev_cogi_scenario_references` 등록. 프로덕션 승격은 "프로덕션에 머지" 시 선별.
+1. ✅ **레퍼런스 등록** (2026-07-06, dev) — 산업군별 미니봇 6종 제작(생성기 초안→수동 교정→품질 게이트)·`dev_coginsight_scenario_references` 등록. 프로덕션 승격은 "프로덕션에 머지" 시 선별.
 2. ✅ **단일 레퍼런스 생성 테스트** (2026-07-06, dev) — 회귀 하네스 전/후 비교로 3 fixture 전부 `injected` false→true, `rules_hash` 완전 동일(순수 레퍼런스 효과 분리). ⚠ api-esd `placeholder-leak` 신규 1건 → 항목 6 백로그.
 3. **조립(조합) 생성 테스트** — 여러 레퍼런스 조립 산출물의 정합성·실사용 검증(잔여). ✅ (2026-07-07 추가 구현, 사용자 제안) 설문에서 레퍼런스 직접 선택 → **구조 시드**(STAGE 3.68 결정론 복제) — 위 [[#진행사항 업데이트 로그|7/7 로그]].
 4. 🔶 **선택 로직 검증** (부분 완료 2026-07-06) — `extractCategory`·`selectExamples`가 3 fixture에서 산업군별 올바른 레퍼런스를 선택함을 확인. 다중 후보(산업군당 2개+) 관련도 스코어 검증은 잔여.
@@ -125,7 +127,7 @@ updated: 2026-07-08
 6. **고도화** — 누적 백로그(📄 ROADMAP): 라이브러리 **미리보기 부재**(7/7 사용자 피드백 — 다운로드·조립 전 구조 확인 모달 검토) / few-shot 도입 후 placeholder-leak 원인 분석 / 도매 레퍼런스 배열 누적 품질.
 
 **주의·스코프**
-- ⚠ `cogi_scenario_references`는 dev 사본 없는 **프로덕션 공유 테이블**(DEV 규약) — 레퍼런스 등록·변경은 사용자 확인 후 진행.
+- ⚠ `coginsight_scenario_references`는 dev 사본 없는 **프로덕션 공유 테이블**(DEV 규약) — 레퍼런스 등록·변경은 사용자 확인 후 진행.
 - 🧠 기존 "v0.3 후보"(수집형 체인 분기·이탈 tool, docsearch·`_llm.tool.name`·`_llm.terminate` 등)는 v0.3.0 스코프 확정에 따라 **백로그(버전 미정)**로 이동.
 
 ## 다음 버전 확인·개선 항목 (v0.1.0 이후 백로그)
@@ -134,7 +136,7 @@ updated: 2026-07-08
 ### ✅ v0.2.0 — AI 자유응답(LLM 노드) 블록 (2026-07-03 프로덕션 릴리스)
 > 📄 2026-07-02 하루에 설계→구현→main 머지·릴리스(PR #94~#96)까지 갔다가 **같은 날 PR #97로 전량 롤백**. 프로덕션은 v0.1.0 유지, v0.2.0은 CHANGELOG상 **"미릴리스(dev 테스트 중)"** — v0.2.0 태그 없음. 이후 작업은 `feat/llm-v0.2.0-testing` 브랜치 + dev 환경에 누적.
 > 📄 **2026-07-03 릴리스**: 아래 7/3 확장 전부(생성 결함 3건 수정 + 지식소스 + 시나리오별 LLM + LLM-구동 체인 + model 빈 값 + api 예외 처리)를 담아 **프로덕션 릴리스 완료**(tag `v0.2.0`). llm 마이그레이션 6개도 프로덕션 적용·검증 완료.
-> 📄 **머지 전 최종 검증 통과 (7/3, dev API 전 기능 매트릭스)**: 시나리오 **6종**(docs/general/mixed+수집·검증루프/LLM 미사용/**API 연동**/**ESD 연동+LLM 결합**) + 전역 "둘 다"(docs)를 한 봇으로 생성해 전수 점검 — 이 과정에서 **메뉴 llmloop 주입이 시나리오 llmloop에 가려지는 결합 버그를 발견·수정**(`9a5e96a`, 시나리오 패스 선행 + 비시나리오 판정). 최종 결과 `8598c9c5`(최종검증봇_v020, llmloop 6개: 시나리오 4+메뉴+폴백, api·esd 노드 각 1) **전 항목 통과** — API 정의(`api_defs`: getMember, URL·${memberId} 바인딩)와 ESD 스키마(`esd_schemas`: 상담기록/memo)는 봇 JSON이 아니라 **generation_tiers의 별도 산출물**(Cogi import용)로 나가는 설계임을 확인. 이후 **LLM-구동 플로우 체인 규격**(아래 확장 2)과 **STAGE 3.75 api 결과 예외 처리 보장**(`c4b97bf` — 레퍼런스 관용구 [성공 자식(저장 변수 조건)→catch-all 실패 output]을 모든 api 노드에 보장, 재검증 `d7083216` 전수 통과)까지 반영하고, 결과 JSON 다운로드 파일명을 봇 이름 기반(`cogi-{봇이름}.json`)으로 개선(`87d2a23`)해 최종 홀드 지점 = **`87d2a23`**.
+> 📄 **머지 전 최종 검증 통과 (7/3, dev API 전 기능 매트릭스)**: 시나리오 **6종**(docs/general/mixed+수집·검증루프/LLM 미사용/**API 연동**/**ESD 연동+LLM 결합**) + 전역 "둘 다"(docs)를 한 봇으로 생성해 전수 점검 — 이 과정에서 **메뉴 llmloop 주입이 시나리오 llmloop에 가려지는 결합 버그를 발견·수정**(`9a5e96a`, 시나리오 패스 선행 + 비시나리오 판정). 최종 결과 `8598c9c5`(최종검증봇_v020, llmloop 6개: 시나리오 4+메뉴+폴백, api·esd 노드 각 1) **전 항목 통과** — API 정의(`api_defs`: getMember, URL·${memberId} 바인딩)와 ESD 스키마(`esd_schemas`: 상담기록/memo)는 봇 JSON이 아니라 **generation_tiers의 별도 산출물**(CogInsight import용)로 나가는 설계임을 확인. 이후 **LLM-구동 플로우 체인 규격**(아래 확장 2)과 **STAGE 3.75 api 결과 예외 처리 보장**(`c4b97bf` — 레퍼런스 관용구 [성공 자식(저장 변수 조건)→catch-all 실패 output]을 모든 api 노드에 보장, 재검증 `d7083216` 전수 통과)까지 반영하고, 결과 JSON 다운로드 파일명을 봇 이름 기반(`coginsight-{봇이름}.json`)으로 개선(`87d2a23`)해 최종 홀드 지점 = **`87d2a23`**.
 
 #### 7/3 확장 — 생성 결함 수정 + 지식소스 + 시나리오별 LLM (📄 git log `04ff579`~`3ca4282`, dev 검증 완료)
 - 📄 **생성 결함 3건 수정** (`04ff579`, 검증봇_V3 생성물 피드백): ① **anythingelse 1회성 보장** — welcome처럼 다이얼로그당 1개(루트)만 유효. Stage 1 카탈로그에서 제외 + 신규 **STAGE 3.65**(normalizeAnythingElse: 중간 잔존분은 자식 있으면 컨디션 노드로 전환, 없으면 제거). ② **제작 챗봇 정보 prompt 주입** — 설문의 시나리오 상세(진입 발화·수집 항목·완료 결과)를 '챗봇 정보'에 나열 + "기능 요청은 진입 발화로 안내" 지침. ③ **llmloop 레퍼런스 풀 body** — tool `[ask_docs, no_answer]` + body `[ask_docs 핸들러→답변 reset→정보찾기 subdialog(docsearch 2패스)] + [LLM reset(_llm.terminate)→no_answer output]` (한화라이프 봇·LLM 노드 샘플 구조 그대로).
@@ -142,16 +144,16 @@ updated: 2026-07-08
   - **지식소스**: `문서 검색(docs)`=ask_docs 골격+"문서 내용만 근거"(내부 정보 한정) / `일반 LLM(general)`=tool·body 없이 일반 지식 / `혼합(mixed)`=골격+"문서 우선, 없으면 일반 지식 보완". 기본값 general(도구 모르는 잔존 llmloop 포함 — storeId 없는 docsearch 런타임 실패 방지). ⚠ "웹 검색" 논의는 **LLM 일반 답변**을 의미(별도 웹 검색 기능 아님 — 사용자 확인).
   - **시나리오별 LLM (한화 봇 패턴)**: 시나리오 필드 "AI 자유응답 사용=예"면 그 시나리오 흐름 **마지막 잎 output 뒤에** 주제 전담 Q&A llmloop. **하이브리드**: Stage 1 규칙 지시 + STAGE 3.7 결정론 보장(있으면 소스별 정규화, 없으면 주입). 시나리오 식별은 진입 발화 조건 매칭.
   - **설문**: 전역 "AI 지식소스" 질문 + 시나리오 템플릿 필드 2개("AI 자유응답 사용"/"AI 지식소스"). ⚠ 템플릿은 **공유 templates 테이블에 라이브 반영됨**(사용자 승인) — 프로덕션 설문 UI에도 필드 노출(구 프론트는 showWhen 미지원이라 항상 표시, v0.1.0 생성기는 무시하므로 생성 영향 없음).
-- 📄 **model도 빈 값 불변식** (`3ca4282`): 키에 따라 쓸 수 있는 모델이 달라 **apiKey·model·(docsearch) storeId 전부 사용자가 Cogi에서 직접 입력** — 정규화가 model="" 강제(기본값 gpt-4o 주입 제거).
-- 📄 **검증**: deno 테스트 183개(신규 ~30개 TDD) + 실데이터(문제났던 cogi-49420202.json 재통과) + **dev 생성기 API 실호출 2회** — 최종 샘플 `dev_cogi_results` **09bde7a9**(지식검증봇_V5: FAQ 시나리오=docs 골격+주제 한정 prompt, 폴백=general 도구 없음, model·apiKey 전부 빈 값). Stage 1이 갱신된 규칙만으로 시나리오 끝 llmloop을 스스로 배치한 것도 확인(하이브리드 양 경로 모두 동작).
+- 📄 **model도 빈 값 불변식** (`3ca4282`): 키에 따라 쓸 수 있는 모델이 달라 **apiKey·model·(docsearch) storeId 전부 사용자가 CogInsight에서 직접 입력** — 정규화가 model="" 강제(기본값 gpt-4o 주입 제거).
+- 📄 **검증**: deno 테스트 183개(신규 ~30개 TDD) + 실데이터(문제났던 coginsight-49420202.json 재통과) + **dev 생성기 API 실호출 2회** — 최종 샘플 `dev_coginsight_results` **09bde7a9**(지식검증봇_V5: FAQ 시나리오=docs 골격+주제 한정 prompt, 폴백=general 도구 없음, model·apiKey 전부 빈 값). Stage 1이 갱신된 규칙만으로 시나리오 끝 llmloop을 스스로 배치한 것도 확인(하이브리드 양 경로 모두 동작).
 - 🧠 **머지 후 확인거리(minor)**: Stage 1이 분기·자식에 같은 조건을 중복 부여해 잉여 else 노드가 생기는 사례(도달 불가·무해) / llmloop stream 값이 파생 스펙(false)과 주입(true)에서 불일치.
 - 📄 **구현 내용 (PR #94·#95)**: 질문지 "AI 자유응답(LLM) 사용" 선택 시 생성 시나리오에 `llmloop` 노드 보장 — 메뉴형(메뉴 분기 "AI 상담" 주입)·폴백형(anythingelse 안내를 llmloop으로 치환)·둘 다 지원. 신규 결정론 단계 **STAGE 3.7** `flow/applyLlmBlocks.ts`(주입·치환·정규화), Stage 2.5 `FILLABLE_TYPES`에 `llmloop` 허용. DB: AI 자유응답 질문 2행 + llmloop 규칙 2행(Node Usage·Value Generation).
 - 📄 **핵심 안전 불변식 (구현됨)**: 모든 llmloop에 `config.apiKey = ""` 강제(레퍼런스 실키 유출 차단) + model/type 기본값·대소문자 교정 + 빈 prompt 템플릿 보충.
-- 📄 **DEV 테이블 모드 (7/2 도입)**: `-dev` 슬러그 함수 5개(cogi-generator·admin-questions·admin-solution-rules·results·admin-results) + `dev_questions`/`dev_solution_rules`/`dev_cogi_results` + 로컬 프론트 `VITE_DEV_TABLES=true`(버전 배지 DEV 표시). "실행-후-머지" 워크플로우 — 프로덕션 슬러그·테이블 무접촉. 상세 규약은 저장소 `CLAUDE.md` "DEV 워크플로우 규약" 섹션(7/3, SoT).
+- 📄 **DEV 테이블 모드 (7/2 도입)**: `-dev` 슬러그 함수 5개(coginsight-generator·admin-questions·admin-solution-rules·results·admin-results) + `dev_questions`/`dev_solution_rules`/`dev_coginsight_results` + 로컬 프론트 `VITE_DEV_TABLES=true`(버전 배지 DEV 표시). "실행-후-머지" 워크플로우 — 프로덕션 슬러그·테이블 무접촉. 상세 규약은 저장소 `CLAUDE.md` "DEV 워크플로우 규약" 섹션(7/3, SoT).
 - 📄 **dev에서 이어진 튜닝 (7/2 오후)**: 폴백 치환 시 output 자식 가진 anythingelse 선택(Stage 1산 빈 anythingelse에 막히던 문제), llmloop prompt 백틱 템플릿 리터럴 정규화, **프롬프트 샘플 섹션 구조**(챗봇 성향/챗봇 정보/응답 지침 — 챗봇 정보 나열 + 시나리오 비답습 지침, dev 규칙에 반영).
 - 📄 **범위 밖(v0.3 후보)**: 툴 정의·docsearch·`_llm.tool.name` 분기·`_llm.terminate` 루프 제어.
 - ✅ **(해결) 프로덕션 마이그레이션**: llm 마이그레이션 6개 릴리스 때 전부 적용·재조회 검증 완료(UPDATE 체인 no-op 아님 확인, 템플릿 멱등 가드 정상).
-- ✅ **(해소 2026-07-08, 사용자 결정) 레퍼런스 상태**: "LLM 노드 샘플 (7/2 발췌)"의 nodeSpecs 파생을 실행 — `derive-node-specs` 호출로 `pending` → `completed`(nodespecs-1, 노드 타입 7종: docsearch·set·group·node·output·llmloop·subdialog, 경고 0, 재조회 검증). 이로써 `cogi_references` 4건 전부 `completed`.
+- ✅ **(해소 2026-07-08, 사용자 결정) 레퍼런스 상태**: "LLM 노드 샘플 (7/2 발췌)"의 nodeSpecs 파생을 실행 — `derive-node-specs` 호출로 `pending` → `completed`(nodespecs-1, 노드 타입 7종: docsearch·set·group·node·output·llmloop·subdialog, 경고 0, 재조회 검증). 이로써 `coginsight_references` 4건 전부 `completed`.
 
 #### 7/3 확장 2 — LLM-구동 플로우 체인(수집형 LLM 시나리오 새 규격) (📄 `886f55f`, dev 검증 완료)
 - 📄 **배경 (사용자 재정의)**: 시나리오 LLM은 "흐름 끝 Q&A 부착"이 아니라 **llmloop이 플로우 자체를 구성** — tool 분기 + body의 set/output으로 기존 결정론 플로우를 구현. 순서 수집은 **항목마다 전담 llmloop**(이름 받는 LLM → 연락처 받는 LLM), 각 단계에 기본 응답(고정 질문)이 있고 답변에 따라 다르게 진행. ⚠ **이 규격은 LLM 노드 내부 진행 시나리오(수집형)에만 적용**(사용자 확정) — Q&A형·미사용·전역은 기존 유지.
@@ -165,27 +167,37 @@ updated: 2026-07-08
 🧠 (참고) 위 둘 외 이미 기록된 한계: **변수/JSON 출력 처리 미숙**(JSON 자동 출력 불가→키 직접 지정), 둘 다 위 [[#현재 상태 스냅샷 — v0.1.0 프로토타입 배포 (2026-06-30)|현재 상태 스냅샷]] 한계 참고.
 
 ## 진행사항 업데이트 로그
+### 2026-07-09 — v0.2.2 프로덕션 릴리스: 프로젝트명 전면 변경 CogInsight Generator (📄 git·라이브 검증)
+- **배경 (📄 사용자 확정)**: 구명이 **사용하면 안 되는 이름**으로 판정 → "모든 곳의 모든 흔적"을 새 이름 **CogInsight Generator**로 변경. 라이브 인프라까지 전부 + raw/ 포함(예외 승인), git 커밋 이력은 유지(재작성 안 함 — 커밋 메시지·과거 파일 내용에 구명 잔존은 의도된 예외).
+- **코드 (PR #101 → main `9a99e18`, tag v0.2.2 + GitHub Release)**: 122파일 치환 + 함수 디렉토리·마이그레이션 파일명 rename(버전 프리픽스 불변). 과거 마이그레이션 파일도 새 이름 기준 재작성. deno 210 green(main). **v0.3.0 dev 브랜치에도 동일 적용**(134파일 + main 머지 정합, deno 228 green, push 완료).
+- **DB (라이브 직접 실행, Management API)**: 테이블 8(`coginsight_references`·`coginsight_results`·`coginsight_scenario_references`·`coginsight_api_references`·`coginsight_feedback` + dev 사본 3)·제약 12·인덱스 20·정책 8 rename. ⚠ **rename 마이그레이션 파일은 의도적으로 미작성**(파일에 구명이 남는 것 방지) — fresh reset은 재작성된 과거 마이그레이션이 새 이름으로 생성. 데이터 무손실 검증(references 4·results 75·dev 레퍼런스 6).
+- **엣지함수**: 전 함수(25종) 재배포, 슬러그 `coginsight-generator`·`coginsight-generator-dev` 신규·구 슬러그 삭제(404 확인). dev 래퍼 7종은 v0.3.0 브랜치 코드로 재배포. 스모크: references·scenario-references·questions 전부 200.
+- **GitHub·로컬**: repo `qtw9723/CogInsight-Generator`(구명 redirect 유지), 로컬 폴더 `/Users/sangjun/IdeaProjects/CogInsight-Generator`.
+- **Vercel**: 앱 프로젝트 rename → **https://coginsight-generator.vercel.app** (200, 번들 신규 슬러그 호출 확인), 구 도메인 삭제(404). 개요 페이지 신규 프로젝트 → **https://coginsight-overview.vercel.app** (200), 구 프로젝트 삭제(404). 공개 브랜딩 "CogInsight Generator"로 통일(POC 표기 제거). claude.ai 아티팩트(1e30660a) in-place 동기화(label `rename-coginsight`).
+- ⚠ **구 URL 폐기에 따른 후속(사용자 몫)**: 테스터·사내 공유했던 앱/개요 링크 재안내 필요.
+- 🧠 잔존(의도): git 이력(양 저장소 커밋 메시지·과거 커밋 파일 내용), node_modules 내 base64 소스맵의 우연한 문자열(이름 아님).
+
 ### 2026-07-08 — v0.2.1 프로덕션 핫픽스: ESD 스키마 파생 버그 (📄 git·프로덕션 재생성 검증)
 - **발견 (📄 발표 준비 중)**: 데모 봇(올인원 물류봇)에서 ESD 연동 시나리오는 플로우에 있으나 **ESD 매니저용 JSON(`esd_schemas`)이 항상 빈 배열** — "ESD 연결" 산출물이 비어 시연 불가.
 - **원인**: `collectEsdFields`가 schemaName을 `config.schemaName`에서 읽는데 **실생성 노드는 `config.query.schemaName`** → ESD 노드 스킵. 테스트 픽스처가 실구조와 달라(config.schemaName) 못 잡던 결함(프로덕션 v0.1.0부터 잠재).
-- **수정·릴리스 (사용자 승인)**: `config.query.schemaName` 우선(폴백 유지) + 바인딩된 필드만 수집(레퍼런스 잔재 빈필드 제외) + 픽스처 실구조 교정·회귀테스트. deno **223 green**. hotfix 브랜치→**PR #100 머지(main `46bb57f`)→tag `v0.2.1`+GitHub Release→`supabase functions deploy cogi-generator`(프로덕션)**. 프론트는 main push로 Vercel 자동 v0.2.1.
-- **검증**: 프로덕션 재생성 id **e72f4e26** — `esd_schemas` 정상 1개("상담기록"/`inquiry`, 잔재필드 제거), `api_defs` 정상. 공개 cogi-overview·아티팩트 v0.2.1 반영, 데모 백업·시연대본(`docs/demo/`) 갱신.
+- **수정·릴리스 (사용자 승인)**: `config.query.schemaName` 우선(폴백 유지) + 바인딩된 필드만 수집(레퍼런스 잔재 빈필드 제외) + 픽스처 실구조 교정·회귀테스트. deno **223 green**. hotfix 브랜치→**PR #100 머지(main `46bb57f`)→tag `v0.2.1`+GitHub Release→`supabase functions deploy coginsight-generator`(프로덕션)**. 프론트는 main push로 Vercel 자동 v0.2.1.
+- **검증**: 프로덕션 재생성 id **e72f4e26** — `esd_schemas` 정상 1개("상담기록"/`inquiry`, 잔재필드 제거), `api_defs` 정상. 공개 coginsight-overview·아티팩트 v0.2.1 반영, 데모 백업·시연대본(`docs/demo/`) 갱신.
 - 🧠 fix는 main(v0.2.1)+v0.3.0 브랜치 양쪽 존재 → v0.3.0 머지 시 동일 변경 충돌 가능(정리 필요).
 
 ### 2026-07-08 — 생성 파이프라인 스테이지 라벨 함수명化 + 이력 매핑표 (📄 git·deno 검증)
 - **배경 (📄 사용자)**: 누적 삽입으로 뜀번호가 된 실제 코드 스테이지 번호(2.9·2.95·3.65·3.68·3.7·3.75 등)도 정리하되, 이력 추적 위해 기존 번호 매핑 유지(A안).
-- **작업**: cogi-generator 로그·주석·테스트명의 스테이지 라벨을 **함수명 기반**(designFlow·fillNodeValues·normalizeAnythingElse·applyLlmBlocks·guardApiResults 등)으로 일괄 치환(17파일). `index.ts` 상단에 **이름↔레거시 STAGE 번호 매핑표**(구 STAGE 1~3.75) 추가 = 이력 추적 단일 출처. `STAGE1_EXCLUDED_TYPES` 식별자는 보호.
+- **작업**: coginsight-generator 로그·주석·테스트명의 스테이지 라벨을 **함수명 기반**(designFlow·fillNodeValues·normalizeAnythingElse·applyLlmBlocks·guardApiResults 등)으로 일괄 치환(17파일). `index.ts` 상단에 **이름↔레거시 STAGE 번호 매핑표**(구 STAGE 1~3.75) 추가 = 이력 추적 단일 출처. `STAGE1_EXCLUDED_TYPES` 식별자는 보호.
 - **무영향·검증**: 런타임 로직·DB·테스트 단언에 번호 미사용 → 기능 무변경, deno **221 green**. **v0.3.0 dev 브랜치(`feat/v0.3.0-observability-regression`)에 ff-머지·push(`7cf1d75`)** (사용자 "빠르게 반영" 지시). **main·프로덕션은 미반영**(정책상 승인 시) — 단 **CHANGELOG [0.3.0]에 기재(`134b9ca`)**하여 **다음 v0.3.0 프로덕션 릴리스 때 함께 반영**되도록 스코프에 포함(사용자 지시).
 - 🧠 번호 3종 관계: **코드=함수명(+매핑표)** / **공개 doc=표시용 순차번호(1·2.1~3.8)** / 위키 §주요기능·§생성 파이프라인 서술은 레거시 STAGE 번호 잔존 → 셋 다 **함수명이 공통 앵커**(위키 서술 번호는 필요 시 점진 정리).
 
 ### 2026-07-08 — 발표용 공개 개요 페이지 v0.3.0 진행분 반영 (📄 vercel 재배포·라이브 검증)
 - **배경 (📄 사용자)**: 오늘 발표(공개 문서). 현 개발분(v0.3.0 dev)까지 정리해 공개 페이지에 반영 — 청중=사내 실무/보고용.
-- **갱신 (cogi-overview.vercel.app)**: 히어로 배지 "프로덕션 v0.2.0 · v0.3.0 개발 중", 통계(713커밋·엣지함수 29(프로덕션 21)·마이그레이션 64), "진행 현황 & 한계"에 **v0.3.0 진행 섹션 신설**(레퍼런스 6종 등록 ✅·few-shot 실검증 ✅·구조 시드·선택 UX·피드백 스크린샷·생성 관측성/회귀 하네스) + 남은 항목 재정리, 버전 히스토리 v0.3.0 행 (계획→개발 중)·잔여 명시, 작성기준 2026-07-08.
-- **검증**: `vercel deploy --prod`(프로젝트 cogi-overview, 계정 qtw9723) → 짧은 URL 200 + 라이브 마커 6종 grep 확인. claude.ai 아티팩트(1e30660a) 동일 URL in-place 동기화 완료(label `v0.3.0-dev-progress`). **내부 백로그(LLM flag 루프 무한반복 위험 등)는 공개 페이지 비게재 원칙 유지**.
+- **갱신 (coginsight-overview.vercel.app)**: 히어로 배지 "프로덕션 v0.2.0 · v0.3.0 개발 중", 통계(713커밋·엣지함수 29(프로덕션 21)·마이그레이션 64), "진행 현황 & 한계"에 **v0.3.0 진행 섹션 신설**(레퍼런스 6종 등록 ✅·few-shot 실검증 ✅·구조 시드·선택 UX·피드백 스크린샷·생성 관측성/회귀 하네스) + 남은 항목 재정리, 버전 히스토리 v0.3.0 행 (계획→개발 중)·잔여 명시, 작성기준 2026-07-08.
+- **검증**: `vercel deploy --prod`(프로젝트 coginsight-overview, 계정 qtw9723) → 짧은 URL 200 + 라이브 마커 6종 grep 확인. claude.ai 아티팩트(1e30660a) 동일 URL in-place 동기화 완료(label `v0.3.0-dev-progress`). **내부 백로그(LLM flag 루프 무한반복 위험 등)는 공개 페이지 비게재 원칙 유지**.
 
 ### 2026-07-07 (저녁) — 피드백 스크린샷 첨부 (v0.3.0 추가 기능, dev 전용) (📄 git log·dev API 검증)
 - **기능 (📄 사용자 제안)**: 피드백 팝오버에 "지금 보는 화면 첨부" 체크박스 — 체크 **시점**에 뷰포트를 DOM 렌더 캡처(`html-to-image`, 피드백 UI는 `data-feedback-ui` 마커로 제외, Tailwind 4 oklch 호환) → **미리보기+다시 찍기** → 전송 시 JPEG data URL로 저장. 어드민 피드백 탭에 썸네일+클릭 확대. **best-effort**(캡처 실패·과대(1.5MB 가드→0.6 축소 재시도)가 텍스트 전송을 막지 않음). DOM 캡처 한계(펼친 드롭다운·픽셀 버그 미재현)는 사용자가 인지·수용.
-- **백엔드**: `dev_cogi_feedback` 사본(+screenshot 컬럼, 프로덕션 8건 미러) + `feedback` 함수 T() 경유 + `feedback-dev` 슬러그(dev 테이블 5개·래퍼 7개로 — CLAUDE.md 규약 갱신). **프로덕션용 마이그레이션 파일 작성만**(20260707120000, 머지 때 적용 — "dev 반영+마이그레이션 짝" 규약).
+- **백엔드**: `dev_coginsight_feedback` 사본(+screenshot 컬럼, 프로덕션 8건 미러) + `feedback` 함수 T() 경유 + `feedback-dev` 슬러그(dev 테이블 5개·래퍼 7개로 — CLAUDE.md 규약 갱신). **프로덕션용 마이그레이션 파일 작성만**(20260707120000, 머지 때 적용 — "dev 반영+마이그레이션 짝" 규약).
 - **검증**: 뷰포트 크롭 순수 함수 deno 테스트 3종 + dev API 4종 통과(스크린샷 201 저장 / GET 포함 / png 접두는 스크린샷만 무시·텍스트 저장 / **프로덕션 격리 0건**). 화면 실검증(체크→미리보기→전송→어드민 썸네일)은 사용자 로컬(`VITE_DEV_TABLES=true`) 몫.
 - ✅ **(해소 2026-07-08, 사용자 결정) 별건 2건 처리**: ① `node_modules` 6,780파일 추적 해제 — 사용자 선택대로 **v0.3.0 브랜치에서** `git rm -r --cached` 정리 커밋(`209995d`, push 완료. ⚠ v0.3.0 프로덕션 머지 PR diff에 -6,780파일 포함됨 — 의도된 선택). ② `AGENTS.md`는 `.gitignore`에 등록(로컬 유지·git 무시, 같은 커밋).
 
@@ -199,7 +211,7 @@ updated: 2026-07-08
 ### 2026-07-07 — 레퍼런스 구조 시드 생성 (사용자 제안 기능, dev 전용) (📄 git log·dev 실검증)
 - **기능 (📄 사용자 제안·의미론 확정)**: 설문에서 시나리오 추가 시 **레퍼런스를 직접 선택** → 그 플로우가 **구조 시드**로 생성됨(few-shot 참고가 아니라 결정론 복제 — 구조·멘트는 교정된 레퍼런스 그대로, 진입 발화만 설문 값). 신규 **STAGE 3.68**(`applyScenarioSeeds.ts`, 3.7 llmloop 부착과 호환), 프론트 드롭다운은 **공유 templates 무접촉**(코드 주입 — 응답 JSON에만 실림), `scenario_examples.seeded` 관측성, 하네스 실측 어서션(`checkSeededStructure`)+`seed-collect` fixture.
 - **최종 리뷰가 잡은 결함 3건 (수정 완료)**: ⚠ 3중 검증(단위·하네스·실검증)이 **같은 사각지대**(설문 발화=레퍼런스 트리거로만 테스트)를 공유해 전부 통과했던 것을 최종 브랜치 리뷰가 발견 — ① C1: 이중 트리거 게이트로 설문 발화가 다르면 시드 시나리오 도달 불가 ② I1: "AI 자유응답=예"+수집형 조합에서 3.7이 시드 서브트리를 파괴 ③ I2: seeded 어서션이 메타 재확인(동어반복). 전부 수정 + **다른 진입 발화("내 택배 어디야") 실검증 PASS**. 🧠 교훈: 검증 레이어를 늘려도 같은 가정을 공유하면 무의미 — 대표 사용 케이스(불일치 입력)를 fixture에 박아둠.
-- v1 경계(📄 확정): 레퍼런스 수집 구조 우선(설문 수집항목 불일치는 `mismatch` 경고만), 시드 시나리오는 few-shot 후보에서도 제외(이중 주입 방지). 유닛 221+어서션 20 테스트, 4-fixture 회귀 전체 PASS, `cogi-generator-dev` 재배포. 총 25커밋(브랜치), main 미머지.
+- v1 경계(📄 확정): 레퍼런스 수집 구조 우선(설문 수집항목 불일치는 `mismatch` 경고만), 시드 시나리오는 few-shot 후보에서도 제외(이중 주입 방지). 유닛 221+어서션 20 테스트, 4-fixture 회귀 전체 PASS, `coginsight-generator-dev` 재배포. 총 25커밋(브랜치), main 미머지.
 - 🧠 사용자 로컬 확인 방법: `VITE_DEV_TABLES=true`로 로컬 프론트 실행 → 설문 시나리오 항목의 "레퍼런스 선택" 드롭다운 → 생성 → 결과 확인.
 
 ### 2026-07-06 (밤) — 레퍼런스 6종 제작·등록 + few-shot 첫 실검증 (로드맵 항목 1·2 ✅) (📄 dev 실행·git log)
@@ -210,17 +222,17 @@ updated: 2026-07-08
 
 ### 2026-07-06 (저녁) — 시나리오 레퍼런스 dev 사본 체계 구축 (📄 git log·dev 스모크 검증)
 - **배경 (📄 사용자 확정)**: 로드맵 항목 1(레퍼런스 등록)을 프로덕션 공유 테이블이 아닌 **dev 사본에서 테스트 후 승격(데이터 마이그레이션)**하는 방식으로.
-- **구축 내용**: ① `dev_cogi_scenario_references` 테이블(프로덕션 미러, `LIKE … INCLUDING ALL` — 기존 dev 테이블처럼 repo 마이그레이션 없이 DB 직접 생성) ② generator Mode A·scenario-references 함수 5곳을 `T()` 경유로(dev 슬러그만 dev 테이블, 프로덕션 무변경) ③ `scenario-references-dev` 래퍼 + 프론트 `SCENARIO_REFERENCES` devable 전환 ④ 회귀 러너 `--only <fixture>` 필터 ⑤ 저장소 CLAUDE.md DEV 규약 갱신(dev 테이블 4개·래퍼 6개·**승격 절차**: 사용자 선별 확인 → INSERT…SELECT(id 유지) → 재조회 검증 → 머지 후 미러 리셋).
+- **구축 내용**: ① `dev_coginsight_scenario_references` 테이블(프로덕션 미러, `LIKE … INCLUDING ALL` — 기존 dev 테이블처럼 repo 마이그레이션 없이 DB 직접 생성) ② generator Mode A·scenario-references 함수 5곳을 `T()` 경유로(dev 슬러그만 dev 테이블, 프로덕션 무변경) ③ `scenario-references-dev` 래퍼 + 프론트 `SCENARIO_REFERENCES` devable 전환 ④ 회귀 러너 `--only <fixture>` 필터 ⑤ 저장소 CLAUDE.md DEV 규약 갱신(dev 테이블 4개·래퍼 6개·**승격 절차**: 사용자 선별 확인 → INSERT…SELECT(id 유지) → 재조회 검증 → 머지 후 미러 리셋).
 - **dev 스모크 전수 통과**: 등록(의료 카테고리)→dev 목록 1건·**프로덕션 0건(격리 ①)**→조립 정상→few-shot 생성 `injected=true`·`picked=[스모크-진료예약봇]`(관측성 스냅샷으로 확인 — 오전 구축분과 맞물림)→정리 후 dev 0건·**프로덕션 0건 재확인(격리 ②)**. 프론트 빌드 그린. 기존 fixture 기대값 오염 방지를 위해 스모크는 의료 카테고리 사용(fixture는 금융).
-- ⚠ **운영 메모**: DB 직접 SQL(DDL·승격·리셋)은 Management API + `mailer/.env`의 `SUPABASE_ACCESS_TOKEN` 방식(과거 세션 방식 재발견) — 자동 모드 분류기가 타 프로젝트 env를 차단하므로 사용자 `!` 실행 또는 Cogi `.env.local`에 토큰 복사 필요.
+- ⚠ **운영 메모**: DB 직접 SQL(DDL·승격·리셋)은 Management API + `mailer/.env`의 `SUPABASE_ACCESS_TOKEN` 방식(과거 세션 방식 재발견) — 자동 모드 분류기가 타 프로젝트 env를 차단하므로 사용자 `!` 실행 또는 CogInsight `.env.local`에 토큰 복사 필요.
 - 🧠 다음 단계: 로드맵 항목 1 — 산업군별 미니봇 레퍼런스 제작·dev 등록 → 항목 2 — collect-loop fixture `injected: true` 갱신 후 기준선("전") 대비 "후" 실행 비교.
 
 ### 2026-07-06 (오후) — 생성 관측성 + 프롬프트 회귀 하네스 구현 (Instruction Bleed 대응, dev 전용) (📄 git log·dev 실행 검증)
-- **배경**: [[AI-주간-소식-2026-W26]]의 Instruction Bleed(프롬프트 모듈 교차 간섭) 논의에서 출발 — 📄 코드 확인으로 Cogi의 실제 bleed 벡터 확인(`Variable Usage Rule`이 flow·config·output·condition 4단계 동시 주입 / 규칙 학습이 규칙 교체 / v0.3.0 few-shot 주입이 Stage 1의 새 벡터). W26의 처방("단계별 회귀 테스트")을 실구현한 것.
+- **배경**: [[AI-주간-소식-2026-W26]]의 Instruction Bleed(프롬프트 모듈 교차 간섭) 논의에서 출발 — 📄 코드 확인으로 CogInsight의 실제 bleed 벡터 확인(`Variable Usage Rule`이 flow·config·output·condition 4단계 동시 주입 / 규칙 학습이 규칙 교체 / v0.3.0 few-shot 주입이 Stage 1의 새 벡터). W26의 처방("단계별 회귀 테스트")을 실구현한 것.
 - **Part C — 생성 관측성** (`flow/observability.ts` + index.ts): 모든 생성 결과 `generation_tiers`에 ① `scenario_examples`(산업군·후보 수·선택 레퍼런스·주입 여부·skip 사유 — few-shot "조용한 skip" 제거, 로드맵 항목 2·4의 전제) ② `rules_snapshot`(규칙 세트 SHA-256 지문 — `ruleText` 기반이라 content-폴백 규칙 수정도 포착 + **스테이지별 해시**로 다단계 규칙의 blast radius 노출 + examples 해시·모델) 기록. DDL 없음(jsonb 관례), 실패해도 생성 무해(try/catch).
-- **Part A-lite — 프롬프트 회귀 하네스** (`scripts/prompt-regression/`): fixture 3종(수집형+전화번호 검증루프 / LLM Q&A docs+폴백 / API+ESD) → `cogi-generator-dev` 실호출 → **속성 어서션**(exact-match 금지: welcome 루트·anythingelse 1회성·단일부모 트리·도달성·llmloop apiKey/model 빈 값·tool→body 골격·**flag 루프 탈출 set 존재**·placeholder leak). 질문은 **text로 매칭**(dev 리셋 시 id 재발급 대응). exit 규약: 실패 1 / 환경 미비 2. 🧠 백로그 1번 "flag 루프 탈출 set 육안 확인"이 이 어서션으로 자동화됨.
+- **Part A-lite — 프롬프트 회귀 하네스** (`scripts/prompt-regression/`): fixture 3종(수집형+전화번호 검증루프 / LLM Q&A docs+폴백 / API+ESD) → `coginsight-generator-dev` 실호출 → **속성 어서션**(exact-match 금지: welcome 루트·anythingelse 1회성·단일부모 트리·도달성·llmloop apiKey/model 빈 값·tool→body 골격·**flag 루프 탈출 set 존재**·placeholder leak). 질문은 **text로 매칭**(dev 리셋 시 id 재발급 대응). exit 규약: 실패 1 / 환경 미비 2. 🧠 백로그 1번 "flag 루프 탈출 set 육안 확인"이 이 어서션으로 자동화됨.
 - **기준선 확보**: 레퍼런스 등록 前 3 fixture **전부 PASS**(`runs/2026-07-06-baseline.json`, injected=false) — 로드맵 항목 2 "주입 전/후 비교"의 '전' 데이터 완료. 하네스 자체 검증(기대값 변조→FAIL 검출) 통과.
-- **규모·상태**: 브랜치 `feat/v0.3.0-observability-regression` 13커밋(스펙·계획 문서 포함), **origin 푸시 완료·main 미머지**(dev 전용 규약 — v0.2.0 때 `feat/llm-v0.2.0-testing` 패턴과 동일). deno 테스트 211+14 전부 통과, `cogi-generator-dev` 재배포됨. 서브에이전트 구동 개발(태스크 6개, 태스크별 리뷰 + 최종 브랜치 리뷰 **Ready**).
+- **규모·상태**: 브랜치 `feat/v0.3.0-observability-regression` 13커밋(스펙·계획 문서 포함), **origin 푸시 완료·main 미머지**(dev 전용 규약 — v0.2.0 때 `feat/llm-v0.2.0-testing` 패턴과 동일). deno 테스트 211+14 전부 통과, `coginsight-generator-dev` 재배포됨. 서브에이전트 구동 개발(태스크 6개, 태스크별 리뷰 + 최종 브랜치 리뷰 **Ready**).
 - ⚠ **발견 2건**: ① `.env.local`의 `VITE_SUPABASE_SERVICE_ROLE_KEY` **무효(401)** — dev_questions는 anon 키로 읽혀 우회했으나, 서비스 키가 진짜 필요한 작업 전에 재발급 필요. ② 기존 코드-스키마 불일치: `deriveApiDefs.ts`가 참조하는 'API 이름'·'받을 정보' 필드가 현 시나리오 템플릿에 없음(이번 범위 밖, 백로그).
 
 ### 2026-07-06 — v0.3.0 로드맵 수립(시나리오 라이브러리) + ROADMAP.md 신설·문서 전체 배포 (📄 사용자 지시)
@@ -238,7 +250,7 @@ updated: 2026-07-08
 
 ### 2026-07-03 — v0.2.0 구현→main 롤백→dev 테스트 체제 + 보안 정리 (📄 git log·DB 직접 조회)
 - **v0.2.0 하루 만에 구현→릴리스→롤백 (7/2)**: 설계 문서(`d6e57d5`) 당일에 applyLlmBlocks(STAGE 3.7)·DB 질문/규칙까지 구현해 PR #94(기능)·#95(model 대소문자 픽스)·#96(릴리스)로 main 머지 → **같은 날 PR #97로 전량 revert**. 프로덕션 v0.1.0 유지, v0.2.0은 "미릴리스(dev 테스트 중)"로 CHANGELOG 정정.
-- **DEV 테이블 모드 도입 (`ac9ea93`)**: 같은 Supabase 안에 `dev_questions`/`dev_solution_rules`/`dev_cogi_results` + `-dev` 슬러그 함수 5개 + 프론트 `VITE_DEV_TABLES=true`. 프로덕션 무접촉 "실행-후-머지" 워크플로우 확립.
+- **DEV 테이블 모드 도입 (`ac9ea93`)**: 같은 Supabase 안에 `dev_questions`/`dev_solution_rules`/`dev_coginsight_results` + `-dev` 슬러그 함수 5개 + 프론트 `VITE_DEV_TABLES=true`. 프로덕션 무접촉 "실행-후-머지" 워크플로우 확립.
 - **dev 튜닝 3건 (7/2 오후)**: 폴백 anythingelse 선택 픽스(`00715c1`) · prompt 백틱 정규화(`e1588cd`) · 프롬프트 샘플 섹션 구조 — 챗봇 정보 나열+비답습 지침(`dde7e15`, dev 규칙에도 반영 확인).
 - **DEV 워크플로우 규약 명문화 (7/3, `5c4bb3d`)**: 저장소 CLAUDE.md에 "모든 작업은 dev / 프로덕션 머지 시 4축(코드·DB·엣지함수·프론트) 전체 마이그레이션+push 후 재검증 / 머지 후 dev_ 테이블을 프로덕션 미러로 리셋" 규약 추가(사용자 지시). 이 기기 Claude 메모리에도 동일 규약 저장.
 - **보안 정리 — 레퍼런스 JSON apiKey 전수 마스킹 (7/3, DB 직접)**: JSON 보유 7개 테이블 전수 스캔 → 비어있지 않은 apiKey **8건**(한화라이프 LLM 봇 5 · 노드 샘플 2 · 옛 생성 결과 1)을 전부 `""`로 마스킹, 재스캔 0건 확인. 설계 문서의 "평문 키 제거 권장" 항목 해소.
@@ -247,11 +259,11 @@ updated: 2026-07-08
 
 ### 2026-07-02 — v0.2.0 설계 착수(문서만) + 낡은 초안 폐기 (📄 git log)
 - 🚧 **AI 자유응답(LLM 노드) 블록 v0.2.0 설계 착수** (`d6e57d5`, 브랜치 `feat/llm-response-block`): 설계 문서 1개만 추가(`docs/superpowers/specs/2026-07-02-llm-response-block-design.md`, +131줄). **코드 0줄·main 미머지·버전 v0.1.0 그대로.** 상세는 위 [[#🚧 v0.2.0 설계 착수 — AI 자유응답(LLM 노드) 블록 (⚠ 설계 문서만, 미구현·미머지)|v0.2.0 설계 블록]].
-- 📄 **낡은 개요·매뉴얼 초안 `.md` 폐기** (PR #93, 2026-07-01 머지): `docs/프로젝트-개요-및-매뉴얼-초안.md` 삭제(−168줄). 초안의 잘못된 버전("1.0.1")·구식 커밋수가 실제 v0.1.0 상태와 혼동될 위험 → SoT를 공개 페이지(cogi-overview.vercel.app)+claude.ai 아티팩트로 일원화.
+- 📄 **낡은 개요·매뉴얼 초안 `.md` 폐기** (PR #93, 2026-07-01 머지): `docs/프로젝트-개요-및-매뉴얼-초안.md` 삭제(−168줄). 초안의 잘못된 버전("1.0.1")·구식 커밋수가 실제 v0.1.0 상태와 혼동될 위험 → SoT를 공개 페이지(coginsight-overview.vercel.app)+claude.ai 아티팩트로 일원화.
 - 🧠 이 기간 main 반영 실코드 변경은 **없음**(문서 정리 + 미머지 설계뿐). 버전·기능 기준선은 v0.1.0 유지.
 
 ### 2026-06-30 — v0.1.0 프로토타입 동결 + 결정론적 생성 안전장치 (📄 git log, PR #76~#85)
-- **v0.1.0 프로토타입 동결 (PR #84, 가장 큰 신규)**: 버전 관리 시작 — `package.json` 0.1.0 + annotated tag `v0.1.0` + GitHub Release. 보고·테스트용 기준선(엣지함수 cogi-generator **v87** 배포 기준). ⚠ 동결 버전은 변경 금지, 테스트는 태그 기준.
+- **v0.1.0 프로토타입 동결 (PR #84, 가장 큰 신규)**: 버전 관리 시작 — `package.json` 0.1.0 + annotated tag `v0.1.0` + GitHub Release. 보고·테스트용 기준선(엣지함수 coginsight-generator **v87** 배포 기준). ⚠ 동결 버전은 변경 금지, 테스트는 태그 기준.
 - **앱 버전 배지 (PR #85)**: 전 화면 좌하단에 현재 앱 버전 상시 표시.
 - **반복 수집 결정론화 (PR #80·81)**: '여러 개 입력' 플래그로 반복 수집을 결정론 래핑(Stage 2.95). LLM이 직접 만든 count 루프도 제자리 정규화.
 - **루프 누적 배열 변수 자동 초기화 (PR #79, Stage 3.6)**: 루프 누적 배열을 결정론적으로 사전 초기화.
