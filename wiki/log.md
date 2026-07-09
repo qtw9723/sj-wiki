@@ -6,6 +6,10 @@ created: 2026-06-10
 updated: 2026-07-09
 ---
 
+## [2026-07-09] 질문 | v0.3.0 릴리스 사전점검 + 조립 생성 테스트(로드맵 항목 3) — 조립기 루프 body 버그 발견·수정
+- 📄 사전점검: deno 366 통과(실패 8건=v0.2.1에도 있던 레거시 테스트, 무관 확인)·빌드 통과·회귀 하네스 4/4 PASS. 조립 전수 검사(신규 assembleCheck.ts, 57조합)에서 **조립기가 루프 body를 누락·미재작성하는 실버그** 발견(46 FAIL) → 수정·TDD·dev 재배포 후 57/57 PASS(`d5236a8`). [[CogInsight-Generator]] 로드맵 항목 3 ✅.
+- 잔여: 항목 4(다중 후보 스코어), 항목 6 백로그. 릴리스 결정 대기(레퍼런스 승격 선별 포함).
+
 ## [2026-07-09] 자료넣기 | PR #102 머지(표기 통일) + 공식 링크 모음 페이지 신설
 - 📄 사용자 지시로 PR #102("CogInsight POC Generator"→"CogInsight Generator" 표기 통일) 머지(main `7c597a7`), dev 브랜치 main 동기화, Vercel 재배포로 앱 타이틀 "CogInsight Generator" 확인.
 - [[CogInsight-Generator-링크]] 신설 — 접속 검증된 현행 링크(공개 개요/테스터 앱/소유자 전용) + 구 URL 폐기 고지 + 재안내 문구. [[index]]·[[CogInsight-Generator]]에서 연결.
