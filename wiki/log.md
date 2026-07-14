@@ -3,8 +3,13 @@ title: 작업 이력 (Log)
 category: 시스템
 tags: [log, 이력]
 created: 2026-06-10
-updated: 2026-07-09
+updated: 2026-07-14
 ---
+
+## [2026-07-14] 자료넣기 | AI 주간 소식 W28 (7/6~7/12) 위키화
+- 📄 `raw/ai-digest/2026-07-11.md`(OpenAI·MIT·MS Research·arXiv 멀티에이전트·HuggingFace) 위키화 → 신규 [[AI-주간-소식-2026-W28]] 생성(W28 페이지 부재).
+- 빅이슈: OpenAI 제품 대공세(GPT-5.6·ChatGPT Work 행동 에이전트·GPT-Live 음성·M365 Copilot 기본채택), SWE-Bench Pro 벤치마크 신뢰성 문제. arXiv 멀티에이전트 실무배치 3편을 내 프로젝트에 교차연결: 실패국소화→[[올림푸스-Olympus]], ASMR 스키마 자동생성→[[CogInsight-Generator]], 프라이버시 방화벽→[[GLM-Zhipu-Z-ai]] 거버넌스. Flint(MS 시각화 언어)→CogInsight v0.4.0 다이어그램. 🧠 의외의 연결점: W27→W28 "연구개념→안전배치" 이동, 음성 2주연속, 비개발→개발 시대적 정당화([[내-프로필]]).
+- [[index]] AI/업계 동향에 등록, [[AI-주간-소식-2026-W27]]에 다음 주 역링크 추가.
 
 ## [2026-07-09] 자료넣기 | 올림푸스 run.env 도입 — 버전 폴더 실사고의 근본 수정 + 자동 재개
 - 📄 실사고: 버전 폴더(spec/CogInsight-Generator-v0.4.0)를 UI 큐로 실행하자 TARGET_REPO를 폴더명으로 추측해 **빈 디렉토리를 greenfield 생성**, 파이프라인이 사람에게 "명령 복사 재기동"을 요구 — 사용자 지적("자동화 시스템이 재실행을 시키면 안 됨").
