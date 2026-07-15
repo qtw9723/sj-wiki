@@ -184,6 +184,8 @@ updated: 2026-07-15
 - **구현 (📄)**: ① `refDiagram`에 `loop.bodyEdges`(본문 내부 then 엣지) 파생 추가 ② 새 `loopGroup` 노드(id=subdialog) — "🔁 반복 · {label} · 최대 N회" 박스, 본문 노드를 `parentId`+`extent:'parent'`로 박스 안 세로 스택 ③ 시나리오 dagre는 반복을 박스 크기 단일 노드로 취급(메인 엣지 그대로 연결) ④ 3계층 중첩(scenarioGroup→loopGroup→본문), loopGroup 고정·본문은 박스 내 이동 ⑤ 범례 '반복'을 구획 미니어처로 갱신.
 - **검증 (📄)**: `npm run build` 2065 modules + `deno test` **256 passed/0 failed**(신규 bodyEdges 테스트 포함). 커밋 3개(spec `32c3d85`→feat `9403b5e`→changelog), 브랜치 push(`99d9bfb..1c5eb1d`).
 - **추가 UX (📄 같은 날, 사용자 요구)**: 시나리오 그룹/반복 박스의 **빈 영역을 드래그하면 캔버스가 패닝(화면 이동)**되게 — 그룹 노드 wrapper를 `pointerEvents:'none'`으로 두어 드래그가 뒤의 react-flow pane으로 통과(그룹 노드 표준 패턴). 헤더 드래그(그룹 이동)·노드 상호작용은 유지. 커밋 `3636149`.
+- **추가 다듬기 #2·#3 (📄 같은 날)**: ② **긴 분기 조건 호버 전문** — 커스텀 `BranchEdge`(EdgeLabelRenderer)로 CSS 말줄임 + 마우스 오버 시 title로 전문 표시(char slice 제거). ③ **반복 박스 이동** — `loopGroup` draggable + `dragHandle`(헤더 `.loop-drag-handle`)·`extent:'parent'`로 시나리오 박스 안에서만 이동(빈 영역은 여전히 패닝). build+lib green, 커밋 `6d92666`.
+- 🔧 **#1 (진행 중, 사용자 데이터 대기)**: **"올인원 물류봇_v2"의 "여러 송장 조회" 시나리오가 한 플로우가 아니라 분리되어 보임** → 실제 `flow_json` 구조를 받아 원인 진단 후 단일 플로우로 보완 예정(반복/연결 파생 로직 점검).
 - ⚠ **한계/미확인**: 중첩 반복(본문 안 또 다른 반복)은 평면 렌더(향후). 전 라우트 OTP 게이트라 자동 구동 불가 → dev 서버에서 **반복 포함 시나리오가 단일 흐름 + 반복 박스 안 본문으로, 떠 있는 노드 사라졌는지 + 빈 영역 드래그 패닝** 육안 확인 필요(사용자 몫).
 
 ### 2026-07-15 — v0.4.0 구조 다이어그램 가독성 개선 (📄 저장소 직접 구현·검증)
