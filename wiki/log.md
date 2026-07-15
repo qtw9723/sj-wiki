@@ -6,6 +6,11 @@ created: 2026-06-10
 updated: 2026-07-15
 ---
 
+## [2026-07-15] 자료넣기 | CogInsight v0.4.0 — 구조 다이어그램 가독성 개선 (직접 구현)
+- 📄 사용자 요구: 구조 다이어그램의 라벨 잘림(→호버 툴팁)·시나리오 통째 이동(그룹 박스 내)·색 대신 플로우차트 도형/범례. FlowCanvas 구조 뷰만 수정, 표준 도형(SVG)+범례 패널+2줄 라벨/호버 툴팁+그룹 드래그(parentId·extent:'parent', 읽기 전용). 새 모듈 nodeShape.js+테스트. verify green(build 2065·deno 253/0). CogInsight 커밋 3개 push.
+- [[CogInsight-Generator]] 진행 로그 2026-07-15(구조 다이어그램) 추가. 설계 spec은 저장소 `docs/superpowers/specs/2026-07-15-structure-diagram-improvements-design.md`.
+- ⚠ 미확인(사용자 몫): 전 라우트 OTP 게이트라 자동 구동 불가 → dev 서버 육안 확인.
+
 ## [2026-07-15] 자료넣기 | CogInsight v0.4.0 확장 — 생성 결과에도 플로우 시각화 (직접 구현)
 - 📄 사용자 요구("레퍼런스뿐 아니라 생성 결과에서도 시각화")로 v0.4.0 브랜치에 직접 구현. `generated_json`이 레퍼런스와 동일 `dialogs/main` 구조라 `FlowCanvas`/`refDiagram` 재사용, 결과 화면 2곳(ResultDetail·ResultDetailModal)에 `[JSON|다이어그램]` 토글 배선 + 모달 ESC 가드. verify green(build 2065·deno 250/0). CogInsight 커밋 3개 push(브랜치 미머지·무배포).
 - [[CogInsight-Generator]] 보강: 진행 로그 2026-07-15 신규, 스냅샷·버전표 v0.4.0 행을 "진입점 4곳(레퍼런스 2 + 생성 결과 2)"으로 확장. 설계 spec은 CogInsight 저장소 `docs/superpowers/specs/2026-07-15-result-flow-visualization-design.md`.
