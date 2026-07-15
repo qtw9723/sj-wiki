@@ -6,6 +6,11 @@ created: 2026-06-10
 updated: 2026-07-15
 ---
 
+## [2026-07-15] 자료넣기 | CogInsight v0.4.0 — 구조 다이어그램: 시나리오=단일 흐름(반복 구획화) (직접 구현)
+- 📄 사용자 관찰(회사 솔루션은 시나리오=단일 플로우인데 다이어그램은 여러 인입처럼 보임) → 원인=반복 본문 노드가 엣지 없이 떠 있음. 해결: 반복을 loopGroup 박스로, 본문을 박스 안(parentId+extent) 담아 메인 흐름 단일 스트림화. refDiagram bodyEdges 파생 추가. verify green(build 2065·deno 256/0). CogInsight 커밋 3개 push.
+- [[CogInsight-Generator]] 진행 로그 2026-07-15(단일 흐름·반복 구획) 추가. 설계 spec은 저장소 `docs/superpowers/specs/2026-07-15-single-flow-loop-grouping-design.md`.
+- ⚠ 한계: 중첩 반복 평면 렌더(향후). 미확인(사용자 몫): dev 서버에서 단일 흐름·반복 박스 육안 확인.
+
 ## [2026-07-15] 자료넣기 | CogInsight v0.4.0 — 구조 다이어그램 가독성 개선 (직접 구현)
 - 📄 사용자 요구: 구조 다이어그램의 라벨 잘림(→호버 툴팁)·시나리오 통째 이동(그룹 박스 내)·색 대신 플로우차트 도형/범례. FlowCanvas 구조 뷰만 수정, 표준 도형(SVG)+범례 패널+2줄 라벨/호버 툴팁+그룹 드래그(parentId·extent:'parent', 읽기 전용). 새 모듈 nodeShape.js+테스트. verify green(build 2065·deno 253/0). CogInsight 커밋 3개 push.
 - [[CogInsight-Generator]] 진행 로그 2026-07-15(구조 다이어그램) 추가. 설계 spec은 저장소 `docs/superpowers/specs/2026-07-15-structure-diagram-improvements-design.md`.
