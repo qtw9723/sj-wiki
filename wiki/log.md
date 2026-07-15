@@ -6,6 +6,11 @@ created: 2026-06-10
 updated: 2026-07-15
 ---
 
+## [2026-07-15] 프로젝트 업데이트 | CogInsight v0.4.0 프로덕션 릴리스 + 공유 노트 최신화
+- 📄 사용자 "릴리스하자 + 공유 노트 최신화". 4축: ①코드 PR #106→main `52a0f59`·tag v0.4.0·GitHub Release(게이트 build+deno 260/0) ②DB·③엣지함수 해당없음(프론트 전용) ④프론트 Vercel 자동배포(200).
+- 공유 노트: 공개 개요(coginsight-overview) v0.4.0 예정→릴리스 전환·재배포·라이브 검증, [[CogInsight-Generator-링크]] 위키 노트 갱신. ⚠ 개요 아티팩트(1e30660a)는 v0.3.0 기준 드리프트(기록됨).
+- [[CogInsight-Generator]] 진행 현황·스냅샷·버전표(v0.4.0 릴리스)·진행 로그 갱신. 잔여: OQ2(PNG 외관 수동확인), v0.5(편집 역반영 등).
+
 ## [2026-07-15] 자료넣기 | CogInsight v0.4.0 — 구조 다이어그램: 시나리오=단일 흐름(반복 구획화) (직접 구현)
 - 📄 사용자 관찰(회사 솔루션은 시나리오=단일 플로우인데 다이어그램은 여러 인입처럼 보임) → 원인=반복 본문 노드가 엣지 없이 떠 있음. 해결: 반복을 loopGroup 박스로, 본문을 박스 안(parentId+extent) 담아 메인 흐름 단일 스트림화. refDiagram bodyEdges 파생 추가. verify green(build 2065·deno 256/0). CogInsight 커밋 3개 push.
 - [[CogInsight-Generator]] 진행 로그 2026-07-15(단일 흐름·반복 구획) 추가. 설계 spec은 저장소 `docs/superpowers/specs/2026-07-15-single-flow-loop-grouping-design.md`.
