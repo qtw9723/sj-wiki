@@ -6,6 +6,11 @@ created: 2026-06-10
 updated: 2026-07-15
 ---
 
+## [2026-07-15] 프로젝트 업데이트 | CogInsight v0.4.1 — 결과 탭 사용자별 보기 (main 직접 릴리스)
+- 📄 사용자 "0.4.1 바로 마스터 적용 — 결과 탭 사용자별". 카테고리 필드 부재로 사용자 확정 "사용자별로만". `ResultsList`(`/results`)에 사용자 필터 드롭다운 + 사용자별 그룹 토글 추가(프론트 전용, created_by 사용).
+- 릴리스: PR #107→main `3b68501`·tag v0.4.1·GitHub Release(dev 사이클 생략 — 프론트 저위험). build+deno lib green, Vercel 자동배포.
+- [[CogInsight-Generator]] 스냅샷·진행 현황·버전표·로그 갱신, [[CogInsight-Generator-링크]] 최신 릴리스 갱신. ⚠ 공개 개요 페이지는 v0.4.0 유지(마이너 패치 미갱신).
+
 ## [2026-07-15] 프로젝트 업데이트 | CogInsight v0.4.0 프로덕션 릴리스 + 공유 노트 최신화
 - 📄 사용자 "릴리스하자 + 공유 노트 최신화". 4축: ①코드 PR #106→main `52a0f59`·tag v0.4.0·GitHub Release(게이트 build+deno 260/0) ②DB·③엣지함수 해당없음(프론트 전용) ④프론트 Vercel 자동배포(200).
 - 공유 노트: 공개 개요(coginsight-overview) v0.4.0 예정→릴리스 전환·재배포·라이브 검증, [[CogInsight-Generator-링크]] 위키 노트 갱신. ⚠ 개요 아티팩트(1e30660a)는 v0.3.0 기준 드리프트(기록됨).

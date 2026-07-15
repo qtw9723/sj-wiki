@@ -18,7 +18,7 @@ updated: 2026-07-15
 
 ## 🔒 소유자 전용 (개인 계정 인증 필요)
 - 📄 **GitHub 저장소** (private): https://github.com/qtw9723/CogInsight-Generator
-  - 최신 릴리스: https://github.com/qtw9723/CogInsight-Generator/releases/tag/v0.4.0 (플로우 시각화, 2026-07-15) · PR [#106](https://github.com/qtw9723/CogInsight-Generator/pull/106) 머지(main `52a0f59`)
+  - 최신 릴리스: https://github.com/qtw9723/CogInsight-Generator/releases/tag/v0.4.1 (결과 탭 사용자별 보기, 2026-07-15 · PR [#107](https://github.com/qtw9723/CogInsight-Generator/pull/107) main `3b68501`) · 직전 v0.4.0(플로우 시각화, PR #106 `52a0f59`)
 - 📄 **개요 문서 편집 원본 (claude.ai 아티팩트)**: https://claude.ai/code/artifact/1e30660a-4c19-4a59-9f19-198bed774f7d — 기본 비공개, 공유는 페이지의 share 메뉴로. ⚠ **2026-07-15 v0.4.0 릴리스는 배포본(overview.html)을 라이브에서 직접 수정·재배포**해서, 이 아티팩트는 아직 v0.3.0 기준(라이브 공개 페이지는 v0.4.0). 다음에 아티팩트로 편집할 땐 라이브 기준으로 재동기화 필요.
 - 📄 **Supabase 대시보드** (백엔드, 프로젝트명 "parking"): https://supabase.com/dashboard/project/enawzdqroidrhtjqhpka — 함수: https://supabase.com/dashboard/project/enawzdqroidrhtjqhpka/functions
 - 📄 **Vercel 프로젝트**: 앱 `coginsight-generator` · 개요 `coginsight-overview` (계정 qtw9723) — https://vercel.com/dashboard
