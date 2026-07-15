@@ -4,7 +4,7 @@ category: 프로젝트
 tags: [프로젝트, 챗봇, 시나리오, dialog-json, llm, openai, supabase, 핵심]
 source: raw/projects/coginsight-generator.md
 created: 2026-06-09
-updated: 2026-07-09
+updated: 2026-07-15
 ---
 
 > [!tip] 핵심 takeaway
@@ -17,7 +17,9 @@ updated: 2026-07-09
 > ✅ (2026-07-03 저녁 갱신) **v0.2.0 프로덕션 릴리스 완료** — 이 v0.1.0 스냅샷은 역사 기준선. 현재 프로덕션 = **v0.2.0**(PR #98 머지 `36d0181`, tag `v0.2.0` + GitHub Release, DB 마이그레이션 6개 적용, 프로덕션 함수 5종 배포, Vercel 번들 v0.2.0 확인, dev 리셋 완료) — 아래 [[#✅ v0.2.0 — AI 자유응답(LLM 노드) 블록 (2026-07-03 프로덕션 릴리스)|v0.2.0 블록]] 참고.
 > ✅ (2026-07-08) v0.2.1 — ESD 스키마 파생 핫픽스(PR #100, tag v0.2.1). 상세는 [[#진행사항 업데이트 로그|진행 로그 2026-07-08 v0.2.1]].
 > ✅ (2026-07-09) v0.2.2 — **프로젝트명 전면 변경: CogInsight Generator**. 📄 **확정 사항(2026-07-09, 사용자 확인)**: 구명(코드네임 4글자, 이 vault에서 표기 금지)은 **사용 불가 판정** → 코드·DB·함수 슬러그·Vercel·GitHub·위키·메모리 전체 리네임. **구 URL 전부 폐기**(공유했던 링크는 재안내 필요). 상세는 [[#진행사항 업데이트 로그|진행 로그 2026-07-09]]. ⚠ 이 페이지의 과거 로그·버전표 속 명칭·URL·테이블명도 새 이름으로 소급 치환됨(사실 관계는 동일, 이름만 현행화).
-> ✅ (2026-07-09 오후) **현재 프로덕션 = v0.3.0 — 시나리오 레퍼런스 라이브러리 릴리스**(레퍼런스 5종 승격, dev 리셋 완료). 상세는 [[#진행 현황 (2026-07-09 — 프로덕션 v0.3.0 릴리스)|진행 현황]].
+> ✅ (2026-07-09 오후) v0.3.0 — 시나리오 레퍼런스 라이브러리 릴리스(레퍼런스 5종 승격, dev 리셋 완료). 상세는 [[#진행 현황|진행 현황]].
+> ✅ (2026-07-09) v0.3.1 — **생성기 백엔드 LLM 모델 `gpt-4o` → `gpt-5.2` 전환**(PR #105, tag v0.3.1). OpenAI 키 로테이션 포함. **현재 프로덕션 = v0.3.1**. ⚠ 비용 단가표(`flow/usage.ts`) 미갱신 이슈. 상세는 [[#진행사항 업데이트 로그|진행 로그 2026-07-09 v0.3.1]].
+> 🔨 (2026-07-14~15) **v0.4.0 — 레퍼런스 플로우 시각화: [[올림푸스-Olympus]] 자율 개발 완료(dev, 미머지)**. 브랜치 `feat/v0.4.0-reference-visualization`(main 대비 8커밋). react-flow 캔버스 뷰어(구조 다이어그램 + 사용자 흐름도 스윔레인) + PNG 내보내기 + 풀스크린, 2개 진입점(설문 시드카드·라이브러리) 구현. 검증 green(deno 250/0, build 2065 modules). **프로덕션 무배포** — 사용자 "프로덕션에 머지" 시 4축 릴리스. 상세는 [[#진행사항 업데이트 로그|진행 로그 2026-07-14~15]].
 
 **무엇이 어디에 (모두 라이브 확인 200)** — 공유용 정리는 [[CogInsight-Generator-링크]]
 - 📄 **앱 프로토타입**: https://coginsight-generator.vercel.app — 실제 생성기 앱(테스터 이메일 OTP 인증 게이트). Vercel 프로젝트 `coginsight-generator`.
@@ -34,7 +36,7 @@ updated: 2026-07-09
 - ⚠ **변수 처리(특히 JSON 데이터) 미숙 → 개선 필요** (📄 사용자, 2026-06-30): 챗봇 솔루션 런타임이 **JSON 형태 데이터를 자동으로 뿌리지(펼치지) 못함** → 생성된 멘트/노드에서 JSON을 통째로 출력할 수 없고, JSON을 열어 **내부 데이터를 키로 직접 지정**해 써야 함(`${변수.키}`·`${목록[0].키}`, 함수 미지원). 현재는 생성 단계에서 정확한 키 참조로 우회(관련 규칙 PR #88~#90)하나, **사용자가 JSON을 직접 열어보고 맞춰야 하는 수작업이 남아** 변수/구조화 데이터 출력 처리 고도화가 필요. 🧠 개선 방향(후보): 생성 시 JSON 필드를 개별 변수로 자동 펼치기 / 키 참조 자동 생성·검증 / 어떤 키를 쓸지 UI로 안내.
 
 **이번 정리(2026-06-30 세션)에서 한 일** — 🧠 요약
-- v0.1.0 동결을 위키([[#진행 현황 (2026-07-09 — 프로덕션 v0.3.0 릴리스)|진행 현황]])·[[프로젝트-포트폴리오]]·개요 문서에 반영.
+- v0.1.0 동결을 위키([[#진행 현황|진행 현황]])·[[프로젝트-포트폴리오]]·개요 문서에 반영.
 - 개요·매뉴얼 문서를 무계정 공개 페이지로 배포 + 운영 SoP·버전 히스토리·브랜드 파비콘 정리.
 
 ## 개요
@@ -60,7 +62,7 @@ updated: 2026-07-09
 [[공통-기술스택]] 기반 + 풀스택 확장:
 - 📄 **프론트**: React 19.2, Vite 8, React Router 7, Tailwind CSS 4, Radix UI + shadcn, lucide-react. 폼/검증 = react-hook-form + **zod**(Dialog JSON 구조 검증의 핵심).
 - 📄 **백엔드**: Supabase Edge Functions(Deno/TypeScript) **21개**, Postgres(**54 마이그레이션**, RLS). 순수 함수(flow/*)는 `deno test`로 단위 테스트. ([[parking]])
-- 📄 **LLM**: **OpenAI `gpt-4o`** (temperature 0.1). ⚠ GEMINI는 mailer/grafana용이고 CogInsight와 무관(혼동 금지).
+- 📄 **LLM**: **OpenAI `gpt-5.2`** (v0.3.1, 2026-07-09부터 — 이전 `gpt-4o`에서 전환. 생성기가 OpenAI를 호출하는 5개 엣지함수 전부: coginsight-generator·learn-rules·learn-solution-rules·derive-node-specs·admin-solution-rules). ⚠ 생성 결과물(챗봇 llmloop 노드)의 출력 모델은 사용자가 CogInsight 솔루션에서 직접 입력하므로 무변경. ⚠ GEMINI는 mailer/grafana용이고 CogInsight와 무관(혼동 금지).
 - 📄 **배포**: 프론트 Vercel(main 푸시 자동), 엣지함수 `supabase functions deploy`, DB `supabase db push`.
 
 ## 아키텍처
@@ -69,7 +71,11 @@ updated: 2026-07-09
 - 📄 **규칙 = 데이터, 로직 = 코드**: 7개 규칙 카테고리가 생성 단계(flow/config/output/condition)에 매핑돼 주입. 단 결정론적 안전장치(루트 stack 제거, 변수 use-before-declare 차단 등)는 코드에 잔존. (`CLAUDE.md`)
 - 📄 **레퍼런스 일원화**: 2026-06-16 `features` 레이어 제거 → 레퍼런스 중심으로 통합. 2026-06-17 레거시 값-할당 3탭(필드스키마/조건패턴/값할당) 제거.
 
-## 진행 현황 (2026-07-09 — 프로덕션 v0.3.0 릴리스)
+## 진행 현황
+> 📄 **현재 프로덕션 = v0.3.1**(main `4429c25`, gpt-5.2 전환). **v0.4.0(레퍼런스 시각화)은 dev에서 구현 완료·미머지**(브랜치 `feat/v0.4.0-reference-visualization`) — 아래 진행 로그 2026-07-14~15 참고.
+
+- 📄 **v0.4.0 dev 구현 완료 (2026-07-14~15) — [[올림푸스-Olympus]] 자율 개발**: 레퍼런스 플로우 시각화(react-flow 캔버스 뷰어). 백로그 T1~T7 전부 완료, verify green(deno 250/0·build 2065 modules), **프로덕션 무배포**(dev 전용, `AUTO_MERGE=0 DEPLOY_ON_DONE=0`). 사용자 "프로덕션에 머지" 시 4축 릴리스. 상세는 [[#진행사항 업데이트 로그|진행 로그 2026-07-14~15]].
+- 📄 **v0.3.1 프로덕션 릴리스 (2026-07-09)**: 생성기 백엔드 LLM `gpt-4o` → `gpt-5.2` 전환(5개 엣지함수) + OpenAI 키 로테이션. v0.4.0 dev 사이클과 무관한 독립 패치(격리 브랜치 `fix/llm-gpt-5.2`, PR #105, tag v0.3.1). ⚠ `flow/usage.ts` 단가표 미갱신(비용 추정 부정확 — TODO).
 - 📄 **v0.3.0 프로덕션 릴리스 (2026-07-09)**: 4축 규약 전체 수행 — ① 코드: PR #103 머지(main `ae99f4d`), tag `v0.3.0` + GitHub Release, CHANGELOG [0.3.0] 확정(741커밋) ② DB: dev↔본 테이블 diff 0 확인, 마이그레이션 20260707120000(피드백 screenshot_path) push·재조회 검증, **시나리오 레퍼런스 5종 승격**(도매 제외 — 사용자 선별, id 유지, 재조회 검증) ③ 엣지함수: 전 슬러그(27종) 재배포 + **프로덕션 스모크 생성 1회 통과**(collect-loop, `injected=true`·계좌 잔액 조회봇 few-shot 실주입 확인, 결과 삭제) ④ 프론트: Vercel 자동 배포·번들 0.3.0 확인.
 - 📄 **머지 후 dev 리셋 완료(규약)**: dev_questions·dev_solution_rules·dev_coginsight_feedback 프로덕션 미러 재시드(내용 diff 0 검증), dev_coginsight_results 비움, 스토리지 `dev/` 스크린샷 정리, dev 슬러그 7종 main 기준 재배포. ⚠ 질문 id 재발급 — 이후 dev 테스트는 새 id 기준(하네스는 text 매칭이라 무영향). ⚠ **의도된 diff 1건**: 도매(대량주문 견적봇) 레퍼런스는 dev가 유일 소스라 dev에 보존(품질 교정 후 승격 예정 — dev 6건 = prod 5건 + 도매).
 - 📄 **v0.3.0 dev 진행 (2026-07-06~07)**: 브랜치 `feat/v0.3.0-observability-regression`(main 미머지·프로덕션 무배포, 배지 `v0.3.0 DEV` 선반영). 관측성·회귀 하네스·dev 레퍼런스 6종·few-shot 전/후 검증(로드맵 항목 1·2 ✅, 항목 4 부분)에 이어 7/7 **레퍼런스 구조 시드 생성(STAGE 3.68) + 시드 UX 5건 + 피드백 스크린샷 첨부**까지 누적 — 상세는 [[#진행사항 업데이트 로그|업데이트 로그]]·[[#로드맵 — v0.3.0 (계획): 시나리오 레퍼런스 라이브러리 테스트·고도화|로드맵]].
@@ -105,7 +111,8 @@ updated: 2026-07-09
 
 | 버전 | 날짜 | 기준선 | 핵심 내용 |
 |---|---|---|---|
-| **v0.4.0 (예정)** | 미정 | 계획 수립 2026-07-07 | **레퍼런스 시각화** — 레퍼런스 대화 플로우를 보이는 다이어그램으로(선택·미리보기에서 흐름·수집·분기 구조를 그림으로). v0.3.0의 텍스트 흐름 요약(`refSummary.js`)을 다이어그램으로 발전. |
+| **v0.4.0 (dev 완료·미릴리스)** | 구현 2026-07-14~15 | 브랜치 `feat/v0.4.0-reference-visualization`(main 대비 8커밋) · 미머지 | **레퍼런스 플로우 시각화** — [[올림푸스-Olympus]] 자율 개발 완료. react-flow(`@xyflow/react` v12 + `@dagrejs/dagre`) 캔버스 뷰어: 구조 다이어그램 + 사용자 흐름도(스윔레인·산출물 품질) 2뷰 토글, PNG 내보내기·풀스크린·피그마류 팬/줌, 2개 진입점(설문 시드카드·라이브러리 미리보기). refDiagram 순수 파생 모듈 + deno 테스트. 검증: deno 250/0·build 2065 modules green. **프로덕션 무배포**(dev 전용). 잔여: v0.5 편집 확장 대비 구조만(역반영 미구현), OQ 3건. |
+| **v0.3.1** | 2026-07-09 | main `4429c25` · PR #105 · tag v0.3.1 | **LLM 모델 gpt-4o → gpt-5.2** — 생성기 백엔드 5개 엣지함수 전부 전환 + OpenAI 키 로테이션(Supabase 시크릿 `OPENAI_API_KEY`, 구 키 revoke는 계정 측 조치). v0.4.0 dev 사이클과 무관한 독립 패치(격리 브랜치 `fix/llm-gpt-5.2`). 검증: OpenAI 200, flow 테스트 54 green. ⚠ `flow/usage.ts` 단가표 미갱신 → `estimated_cost_usd` 부정확(gpt-5.2 실단가 확인 후 갱신 TODO). |
 | **v0.3.0** | 2026-07-09 | main `ae99f4d` · PR #103 · tag v0.3.0 · 741커밋 | **시나리오 레퍼런스 라이브러리 테스트·고도화** — 레퍼런스 6종 등록·few-shot 실검증, 구조 시드(STAGE 3.68)·시드 UX·피드백 스크린샷(Storage 전환·보존 정책), 생성 관측성·회귀 하네스, **조립 57조합 전수 검증(루프 body 버그 수정)**. 릴리스 검증: deno 233·하네스 4/4·프로덕션 스모크 통과. 레퍼런스 5종 승격(도매 제외). 잔여(항목 4·6)는 백로그. |
 | **v0.2.2** | 2026-07-09 | main `9a99e18` · PR #101 · tag v0.2.2 | **프로젝트명 전면 변경 — CogInsight Generator**(구명 사용 불가 판정). 코드·문서 122파일 치환, 엣지함수 슬러그 `coginsight-generator(-dev)` 신규 배포·구 슬러그 삭제, DB 객체(테이블 8·제약 12·인덱스 20·정책 8) rename(라이브 직접 실행), GitHub repo `CogInsight-Generator`, Vercel `coginsight-generator`·`coginsight-overview`(구 URL 폐기). 기능 무변경, deno 210 green. |
 | **v0.2.1** | 2026-07-08 | main `46bb57f` · PR #100 · tag v0.2.1 | **ESD 스키마 파생 핫픽스** — `collectEsdFields`가 schemaName을 `config.query.schemaName`에서 읽도록 교정(그전엔 `config.schemaName`만 봐서 ESD 노드 스킵 → `esd_schemas` 항상 빈 배열) + 바인딩된 필드만 수집(레퍼런스 잔재 빈필드 제외). 프로덕션 `coginsight-generator` 재배포, 재생성 검증(id e72f4e26, 상담기록 스키마 정상). deno 223 green. |
@@ -170,6 +177,28 @@ updated: 2026-07-09
 🧠 (참고) 위 둘 외 이미 기록된 한계: **변수/JSON 출력 처리 미숙**(JSON 자동 출력 불가→키 직접 지정), 둘 다 위 [[#현재 상태 스냅샷 — v0.1.0 프로토타입 배포 (2026-06-30)|현재 상태 스냅샷]] 한계 참고.
 
 ## 진행사항 업데이트 로그
+### 2026-07-14~15 — v0.4.0 레퍼런스 플로우 시각화: [[올림푸스-Olympus]] 자율 개발 완료 (📄 저장소·올림푸스 state 직접 확인)
+> 📄 7/9 저녁 착수(기획서만 작성)한 v0.4.0을 **올림푸스가 자율 개발해 dev에서 완주**. **main 미머지·프로덕션 무배포**(dev 전용, 사용자 "프로덕션에 머지" 시 4축 릴리스). 브랜치 `feat/v0.4.0-reference-visualization`(main 대비 8커밋 `a3f53df`~`1286a7b`), working tree clean.
+- **구현 산출물 (📄 `git diff --stat main...HEAD`, 총 +1,565줄)**:
+  - `src/lib/refDiagram.js`(신규 220줄) + `refDiagram.test.js`(신규 286줄) — **구조/usecase 두 모델 파생 순수 함수**. `deriveStructure`(시나리오 그룹·노드·엣지·루프)와 `deriveUserFlow`(user/bot 교대 스텝, 반복 접기, 내부 노드 숨김). v0.3.0 `refSummary.js`와 동일 파생 기준(welcome/anythingelse 제외·then-우선 DFS·`__init` 숨김). ⚠ TYPE_KO/walk/firstOutputText는 refSummary에서 **복사**(공유 모듈 미추출 — v0.5로 연기, OQ1).
+  - `src/components/flow/FlowCanvas.jsx`(신규 649줄) — **react-flow 캔버스 뷰어**. 뷰 토글 [구조 다이어그램 ↔ 사용자 흐름도], dagre 자동 레이아웃(세로 계층·시나리오 그룹 구획), 피그마류 UX(휠줌·팬·fit-view·도트그리드·노드>30 미니맵), 타입별 노드 스타일. 사용자 흐름도 = **산출물 품질 스윔레인**(문서형 헤더·범례·흰 배경·브랜드톤 `#0052CC`·개발용어 노출 금지). **PNG 내보내기**(기존 `html-to-image` 재사용, 흰배경·2배·`coginsight-flow-{레퍼런스명}.png`, 컨트롤/미니맵/그리드 제외), **풀스크린**(Fullscreen API·ESC). 읽기전용이되 `readOnly` prop + `onNodesChange` 체계 유지(v0.5 편집 확장 대비).
+  - `ScenarioRefSelect.jsx`(+78) — 설문 시드카드에 소형 구조 미리보기 + "크게 보기" → 전체화면 뷰어("흐름: a→b" 텍스트 대체).
+  - `ScenarioLibrary.jsx`(+48) — `/scenarios` 카드마다 "미리보기" 버튼 → 뷰어(다운로드·조립 동작 불변).
+  - `package.json`(+deps `@xyflow/react` ^12.11.2, `@dagrejs/dagre` ^3.0.0 — 프로젝트 첫 시각화 의존성) + `scripts/ensure-deps.mjs`(predev/prebuild가 node_modules 미설치 자가치유).
+- **검증 (📄 올림푸스 `state/.../verify.txt`, `handoff.json` status=green)**: **deno 250 passed / 0 failed**(기존 249 + T6 신규 1, 회귀 0), `npm run build` **2065 modules** 성공(실번들에 xyflow/dagre 포함 실증). ⚠ `supabase/functions/test/` 8 failed는 **6월 제거된 레거시 값-할당 엔진 테스트로 스코프 밖·선재**(v0.2.1부터 동일, v0.4.0 무관).
+- **개발 경위 (📄 `state/.../decisions.md`)**: 7/9 최초 기동이 **greenfield 오기동**(빈 `-v0.4.0` 디렉토리를 TARGET_REPO로 물어 needs_clarification)·**검증 권한 블로커**(acceptEdits 모드가 npm/deno 프롬프트로 차단) 2회 중단 후, `run.env` 기반 올바른 env(brownfield·`GIT_BRANCH`·권한)로 **재기동해 7/14 M0 재개→7/15 완주**. 백로그 T1~T7 의존순 분해(refDiagram → 캔버스셸+구조뷰 → 사용자흐름도+PNG+풀스크린 → 시드카드 → 라이브러리 → 회귀테스트 → ESC 가드) 전부 Critic GREEN + metis 승인.
+- **잔여·미확인 (📄 `state/.../open-questions.md`)**:
+  - ⚠ **OQ2 (사용자 수동 확인 필요)**: 사용자 흐름도 PNG가 흰배경·컨트롤 제외로 **보고서 삽입에 적합한 외관인지 사람 눈 확인** — 자동 판정 불가 항목. → 🧠 사용자가 dev(`VITE_DEV_TABLES=true`)에서 직접 내보내 확인 권장.
+  - 🧠 OQ1(v0.5): refDiagram/refSummary 공유 파생 헬퍼를 `refDerive.js`로 추출(DRY). OQ3(v0.5): `readOnly` prop이 현재 destructure만 되고 미배선(편집은 하드코딩 비활성) — v0.5 역반영 확장 시 실배선.
+- 🧠 **다음 결**: v0.4.0 프로덕션 릴리스(사용자 "프로덕션에 머지" 시 4축 — 단, 프론트 전용이라 DB·엣지함수 무변경) / 사용자 흐름도 PNG 외관 확인(OQ2) / ⚠ **CHANGELOG [0.4.0] Added 항목이 아직 비어 있음**(릴리스 전 저장소에서 채워야 — refDiagram·FlowCanvas·2진입점·PNG·풀스크린).
+
+### 2026-07-09 — v0.3.1 프로덕션 릴리스: LLM 모델 gpt-4o → gpt-5.2 (📄 git·CHANGELOG)
+- **변경 (PR #105 → main `4429c25`, tag v0.3.1)**: 생성기가 OpenAI를 호출하는 **5개 엣지함수 전부**(`coginsight-generator` 공용 `callLlm` 어댑터 `LLM_MODEL`·`learn-rules` 3콜·`learn-solution-rules`·`derive-node-specs`·`admin-solution-rules`)의 모델을 `gpt-4o` → `gpt-5.2`로 전환. v0.4.0(레퍼런스 시각화) dev 사이클과 무관한 **독립 패치**로 main에서 격리 브랜치(`fix/llm-gpt-5.2`)로 릴리스 → 이후 v0.4.0 브랜치로 병합(dev도 gpt-5.2로 생성).
+- **키 로테이션**: 프로젝트 전역 시크릿 `OPENAI_API_KEY`를 신규 키로 교체(dev/프로덕션 슬러그 공유). 구 키 revoke는 계정 측 조치.
+- **검증**: 새 키+모델 OpenAI 200, flow 테스트 54 green.
+- ⚠ **알려진 이슈**: `flow/usage.ts`의 `GPT4O_PRICING`이 아직 gpt-4o 단가(입력 $2.5/출력 $10 per 1M) 기준 → `estimated_cost_usd` 부정확. gpt-5.2 실단가 확인 후 갱신 예정.
+- 🧠 생성 결과물(챗봇 llmloop 노드)의 출력 모델은 사용자가 CogInsight 솔루션에서 직접 입력하므로 무변경.
+
 ### 2026-07-09 (저녁) — v0.4.0 dev 사이클 착수: 기획서 작성(올림푸스 자율 개발 예정) (📄 사용자 지시)
 - **개발 방식 (📄 사용자)**: v0.4.0은 이 세션이 직접 구현하지 않고 **[[올림푸스-Olympus]]가 자율 개발** — 기획요청서만 작성. spec 위치: `olympus/spec/CogInsight-Generator-v0.4.0/기획.md`(**버전 포함 폴더명** — state 격리로 다른 버전 기획 병행 가능, [[올림푸스-기획요청서-작성요령]] 규약 추가).
 - **스코프 (📄 사용자 확정 요구)**: ① 기본 = **구조 다이어그램**(시나리오별 그룹, 전체 구조) ② **사용자 usecase 흐름도**(user/bot 스윔레인, **산출물 품질** — 보고·공유용, PNG 내보내기 = 기존 html-to-image 재사용) ③ 전체 화면 + 피그마류 캔버스 UX(팬/줌·fit-view·미니맵) ④ **v0.5 드래그앤드롭 편집 대비 구조**(react-flow onNodesChange 체계, 이번엔 보기 전용). 파생은 refSummary 기준 재사용(순수 모듈 refDiagram + deno 테스트).

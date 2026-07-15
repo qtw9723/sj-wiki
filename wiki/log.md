@@ -3,8 +3,13 @@ title: 작업 이력 (Log)
 category: 시스템
 tags: [log, 이력]
 created: 2026-06-10
-updated: 2026-07-14
+updated: 2026-07-15
 ---
+
+## [2026-07-15] 프로젝트 업데이트 | CogInsight Generator — v0.3.1(gpt-5.2) + v0.4.0 dev 구현 완료 반영
+- 📄 라이브 저장소·올림푸스 state 직접 확인: main = **v0.3.1**(gpt-4o→gpt-5.2 전환, PR #105), **v0.4.0 레퍼런스 플로우 시각화는 [[올림푸스-Olympus]] 자율 개발로 dev 완주**(브랜치 미머지·프로덕션 무배포, T1~T7 done, deno 250/0·build 2065 green).
+- [[CogInsight-Generator]] 보강: 스냅샷·진행 현황에 v0.3.1/v0.4.0 상태 추가, 기술스택 LLM gpt-4o→gpt-5.2, 버전 히스토리 표에 v0.3.1·v0.4.0(dev) 행, 업데이트 로그 2건(7/14~15 v0.4.0 구현·경위·잔여 OQ / 7/9 v0.3.1). 진행 현황 헤더 버전중립화(앵커 정합).
+- ⚠ 사용자 확인거리: 사용자 흐름도 PNG 외관(OQ2, 수동 판정) / CHANGELOG [0.4.0] Added 미기입(릴리스 전 저장소 보강 필요).
 
 ## [2026-07-14] 자료넣기 | AI 주간 소식 W28 (7/6~7/12) 위키화
 - 📄 `raw/ai-digest/2026-07-11.md`(OpenAI·MIT·MS Research·arXiv 멀티에이전트·HuggingFace) 위키화 → 신규 [[AI-주간-소식-2026-W28]] 생성(W28 페이지 부재).
