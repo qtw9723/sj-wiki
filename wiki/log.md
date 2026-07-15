@@ -6,6 +6,11 @@ created: 2026-06-10
 updated: 2026-07-15
 ---
 
+## [2026-07-15] 자료넣기 | CogInsight v0.4.0 확장 — 생성 결과에도 플로우 시각화 (직접 구현)
+- 📄 사용자 요구("레퍼런스뿐 아니라 생성 결과에서도 시각화")로 v0.4.0 브랜치에 직접 구현. `generated_json`이 레퍼런스와 동일 `dialogs/main` 구조라 `FlowCanvas`/`refDiagram` 재사용, 결과 화면 2곳(ResultDetail·ResultDetailModal)에 `[JSON|다이어그램]` 토글 배선 + 모달 ESC 가드. verify green(build 2065·deno 250/0). CogInsight 커밋 3개 push(브랜치 미머지·무배포).
+- [[CogInsight-Generator]] 보강: 진행 로그 2026-07-15 신규, 스냅샷·버전표 v0.4.0 행을 "진입점 4곳(레퍼런스 2 + 생성 결과 2)"으로 확장. 설계 spec은 CogInsight 저장소 `docs/superpowers/specs/2026-07-15-result-flow-visualization-design.md`.
+- ⚠ 미확인(사용자 몫): dev 서버에서 결과 다이어그램 육안 확인.
+
 ## [2026-07-15] 프로젝트 업데이트 | CogInsight Generator — v0.3.1(gpt-5.2) + v0.4.0 dev 구현 완료 반영
 - 📄 라이브 저장소·올림푸스 state 직접 확인: main = **v0.3.1**(gpt-4o→gpt-5.2 전환, PR #105), **v0.4.0 레퍼런스 플로우 시각화는 [[올림푸스-Olympus]] 자율 개발로 dev 완주**(브랜치 미머지·프로덕션 무배포, T1~T7 done, deno 250/0·build 2065 green).
 - [[CogInsight-Generator]] 보강: 스냅샷·진행 현황에 v0.3.1/v0.4.0 상태 추가, 기술스택 LLM gpt-4o→gpt-5.2, 버전 히스토리 표에 v0.3.1·v0.4.0(dev) 행, 업데이트 로그 2건(7/14~15 v0.4.0 구현·경위·잔여 OQ / 7/9 v0.3.1). 진행 현황 헤더 버전중립화(앵커 정합).
