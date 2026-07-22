@@ -6,6 +6,11 @@ created: 2026-06-10
 updated: 2026-07-21
 ---
 
+## [2026-07-21] 자료넣기 | Delivery SmartHub 신규 프로젝트 위키화 + 링크 정리
+- 📄 사용자 "이 내용들 sj-wiki에 정리 + 각 링크도 정리". delivery-smarthub는 [[mailer|CS SmartHub]] 형제로 신규 구축한 delivery팀용 멀티허브 자동화 플랫폼(챗봇 모니터링 모듈 허브화 + 중앙 백오피스, cs와 같은 Supabase에 `hub_*` 신규 테이블·cs 무접근).
+- 신규: [[delivery-smarthub]](프로젝트 본문·설계/진행/불변원칙/포트폴리오 포인트), [[delivery-smarthub-링크]](private GitHub·공유 Supabase·레포 내 문서, 배포 전이라 공개 URL 없음).
+- 교차참조·분류 갱신: [[프로젝트-포트폴리오]](표에 행 추가·8개로·아키텍처 공유 목록), [[index]](프로젝트 카테고리 2건), [[mailer]] 관련문서(형제 링크 추가).
+
 ## [2026-07-21] 자료넣기 | CogInsight 다음 버전 계획 확정 (v0.5.0·v0.6.0) — 로드맵·위키 정합화
 - 📄 사용자 "로드맵 뿐 아니라 sj-wiki 문서도 다 맞춰서 수정". v0.5.0 = 입력 소스 다양화(엑셀→CSV·API 문서→JSON·POC 문서→생성·자연어 시나리오), v0.6.0 = 결과 자연어 수정 확정.
 - 저장소 `ROADMAP.md`/`CLAUDE.md` 갱신(v0.5.0·v0.6.0 신설, v0.4.0 릴리스 정정, 기존 v0.5 잔여·2026-07-20 적응형 방향을 백로그로). 위키: [[CogInsight-Generator]] "다음 버전 계획" 콜아웃·진행 로그, [[프로젝트-포트폴리오]] CogInsight 행 갱신.

@@ -45,6 +45,8 @@ updated: 2026-07-14
 - [[프로젝트-포트폴리오]] — IdeaProjects 7개 전체 개요·아키텍처 (시작점)
 - [[notepad]] — 마크다운 메모장 (레퍼런스 프로젝트, 프로덕션 안정)
 - [[mailer]] — ⭐ **CS SmartHub** (본인 기획·실사용자 CS팀 기반·진행중, 1순위 포트폴리오, 192커밋). Mailer+Grafana 리포트(+Gemini LLM 로그분석: 07-02 과거 히스토리 참조·AI 메모 영속화·재시도 복원력)+Playwright 챗봇 모니터링(pg_cron 정시) 허브 ⚠️ 마이그레이션 예외
+- [[delivery-smarthub]] — 🆕 **Delivery SmartHub** ([[mailer]] 형제·2026-07-21 신규). delivery팀용 멀티허브 자동화 플랫폼 — 챗봇 모니터링 모듈을 `hub_id`로 멀티테넌트화 + **중앙 백오피스**(크로스 허브 현황). cs와 같은 Supabase에 `hub_*` 신규 테이블(cs 무접근). Phase1 완료·미배포
+- [[delivery-smarthub-링크]] — 🆕 링크 모음(현행): private GitHub·공유 Supabase·레포 내 문서. 배포 전이라 공개 URL은 아직 없음
 - [[schedule-reporter-kakao]] — 리포트 스케줄러 (⚠️ 카카오 연동은 코드에서 제거됨, 현재 Grafana 리포트 설정 단일 페이지·[[mailer]] 형제)
 - [[CogInsight-Generator]] — Dialog JSON Generator (⭐ 챗봇 시나리오 축, 핵심). LLM 6단계 생성 파이프라인 + DB-구동 규칙엔진 + 시나리오/API 레퍼런스 라이브러리 + 테스터 OTP 인증 (OpenAI gpt-5.2). **프로덕션 v0.4.2**(2026-07-21 — 결과 확인 창 UI 개선; v0.4.0 플로우 시각화·v0.4.1 결과 사용자별 보기·v0.3.0 시나리오 레퍼런스 라이브러리 누적)
 - [[CogInsight-Generator-링크]] — 🆕 공식 링크 모음(현행·접속 검증): 공개 개요 / 테스터 앱 / 소유자 전용(GitHub·Supabase·Vercel·아티팩트) + 재안내 문구. 구 URL 전부 폐기(404)
