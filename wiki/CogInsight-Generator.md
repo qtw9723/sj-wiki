@@ -199,6 +199,7 @@ updated: 2026-07-23
 - **UI**: ③단계가 "컬럼 타입 설정"→**"ESD 필드 설정"**(타입 4종 select + 🔑 키 단일 지정 + 🔒 암호화), ④단계에 스키마명 입력·JSON 미리보기·복사·다운로드. CSV 경로는 `csvTypeOf` 매핑으로 파생해 기존 동작 그대로.
 - **검증**: `deno test --no-check src/lib/` **110 passed / 0 failed**(기존 70 + 신규 40, 생성기 계약 회귀 테스트 포함), `npm run build` green, 샘플 데이터 end-to-end 실행으로 CSV·JSON 산출 확인. ⚠ 브라우저 UI 클릭 검증은 확장 미연결로 미실시.
 - 설계·계획 문서: 저장소 `docs/superpowers/specs/2026-07-23-excel-esd-schema-json-design.md`, `docs/superpowers/plans/2026-07-23-excel-esd-schema-json.md`.
+- **(같은 날 이어서) 컬럼 제외·개명 UI 추가** — ③단계 표에 **사용** 체크박스 + **ESD 필드명** 입력. 제외·개명이 CSV·스키마 JSON **양쪽에 동일 반영**(신규 `applyFieldSelection` 투영을 둘이 공유 → 구조적으로 어긋날 수 없음). `전체 영문 이름으로 변환` 버튼(신규 `toEnglishFieldName`: 사전 최장 일치 분절, `전화번호`→`phone`·`주문번호`→`order_no`·`가입여부`→`is_signup`). ⚠ **반쪽 변환 금지** 설계 — 사전에 없는 조각이 있으면 원본 유지 + 실패 개수 안내(일부만 영문 되어 "다 됐다" 착각 방지, 🧠 사용자에게 미리 고지한 리스크의 대응). 검증: 빈 이름·중복·예약어(`createdAt`/`updatedAt`)·사용 0개면 진행 차단. `deno test` **128 passed / 0 failed**, build green. 문서 `docs/superpowers/specs|plans/2026-07-23-convert-column-rename-exclude*.md`.
 
 ### 2026-07-21 — v0.4.2 결과 확인 창 UI 개선 프로덕션 릴리스 + 공개문서·위키 동기화 (📄 4축 실행·라이브 검증)
 > 📄 사용자 승인 후 v0.4.2 프로덕션 릴리스. 결과 상세(`/results/:id`)의 시나리오 식별·가독성·탐색성 개선(프론트 전용).
