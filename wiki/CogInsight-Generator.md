@@ -4,7 +4,7 @@ category: 프로젝트
 tags: [프로젝트, 챗봇, 시나리오, dialog-json, llm, openai, supabase, 핵심]
 source: raw/projects/coginsight-generator.md
 created: 2026-06-09
-updated: 2026-07-21
+updated: 2026-07-23
 ---
 
 > [!tip] 핵심 takeaway
@@ -88,7 +88,7 @@ updated: 2026-07-21
 
 > [!note] 다음 버전 계획 (2026-07-20 브레인스토밍 → 2026-07-21 v0.5.0·v0.6.0 확정 — SoT는 저장소 `ROADMAP.md`)
 > 📄 **v0.5.0 (계획) = 입력 소스 다양화** — 설문 폼 한 입구에만 의존하던 생성을, 사용자가 이미 가진 산출물·자연어로도 솔루션 업로드 결과를 만들 수 있게 확장. 4개 항목:
-> 1. **엑셀 → 업로드용 CSV 변환** (형식 맞춰 정제·다운로드).
+> 1. **엑셀 → 업로드용 CSV 변환** (형식 맞춰 정제·다운로드). 🔶 진행 중 — 변환 화면 구현 + **ESD 스키마 JSON 동시 산출**까지 dev 브랜치 완료(2026-07-23, 미릴리스). 상세는 [[#진행사항 업데이트 로그|진행 로그 2026-07-23]].
 > 2. **API 인터페이스 문서 → 업로드용 JSON** (명세 해석·필드 추출).
 > 3. **POC 문서(시나리오 정의서·흐름도) → 챗봇 생성** (문서 파싱·플로우 매핑).
 > 4. **자연어 시나리오 생성** (설문 값 대체 경로, 생성 규칙 `solution_rules` 준수).
@@ -191,6 +191,15 @@ updated: 2026-07-21
 🧠 (참고) 위 둘 외 이미 기록된 한계: **변수/JSON 출력 처리 미숙**(JSON 자동 출력 불가→키 직접 지정), 둘 다 위 [[#현재 상태 스냅샷 — v0.1.0 프로토타입 배포 (2026-06-30)|현재 상태 스냅샷]] 한계 참고.
 
 ## 진행사항 업데이트 로그
+### 2026-07-23 — v0.5.0 항목① 확장: 엑셀 변환에 **ESD 스키마 JSON 동시 산출** (📄 dev 브랜치, 미릴리스)
+> 📄 v0.5.0 「입력 소스 다양화」 항목①(엑셀 → 업로드용 CSV)에 **스키마 JSON 산출**을 추가. 데이터(CSV)만 만들던 것을 "그릇(스키마) + 데이터" 한 흐름으로 확장 — ESD 매니저에서 스키마를 손으로 만들 필요가 없어짐. 브랜치 `feat/v0.5.0-excel-esd-json`, **프론트엔드 전용**(DB·엣지함수 무변경), **아직 main 미머지·미릴리스**.
+- **산출물 계약**: 생성 파이프라인(`deriveEsdSchemas.ts`의 `EsdSchema`)과 **키 집합·순서·값 형식 동일** — `crypt`는 문자열 `"true"/"false"`, `resultSamples`는 빈 배열, `createdAt`/`updatedAt` 계열 열은 필드에서 제외. 다운로드는 `{스키마명}_schema.json`(결과 상세의 ESD 카드와 같은 규약).
+- **판정 방식**: 🧠 LLM 대신 **로컬 결정론 휴리스틱 + 사용자 편집**(사용자 확정). 생성기 LLM 프롬프트(`buildSchemaPrompt`)의 추론 규칙을 코드로 이식 — 네트워크·비용·지연 0, 프론트 전용 유지. 우선순위 geo → boolean → string강제(전화·우편번호) → number → string. `key`는 식별자 이름 + **비개인정보** + 값 전부 고유인 첫 열 하나만.
+- **신규 순수 모듈 3종**(기존 CSV 트리오와 대칭, 기존 모듈 무수정): `esdFieldRules.js`·`inferEsdFields.js`·`buildEsdSchema.js`. 영문은 **토큰 완전일치** 매칭으로 `hotel`→`tel`, `island`→`is`, `productName`→개인정보 오탐 차단.
+- **UI**: ③단계가 "컬럼 타입 설정"→**"ESD 필드 설정"**(타입 4종 select + 🔑 키 단일 지정 + 🔒 암호화), ④단계에 스키마명 입력·JSON 미리보기·복사·다운로드. CSV 경로는 `csvTypeOf` 매핑으로 파생해 기존 동작 그대로.
+- **검증**: `deno test --no-check src/lib/` **110 passed / 0 failed**(기존 70 + 신규 40, 생성기 계약 회귀 테스트 포함), `npm run build` green, 샘플 데이터 end-to-end 실행으로 CSV·JSON 산출 확인. ⚠ 브라우저 UI 클릭 검증은 확장 미연결로 미실시.
+- 설계·계획 문서: 저장소 `docs/superpowers/specs/2026-07-23-excel-esd-schema-json-design.md`, `docs/superpowers/plans/2026-07-23-excel-esd-schema-json.md`.
+
 ### 2026-07-21 — v0.4.2 결과 확인 창 UI 개선 프로덕션 릴리스 + 공개문서·위키 동기화 (📄 4축 실행·라이브 검증)
 > 📄 사용자 승인 후 v0.4.2 프로덕션 릴리스. 결과 상세(`/results/:id`)의 시나리오 식별·가독성·탐색성 개선(프론트 전용).
 - **① 코드**: PR **#108** → main `2986e1f` 머지, **tag `v0.4.2` + GitHub Release**, CHANGELOG `[0.4.2]`. `npm run build` green.
