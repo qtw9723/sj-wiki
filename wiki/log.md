@@ -10,6 +10,7 @@ updated: 2026-07-23
 - 📄 사용자 "엑셀 분석 정보로 ESD 생성용 json도 만들어줘". 생성 파이프라인(`deriveEsdSchemas.ts`)의 `EsdSchema` 계약과 동일한 JSON을 CSV와 함께 산출하도록 `/convert` 확장(브랜치 `feat/v0.5.0-excel-esd-json`, 프론트 전용, 미릴리스).
 - 🧠 판정은 LLM 대신 로컬 결정론 휴리스틱 + 사용자 편집(사용자 확정). 순수 모듈 3종 신설, `deno test` 110 passed / 0 failed, `npm run build` green.
 - 갱신: [[CogInsight-Generator]] 진행 로그 2026-07-23 + "다음 버전 계획" 항목① 상태 표시.
+- (이어서) 컬럼 **제외·개명 UI** + 일괄 영문 변환 추가 — 투영 모듈(`applyFieldSelection`)로 CSV·JSON 컬럼 구성 일치 보장, 반쪽 변환 금지 설계. `deno test` 128 passed / 0 failed.
 
 ## [2026-07-21] 자료넣기 | Delivery SmartHub 신규 프로젝트 위키화 + 링크 정리
 - 📄 사용자 "이 내용들 sj-wiki에 정리 + 각 링크도 정리". delivery-smarthub는 [[mailer|CS SmartHub]] 형제로 신규 구축한 delivery팀용 멀티허브 자동화 플랫폼(챗봇 모니터링 모듈 허브화 + 중앙 백오피스, cs와 같은 Supabase에 `hub_*` 신규 테이블·cs 무접근).
