@@ -6,6 +6,14 @@ created: 2026-06-10
 updated: 2026-07-23
 ---
 
+## [2026-07-23] 자료넣기 | W28 수집 누락분 보강 (07-08·07-09·07-10, 98건) + 올림푸스 pull·점검
+- 📄 미커밋 상태로 남아 있던 `raw/ai-digest/2026-07-07~07-10.md` 4개 파일을 확인. [[AI-주간-소식-2026-W28]]은 2026-07-14 자동 위키화 때 **`2026-07-11.md` 한 파일(29건)만** 근거로 작성돼 있었다(크롤러 피드가 롤링이라 날짜별 항목이 서로 다름 — 07-11은 상위집합이 아님).
+- 📄 제목 대조 결과 07-08(54건)·07-09(33건)·07-10(39건) 중 **W27/W28 어디에도 없는 98건**을 확인. 07-07(10건)은 고유 항목이 전부 [[AI-주간-소식-2026-W27]]에 이미 반영돼 있어 제외.
+- 갱신: [[AI-주간-소식-2026-W28]]에 보강 4개 절 신설(에이전트 운영·신뢰성 / 안전·거버넌스·프라이버시 / 업무·엔터프라이즈 적용 / 연구 단신 아카이브) + frontmatter `source` 4파일로 정정 + takeaway ④ · 의외의 연결점 4항 추가. [[index]] W28 항목 보강 표기.
+- 🧠 실무 결론 3가지: ① **"LLM이 한 번 푼 것을 다시 LLM으로 풀지 마라"**(Progressive Crystallization·SOP 승격·MUSE-Autoskill) → [[올림푸스-Olympus]]·[[mailer]] 비용 원칙. ② ⚠ **TeamTR** — 멀티에이전트가 단일 모델보다 못한 구조적 실패 모드 존재. 올림푸스 다역할 구조가 단일 세션 대비 나은지 **측정한 적 없음**(미해결 질문으로 남김). ③ **PiSAs(내부 유출) + Multi-Agent Firewall(외부 유출)** 대칭 → 사내 공용 챗봇은 양방향 차단 필요.
+- 📄 [[올림푸스-Olympus]] 저장소 `git pull`(11커밋 fast-forward, 사용량 대시보드·verify 게이트 fork 폭탄 차단 등). 미커밋 작업(MSW 런타임 검증 모드 staged + Windows PID 수정 unstaged)은 stash→FF→`stash pop --index`로 인덱스 상태까지 보존, 충돌 없음.
+- 📄 테스트 결과 183건 중 3건 실패 — 모두 **Windows 환경 한정**. (1) `ui_ops` stale 판정: `queue.sh`가 기록하는 bash `$$`는 **MSYS pid**인데 작업트리의 `_pid_alive` 수정은 **Windows pid**를 `OpenProcess`로 조회 → 항상 죽은 것으로 오판(pid 네임스페이스 불일치, 실제 버그). (2)(3) `milestones` notify 스텁 2건: 테스트 픽스처가 `/tmp/...` MSYS 경로를 **네이티브 Windows Python**에 넘겨 `C:\tmp\...`로 해석 → 기록 실패(커밋된 코드에서도 동일 재현, 제품코드 무관·기존 이슈).
+
 ## [2026-07-23] 자료넣기 | CogInsight v0.5.0 항목① 확장 — 엑셀 변환에 ESD 스키마 JSON 동시 산출
 - 📄 사용자 "엑셀 분석 정보로 ESD 생성용 json도 만들어줘". 생성 파이프라인(`deriveEsdSchemas.ts`)의 `EsdSchema` 계약과 동일한 JSON을 CSV와 함께 산출하도록 `/convert` 확장(브랜치 `feat/v0.5.0-excel-esd-json`, 프론트 전용, 미릴리스).
 - 🧠 판정은 LLM 대신 로컬 결정론 휴리스틱 + 사용자 편집(사용자 확정). 순수 모듈 3종 신설, `deno test` 110 passed / 0 failed, `npm run build` green.

@@ -5,7 +5,7 @@ category: 프로젝트
 tags: [프로젝트, 올림푸스, 에이전트, 멀티에이전트, 오케스트레이션, claude-code, 자동화, 개발도구, 포트폴리오, bash, 생성자-비평가, 자가개선]
 source: raw/projects/olympus.md
 created: 2026-07-01
-updated: 2026-07-03
+updated: 2026-07-23
 ---
 
 > [!tip] 핵심 takeaway
@@ -99,6 +99,14 @@ spec/<프로젝트>/  ─▶ [메티스] 요구사항 분석(필수) → require
 - 다음 후보: Phase 3(요구사항 완료 후 추가기능 제안·교차검증, README §헤르메스로의 매핑에 "미구현—다음 확장 후보"로 명시됨), 게이트 강화(tsc -b), 다중 대상 병행, **토큰 대기 B안**(프로세스 죽어도 자동 재실행하는 외부 supervisor).
 
 ## 진행사항 업데이트 로그
+### 2026-07-23 (저장소 pull + 건강검진 📄 — Windows 환경 이슈 2종 확인)
+- **pull**: `origin/main` 대비 11커밋 뒤 → **fast-forward**(로컬 커밋 0). 주요 유입: **큐 UI 사용량 대시보드**(프로젝트별·일자별·매트릭스 집계 `/api/usage/breakdown`·`/usage` 라우트·`ui/usage.html`), **verify 게이트 fork 폭탄 차단**(`TARGET_REPO`/`VERIFY_CMD` export + 재귀 가드), **비평가 verify 이중 실행 제거**(run.sh 게이트의 `verify.txt` 신뢰).
+- **미커밋 작업 보존**: staged(**MSW 모드** — MapleStory Worlds Maker MCP 런타임 검증: `config.sh` `MSW_MODE`/`MSW_EVIDENCE_DIR`, `prompts.sh` `msw_mode_header`로 역할 세션에 MCP 호출 규약 주입, `milestones.sh`+`notify.py` 스크린샷 첨부) + unstaged(`ui/queue_ops.py` Windows PID 판정). `stash` → FF → `stash pop --index`로 **인덱스 상태까지 보존**, 충돌 없음.
+- **테스트**: 183건 중 **3건 실패, 전부 Windows 한정**(제품 로직 이상 없음, 셸·파이썬 문법 전량 clean).
+  - ⚠ **실제 버그 — pid 네임스페이스 불일치**: `queue.sh`가 워커 pid로 bash `$$`(= **MSYS pid**)를 기록하는데, 작업트리의 `_pid_alive` Windows 분기는 그 값을 **Windows pid**로 보고 `OpenProcess`를 호출한다 → 살아있는 워커도 항상 죽은 것으로 판정(`ui_ops`의 stale 테스트 실패). 같은 셸에서 bash `$$`=1201 / `/proc/$$/winpid`=18028로 실측 확인. 🧠 수정 방향: `queue.sh`에서 `/proc/$$/winpid`를 **별도 필드(`winpid`)로 함께 기록**하고 파이썬은 그 필드를 쓰는 쪽 — `queue_recover_stale`의 bash `kill -0`은 MSYS pid가 필요하므로 기존 `pid` 필드를 바꾸면 안 된다.
+  - **테스트 픽스처 이슈(제품코드 무관·기존)**: `milestones_test.sh`가 스텁 파이썬에 `/tmp/...` **MSYS 경로**를 문자열로 박아 넣는데 네이티브 Windows Python이 이를 `C:\tmp\...`로 해석 → 기록 실패로 2건 실패. **커밋된 코드에서도 동일 재현**(WIP 탓 아님).
+- 🧠 이번 주 AI 동향([[AI-주간-소식-2026-W28]] 보강분)과의 접점: **LLM-as-a-Verifier**(검증을 스케일링 축으로) = 모모스 역할의 학술 근거, **A Workflow-Aware Serving Layer**(노드별 모델 선택) = 역할별 모델 분리의 이론화, ⚠ **TeamTR**(멀티에이전트가 단일 모델보다 못한 구조적 실패 모드) = 올림푸스 다역할 구조가 단일 세션보다 나은지 **아직 측정한 적 없다**는 미해결 질문.
+
 ### 2026-07-03 (최종 승인 경량화 — Gmail 답장 경로 📄)
 - **동기**: 원격 브리지 재검토(과설계/토큰/더 나은 방식 고민) → 결론 "구조는 유지, **가장 잦은 최종 승인만** 더 가벼운 채널로". 블로커·의도질문(자유서술)은 GitHub 유지, 최종 승인(yes/no)만 분리.
 - **선택**: 신규 서비스 0 위해 **Gmail 답장 키워드**(Telegram 대신) — 이미 발송에 쓰는 계정의 IMAP 재사용. fragile 지점(스레드 매칭·인용 오탐·위조)은 설계로 잠금.
