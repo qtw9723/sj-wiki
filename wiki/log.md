@@ -6,6 +6,10 @@ created: 2026-06-10
 updated: 2026-07-28
 ---
 
+## [2026-07-28] 프로젝트업데이트 | [[CogInsight-Generator]] v0.5.0 프로덕션 릴리스 (입력 소스 다양화)
+- 📄 v0.5.0 릴리스: 설문 폼 외 4갈래 입력 입구(①엑셀→ESD ②API문서→api_def ③자연어→시나리오 ④POC문서→생성). PR #111 main `1e3237d`, tag v0.5.0 + GitHub Release. 신규 엣지함수 2종(`poc-doc-parse`·`nl-scenario-parse`) 배포, Vercel v0.5.0 라이브 확인. DB·`solution_rules` 무변경. 버전표·진행현황·스냅샷 헤더 갱신.
+- ⚠ 후속 미완: 사내 온프렘 배포(SSH 비번 필요 → 사용자 직접 `deploy-internal.sh`)·dev 환경 리셋. 🧠 공개 개요 페이지(coginsight-overview) v0.5.0 반영은 별도 후속(미진행).
+
 ## [2026-07-28] 자료넣기 | [[CogInsight-Generator]] 사내 온프렘 배포 반영
 - 📄 Cogi를 회사 로컬 서버(포트 3006, pm2+serve)에도 배포하기로 함 → 릴리스 규약에 추가(레포 CLAUDE.md·DEPLOYMENT.md·`scripts/deploy-internal.sh`). 위키의 "무엇이 어디에"·"기술 스택 배포" 갱신. 정적 프론트만 온프렘, 백엔드는 Vercel과 동일 Supabase 공유.
 - ⚠ 기밀 분리 원칙(§1): 사내 서버 주소·계정·방화벽 등 인프라 상세는 이 동기화 vault에 미기재(레포 DEPLOYMENT.md에만). 🧠 내부망 LLM/DB 온프렘화는 사양·사용량 측정 후 재검토 여지.
