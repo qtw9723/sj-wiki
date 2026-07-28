@@ -4,7 +4,7 @@ category: 프로젝트
 tags: [프로젝트, 챗봇, 시나리오, dialog-json, llm, openai, supabase, 핵심]
 source: raw/projects/coginsight-generator.md
 created: 2026-06-09
-updated: 2026-07-23
+updated: 2026-07-28
 ---
 
 > [!tip] 핵심 takeaway
@@ -26,6 +26,7 @@ updated: 2026-07-23
 **무엇이 어디에 (모두 라이브 확인 200)** — 공유용 정리는 [[CogInsight-Generator-링크]]
 - 📄 **앱 프로토타입**: https://coginsight-generator.vercel.app — 실제 생성기 앱(테스터 이메일 OTP 인증 게이트). Vercel 프로젝트 `coginsight-generator`.
 - 📄 **개요·매뉴얼 공개 문서**: https://coginsight-overview.vercel.app — 무계정 공개, 브랜드 파비콘·버전 히스토리 포함. 편집 원본은 claude.ai 아티팩트 `1e30660a…`. (상세 [[#공개 배포 — 개요·매뉴얼 페이지 (운영 SoP)|공개 배포 SoP]])
+- 📄 **사내 온프렘 배포**(2026-07-28 추가): 회사 로컬 서버에도 앱을 함께 서빙(포트 3006, pm2+serve). **정적 프론트만 온프렘**이고 백엔드(Supabase·엣지함수·LLM)는 Vercel 프로덕션과 **동일 클라우드 공유** — 브라우저가 직접 Supabase로 나간다. 릴리스마다 `scripts/deploy-internal.sh`로 함께 배포(빌드→전송→재기동). ⚠ 사내 서버 주소·계정·방화벽 등 인프라 상세는 기밀 분리 원칙상 **레포 `DEPLOYMENT.md`에만** 둔다(이 동기화 vault에는 미기재).
 - 📄 **코드 기준선**: git tag **`v0.1.0`** + GitHub Release, `package.json` 0.1.0, 엣지함수 coginsight-generator **v87**, 610커밋 · 마이그레이션 54 · solution_rules 8 카테고리.
 
 **버전 관리**
@@ -65,7 +66,7 @@ updated: 2026-07-23
 - 📄 **프론트**: React 19.2, Vite 8, React Router 7, Tailwind CSS 4, Radix UI + shadcn, lucide-react. 폼/검증 = react-hook-form + **zod**(Dialog JSON 구조 검증의 핵심).
 - 📄 **백엔드**: Supabase Edge Functions(Deno/TypeScript) **21개**, Postgres(**54 마이그레이션**, RLS). 순수 함수(flow/*)는 `deno test`로 단위 테스트. ([[parking]])
 - 📄 **LLM**: **OpenAI `gpt-5.2`** (v0.3.1, 2026-07-09부터 — 이전 `gpt-4o`에서 전환. 생성기가 OpenAI를 호출하는 5개 엣지함수 전부: coginsight-generator·learn-rules·learn-solution-rules·derive-node-specs·admin-solution-rules). ⚠ 생성 결과물(챗봇 llmloop 노드)의 출력 모델은 사용자가 CogInsight 솔루션에서 직접 입력하므로 무변경. ⚠ GEMINI는 mailer/grafana용이고 CogInsight와 무관(혼동 금지).
-- 📄 **배포**: 프론트 Vercel(main 푸시 자동), 엣지함수 `supabase functions deploy`, DB `supabase db push`.
+- 📄 **배포**: 프론트 Vercel(main 푸시 자동) + **사내 온프렘**(로컬 서버 3006, pm2+serve, `scripts/deploy-internal.sh`), 엣지함수 `supabase functions deploy`, DB `supabase db push`.
 
 ## 아키텍처
 - 🧠 **3계층**: React SPA(설문·결과·라이브러리·어드민) ↔ Supabase Edge Functions(생성·학습·CRUD·인증) ↔ Postgres(규칙·레퍼런스·결과·테스터). LLM 호출은 전부 엣지함수 안에서만(키 노출 차단).
