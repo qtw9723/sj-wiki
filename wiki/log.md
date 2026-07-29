@@ -6,6 +6,10 @@ created: 2026-06-10
 updated: 2026-07-29
 ---
 
+## [2026-07-29] 자료넣기 | [[CogInsight-Generator]] 사내 GitLab 소스 미러링 구성
+- 📄 할당받은 사내 GitLab 회사 프로젝트에 소스 전체 미러(브랜치 31·태그 11, main 삼자 일치 검증, 껍데기 master 정리). SSH 차단으로 HTTPS+PAT(키체인). 인프라 상세는 기밀 분리상 레포 `DEPLOYMENT.md`에만.
+- 갱신: [[CogInsight-Generator]]("소스 저장소" 항목 + 진행 로그). 사내 호스트·경로·계정은 이 vault 미기재(§1).
+
 ## [2026-07-29] 자료넣기 | [[CogInsight-Generator]] 로드맵 v0.8.0 추가 — NLP 생성 & NLP 기준 조건 설정
 - 📄 사용자 요청으로 확정 다음 버전 하나 추가: **v0.8.0 = NLP 생성 & NLP 기준 조건 설정** — 인텐트·엔티티·어터런스를 CSV로 생성해 솔루션 시스템에 업로드 + 생성 시 조건을 발화 기준이 아니라 그 NLP(인텐트/엔티티) 기준으로 설정. v0.6.0 ESD 엔티티와 상보적.
 - 갱신: 저장소 `ROADMAP.md`(v0.8.0 섹션·운영 방침 셋), `CLAUDE.md`(포인터), [[CogInsight-Generator]](콜아웃·로그).
