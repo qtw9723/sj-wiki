@@ -23,14 +23,14 @@ updated: 2026-07-29
 - [[내-프로필]] — 커리어·강점·현재 관심사 (모든 답변의 관점 기준)
 
 ### AI / 업계 동향
-- [[AI-주간-소식-2026-W31]] — 🆕 2026 W31 (7/29): **멀티에이전트 기업 AI 표준화** (에이전틱 AI 2030년 61조원·가트너 기업앱 40% 에이전트 탑재·한국 기업 구현율 6.7%) · **Claude Code 자율 플랫폼 진화** · 카카오 경량LLM 4종 오픈소스 · Claude 웹 점유율 2.22%→8.9%
+- [[AI-주간-소식-2026-W31]] — 🆕 2026 W31 (7/27~8/2, **28건 전량 반영 — 7/29 2차 보강**): **모델 간 가격 격차 600배·파라미터 비공개**(→ CogInsight 단계별 모델 티어링 근거) · **멀티에이전트 기업 AI 표준화**(에이전틱 AI 2030년 61조원·가트너 기업앱 40%·에이전트고 2026·국내 에이전트 개발 외주 시장) · **한국 도입률 61% vs 구현율 6.7%** + 2026 IT예산 1순위=생성형AI · **장문 컨텍스트 효율화가 상반기 논문 최대 트렌드(원인=에이전트 하네스)** · Constitutional AI 2,700→23,000단어 · Claude Code 자율 플랫폼 진화·Fable 5(Mythos) SWE-bench 95.0% · 카카오 경량LLM 4종 오픈소스 · MoE+4bit+추측적 디코딩 · Physical AI. ⚠ WebSearch 대체수집이라 SEO 롤업 비중 높음(일부 모델명 구세대)
 - [[AI-주간-소식-2026-W30]] — 🆕 2026 W30 (7/20~7/26): **OpenAI Presence**(고객·사내 워크플로우용 음성/챗 에이전트 엔터프라이즈 플랫폼 — 내 회사 도메인 직격) · **Gemini 3.6 Flash / 3.5 Flash-Lite / 3.5 Flash Cyber**(저비용·보안특화 3종) · long-horizon 모델 안전·정렬(관측된 실패 공유) · NTT DATA Codex 장애분석 30분(9,000명) · OpenAI×HuggingFace 평가 중 보안 인시던트 · Health in ChatGPT · 국가 과학(DOE / Google $40M Genesis Mission) · Project Camellia · MIT 원자력 자동화·Bertsekas 별세. ⚠ arXiv 0건(기업 블로그 15건) · **W29(7/13~7/19)는 수집 공백**
 - [[AI-주간-소식-2026-W28]] — 2026 W28 (7/6~7/12): OpenAI 제품 대공세(GPT-5.6·ChatGPT Work 행동 에이전트·GPT-Live 음성·M365 Copilot 기본채택) · SWE-Bench Pro 벤치마크 신뢰성 문제 · arXiv 멀티에이전트 실무배치(실패국소화·ASMR 스키마 자동생성·프라이버시 방화벽·배치시점 메모리) · Flint(MS 시각화 언어) · 엔터프라이즈 AI-native(도이치텔레콤·MUFG·AP+) · MIT 비개발자 챗봇 SW 제작 **+ (2026-07-23 보강 98건)** 에이전트 운영·신뢰성(LLM-as-a-Verifier·Progressive Crystallization·워크플로우 서빙·⚠TeamTR 멀티에이전트 회의론) · 안전/거버넌스(PiSAs 내부유출·LLMoxie 사내플랫폼·Institutional Red-Teaming) · 업무적용(조직기억·테스트유지보수·MCP 광전송망)
 - [[AI-주간-소식-2026-W27]] — 2026 W27 (6/29~7/5): SkillOpt(스킬을 학습 가능 파라미터로) · Memora(에이전트 메모리, 저장·검색 분리) · ScarfBench(엔터프라이즈 Java 마이그레이션 에이전트 벤치마크) · Gemma 4 실시간 음성 · Nano Banana 2 Lite/Gemini Omni Flash · GeneBench-Pro · HP Frontier
 - [[AI-주간-소식-2026-W26]] — 2026 W26 (6/22~6/28): Instruction Bleed(프롬프트 모듈 간 간섭) · OpenAI Daybreak(Codex Security·GPT-5.5-Cyber) · GPT-5.6 Sol 프리뷰 · Gemini 3.5 Flash 컴퓨터 사용 · Semantic Early-Stopping · 삼성 ChatGPT+Codex 전사 배포
 - [[AI-주간-소식-2026-W25]] — 2026 W25 (6/15~6/21): OpenAI Ona 인수·파트너 네트워크 · WorkBench 2026 · MASLab · Gemini 실시간 번역 · 에이전트 신뢰성/평가(LegalHalluLens·평가 인식·제안-검증 구조) · DRFLOW · 🇰🇷국내(앤트로픽 서울 오피스·네이버 Claude Code 도입·더존비즈온 도메인특화·포스코DX 1인 N에이전트)
 - [[AI-주간-소식-2026-W24]] — 2026 W24 (6/8~6/12): OpenAI IPO S-1 · Codex 실사례 · Gemma 4 12B · 멀티에이전트 안전 $10M
-- [[Claude-Code-업데이트-동향]] — Claude Code 2026 W18~W22 주요 업데이트 (Opus 4.8 · workflows · security plugin)
+- [[Claude-Code-업데이트-동향]] — Claude Code 2026 W18~W22 주요 업데이트 (Opus 4.8 · workflows · security plugin) + 7/29 보강: 자율 운영 플랫폼 선언·Fable 5(Mythos, SWE-bench 95.0%)·Constitutional AI 8.5배 확장. ⚠ W23~ 본문은 여전히 stale
 
 ### 도구 / 스킬
 - [[공통-기술스택]] — 개인 프로젝트 주력 스택 (React19 · Vite8 · Tailwind4 · Supabase)
