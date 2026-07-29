@@ -3,7 +3,7 @@ title: 전체 목차 (Index)
 category: 시스템
 tags: [index, 목차]
 created: 2026-06-09
-updated: 2026-07-26
+updated: 2026-07-29
 ---
 
 > [!tip] 핵심 takeaway
@@ -23,6 +23,7 @@ updated: 2026-07-26
 - [[내-프로필]] — 커리어·강점·현재 관심사 (모든 답변의 관점 기준)
 
 ### AI / 업계 동향
+- [[AI-주간-소식-2026-W31]] — 🆕 2026 W31 (7/29): **멀티에이전트 기업 AI 표준화** (에이전틱 AI 2030년 61조원·가트너 기업앱 40% 에이전트 탑재·한국 기업 구현율 6.7%) · **Claude Code 자율 플랫폼 진화** · 카카오 경량LLM 4종 오픈소스 · Claude 웹 점유율 2.22%→8.9%
 - [[AI-주간-소식-2026-W30]] — 🆕 2026 W30 (7/20~7/26): **OpenAI Presence**(고객·사내 워크플로우용 음성/챗 에이전트 엔터프라이즈 플랫폼 — 내 회사 도메인 직격) · **Gemini 3.6 Flash / 3.5 Flash-Lite / 3.5 Flash Cyber**(저비용·보안특화 3종) · long-horizon 모델 안전·정렬(관측된 실패 공유) · NTT DATA Codex 장애분석 30분(9,000명) · OpenAI×HuggingFace 평가 중 보안 인시던트 · Health in ChatGPT · 국가 과학(DOE / Google $40M Genesis Mission) · Project Camellia · MIT 원자력 자동화·Bertsekas 별세. ⚠ arXiv 0건(기업 블로그 15건) · **W29(7/13~7/19)는 수집 공백**
 - [[AI-주간-소식-2026-W28]] — 2026 W28 (7/6~7/12): OpenAI 제품 대공세(GPT-5.6·ChatGPT Work 행동 에이전트·GPT-Live 음성·M365 Copilot 기본채택) · SWE-Bench Pro 벤치마크 신뢰성 문제 · arXiv 멀티에이전트 실무배치(실패국소화·ASMR 스키마 자동생성·프라이버시 방화벽·배치시점 메모리) · Flint(MS 시각화 언어) · 엔터프라이즈 AI-native(도이치텔레콤·MUFG·AP+) · MIT 비개발자 챗봇 SW 제작 **+ (2026-07-23 보강 98건)** 에이전트 운영·신뢰성(LLM-as-a-Verifier·Progressive Crystallization·워크플로우 서빙·⚠TeamTR 멀티에이전트 회의론) · 안전/거버넌스(PiSAs 내부유출·LLMoxie 사내플랫폼·Institutional Red-Teaming) · 업무적용(조직기억·테스트유지보수·MCP 광전송망)
 - [[AI-주간-소식-2026-W27]] — 2026 W27 (6/29~7/5): SkillOpt(스킬을 학습 가능 파라미터로) · Memora(에이전트 메모리, 저장·검색 분리) · ScarfBench(엔터프라이즈 Java 마이그레이션 에이전트 벤치마크) · Gemma 4 실시간 음성 · Nano Banana 2 Lite/Gemini Omni Flash · GeneBench-Pro · HP Frontier
