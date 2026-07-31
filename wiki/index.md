@@ -3,7 +3,7 @@ title: 전체 목차 (Index)
 category: 시스템
 tags: [index, 목차]
 created: 2026-06-09
-updated: 2026-07-30
+updated: 2026-07-31
 ---
 
 > [!tip] 핵심 takeaway
@@ -23,7 +23,7 @@ updated: 2026-07-30
 - [[내-프로필]] — 커리어·강점·현재 관심사 (모든 답변의 관점 기준)
 
 ### AI / 업계 동향
-- [[AI-주간-소식-2026-W31]] — 🆕 2026 W31 (7/27~8/2, **7/29분 28건 + 7/30분 28주제 전량 반영 — 7/30 4차 보강**): **모델 간 가격 격차 600배·파라미터 비공개**(→ CogInsight 단계별 모델 티어링 근거) · **멀티에이전트 기업 AI 표준화**(에이전틱 AI 2030년 61조원·가트너 기업앱 40%·에이전트고 2026·국내 에이전트 개발 외주 시장) · **한국 도입률 61% vs 구현율 6.7%** + 2026 IT예산 1순위=생성형AI · **장문 컨텍스트 효율화가 상반기 논문 최대 트렌드(원인=에이전트 하네스)** · Constitutional AI 2,700→23,000단어 · Claude Code 자율 플랫폼 진화·Fable 5(Mythos) SWE-bench 95.0% · 카카오 경량LLM 4종 오픈소스 · MoE+4bit+추측적 디코딩. **7/30 추가**: 앤트로픽 미토스(AES) · 코드게이트 멀티AI팀 vs 인간(인간 우승) · 소버린AI=SLM+RAG · K-AX 스파르탄 1.8B 추론 1위 · **🦾 피지컬 AI 신규 축**(광양항 2029 완전자동화·인천대 거점·아크헬스케어 요양 문서 자동화) · **🎓 인재·교육 신규 축**(제미나이+**안티그래비티**가 공공 취업교육 커리큘럼·AX 오디션) · 롯데 파트너사 전용 AI 에이전트 · 이노그리드 AICubeit(LLMOps+GitOps) · 모아진 매거진 2,400종 학습데이터 공급. ⚠ 7/29분은 WebSearch 대체수집이라 SEO 롤업 비중 높음(일부 모델명 구세대) / ⚠ 자동 위키화가 2회 연속 항목 누락(14/28·12/28) → 수동 대조 필수
+- [[AI-주간-소식-2026-W31]] — 🆕 2026 W31 (7/27~8/2, **7/29분 28건 + 7/30분 28주제 전량 반영 — 7/30 4차 보강**): **모델 간 가격 격차 600배·파라미터 비공개**(→ CogInsight 단계별 모델 티어링 근거) · **멀티에이전트 기업 AI 표준화**(에이전틱 AI 2030년 61조원·가트너 기업앱 40%·에이전트고 2026·국내 에이전트 개발 외주 시장) · **한국 도입률 61% vs 구현율 6.7%** + 2026 IT예산 1순위=생성형AI · **장문 컨텍스트 효율화가 상반기 논문 최대 트렌드(원인=에이전트 하네스)** · Constitutional AI 2,700→23,000단어 · Claude Code 자율 플랫폼 진화·Fable 5(Mythos) SWE-bench 95.0% · 카카오 경량LLM 4종 오픈소스 · MoE+4bit+추측적 디코딩. **7/30 추가**: 앤트로픽 미토스(AES) · 코드게이트 멀티AI팀 vs 인간(인간 우승) · 소버린AI=SLM+RAG · K-AX 스파르탄 1.8B 추론 1위 · **🦾 피지컬 AI 신규 축**(광양항 2029 완전자동화·인천대 거점·아크헬스케어 요양 문서 자동화) · **🎓 인재·교육 신규 축**(제미나이+**안티그래비티**가 공공 취업교육 커리큘럼·AX 오디션) · 롯데 파트너사 전용 AI 에이전트 · 이노그리드 AICubeit(LLMOps+GitOps) · 모아진 매거진 2,400종 학습데이터 공급. **🆕 7/31 5차 보강 — 영문 1차 소스 4일분(101건 → 유일 60건: 공식 블로그 13 + arXiv 47)**: **GPT-5.6 효율 3부작**(API 설정 2개 `reasoning`+`compaction`으로 ARC-AGI-3 점수 3배 · "달러당 지능" · Luna·Terra 가격 인하 → **CogInsight 비용 개선 순서를 설정→티어링→모델교체로 재정렬**) · **MS Echoverse**(컴퓨터사용 에이전트가 *이메일·고객지원*에서 고전 = CS SmartHub 도메인이 인정된 난제) · **MS EvoLib**("더 기억해서 똑똑해지지 않는다, 경험을 진화하는 지식으로" = 이 위키의 설계 전제) · **하네스 자기진화 3편**(CHILL-Harness·Living-Harness·DREvo = 규칙문서 관리 엔지니어링의 학계판) · ⚠**TRACE-ROUTER**(호출 단위 라우팅의 task-consistency 문제 → 단계별 티어링 주의) · **ARCHER**(실행 가능한 규정 = solution_rules 규칙엔진) · ⚠**Where Facts Go Missing L0–L8**(에어갭 4–8B 파이프라인의 사실 누락 = **소버린AI=SLM+RAG 낙관론의 반대 증거**) · **멀티에이전트 실패학 6편**(오류 전염·SafeFlow·상급 에이전트의 강압/거짓보고·도덕적 해이·에너지 공유재) · ⚠**One Run Is Not an Idea**(implementation lottery = 올림푸스 1회 verify 판정의 약점) · **HF 프런티어랩 침입 타임라인**(W30 OpenAI×HF 인시던트 + 「Claude 거절→Z.ai」 기사와 **같은 사건 3중 기록**) · **Gemini Robotics 2/ER 2**(🦾 국내 피지컬AI의 글로벌 짝) · OpenAI "AI가 직무 경계를 재편한다" 연구. ⚠ 7/29분은 WebSearch 대체수집이라 SEO 롤업 비중 높음(일부 모델명 구세대) / ⚠ 자동 위키화가 2회 연속 항목 누락(14/28·12/28) → 수동 대조 필수 · ⚠ `2026-07-27.md` 15건은 전량 W30 기존 반영분(중복)
 - [[AI-주간-소식-2026-W30]] — 🆕 2026 W30 (7/20~7/26): **OpenAI Presence**(고객·사내 워크플로우용 음성/챗 에이전트 엔터프라이즈 플랫폼 — 내 회사 도메인 직격) · **Gemini 3.6 Flash / 3.5 Flash-Lite / 3.5 Flash Cyber**(저비용·보안특화 3종) · long-horizon 모델 안전·정렬(관측된 실패 공유) · NTT DATA Codex 장애분석 30분(9,000명) · OpenAI×HuggingFace 평가 중 보안 인시던트 · Health in ChatGPT · 국가 과학(DOE / Google $40M Genesis Mission) · Project Camellia · MIT 원자력 자동화·Bertsekas 별세. ⚠ arXiv 0건(기업 블로그 15건) · **W29(7/13~7/19)는 수집 공백**
 - [[AI-주간-소식-2026-W28]] — 2026 W28 (7/6~7/12): OpenAI 제품 대공세(GPT-5.6·ChatGPT Work 행동 에이전트·GPT-Live 음성·M365 Copilot 기본채택) · SWE-Bench Pro 벤치마크 신뢰성 문제 · arXiv 멀티에이전트 실무배치(실패국소화·ASMR 스키마 자동생성·프라이버시 방화벽·배치시점 메모리) · Flint(MS 시각화 언어) · 엔터프라이즈 AI-native(도이치텔레콤·MUFG·AP+) · MIT 비개발자 챗봇 SW 제작 **+ (2026-07-23 보강 98건)** 에이전트 운영·신뢰성(LLM-as-a-Verifier·Progressive Crystallization·워크플로우 서빙·⚠TeamTR 멀티에이전트 회의론) · 안전/거버넌스(PiSAs 내부유출·LLMoxie 사내플랫폼·Institutional Red-Teaming) · 업무적용(조직기억·테스트유지보수·MCP 광전송망)
 - [[AI-주간-소식-2026-W27]] — 2026 W27 (6/29~7/5): SkillOpt(스킬을 학습 가능 파라미터로) · Memora(에이전트 메모리, 저장·검색 분리) · ScarfBench(엔터프라이즈 Java 마이그레이션 에이전트 벤치마크) · Gemma 4 실시간 음성 · Nano Banana 2 Lite/Gemini Omni Flash · GeneBench-Pro · HP Frontier
@@ -37,7 +37,7 @@ updated: 2026-07-30
 - [[에이전트-자동화-도구]] — 자동화/에이전트 도구군 (workflows · /goal · routines) → 내 업무 적용
 - [[내-MCP-커넥터-환경]] — 내가 쓰는 MCP 커넥터·Cowork 도구·업무 도구 환경
 - [[카카오-Play-MCP]] — 카카오 공식 MCP 8개 서비스 도구 사전 (지도·캘린더·검색·주식·유튜브)
-- [[웹-크롤링-기초]] — RSS/API/BeautifulSoup/Playwright 4가지 방식 + AI 뉴스 수집 시스템 구축
+- [[웹-크롤링-기초]] — RSS/API/BeautifulSoup/Playwright 4가지 방식 + AI 뉴스 수집 시스템 구축 **+ ⚠ 수집·위키화 품질 규약(2026-07-31)**: ①롤링 피드 중복(101→60건) → URL 단위 중복제거 선행 ②자동 위키화 항목 누락 2회 → 수동 전수 대조 필수 ③수집 공백(W29·7/29) → 파일명 날짜 연속성 확인
 - [[GLM-Zhipu-Z-ai]] — 🆕 중국 Zhipu(Z.ai) 오픈소스 LLM. "클로드급 코딩을 1/5~1/10 가격"이 셀링포인트. **Coding Plan 월 $18~**(Claude Code·Cline에 연결) + **API 입력 $0.6/출력 $2.2**(무료 Flash 모델도). §4.5에 **Claude 플랜(Pro$20/Max$100·$200) vs GLM 비교** — [[올림푸스-Olympus]]가 주당 Opus시간 캡에 걸리는 문제 해법(GLM API=캡 없음/모델 이중화). ⚠ 중국 모델이라 회사 데이터엔 거버넌스 확인 전까지 부적합
 - [[MSW-개발-레퍼런스]] — 🆕 메이플스토리 월드(Lua) 함수/패턴 사전(Entity/Component·이벤트 함수·서버/클라 실행모드·DataStorage 저장·UI 컴포넌트). [[개발-위시리스트-메이플스토리|몬스터북 사가]] 개발용, 04 §4.5 확인항목 대응표 포함
 - [[모닝-브리핑-AppsScript]] — 매일 아침 "DAILY BRIEFING" 메일의 정체: Google Apps Script가 캘린더+Gmail을 개인 Gemini(무료분)로 요약·발송 + 드라이브 저장. [[Teams-Gmail-캘린더-Gemini-연동]] 위의 푸시층

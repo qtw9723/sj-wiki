@@ -3,8 +3,17 @@ title: 작업 이력 (Log)
 category: 시스템
 tags: [log, 이력]
 created: 2026-06-10
-updated: 2026-07-30
+updated: 2026-07-31
 ---
+
+## [2026-07-31] 자료넣기 | [[AI-주간-소식-2026-W31]] 5차 보강 — 영문 1차 소스 4일분(101건→유일 60건) 반영
+- 📄 대상 원본 4개: `raw/ai-digest/2026-07-27.md`(15) · `2026-07-28.md`(27) · `2026-07-30.md`(29) · `2026-07-31.md`(30) = **101건**. URL 단위 전수 대조 → **유일 신규 60건**(공식 블로그·기관 13 + arXiv 멀티에이전트 47), 나머지 41건은 파일 간 중복/재게시 또는 [[AI-주간-소식-2026-W30]] 기존 반영분. 발행일 전부 W31(7/27~8/2) 범위 → **새 페이지 생성 없이 기존 W31 보강**.
+- 📄 ⚠ `2026-07-27.md` **15건은 전량 W30 기존 반영분**(중복) — "누락 아님"을 증명하려고 15건 대조 결과를 「🔁 전수 대조」 절로 명시. 접점 없는 arXiv 19편도 표로 **전수 기록**(7/29·7/30 누락 사고 재발 방지).
+- ⚠ 📄 **7/29 영문 수집 파일 없음**(`07-28` → `07-30`, 크롤러 1일 미실행 추정 🧠) — 롤링 피드라 실질 공백은 없었음.
+- 🧠 핵심 신규 항목: **GPT-5.6 효율 3부작**(API 설정 `reasoning`+`compaction`으로 ARC-AGI-3 점수 3배 · "달러당 지능" · Luna·Terra 가격 인하) · **MS Echoverse**(컴퓨터사용 에이전트가 *이메일·고객지원*에서 고전) · **MS EvoLib**(경험→진화하는 지식) · **하네스 자기진화 3편**(CHILL-Harness·Living-Harness·DREvo) · **TRACE-ROUTER** · **ARCHER**(Executable Regulations) · **Where Facts Go Missing L0–L8**(에어갭 사실 누락) · **멀티에이전트 실패학 6편**(Reliability-Contagion·SafeFlow·Coercion&Deception·Moral Hazard·Energy Commons·Linguistic Firewall) · **One Run Is Not an Idea**(implementation lottery) · **HF 프런티어랩 침입 기술 타임라인** · **Gemini Robotics 2/ER 2** · OpenAI 「AI가 직무 경계를 재편한다」.
+- 🧠 새 연결점 7가지: ①**"하네스"가 이번 주의 숨은 주어** — Constitutional AI 8.5배(사람이 규칙문서를 두껍게) + 하네스 자기진화 3편(모델이 스스로 고침) + EvoLib + Echoverse가 전부 *"모델이 아니라 모델을 둘러싼 층을 바꿔라"* ②**비용 논의가 "어떤 모델"→"어떻게 굴리나"로 이동** → [[CogInsight-Generator]] 개선 순서 재정렬(**①설정 → ②작업단위 프로필 티어링 → ③모델 교체**; 지금까지 ③만 봤음) ③⚠**소버린 AI 정면 충돌**: 와이즈넛 "폐쇄망엔 SLM+RAG가 현실적" ↔ Where Facts Go Missing "그 구성이 사실을 조용히 누락" → 둘 다 든 채로 *계측 필수*로 쓸 것 ④**CS·이메일 자동화 난이도의 외부 인정**(Echoverse + 롯데·아크헬스케어·LGU+) + Cross-organisational Process Mining으로 *CS 로그 → 프로세스 역추출 → Cogi 시나리오 입력* 경로 ⑤**멀티에이전트는 무엇이든 전파되는 매체**(오류·감정·자원고갈·거짓보고) → [[올림푸스-Olympus]] 규칙: *격리·교정 경로 없으면 기본값은 전파*, *보고 아닌 실행 결과로 판정* ⑥⚠**implementation lottery** = 올림푸스가 `verify.sh` 1회로 채택·폐기하는 구조의 약점 ⑦**HF 침입 사건이 3중 기록으로 맞춰짐**(W30 인시던트 공동발표 → "Claude 거절→Z.ai" 기사 → HF 기술 타임라인).
+- 🧠 **EvoLib이 이 위키의 설계 전제와 같은 문장**("더 많이 기억해서 똑똑해지지 않는다, 경험을 진화하는 지식으로") = `CLAUDE.md`의 Karpathy LLM Wiki 원칙 — 포트폴리오 프레이밍 후보.
+- 갱신 페이지: [[AI-주간-소식-2026-W31]](📡 영문 1차 소스 블록 신설 — 💰 GPT-5.6 3부작 · 🖥️ MS 2편 · 👔 직무경계 · 🕵️ 침입 타임라인 · 🔬 과학 · ⚡ GPU 가동률 · 🦾 로보틱스 · 🧪 arXiv A~H 클러스터 + 전수기록표 + 🔁 전수 대조 + 🧠 의외의 연결점 7), [[웹-크롤링-기초]](**⚠ 수집·위키화 품질 규약 3종 신설** — 하네스 쪽 수정), [[올림푸스-Olympus]](하네스 정의 차용·implementation lottery·실패학 6편), [[CogInsight-Generator]](비용 개선 순서·TRACE-ROUTER 주의·ARCHER·L0–L8·Aethel), [[mailer|CS SmartHub]](Echoverse 등 난이도 외부 근거 3종), [[index]], [[log]](이 항목).
 
 ## [2026-07-30] 자료넣기 | [[AI-주간-소식-2026-W31]] 4차 보강 — 자동 위키화 누락 16주제 복구 (2회 연속 실패)
 - ⚠ 📄 **3차 자동 위키화(`auto(wiki): 2026-07-30` `ae8f595`)가 7/30 원본의 유일 주제 28건 중 12건만 반영**. 기사 URL 식별자 단위 전수 대조로 **16주제 누락 확인** → 전건 추가(CLAUDE.md §2-B 완전 확인 원칙). 새 페이지 생성 없이 기존 W31 보강.
