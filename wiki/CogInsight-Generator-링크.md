@@ -2,24 +2,24 @@
 title: CogInsight Generator — 공식 링크 모음 (현행)
 category: 프로젝트
 tags: [프로젝트, 링크, coginsight, 공유용]
-source: 2026-07-09 리네임 세션 · 2026-07-21 v0.4.2 릴리스 반영
+source: 2026-07-09 리네임 세션 · 2026-08-03 v0.5.1 반영
 created: 2026-07-09
-updated: 2026-07-15
+updated: 2026-08-03
 ---
 
 > [!tip] 핵심 takeaway
-> 현행 프로덕션 = **v0.4.2 (결과 확인 창 UI 개선, 2026-07-21 릴리스)**. 누군가에게 링크를 줄 일이 있으면 **이 페이지에서 복사**하면 된다 — 아래 링크는 전부 현행 주소. 테스터·사내 공유용은 "공개/로그인" 두 줄이면 충분. (2026-07-09 프로젝트명 변경으로 구 URL은 전부 폐기 404.)
+> 현행 프로덕션 = **v0.5.1 (UI/UX 앱 셸 개편 + 문서→API 생성 도구, 2026-07-29 릴리스)**. 개발 중은 v0.6.0(ESD 선행·매핑, dev 전용·미배포). 누군가에게 링크를 줄 일이 있으면 **이 페이지에서 복사**하면 된다 — 아래 링크는 전부 현행 주소. 테스터·사내 공유용은 "공개/로그인" 두 줄이면 충분. (2026-07-09 프로젝트명 변경으로 구 URL은 전부 폐기 404.)
 
 ## 🌐 공개 (무계정 열람 — 외부 공유 가능)
-- 📄 **개요·사용 매뉴얼**: https://coginsight-overview.vercel.app — 프로젝트 소개·매뉴얼·버전 히스토리(**v0.4.2 반영, 2026-07-21** — 현행 프로덕션 v0.4.2). 발표·보고 공유용은 이 링크.
+- 📄 **개요·사용 매뉴얼**: https://coginsight-overview.vercel.app — 프로젝트 소개·매뉴얼·버전 히스토리(**v0.5.1 반영, 2026-07-29** — 현행 프로덕션 v0.5.1). 발표·보고 공유용은 이 링크.
 
 ## 🔑 로그인 필요 (테스터용 — 이메일 OTP + 승인)
 - 📄 **앱 (생성기)**: https://coginsight-generator.vercel.app — 실제 생성기. 테스터 이메일 OTP 인증 게이트(승인제).
 
 ## 🔒 소유자 전용 (개인 계정 인증 필요)
 - 📄 **GitHub 저장소** (private): https://github.com/qtw9723/CogInsight-Generator
-  - 최신 릴리스: https://github.com/qtw9723/CogInsight-Generator/releases/tag/v0.4.2 (결과 확인 창 UI 개선, 2026-07-21 · PR [#108](https://github.com/qtw9723/CogInsight-Generator/pull/108) main `2986e1f`) · 직전 v0.4.1(결과 탭 사용자별 보기, PR #107 `3b68501`)
-- 📄 **개요 문서 편집 원본 (claude.ai 아티팩트)**: https://claude.ai/code/artifact/1e30660a-4c19-4a59-9f19-198bed774f7d — 기본 비공개, 공유는 페이지의 share 메뉴로. ✅ **2026-07-21 v0.4.2 기준으로 재동기화 완료** — 라이브 HTML에서 `<title>`~마지막 `</script>`만 추출해 Artifact 재발행(이중 래핑 회피). 이제 라이브 공개 페이지·아티팩트 모두 v0.4.2로 일치.
+  - 최신 릴리스: https://github.com/qtw9723/CogInsight-Generator/releases/tag/v0.5.1 (UI/UX 앱 셸 개편 + 문서→API 생성 도구, 2026-07-29 · PR [#113](https://github.com/qtw9723/CogInsight-Generator/pull/113) main `345fa96`) · 직전 v0.5.0(입력 소스 다양화, PR #111 `1e3237d`)
+- 📄 **개요 문서 편집 원본 (claude.ai 아티팩트)**: https://claude.ai/code/artifact/1e30660a-4c19-4a59-9f19-198bed774f7d — 기본 비공개, 공유는 페이지의 share 메뉴로. ✅ **2026-08-03 재동기화 완료**(그전 2026-07-21 v0.4.2) — 라이브 HTML에서 `<title>`~마지막 `</script>`만 추출해 Artifact 재발행(이중 래핑 회피). 라이브 공개 페이지·아티팩트 모두 본문 v0.5.1 + 다음 방향 v0.6.0/v0.7.0/v0.8.0 재편본으로 일치.
 - 📄 **Supabase 대시보드** (백엔드, 프로젝트명 "parking"): https://supabase.com/dashboard/project/enawzdqroidrhtjqhpka — 함수: https://supabase.com/dashboard/project/enawzdqroidrhtjqhpka/functions
 - 📄 **Vercel 프로젝트**: 앱 `coginsight-generator` · 개요 `coginsight-overview` (계정 qtw9723) — https://vercel.com/dashboard
 
