@@ -1,10 +1,10 @@
 ---
 title: GLM (Zhipu / Z.ai) — 모델·요금 정리
 category: 도구 / 스킬
-tags: [llm, glm, zhipu, z-ai, 코딩모델, 요금, api, 오픈소스]
-source: "docs.z.ai/guides/overview/pricing, docs.z.ai/devpack, llm-stats.com/models/glm-4.6, felloai/vibecoding/aipricing.guru (2026-07-07 웹 스크랩)"
+tags: [llm, glm, zhipu, z-ai, 코딩모델, 요금, api, 오픈소스, 정렬계보, 랩별차이]
+source: "docs.z.ai/guides/overview/pricing, docs.z.ai/devpack, llm-stats.com/models/glm-4.6, felloai/vibecoding/aipricing.guru (2026-07-07 웹 스크랩), raw/ai-digest/2026-08-13.md"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-08-13
 ---
 
 > [!tip] 핵심 takeaway
@@ -168,6 +168,13 @@ updated: 2026-07-07
 - **[[CogInsight-Generator]] 백엔드**: 현재 OpenAI gpt-4o. GLM API(또는 무료 Flash)로 A/B 해볼 가치. 생성 품질만 받쳐주면 운영비가 급감. ⚠ 단 CogInsight는 사내 POC라 **회사 데이터 거버넌스**부터 확인.
 - **회사(MWW) 사내 챗봇**: ⚠ 중국 회사 모델 → 사내 기밀·고객 데이터엔 신중. 셀프호스팅(MIT라 가능)으로 데이터를 외부로 안 내보내는 옵션은 있으나 GPU 비용·검토 필요. 이 판단·상세는 [[내-프로필]] 회사 맥락상 개인 vault엔 원칙만 남긴다.
 - **Claude Code 병행**: 지금 주력은 Claude(Opus 4.8, [[Claude-Code-업데이트-동향]]). GLM은 "고빈도 저위험 코딩은 싼 모델, 어려운 건 Claude"식 이중 전략의 저가 축으로 유용.
+
+## 7. ⚠ 🆕 「중국 모델」로 묶어서 판단하지 말 것 (2026-08-13 근거 추가)
+
+- 📄 **(W33-EN36) Not a Monolith** (arXiv:2608.10262 — [[AI-주간-소식-2026-W33]] 8차 보강): *서구 프론티어 LLM 에이전트에서 문서화된 **협력 편향(cooperative bias)** 이 **다른 정렬 계보(alignment lineage)** 에도 확장되는가, 그리고 그것을 체현한 중국 모델들을 **하나의 블록으로 볼 것인가 개별 연구소로 볼 것인가?*** — 프론티어급 중국 모델 **4종**을 비교 연구했고, **제목이 결론**이다(*단일체가 아니다*).
+- 🧠 **이 페이지에 직접 걸린다**: 위 §6·§4.5의 판단은 GLM(Zhipu)을 *"중국 회사 모델"* 이라는 한 칸으로 다룬다. 📄 이 논문은 **랩별로 협력·정렬 특성이 갈린다**고 보고하므로, *"중국산이니까 X"* 는 GLM에 관한 진술이 아니라 **국적에 관한 진술**이다.
+- ✅ **실무 처방**: 모델을 비교표에 올릴 때 **국적 칸을 판단 근거로 쓰지 않고, 랩(Zhipu / DeepSeek / Alibaba / Moonshot …) 단위로 따로 잰다.** ⚠ 단 §6의 **데이터 거버넌스 우려**(사내 기밀·셀프호스팅)는 정렬 특성과 별개 축이므로 그대로 유효하다 — 🧠 이 논문이 반박하는 것은 *품질·행동 특성의 국적 일괄 판단*이고, *데이터가 어디로 가는가*는 반박하지 않는다.
+- 🧠 📄 **(W33-KR37) 「멀티모델 오케스트레이션 + LLMOps」 전략과 짝**: 조합 설계의 전제가 *"모델마다 다르다"* 라면, **가장 먼저 버려야 할 휴리스틱이 「국적으로 묶기」** 다. → [[공통-기술스택]]
 
 ## 관련 문서
 - [[올림푸스-GLM-백엔드-연동]] — 🆕 **실제 구현 가이드**: 올림푸스 빌더 역할만 GLM으로 오프로드(config.sh·run.sh diff). §4.5~4.7의 실행판
