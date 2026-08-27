@@ -4,7 +4,7 @@ category: 프로젝트
 tags: [프로젝트, 챗봇, 시나리오, dialog-json, llm, openai, supabase, 핵심]
 source: raw/projects/coginsight-generator.md, raw/ai-digest/2026-08-12.md, raw/ai-digest/2026-08-13.md, raw/ai-digest/naver-2026-08-20.md, raw/ai-digest/naver-2026-08-21.md, raw/ai-digest/2026-08-21.md, raw/ai-digest/2026-08-22.md
 created: 2026-06-09
-updated: 2026-08-22
+updated: 2026-08-27
 ---
 
 > [!tip] 핵심 takeaway
@@ -82,7 +82,7 @@ updated: 2026-08-22
 
 ## 진행 현황
 > 📄 **현재 프로덕션 = v0.6.0**(ESD·API 선행 정의·매핑 + 멀티파일 지능형 수집, 2026-08-04 — PR #114 main `1e5d53d`, tag v0.6.0). 생성 앞단 ESD·API 선행 정의(`EsdFrontStage`, 옵트인·회귀 없음)를 매핑에 실사용(`proposeMapping` + 옵션 2-pass `MappingStep`), ESD는 결과 `generation_tiers.esd`에 번들. 멀티파일 지능형 수집(`MultiFileUpload`, 자동 분류·라우팅 + `ingest-classify`), API 문서 하이브리드 인입(OpenAPI 결정론 + `api-doc-parse` LLM 폴백). 편집기 용어 통일(ESD·API 편집·스키마). DB 규칙 마이그레이션 `20260731130000_mapping_rules`(버전 무관), 프로덕션 함수 4종 배포. 직전 v0.5.1(UI/UX 앱 셸 개편 + 문서→API 도구, PR #113 `345fa96`).
-> 🔶 **현재 개발 = 없음**(v0.6.0 릴리스 완료, 다음 = v0.7.0 결과 수정 착수 예정 — dev 리셋·재세팅 후 시작). 그 이전 릴리스: v0.5.0(입력 소스 다양화, PR #111)·v0.4.2(결과 확인 창 UI, PR #108)·v0.4.1(결과 탭 사용자별, PR #107)·v0.4.0(플로우 시각화, PR #106).
+> 🔶 **현재 개발 = v0.7.0 진행 중**(브랜치 `feat/v0.7.0-combined-dev`, main 대비 58커밋 · **프로덕션 무배포**). 자연어 수정(`nl-quickgen`·`nl-esd-extract`)·설문 기반 수정(`survey-edit`)·결과 ESD 편집(`esd-result-edit`) 축을 통합 dev 브랜치에 머지했고, 2026-08-25~26은 백로그에서 끌어올린 **다이어그램 편집**에 집중 — 연결선 조건 편집(가이드 빌더)·고립 노드 검증·노드 내용(기능) 편집(타입별 편집기)·반복 본문 편집·조건 없는 분기 확정 차단. 2026-08-27 회귀 수정: 기존 조건이 편집기에 안 뜨던 버그(엣지 시드에 `data.condition` 미적재, `9cff45d`). ⚠ 블록 E(PR #115)는 아직 미머지 · dev 리셋 미수행. 그 이전 릴리스: v0.5.0(입력 소스 다양화, PR #111)·v0.4.2(결과 확인 창 UI, PR #108)·v0.4.1(결과 탭 사용자별, PR #107)·v0.4.0(플로우 시각화, PR #106).
 
 - 📄 **v0.4.0 dev 구현 완료 (2026-07-14~15) — [[올림푸스-Olympus]] 자율 개발**: 레퍼런스 플로우 시각화(react-flow 캔버스 뷰어). 백로그 T1~T7 전부 완료, verify green(deno 250/0·build 2065 modules), **프로덕션 무배포**(dev 전용, `AUTO_MERGE=0 DEPLOY_ON_DONE=0`). 사용자 "프로덕션에 머지" 시 4축 릴리스. 상세는 [[#진행사항 업데이트 로그|진행 로그 2026-07-14~15]].
 - 📄 **v0.3.1 프로덕션 릴리스 (2026-07-09)**: 생성기 백엔드 LLM `gpt-4o` → `gpt-5.2` 전환(5개 엣지함수) + OpenAI 키 로테이션. v0.4.0 dev 사이클과 무관한 독립 패치(격리 브랜치 `fix/llm-gpt-5.2`, PR #105, tag v0.3.1). ⚠ `flow/usage.ts` 단가표 미갱신(비용 추정 부정확 — TODO).
