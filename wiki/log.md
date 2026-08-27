@@ -14,6 +14,13 @@ updated: 2026-08-27
 updated: 2026-08-26
 ---
 
+## [2026-08-27] 자료넣기 | Bible Quest 위키화 (발표 준비 착수)
+
+- 📄 사용자가 "sj-wiki에서 biblequest 확인 가능한가" 질문 → 위키에 없어 IdeaProjects 탐색, `IdeaProjects/MonsterCollector/Bible-Quest`(로컬)·GitHub `qtw9723/Bible-Quest` 확인(2026-08-27, 사용자 확정: "아 그거 맞아"). working tree clean, origin/main과 동기화됨.
+- 📄 신규 페이지 [[Bible-Quest]] 작성 — README.md·ROADMAP.md·CLAUDE.md 기반: 개요·기술스택·화면구성·스토리데이터구조·진행현황(Phase1~13, 전체 ~17%)·어드민 접근. [[index]] 프로젝트 섹션에 등록.
+- 🧠 [[게임-프로젝트-MonsterCollector-MonsterRank]]의 MonsterCollector 항목("유형 미정")은 사실 이 Bible Quest가 그 폴더 안에 있던 것으로 확인 — 해당 문서 정정 필요(별도 갱신 예정).
+- ⏳ 다음: 위 자료를 근거로 발표 자료 준비 예정(사용자 요청, 대상·형식 확인 필요).
+
 ## [2026-08-26] 질문 | 콜링 발표 준비 — B 확정 3건 반영 + 반응형 데모 사본
 
 - 📄 사용자 발표(내일 저녁) 준비. [[콜링]]·[[교회-캘린더-제안-발표-대본]] 확인 후 열린 ⚠️ 항목을 사용자 확정값으로 마감: **개발기간 ≈2개월**, **서버·운영 = 임시 개인서버 → 추후 개발중 '교회 앱' 통합 방향(임원 인지)**, **대학부 시연(팀명 미지정)**.

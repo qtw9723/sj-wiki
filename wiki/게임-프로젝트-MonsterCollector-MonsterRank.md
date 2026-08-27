@@ -1,10 +1,10 @@
 ---
 title: 게임 프로젝트 — MonsterCollector · MonsterRank
 category: 프로젝트
-tags: [프로젝트, 게임, 실험, 정보부족]
+tags: [프로젝트, 게임, 실험]
 source: raw/projects/monster-collector.md, raw/projects/monster-rank.md
 created: 2026-06-09
-updated: 2026-06-09
+updated: 2026-08-27
 ---
 
 > [!tip] 핵심 takeaway
@@ -13,8 +13,8 @@ updated: 2026-06-09
 > 현재 둘 다 **정보 부족** 상태 — 다음에 다룰 때 실제 코드/CLAUDE.md를 raw에 넣어주면 제대로 정리 가능.
 
 ## MonsterCollector
-- 설명: 몬스터 수집 애플리케이션. 유형 미정. 최근 2026-05-28.
-- 문서: CLAUDE.md만 있음 (README·package.json 없음). → 상세는 프로젝트의 CLAUDE.md 확인 필요.
+- 📄 설명(2026-08-27, 저장소 CLAUDE.md 확인): **숫자 맞추기 게임으로 몬스터(카드)를 수집하는 게임.** Unity 클라이언트 + Supabase Edge Functions 백엔드(Deno/TS). Edge Functions: `api`(헬스체크) · `guess`(숫자 맞추기) · `card`(카드 뒤집기) · `rank`(랭킹 CRUD) · `update-leaderboard`(cron 갱신).
+- 🧠 같은 폴더 안에 **무관한 별개 프로젝트 [[Bible-Quest]]가 중첩**되어 있음(`IdeaProjects/MonsterCollector/Bible-Quest/`) — 신약 성경 스토리 RPG, Vite+React+Supabase. 같은 상위 폴더를 공유할 뿐 코드·기획상 연관 없음.
 
 ## MonsterRank
 - 설명: 몬스터 랭크 시스템. 유형 미정. 최근 2026-03-18.
@@ -28,4 +28,4 @@ updated: 2026-06-09
 - 게임의 "수집·랭킹" 메커니즘(진행도·점수)은, 업무 도구에서 **대시보드/리포팅**([[schedule-reporter-kakao]])과 발상이 닮았다 — 둘 다 "상태를 모아 보여주기". 게임에서 익힌 감각이 업무 UI에 전이될 수 있다.
 
 ## 관련 문서
-- [[프로젝트-포트폴리오]] · [[내-프로필]] · [[공통-기술스택]]
+- [[프로젝트-포트폴리오]] · [[내-프로필]] · [[공통-기술스택]] · [[Bible-Quest]] (같은 폴더의 별개 프로젝트)
