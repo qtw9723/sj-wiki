@@ -3,8 +3,14 @@ title: 작업 이력 (Log)
 category: 시스템
 tags: [log, 이력]
 created: 2026-06-10
-updated: 2026-08-27
+updated: 2026-08-28
 ---
+
+## [2026-08-28] 자료넣기 | 자동 위키화 (daily crawl) — 한국어 naver-2026-08-28.md (32건)
+
+- 📄 `raw/ai-digest/naver-2026-08-28.md` 32건 처리. [[AI-주간-소식-2026-W35]] 12차 보강. KR-W35-86~102 신설 (17 신규 + 15 흡수 = 32/32).
+- 🔥 빅 이슈: ① 앤트로픽 MHS(피지컬 AI 하드웨어 연결 표준) · ② GPT-5.6 Luna 80% 인하 + Claude Sonnet 5 영구 인하 · ③ Salesforce in Claude 출시(37개 영업 스킬) · ④ KAIST K-Fold 멀티에이전트(25배 빠른 바이오 AI).
+- 🚨 ③-p 확정: `raw/ai-digest/2026-08-26.md`(영문) D+2 도과 → arXiv 8/25 announce 영구 유실 확정.
 
 ## [2026-08-27] 자료넣기 | 대상 4파일 재감사(11차) — 신설 0 · 정정 5건 (영문 8/25·8/27 + 한국어 8/27 + 악보 기획 원본)
 
