@@ -1,10 +1,10 @@
 ---
 title: CogInsight-Generator (Dialog JSON Generator)
 category: 프로젝트
-tags: [프로젝트, 챗봇, 시나리오, dialog-json, llm, openai, supabase, 핵심]
-source: raw/projects/coginsight-generator.md, raw/ai-digest/2026-08-12.md, raw/ai-digest/2026-08-13.md, raw/ai-digest/naver-2026-08-20.md, raw/ai-digest/naver-2026-08-21.md, raw/ai-digest/2026-08-21.md, raw/ai-digest/2026-08-22.md, raw/ai-digest/naver-2026-08-28.md
+tags: [프로젝트, 챗봇, 시나리오, dialog-json, llm, openai, supabase, 핵심, 캐시효율, 관제실, 페르소나집단, 인간기준선, 모델락인회피]
+source: raw/projects/coginsight-generator.md, raw/ai-digest/2026-08-12.md, raw/ai-digest/2026-08-13.md, raw/ai-digest/naver-2026-08-20.md, raw/ai-digest/naver-2026-08-21.md, raw/ai-digest/2026-08-21.md, raw/ai-digest/2026-08-22.md, raw/ai-digest/naver-2026-08-28.md, raw/ai-digest/2026-09-01.md
 created: 2026-06-09
-updated: 2026-08-28
+updated: 2026-09-01
 ---
 
 > [!tip] 핵심 takeaway
@@ -752,9 +752,29 @@ updated: 2026-08-28
   - 🧠 **「축적의 부패」 축의 6번째이자 처음 나온 처방**이다: (W33-EN42) *보존만으로는 권위 있는 상태를 식별하지 못한다* → (W33-EN45) *저장된 메모리가 열화한다* → (W34-EN4) MobileMem → (KR48) DGIST 담당 부서 → (KR76) 네이버 정제 코퍼스 → **여기**.
   - ✅ **적용안(위 8/20 항목의 확장)**: `solution_rules`·레퍼런스 라이브러리에 **「소유자 + 최신 확인일」** 에 더해 **`deprecated` 상태와 복원 경로**를 둔다 — 낡은 문안을 지우면 *왜 그렇게 답했는지* 를 재현할 수 없고, 남겨두면 다시 검색된다. 🧠 CLAUDE.md **§7의 *"어긋나는 원본 자료는 폐기/구버전으로 표시"*** 가 이미 같은 규칙이다(문서 층에는 있고 DB 층에는 없다).
 - ⭐⭐ **🆕 (2026-08-22) RAG 검색 품질을 모델 교체 없이 올리는 값싼 축** ([[AI-주간-소식-2026-W34]] (W34-EN17)): 📄 HuggingFace **Multi-Vector (Late Interaction) Embedding Models with Sentence Transformers** — 문서를 단일 벡터가 아니라 **토큰별 다중 벡터**로 두고 질의와 **늦은 상호작용**으로 매칭. 🧠 같은 주 📄 (KR94) 디노티시아 씨홀스가 *하드웨어*로 푼 문제를 **표현 방식**으로 푼다 — 모델도 인프라도 안 바꾼다. ⚠ 대가는 **인덱스 크기·질의 비용 증가**(raw에 수치 없음 → 도입 전 실측). 🧠 (KR91) 넥스트페이먼츠의 *온톨로지 + RAG* 와 함께 **"벡터 검색 단독에서 벗어나는" 신호 2건**.
+- 🔥 🚨 ⭐⭐⭐ **🆕 (2026-09-01) 장기 세션 컨텍스트 — 「자르지 말고 접어서 고정하라」** ([[AI-주간-소식-2026-W36]] (W36-EN3) TokenPilot `2606.17016v2`):
+  - 📄 *"As LLM agents are deployed in **long-horizon sessions, context accumulation drives up inference costs**. Existing approaches utilize **text pruning or dynamic memory eviction**… however, their **unconstrained sequence muta**…"*
+  - 🔥 🧠 **비용 공식에 세 번째 항이 붙는다.** 종전(W35 17차): *에이전트 비용 = **호출수 × 호출당 토큰***. 🧠 이 논문이 말하는 것은 **잘라내기가 프리픽스를 바꿔 KV 캐시를 무효화한다**는 점 → **비용 ≈ 호출수 × 토큰 × (1 − 캐시적중률)**. 🚨 즉 **토큰을 줄였는데 총비용이 오를 수 있다.**
+  - ✅ **적용안**: 시나리오 생성 세션에서 컨텍스트를 **중간부터 잘라내지 않는다**. 압축이 필요하면 **요약을 「새 접두 상태」로 한 번 고정(checkpoint)하고 그 뒤로만 덧붙인다**. 🧠 (W35-EN35) SKILL.state(*이력이 아니라 상태를 넘긴다*) + (W35-EN33) 원장(append-only) 과 **세 편이 같은 방향으로 수렴**한다. ⚠ 절감률·기법 상세는 raw에 **없음**(초록 잘림).
+- 🔥 🚨 ⭐⭐⭐ **🆕 (2026-09-01) 이 제품에 없는 층 — 「관제실」** ([[AI-주간-소식-2026-W36]] (W36-EN2) GOD `2608.27992`):
+  - 📄 *"Generative-agent systems are **easier to start than to inspect**. …the operator often gets **either a finished replay or raw logs**. That makes it hard to ask **why an agent mov**…"*
+  - 🔥 🧠 **국내 상용 발표와의 격차가 여기서 보인다.** 📄 [[AI-주간-소식-2026-W36]] 빅이슈의 **KT 우리은행 '에이전트 커넥터'** 는 *"챗봇·상담봇·AI 뱅커를 유기적으로 **연결**"* — **연결(①)** 층이다. 🧠 **관측(②)**((W36-EN2))·**사후 증거(③)**((W36-EN6))는 국내 발표에 아직 안 보인다(⚠ raw 범위 내 관찰이며 부재 단정 아님).
+  - ✅ **적용안**: 시나리오 생성 과정을 *"완성된 결과"* 또는 *"원시 LLM 로그"* 두 극단으로만 노출하지 않는다 — **어떤 분기가 왜 만들어졌고 어느 제약이 걸렸는지**를 보여 주는 중간 화면. 🧠 위 (2026-08-22) *「검수 비용」 1급 지표* 와 같은 자리에서 나오는 데이터이며, ✅ **[[프로젝트-포트폴리오]]의 실질 차별화 지점**이 된다.
+- ⭐⭐ **🆕 (2026-09-01) 다양성의 출처를 기획자 밖으로 — 페르소나 포커스그룹** ([[AI-주간-소식-2026-W36]] (W36-EN9) FocusGen `2608.28001`):
+  - 📄 *"**Creative professionals rarely design for themselves—they design for audiences whose preferences they must anticipate.** Yet current text-to-image exploration tools **derive diversity entirely from the designer's own input**—their prompts, their chosen d…"*
+  - 🧠 *"디자이너"* 를 **"시나리오 기획자"** 로 바꾸면 그대로 이 제품의 문제 정의다 — **다양성이 전적으로 기획자 프롬프트에서 나오면 기획자가 생각 못 한 분기는 영원히 안 나온다.**
+  - ⚠ 🧠 **단, 이 vault엔 이미 반대 방향 경고가 둘 있다**: 📄 (W35-EN44) *생성 에이전트의 사람 대리 결과는 **프롬프트에 민감**하다* · 📄 (W35-EN46) LiveSim *정적 페르소나는 부적절해진다*. ✅ **셋을 합친 결론**: 페르소나 집단은 쓰되 ① **프롬프트 변형 N개의 결과 분산을 함께 보고**하고 ② 페르소나를 **고정 프로필이 아니라 대화 중 갱신되는 상태**로 둔다. 📄 [[coginsight-turn-model|턴 모델]](사용자 발화 ↔ 봇 응답 엄격 교대)에서 **사용자 쪽 변동성**이 정확히 이 문제다.
+- ⭐⭐ **🆕 (2026-09-01) 「무엇과 비교해서?」 — 자체 평가에 인간 기준선을 붙인다** ([[AI-주간-소식-2026-W36]] (W36-EN5) `2608.28021`):
+  - 📄 *"Prior evaluations report **raw vulnerability counts** for model-generated IaC, **but without a hu**…"*(human baseline) — 🧠 *"LLM이 N개 냈다"* 는 **사람이 같은 과제에서 몇 개 내는지 모르면 의미가 없다.**
+  - ✅ **적용안**: 위 (2026-08-22) *산출 분산 · 검수 비용* 지표를 낼 때 **사람이 처음부터 작성한 시나리오의 같은 지표를 대조군으로 함께 잰다.** 🧠 (W35-EN33)의 *"교란되지 않은 비교"*·(W35-EN51) 이중맹검·(W35-EN52) 무작위 배정 연구와 같은 계보에서 **가장 값싼 판본**이다.
+- ⚠ ⭐⭐ **🆕 (2026-09-01) 모델 락인 회피가 「설계 취향」에서 「계약 리스크 대응」이 됐다** ([[AI-주간-소식-2026-W35]] 18차 (KR-W35-131 확정)):
+  - 📄 OpenAI 공식 블로그 원문으로 확정: *"**Our decision to wind down our contract providing OpenAI models to Cursor** following **its acquisition by SpaceX**."* → 🧠 **모델 공급은 상업 계약이고, 인수·경쟁 구도로 하루아침에 끊긴다.** 📄 (KR-W35-144) 현대차가 지역별로 LLM을 갈아끼운 사례와 같은 결론.
+  - ✅ **적용안**: LLM 호출 층을 **어댑터로 감싸고** `flow/usage.ts` 기록의 *모델명 + 버전 + 설정*(위 2026-08-22 항목)과 함께 **프로바이더 필드**를 남긴다 — 교체 시 과거 산출물의 재현 조건이 보존된다.
 - **🆕 (2026-07-31) 입력 다양화(v0.5.0)의 학술 짝**: 📄 arXiv **Aethel** — "어휘 중복이 적은 여러 문서에 흩어진 지표·주체를 빠르게 종합"하는 **그래프 검색** 프레임워크. 🧠 POC 문서·API 문서·엑셀 ESD를 파싱해 시나리오 재료로 쓸 때 겪는 문제 그 자체(기법 후보). 🧠 또한 **Cross-organisational Process Mining**(메시지 로그에서 프로세스 역추출)은 [[mailer|CS SmartHub]]의 CS 로그 → 이 도구의 **시나리오 입력**으로 잇는 경로.
 
 ## 관련 문서
+- 🆕 🔥 🚨 ⭐⭐⭐ [[AI-주간-소식-2026-W36]] — (W36-EN3) **캐시를 깨지 않는 컨텍스트 관리**(비용 = 호출수 × 토큰 × (1−캐시적중)) · (W36-EN2) **관제실 층이 국내 경쟁 발표에 비어 있다** · (W36-EN9) 페르소나 포커스그룹(⚠ (W35-EN44)(EN46) 경고 동반) · (W36-EN5) **인간 기준선을 붙인 비교** · (W36-EN14) 소형 모델 다회 탐색 · (W36-EN11) evidence-grounded·auditable 구성
+- 🆕 🔥 ⭐⭐ [[AI-주간-소식-2026-W35]] — 18차 (KR-W35-131 확정): **모델 공급은 계약이고 인수 한 번에 끊긴다 → 어댑터 층 + 프로바이더 기록** · (W35-EN35) SKILL.state · (W35-EN33) 원장(append-only) — (W36-EN3)과 함께 **세 편이 같은 처방으로 수렴**
 - 🆕 🚨 ⭐⭐ [[AI-주간-소식-2026-W33]] **16차 보강 · (EN40) `2608.11252` 「국소 검증은 비이식성을 탐지할 수 없다」 — QA 기준의 상위 명제** (2026-08-18): 📄 *단계마다 표현 가능성·파라미터를 확인하는 **국소 검증**으로는, 결론이 **다른 맥락으로 옮겨갈 수 있는지**를 원리적으로 알 수 없다*(코호몰로지 정리). 🧠 **스키마 검증 100%·단계별 통과는 전부 국소 검증**이다 — *"이 시나리오가 다른 채널·다른 도메인에서도 서는가"* 는 그걸로 보증되지 않는다((EN39) *Deliberative Deficit* 의 일반화). ✅ 함의: **이식성 테스트를 QA에 별도 축으로 둔다**(같은 시나리오를 다른 채널 가정으로 굴려 보기).
 - 🆕 ⭐⭐ [[AI-주간-소식-2026-W34]] **(W34-EN6) 오해의 생성·증폭·탐지 분류체계**(`2608.13604`): 📄 *AI 매개 채널이 **복구(repair)가 의지하던 자원에서 사용자를 끊어놓는다*** → ✅ *"못 알아들었을 때"* 되묻기 분기를 **예외 처리가 아니라 1급 설계 대상**으로 올리고, **증폭 경로**(오해가 다음 턴으로 번지는 길)를 따로 모델링한다. 📄 대상 챗봇이 **사용자 발화↔봇 응답 엄격 교대**라 증폭 경로가 선형이어서 모델링이 오히려 쉽다.
 - 🆕 ⭐ **흐름도·평가 관련 3편** — 📄 **PFD→P&ID**([[AI-주간-소식-2026-W33]] (EN49) `2608.11220`): *상위 흐름도 → 검증된 상세 명세* 변환의 자동화가 이 툴과 **구조가 같다**. ⚠ (EN32) MindTopo(*VLM은 연결·차단·교차 같은 **위상 관계**를 생각만큼 못 읽는다*)와 겹쳐 읽으면 — **흐름도는 이미지가 아니라 구조화된 표현으로 주고받아야 한다**는 근거가 2편이 됐다. 📄 **Doctorina MedBench**(`2603.25821`): 시나리오 품질은 **문항 정답률이 아니라 대화 시뮬레이션**으로 잰다. 📄 **동조 완화의 단일 프론티어**((EN50) `2608.11247`): 검증자의 저항성을 올리면 **유용한 수정도 안 받는다** → 멀티에이전트 QA에서 **검증자 완고함을 파라미터로** 둔다.
