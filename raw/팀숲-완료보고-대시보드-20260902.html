@@ -254,7 +254,7 @@ footer{
     <h1>팀숲 여름 통독 결산</h1>
     <p class="sub">신약 260장을 팀으로 함께 읽고, 읽은 만큼 나무·별·바다생물을 심어 팀의 숲을 키우는 앱. 2026년 여름 대학부에서 운영한 전 기간의 실제 기록입니다.</p>
     <div class="meta">
-      <span><b>데이터 집계</b> 2026.07.02 – 08.21</span>
+      <span><b>운영</b> 2026.07.02 – 08.15 (45일)</span>
       <span><b>대상</b> 대학부 7개 팀</span>
       <span><b>집계 기준</b> 신약 27권 260장</span>
       <span><b>작성</b> 박상준 · 2026.09.02</span>
@@ -378,10 +378,10 @@ footer{
       <h2>언제 모였나</h2>
       <span class="tag">일자별 신규 가입 · 51일</span>
     </div>
-    <p>첫 나흘(7/2&ndash;7/5)에 <strong>138명, 전체의 70%</strong>가 몰렸습니다. 오프라인 모임에서 함께 가입한 흐름으로 보입니다. 이후는 긴 꼬리로, 8월 한 달 신규 가입은 9명이었습니다.</p>
+    <p>첫 나흘(7/2&ndash;7/5)에 <strong>138명, 전체의 70%</strong>가 몰렸습니다. 오프라인 모임에서 함께 가입한 흐름으로 보입니다. 이후는 긴 꼬리로, 8월 신규 가입은 9명이었습니다.</p>
     <div class="card">
       <div class="chartbox"><svg id="joinChart" role="img" aria-label="일자별 신규 가입자 수 선 그래프"></svg></div>
-      <p class="cap">7/5 하루에만 51명이 가입했습니다.</p>
+      <p class="cap">7/5 하루에만 51명이 가입했습니다. 세로선은 운영 종료일(8/15)이며, 그 뒤 8/20·8/21에 2명이 더 가입했습니다 &mdash; 이 2명(5팀, 35장)도 집계에 포함돼 있습니다.</p>
     </div>
     <div class="note">
       <h3>⚠️ 읽기 활동의 날짜별 추이는 이번 보고서에 넣지 못했습니다</h3>
@@ -466,7 +466,8 @@ footer{
     <div class="card">
       <h3 style="font-size:15px;font-family:'Noto Sans KR',sans-serif;margin-bottom:14px;">집계 기준과 검산</h3>
       <ul class="tight">
-        <li><b>기간</b> 2026-07-01 이후 기록, 실제 가입은 7/2 시작 &mdash; 8/21 마지막. 테스트·개발자 계정은 제외했습니다.</li>
+        <li><b>기간</b> 운영은 2026-07-02 &mdash; 08-15(45일), 데이터 추출은 08-21까지 열려 있었습니다. 종료 뒤 가입한 2명(5팀, 합계 35장)도 <strong>제외하지 않고 그대로 포함</strong>했습니다 &mdash; 빼면 가입 194명 · 총 8,972장으로, 결론은 달라지지 않습니다. 테스트·개발자 계정은 제외했습니다.</li>
+        <li><b>읽은 날짜는 알 수 없습니다</b> 읽기 기록에 신뢰할 만한 시각이 없어(앞의 「언제 모였나」 참고), 8/15 이후에 읽은 장을 따로 걸러내는 것은 어느 기준으로도 불가능합니다. 총 장수는 <strong>추출 시점까지 쌓인 전체</strong>입니다.</li>
         <li><b>개인 식별</b> 실명·닉네임 없이 일련번호로만 받았습니다. 따라서 완주자 11명 시상 명단은 이 데이터로 만들 수 없고, 별도 요청이 필요합니다.</li>
         <li><b>중복 제거</b> 같은 사람이 같은 장을 여러 번 저장한 기록은 1장으로 셌습니다.</li>
         <li><b>완독 판정</b> 사복음서 완독은 <strong>네 권을 각각 끝까지 읽었는지</strong>로 판정했습니다(마태 28 · 마가 16 · 누가 24 · 요한 21). 장수 합계 89로 세는 방식과 대조한 결과 같은 30명이었고, 27권 전부에서 그 책의 장수를 넘긴 기록이 없음을 확인했습니다.</li>
@@ -477,7 +478,7 @@ footer{
   </section>
 
   <footer>
-    팀숲(Bible Forest) 완료 보고 · 데이터 추출 2026-09-02 · 개인별 집계표 196행 / 권별 27행 / 일자별 51행 기준
+    팀숲(Bible Forest) 완료 보고 · 데이터 추출 2026-09-02 · 개인별 집계표 196행 / 권별 27행 / 일자별 52행 기준
   </footer>
 </div>
 <div id="tip" role="status"></div>
@@ -668,6 +669,9 @@ footer{
     s+='<path d="'+line+'" fill="none" stroke="'+C('--accent')+'" stroke-width="2" stroke-linejoin="round"/>';
     s+='<circle cx="'+x(4)+'" cy="'+y(51)+'" r="4.5" fill="'+C('--accent')+'" stroke="'+C('--surface')+'" stroke-width="2"/>';
     s+='<text class="bval" x="'+(x(4)+10)+'" y="'+(y(51)+4)+'">7/5 · 51명</text>';
+    const endIdx = 45; // 8/15
+    s+='<line x1="'+x(endIdx)+'" y1="'+T+'" x2="'+x(endIdx)+'" y2="'+(H-B)+'" stroke="'+C('--ink-3')+'" stroke-width="1"/>';
+    s+='<text class="blab" x="'+(x(endIdx)-7)+'" y="'+(T+11)+'" text-anchor="end" style="font-size:11px">운영 종료 8/15</text>';
     JOIN.forEach((v,i)=>{
       s+='<rect class="jhit" data-i="'+i+'" x="'+(x(i)-6)+'" y="'+T+'" width="12" height="'+(H-T-B)+'" fill="transparent"/>';
     });
