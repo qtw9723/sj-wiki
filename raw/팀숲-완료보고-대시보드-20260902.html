@@ -1,0 +1,661 @@
+<title>팀숲 여름 통독 결산</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+:root{
+  color-scheme: light;
+  --bg:#f6f8f4;
+  --surface:#fcfdfb;
+  --surface-2:#eef2ea;
+  --line:#dbe2d7;
+  --line-soft:#e7ece3;
+  --ink:#16211a;
+  --ink-2:#4a564d;
+  --ink-3:#78857b;
+  --accent:#17784d;
+  --accent-soft:#e3f0e8;
+  --d1:#7cbf9c;
+  --d2:#46966b;
+  --d3:#1f6a48;
+  --d4:#0d3d29;
+  --zero:#c3ccbf;
+  --warn:#8a5a0b;
+  --warn-bg:#fbf1de;
+  --shadow:0 1px 2px rgba(22,33,26,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#12160f;
+    --surface:#1a1f18;
+    --surface-2:#232a20;
+    --line:#333d30;
+    --line-soft:#28311f;
+    --ink:#eef2e9;
+    --ink-2:#b6c0b2;
+    --ink-3:#8b968a;
+    --accent:#4aa878;
+    --accent-soft:#1f3529;
+    --d1:#a9d8bf;
+    --d2:#63b189;
+    --d3:#2f8258;
+    --d4:#17563a;
+    --zero:#4a5446;
+    --warn:#e0b769;
+    --warn-bg:#2c2413;
+    --shadow:0 1px 2px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#12160f;
+  --surface:#1a1f18;
+  --surface-2:#232a20;
+  --line:#333d30;
+  --line-soft:#28311f;
+  --ink:#eef2e9;
+  --ink-2:#b6c0b2;
+  --ink-3:#8b968a;
+  --accent:#4aa878;
+  --accent-soft:#1f3529;
+  --d1:#a9d8bf;
+  --d2:#63b189;
+  --d3:#2f8258;
+  --d4:#17563a;
+  --zero:#4a5446;
+  --warn:#e0b769;
+  --warn-bg:#2c2413;
+  --shadow:0 1px 2px rgba(0,0,0,.3);
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  font-size:15px;
+  line-height:1.75;
+  word-break:keep-all;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px 96px;}
+h1,h2,h3{font-family:'Gowun Batang','Noto Serif KR',serif;text-wrap:balance;margin:0;}
+.num{font-variant-numeric:tabular-nums;}
+
+/* ---------- masthead ---------- */
+.masthead{padding:56px 0 32px;border-bottom:2px solid var(--ink);}
+.eyebrow{
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);font-weight:700;margin-bottom:14px;
+}
+h1{font-size:clamp(34px,6vw,54px);line-height:1.15;font-weight:700;letter-spacing:-.01em;}
+.sub{margin-top:14px;color:var(--ink-2);font-size:16px;max-width:60ch;}
+.meta{
+  margin-top:22px;display:flex;flex-wrap:wrap;gap:8px 28px;
+  font-size:13px;color:var(--ink-3);
+}
+.meta b{color:var(--ink-2);font-weight:500;}
+
+/* ---------- headline figures ---------- */
+.headline{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--line);border-bottom:1px solid var(--line);
+}
+.fig{background:var(--bg);padding:28px 4px 26px;}
+.fig .v{
+  font-size:clamp(38px,7vw,58px);font-weight:700;line-height:1;
+  letter-spacing:-.03em;font-variant-numeric:tabular-nums;
+}
+.fig .v small{font-size:.42em;font-weight:500;margin-left:3px;letter-spacing:0;color:var(--ink-2);}
+.fig .k{margin-top:10px;font-size:13px;color:var(--ink-2);}
+.fig .n{margin-top:2px;font-size:12px;color:var(--ink-3);}
+
+.thesis{
+  margin:0;padding:30px 30px 32px;background:var(--accent-soft);
+  border-left:3px solid var(--accent);
+  font-family:'Gowun Batang',serif;font-size:clamp(19px,3.2vw,25px);line-height:1.6;
+}
+.thesis b{color:var(--accent);font-weight:700;}
+.thesis .fine{
+  display:block;margin-top:12px;font-family:'Noto Sans KR',sans-serif;
+  font-size:13px;line-height:1.6;color:var(--ink-2);
+}
+
+/* ---------- sections ---------- */
+section{padding-top:56px;}
+.shead{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:24px;}
+.shead h2{font-size:26px;font-weight:700;}
+.shead .tag{
+  margin-left:auto;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-3);white-space:nowrap;
+}
+p{margin:0 0 16px;max-width:68ch;color:var(--ink-2);}
+p.lead{color:var(--ink);}
+strong{color:var(--ink);font-weight:700;}
+
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:4px;
+  padding:24px 22px;box-shadow:var(--shadow);
+}
+.card + .card{margin-top:18px;}
+.cap{font-size:12.5px;color:var(--ink-3);margin:12px 0 0;}
+
+/* ---------- funnel ---------- */
+.funnel{display:flex;flex-direction:column;gap:2px;}
+.fstep{display:grid;grid-template-columns:minmax(112px,152px) 1fr;gap:16px;align-items:center;}
+.fstep .lbl{font-size:13.5px;color:var(--ink-2);text-align:right;line-height:1.4;}
+.fstep .lbl b{display:block;color:var(--ink);font-weight:700;}
+.ftrack{position:relative;height:44px;display:flex;align-items:center;}
+.fbar{height:34px;border-radius:0 3px 3px 0;display:flex;align-items:center;justify-content:flex-end;padding-right:12px;}
+.fbar span{font-size:13px;font-weight:700;color:#fff;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.fbar.pale span{color:#0d3d29;}
+.fbar span.fout{
+  position:absolute;left:100%;margin-left:11px;color:var(--ink);
+  font-weight:700;font-size:13px;
+}
+.fbar{position:relative;}
+.fdrop{
+  grid-column:2;font-size:12px;color:var(--ink-3);padding:2px 0 4px;
+  font-variant-numeric:tabular-nums;
+}
+.fdrop b{color:var(--warn);font-weight:700;}
+
+/* ---------- dot grid ---------- */
+.dots{display:flex;flex-wrap:wrap;gap:4px;margin:4px 0 0;}
+.dot{width:12px;height:12px;border-radius:50%;}
+.legend{display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:18px;font-size:12.5px;color:var(--ink-2);}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:7px;vertical-align:-1px;}
+.legend span{font-variant-numeric:tabular-nums;}
+
+/* ---------- charts ---------- */
+.chartbox{overflow-x:auto;}
+svg{display:block;max-width:100%;}
+.grid line{stroke:var(--line-soft);stroke-width:1;}
+.axis text{fill:var(--ink-3);font-size:11px;font-family:'Noto Sans KR',sans-serif;}
+.blab{fill:var(--ink-2);font-size:12px;font-family:'Noto Sans KR',sans-serif;}
+.bval{fill:var(--ink);font-size:12px;font-weight:700;font-family:'Noto Sans KR',sans-serif;font-variant-numeric:tabular-nums;}
+
+/* ---------- tables ---------- */
+.tablebox{overflow-x:auto;}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:520px;}
+caption{text-align:left;font-size:12.5px;color:var(--ink-3);padding-bottom:8px;}
+th,td{padding:9px 10px;text-align:right;border-bottom:1px solid var(--line-soft);white-space:nowrap;}
+th:first-child,td:first-child{text-align:left;}
+thead th{
+  font-size:11.5px;color:var(--ink-3);font-weight:500;letter-spacing:.02em;
+  border-bottom:1px solid var(--line);
+}
+tbody td{font-variant-numeric:tabular-nums;color:var(--ink-2);}
+tbody td:first-child{color:var(--ink);font-weight:500;}
+tbody tr:hover td{background:var(--surface-2);}
+tfoot td{font-weight:700;color:var(--ink);border-top:1px solid var(--line);border-bottom:none;font-variant-numeric:tabular-nums;}
+
+/* ---------- notes ---------- */
+.note{
+  background:var(--warn-bg);border-left:3px solid var(--warn);
+  padding:18px 20px;border-radius:0 4px 4px 0;margin:20px 0 0;
+}
+.note h3{font-size:15px;font-family:'Noto Sans KR',sans-serif;font-weight:700;margin-bottom:6px;color:var(--ink);}
+.note p{margin:0;font-size:13.5px;line-height:1.65;}
+.note p + p{margin-top:8px;}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.kv{display:flex;flex-direction:column;gap:12px;}
+.kv div{display:flex;justify-content:space-between;gap:12px;font-size:13.5px;border-bottom:1px dotted var(--line);padding-bottom:10px;}
+.kv div:last-child{border-bottom:none;padding-bottom:0;}
+.kv dt,.kv .k{color:var(--ink-2);}
+.kv .v{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;}
+
+ul.tight{margin:0;padding-left:19px;color:var(--ink-2);}
+ul.tight li{margin-bottom:9px;}
+ul.tight li:last-child{margin-bottom:0;}
+ul.tight b{color:var(--ink);}
+
+.pill{
+  display:inline-block;font-size:11.5px;padding:2px 9px;border-radius:99px;
+  background:var(--surface-2);color:var(--ink-2);border:1px solid var(--line);
+  font-weight:500;margin-left:6px;vertical-align:1px;
+}
+
+footer{
+  margin-top:64px;padding-top:22px;border-top:1px solid var(--line);
+  font-size:12.5px;color:var(--ink-3);
+}
+
+/* ---------- tooltip ---------- */
+#tip{
+  position:fixed;pointer-events:none;opacity:0;transition:opacity .12s;
+  background:var(--ink);color:var(--bg);font-size:12.5px;line-height:1.5;
+  padding:7px 11px;border-radius:4px;z-index:99;white-space:nowrap;
+  font-variant-numeric:tabular-nums;box-shadow:0 4px 14px rgba(0,0,0,.22);
+}
+.hit{cursor:default;}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important;}}
+@media (max-width:640px){
+  .wrap{padding:0 16px 72px;}
+  .headline{grid-template-columns:1fr;}
+  .fig{padding:20px 4px;}
+  .split{grid-template-columns:1fr;}
+  .fstep{grid-template-columns:96px 1fr;gap:10px;}
+  .thesis{padding:22px 20px;}
+}
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="eyebrow">완료 보고 · 대학부 여름 성경통독</div>
+    <h1>팀숲 여름 통독 결산</h1>
+    <p class="sub">신약 260장을 팀으로 함께 읽고, 읽은 만큼 나무·별·바다생물을 심어 팀의 숲을 키우는 앱. 2026년 여름 대학부에서 운영한 전 기간의 실제 기록입니다.</p>
+    <div class="meta">
+      <span><b>기간</b> 2026.07.02 – 08.21 (51일)</span>
+      <span><b>대상</b> 대학부 7팀</span>
+      <span><b>집계 기준</b> 신약 27권 260장</span>
+      <span><b>작성</b> 박상준 · 2026.09.02</span>
+    </div>
+  </header>
+
+  <div class="headline">
+    <div class="fig">
+      <div class="v num">196<small>명</small></div>
+      <div class="k">가입</div>
+      <div class="n">7팀 전원 대상</div>
+    </div>
+    <div class="fig">
+      <div class="v num">95<small>명</small></div>
+      <div class="k">한 장이라도 읽은 사람</div>
+      <div class="n">가입자의 48.5%</div>
+    </div>
+    <div class="fig">
+      <div class="v num">9,007<small>장</small></div>
+      <div class="k">함께 읽은 총 장수</div>
+      <div class="n">1인 평균 46장</div>
+    </div>
+  </div>
+
+  <p class="thesis">
+    대학부가 이번 여름에 읽은 <b>9,007장</b>은,<br>
+    신약 한 권을 통째로 <b>34.6번</b> 읽은 분량입니다.
+    <span class="fine">신약 260장 기준 환산. 같은 장을 여러 명이 읽은 것도 각각 1장으로 셉니다.</span>
+  </p>
+
+  <!-- 1. 참여 퍼널 -->
+  <section>
+    <div class="shead">
+      <h2>어디까지 갔나</h2>
+      <span class="tag">가입 → 시작 → 사복음서 → 신약 1독</span>
+    </div>
+    <p class="lead">숫자 네 개를 따로 보면 그냥 숫자지만, 순서대로 세우면 <strong>사람이 어느 구간에서 빠졌는지</strong>가 보입니다. 사복음서 89장은 신약의 34%라, 절반에 닿기 전 이탈 지점을 정확히 짚어 줍니다.</p>
+
+    <div class="card">
+      <div class="funnel" id="funnel"></div>
+    </div>
+
+    <div class="split" style="margin-top:18px;">
+      <div class="card">
+        <h3 style="font-size:15px;font-family:'Noto Sans KR',sans-serif;margin-bottom:14px;">가장 큰 이탈은 '중간'이 아니라 '출발선'</h3>
+        <div class="kv">
+          <div><span class="k">가입만 하고 한 장도 안 읽음</span><span class="v">101명 · 51.5%</span></div>
+          <div><span class="k">읽기 시작한 뒤 사복음서 전 이탈</span><span class="v">55명</span></div>
+          <div><span class="k">사복음서(89장)를 넘긴 사람</span><span class="v">40명</span></div>
+          <div><span class="k">그중 신약 1독까지 완주</span><span class="v">11명 · 27.5%</span></div>
+        </div>
+        <p class="cap">89장을 넘긴 40명 중 27.5%가 끝까지 갔습니다. 반대로 첫 장을 넘기지 못한 101명이 전체의 절반입니다.</p>
+      </div>
+      <div class="card">
+        <h3 style="font-size:15px;font-family:'Noto Sans KR',sans-serif;margin-bottom:14px;">'사복음서 완독'을 어떻게 세느냐</h3>
+        <div class="kv">
+          <div><span class="k">89장 전체 완독 <span class="pill">보고 기준</span></span><span class="v">30명</span></div>
+          <div><span class="k">4권 중 1권 이상 완독</span><span class="v">51명</span></div>
+          <div><span class="k">사복음서를 한 장이라도 읽음</span><span class="v">72명</span></div>
+        </div>
+        <p class="cap">기준에 따라 30명에서 72명까지 달라집니다. 본 보고서는 가장 엄격한 <strong>89장 완독 = 30명</strong>을 헤드라인으로 쓰고, 참고로 두 기준을 함께 적었습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. 196명의 숲 -->
+  <section>
+    <div class="shead">
+      <h2>196명, 한 사람이 점 하나</h2>
+      <span class="tag">읽은 장수 순</span>
+    </div>
+    <p>점 하나가 참여자 한 명입니다. 왼쪽부터 많이 읽은 순. 평균 46장이라는 숫자 하나보다, 이 그림이 실제 모습에 가깝습니다 &mdash; <strong>참여자 95명의 중앙값은 63장</strong>이고, 상위 20명이 전체 장수의 54%를 읽었습니다.</p>
+    <div class="card">
+      <div class="dots" id="dots"></div>
+      <div class="legend" id="dotlegend"></div>
+    </div>
+  </section>
+
+  <!-- 3. 팀별 -->
+  <section>
+    <div class="shead">
+      <h2>팀별 결과</h2>
+      <span class="tag">1인당 평균 장수 · 팀원 전원 기준</span>
+    </div>
+    <p>팀 규모가 20명에서 39명까지 달라서 총합만 보면 큰 팀이 유리합니다. 그래서 <strong>1인당 평균</strong>으로 세웠습니다. 4팀이 67.6장으로 가장 높고, 참여율은 3팀이 69%로 가장 높습니다.</p>
+    <div class="card">
+      <div class="chartbox"><svg id="teamChart" role="img" aria-label="팀별 1인당 평균 읽은 장수 가로 막대 그래프"></svg></div>
+      <p class="cap">막대 = 팀원 전원 기준 1인당 평균 장수. 오른쪽 숫자는 팀 총 장수.</p>
+    </div>
+    <div class="card">
+      <div class="tablebox">
+        <table>
+          <caption>팀별 전체 지표</caption>
+          <thead><tr><th>팀</th><th>테마</th><th>가입</th><th>참여</th><th>참여율</th><th>총 장수</th><th>1인당</th><th>참여자당</th><th>사복음서</th><th>신약 1독</th></tr></thead>
+          <tbody id="teamTable"></tbody>
+          <tfoot><tr><td>합계</td><td>—</td><td>196</td><td>95</td><td>48.5%</td><td>9,007</td><td>46.0</td><td>94.8</td><td>30</td><td>11</td></tr></tfoot>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 권별 -->
+  <section>
+    <div class="shead">
+      <h2>어느 책에서 멈췄나</h2>
+      <span class="tag">신약 27권 · 성경 순서</span>
+    </div>
+    <p>참여자 95명 중 그 책을 끝까지 읽은 사람의 비율입니다. 마태복음 49.5%에서 시작해 <strong>사도행전(28장)에서 28.4%로 떨어졌다가, 짧은 서신서 구간에서 다시 올라옵니다</strong>. 순서대로 읽다가 긴 책에서 걸린다는 뜻이고, 가장 낮은 곳은 22장짜리 요한계시록(16.8%)입니다.</p>
+    <div class="card">
+      <div class="chartbox"><svg id="bookChart" role="img" aria-label="신약 27권 권별 완독률 가로 막대 그래프"></svg></div>
+      <p class="cap">완독률 = 그 책을 끝까지 읽은 사람 ÷ 참여자 95명. 괄호 안은 그 책의 장수.</p>
+    </div>
+  </section>
+
+  <!-- 5. 가입 추이 -->
+  <section>
+    <div class="shead">
+      <h2>언제 모였나</h2>
+      <span class="tag">일자별 신규 가입 · 51일</span>
+    </div>
+    <p>첫 나흘(7/2&ndash;7/5)에 <strong>138명, 전체의 70%</strong>가 몰렸습니다. 오프라인 모임에서 함께 가입한 흐름으로 보입니다. 이후는 긴 꼬리로, 8월 한 달 신규 가입은 9명이었습니다.</p>
+    <div class="card">
+      <div class="chartbox"><svg id="joinChart" role="img" aria-label="일자별 신규 가입자 수 선 그래프"></svg></div>
+      <p class="cap">7/5 하루에만 51명이 가입했습니다.</p>
+    </div>
+    <div class="note">
+      <h3>⚠️ 읽기 활동의 날짜별 추이는 이번 보고서에 넣지 못했습니다</h3>
+      <p>읽기 기록은 권 단위로 통째로 다시 저장되는 구조라, 각 장의 기록 시각이 <strong>“그 장을 읽은 날”이 아니라 “그 권을 마지막으로 저장한 날”</strong>이 됩니다. 그대로 그래프를 그리면 과거 기록이 최근 날짜로 몰려 사실과 다른 그림이 나옵니다.</p>
+      <p>그래서 데이터 추출 단계에서 <strong>일자별 인증량·활동 인원, 개인별 첫/마지막 인증일, 활동일수를 의도적으로 제외</strong>했습니다. 가입 시각은 이 구조와 무관해 위 그래프는 그대로 신뢰할 수 있습니다.</p>
+    </div>
+  </section>
+
+  <!-- 6. 게임 요소 -->
+  <section>
+    <div class="shead">
+      <h2>게임 요소는 작동했나</h2>
+      <span class="tag">10장당 1개 지급</span>
+    </div>
+    <div class="split">
+      <div class="card">
+        <div class="kv">
+          <div><span class="k">보유한 요소</span><span class="v">868개</span></div>
+          <div><span class="k">실제로 숲에 심은 것</span><span class="v">689개</span></div>
+          <div><span class="k">배치율</span><span class="v">79.4%</span></div>
+          <div><span class="k">받아 놓고 하나도 안 심은 사람</span><span class="v">11명</span></div>
+        </div>
+        <p class="cap">받은 요소 10개 중 8개가 실제로 심겼습니다. 읽기 → 보상 → 배치까지 이어지는 흐름은 작동했다고 볼 수 있습니다.</p>
+      </div>
+      <div class="card">
+        <div class="kv">
+          <div><span class="k">에덴숲 <span class="pill">4·5·7팀</span></span><span class="v">88명</span></div>
+          <div><span class="k">별의영광 <span class="pill">1·2·3팀</span></span><span class="v">81명</span></div>
+          <div><span class="k">깊은데로 <span class="pill">6팀</span></span><span class="v">27명</span></div>
+        </div>
+        <p class="cap">테마는 팀에 배정된 값이라 선호도로 읽을 수 없습니다. 다만 깊은데로(6팀)는 27명 중 3명이 신약 1독을 마쳐 인원 대비 완주자가 가장 많았습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. 못한 것 -->
+  <section>
+    <div class="shead">
+      <h2>못한 것과, 다음에 하면 좋을 것</h2>
+      <span class="tag">솔직한 회고</span>
+    </div>
+    <div class="split">
+      <div class="card">
+        <h3 style="font-size:15px;font-family:'Noto Sans KR',sans-serif;margin-bottom:14px;">완성하지 못한 기능</h3>
+        <ul class="tight">
+          <li><b>도감</b> &mdash; 모은 요소를 모아 보는 화면. 기간 내 착수하지 못했습니다.</li>
+          <li><b>랭크 이펙트</b> &mdash; 상위 팀 연출. 우선순위에서 밀렸습니다.</li>
+          <li><b>신약 1독 리워드</b> &mdash; 배점 확정을 기다리다 착수하지 못했습니다. 완주자 11명에게 줄 보상이 준비되지 않은 채 끝난 점이 가장 아쉽습니다.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="font-size:15px;font-family:'Noto Sans KR',sans-serif;margin-bottom:14px;">다음에 하면 좋을 것</h3>
+        <ul class="tight">
+          <li><b>첫 한 장까지 데려가기</b> &mdash; 가입자의 절반(101명)이 한 장도 읽지 않았습니다. 가입 직후 첫 장을 함께 읽는 자리를 만드는 것이 가장 효과가 클 지점입니다.</li>
+          <li><b>사복음서를 공식 관문으로</b> &mdash; 89장을 넘긴 40명 중 27.5%가 완주했습니다. 중간 목표와 축하를 여기에 두면 완주자가 늘어납니다.</li>
+          <li><b>팀 편차 좁히기</b> &mdash; 참여율이 3팀 69%, 7팀 30%로 갈렸습니다. 앱보다 팀 안의 독려 방식이 만든 차이로 보입니다.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note">
+      <h3>다음 운영을 위해 기록 구조에서 고칠 한 가지</h3>
+      <p>읽기 기록을 권 단위로 덮어쓰지 않고 <strong>장 단위로 한 번만 쌓도록</strong> 바꾸면, 다음 운영에서는 “언제 가장 많이 읽었는지”, “며칠 동안 꾸준히 읽었는지”를 볼 수 있습니다. 이번에 포기한 지표가 정확히 그것입니다.</p>
+    </div>
+  </section>
+
+  <!-- 8. 부록 -->
+  <section>
+    <div class="shead">
+      <h2>부록 &mdash; 데이터와 기준</h2>
+      <span class="tag">검산 내역</span>
+    </div>
+    <div class="card">
+      <div class="tablebox">
+        <table>
+          <caption>권별 상세 (신약 27권)</caption>
+          <thead><tr><th>책</th><th>장수</th><th>읽은 사람</th><th>완독자</th><th>완독률</th><th>읽힌 장수</th></tr></thead>
+          <tbody id="bookTable"></tbody>
+          <tfoot><tr><td>합계</td><td>260</td><td>—</td><td>—</td><td>—</td><td>9,007</td></tr></tfoot>
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <h3 style="font-size:15px;font-family:'Noto Sans KR',sans-serif;margin-bottom:14px;">집계 기준과 검산</h3>
+      <ul class="tight">
+        <li><b>기간</b> 2026-07-01 이후 기록, 실제 가입은 7/2 시작 &mdash; 8/21 마지막. 테스트·개발자 계정은 제외했습니다.</li>
+        <li><b>개인 식별</b> 실명·닉네임 없이 일련번호로만 받았습니다. 따라서 완주자 11명 시상 명단은 이 데이터로 만들 수 없고, 별도 요청이 필요합니다.</li>
+        <li><b>중복 제거</b> 같은 사람이 같은 장을 여러 번 저장한 기록은 1장으로 셌습니다.</li>
+        <li><b>교차 검산</b> 개인별 집계표의 총합(9,007장)과 권별 표의 총합(9,007장)이 일치합니다. 사복음서도 4,102장으로 양쪽이 같습니다. 일자별 가입 합계 196명은 개인별 가입일 분포와 51일 전 일자가 일치합니다.</li>
+        <li><b>확인된 예외 1건</b> 읽은 장이 0인데 요소를 1개 보유한 계정이 하나 있습니다. 집계에 미치는 영향은 없습니다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    팀숲(Bible Forest) 완료 보고 · 데이터 추출 2026-09-02 · 개인별 집계표 196행 / 권별 27행 / 일자별 51행 기준
+  </footer>
+</div>
+<div id="tip" role="status"></div>
+
+<script>
+(function(){
+  const cs = getComputedStyle(document.documentElement);
+  const C = k => cs.getPropertyValue(k).trim();
+
+  /* ---------------- tooltip ---------------- */
+  const tip = document.getElementById('tip');
+  function bindTip(el, html){
+    el.classList.add('hit');
+    el.addEventListener('mouseenter', e => { tip.innerHTML = html; tip.style.opacity = 1; });
+    el.addEventListener('mousemove', e => {
+      const pad = 14;
+      let x = e.clientX + pad, y = e.clientY + pad;
+      const w = tip.offsetWidth, h = tip.offsetHeight;
+      if (x + w > innerWidth - 8) x = e.clientX - w - pad;
+      if (y + h > innerHeight - 8) y = e.clientY - h - pad;
+      tip.style.left = x + 'px'; tip.style.top = y + 'px';
+    });
+    el.addEventListener('mouseleave', () => { tip.style.opacity = 0; });
+  }
+
+  /* ---------------- 1. funnel ---------------- */
+  const F = [
+    {k:'가입',            sub:'앱에 등록한 사람', n:196, fill:'--d1', pale:true},
+    {k:'한 장 이상',      sub:'읽기를 시작함',   n:95,  fill:'--d2', pale:false},
+    {k:'사복음서 완독',   sub:'89장 전체',       n:30,  fill:'--d3', pale:false},
+    {k:'신약 1독',        sub:'260장 전체',      n:11,  fill:'--d4', pale:false}
+  ];
+  const fw = document.getElementById('funnel');
+  F.forEach((s,i) => {
+    const row = document.createElement('div'); row.className = 'fstep';
+    row.innerHTML = '<div class="lbl"><b>'+s.k+'</b>'+s.sub+'</div>';
+    const track = document.createElement('div'); track.className = 'ftrack';
+    const pct = s.n / 196 * 100;
+    const bar = document.createElement('div');
+    bar.className = 'fbar' + (s.pale ? ' pale' : '');
+    bar.style.background = C(s.fill);
+    bar.style.width = pct + '%';
+    const txt = s.n + '명 · ' + pct.toFixed(1) + '%';
+    if (pct >= 16){
+      bar.innerHTML = '<span>' + txt + '</span>';
+    } else {
+      const out = document.createElement('span');
+      out.className = 'fout'; out.textContent = txt;
+      bar.appendChild(out);
+    }
+    bindTip(bar, '<b>'+s.k+'</b> — '+s.n+'명<br>가입 196명의 '+pct.toFixed(1)+'%');
+    track.appendChild(bar); row.appendChild(track); fw.appendChild(row);
+    if (i < F.length - 1){
+      const d = document.createElement('div'); d.className = 'fdrop';
+      const next = F[i+1].n, keep = (next/s.n*100).toFixed(0), lost = s.n - next;
+      d.innerHTML = '↓ 다음 단계로 <b>'+keep+'%</b> 통과 · '+lost+'명 이탈';
+      fw.appendChild(d);
+    }
+  });
+
+  /* ---------------- 2. dot grid ---------------- */
+  const BANDS = [
+    {k:'260장 · 신약 1독',      n:11,  c:'--d4'},
+    {k:'89–259장',             n:29,  c:'--d3'},
+    {k:'1–88장',               n:55,  c:'--d2'},
+    {k:'0장 · 시작하지 않음',   n:101, c:'--zero'}
+  ];
+  const dw = document.getElementById('dots');
+  BANDS.forEach(b => {
+    for (let i=0;i<b.n;i++){
+      const d = document.createElement('div');
+      d.className = 'dot'; d.style.background = C(b.c);
+      bindTip(d, b.k);
+      dw.appendChild(d);
+    }
+  });
+  document.getElementById('dotlegend').innerHTML = BANDS.map(b =>
+    '<span><i style="background:'+C(b.c)+'"></i>'+b.k+' · '+b.n+'명</span>').join('');
+
+  /* ---------------- 3. team chart ---------------- */
+  const TEAM = [
+    {t:'4팀', th:'에덴숲',   n:39, a:19, ch:2635, per:67.6, pa:138.7, g:9, nt:3},
+    {t:'3팀', th:'별의영광', n:29, a:20, ch:1828, per:63.0, pa:91.4,  g:7, nt:2},
+    {t:'5팀', th:'에덴숲',   n:29, a:13, ch:1261, per:43.5, pa:97.0,  g:4, nt:1},
+    {t:'6팀', th:'깊은데로', n:27, a:16, ch:1169, per:43.3, pa:73.1,  g:3, nt:3},
+    {t:'2팀', th:'별의영광', n:26, a:11, ch:930,  per:35.8, pa:84.5,  g:4, nt:1},
+    {t:'7팀', th:'에덴숲',   n:20, a:6,  ch:707,  per:35.4, pa:117.8, g:3, nt:1},
+    {t:'1팀', th:'별의영광', n:26, a:10, ch:477,  per:18.3, pa:47.7,  g:0, nt:0}
+  ];
+  (function(){
+    const W=700, L=52, R=96, rowH=42, top=28, H=top+TEAM.length*rowH+30;
+    const max=70, sc = v => (v/max)*(W-L-R);
+    const svg=document.getElementById('teamChart');
+    svg.setAttribute('viewBox','0 0 '+W+' '+H);
+    svg.setAttribute('width',W); svg.setAttribute('height',H);
+    let s='';
+    s+='<g class="grid">';
+    for(let v=0;v<=70;v+=10){ s+='<line x1="'+(L+sc(v))+'" y1="'+(top-8)+'" x2="'+(L+sc(v))+'" y2="'+(top+TEAM.length*rowH-8)+'"/>'; }
+    s+='</g><g class="axis">';
+    for(let v=0;v<=70;v+=10){ s+='<text x="'+(L+sc(v))+'" y="'+(top-14)+'" text-anchor="middle">'+v+'</text>'; }
+    s+='<text x="'+L+'" y="'+(top+TEAM.length*rowH+18)+'" text-anchor="start">1인당 평균 읽은 장수 (팀원 전원 기준)</text></g>';
+    TEAM.forEach((d,i)=>{
+      const y=top+i*rowH, bh=20;
+      s+='<text class="blab" x="'+(L-12)+'" y="'+(y+bh/2+4)+'" text-anchor="end">'+d.t+'</text>';
+      s+='<rect class="tbar" data-i="'+i+'" x="'+L+'" y="'+y+'" width="'+Math.max(sc(d.per),2)+'" height="'+bh+'" rx="3" fill="'+C('--accent')+'"/>';
+      s+='<text class="bval" x="'+(L+sc(d.per)+9)+'" y="'+(y+bh/2+4)+'">'+d.per.toFixed(1)+'</text>';
+      s+='<text class="blab" x="'+(W-4)+'" y="'+(y+bh/2+4)+'" text-anchor="end" style="font-size:11.5px">총 '+d.ch.toLocaleString()+'장</text>';
+    });
+    svg.innerHTML=s;
+    svg.querySelectorAll('.tbar').forEach(r=>{
+      const d=TEAM[+r.dataset.i];
+      bindTip(r,'<b>'+d.t+' · '+d.th+'</b><br>1인당 평균 '+d.per.toFixed(1)+'장 (총 '+d.ch.toLocaleString()+'장)<br>가입 '+d.n+'명 중 '+d.a+'명 참여 ('+Math.round(d.a/d.n*100)+'%)<br>사복음서 완독 '+d.g+'명 · 신약 1독 '+d.nt+'명');
+    });
+    document.getElementById('teamTable').innerHTML = TEAM.map(d=>
+      '<tr><td>'+d.t+'</td><td style="text-align:left">'+d.th+'</td><td>'+d.n+'</td><td>'+d.a+'</td><td>'+Math.round(d.a/d.n*100)+'%</td><td>'+d.ch.toLocaleString()+'</td><td>'+d.per.toFixed(1)+'</td><td>'+d.pa.toFixed(1)+'</td><td>'+d.g+'</td><td>'+d.nt+'</td></tr>').join('');
+  })();
+
+  /* ---------------- 4. book chart ---------------- */
+  const BOOK = [
+    ['마태복음',28,67,47,1566],['마가복음',16,50,39,718],['누가복음',24,49,36,1025],['요한복음',21,46,32,793],
+    ['사도행전',28,40,27,898],['로마서',16,45,37,659],['고린도전서',16,39,28,537],['고린도후서',13,36,26,397],
+    ['갈라디아서',6,33,27,178],['에베소서',6,36,29,195],['빌립보서',4,30,28,114],['골로새서',4,29,28,113],
+    ['데살로니가전서',5,27,24,123],['데살로니가후서',3,23,22,68],['디모데전서',6,21,21,126],['디모데후서',4,24,24,96],
+    ['디도서',3,29,28,86],['빌레몬서',1,29,29,29],['히브리서',13,31,21,342],['야고보서',5,28,28,140],
+    ['베드로전서',5,26,26,130],['베드로후서',3,21,21,63],['요한일서',5,22,22,110],['요한이서',1,22,22,22],
+    ['요한삼서',1,22,22,22],['유다서',1,23,23,23],['요한계시록',22,25,16,434]
+  ].map(r=>({book:r[0],ch:r[1],readers:r[2],fin:r[3],cr:r[4],rate:+(r[3]/95*100).toFixed(1)}));
+  (function(){
+    const W=700, L=118, R=52, rowH=20, top=26, H=top+BOOK.length*rowH+30;
+    const max=55, sc=v=>(v/max)*(W-L-R);
+    const svg=document.getElementById('bookChart');
+    svg.setAttribute('viewBox','0 0 '+W+' '+H);
+    svg.setAttribute('width',W); svg.setAttribute('height',H);
+    let s='<g class="grid">';
+    for(let v=0;v<=50;v+=10){ s+='<line x1="'+(L+sc(v))+'" y1="'+(top-6)+'" x2="'+(L+sc(v))+'" y2="'+(top+BOOK.length*rowH-6)+'"/>'; }
+    s+='</g><g class="axis">';
+    for(let v=0;v<=50;v+=10){ s+='<text x="'+(L+sc(v))+'" y="'+(top-12)+'" text-anchor="middle">'+v+'%</text>'; }
+    s+='<text x="'+L+'" y="'+(top+BOOK.length*rowH+18)+'" text-anchor="start">참여자 95명 중 그 책을 끝까지 읽은 사람의 비율</text></g>';
+    BOOK.forEach((d,i)=>{
+      const y=top+i*rowH, bh=13;
+      s+='<text class="blab" x="'+(L-10)+'" y="'+(y+bh/2+4)+'" text-anchor="end" style="font-size:11px">'+d.book+' <tspan fill="'+C('--ink-3')+'">('+d.ch+')</tspan></text>';
+      s+='<rect class="bbar" data-i="'+i+'" x="'+L+'" y="'+y+'" width="'+sc(d.rate)+'" height="'+bh+'" rx="3" fill="'+C('--accent')+'"/>';
+      s+='<text class="bval" x="'+(L+sc(d.rate)+8)+'" y="'+(y+bh/2+4)+'" style="font-size:11px">'+d.fin+'</text>';
+    });
+    svg.innerHTML=s;
+    svg.querySelectorAll('.bbar').forEach(r=>{
+      const d=BOOK[+r.dataset.i];
+      bindTip(r,'<b>'+d.book+'</b> · '+d.ch+'장<br>완독 '+d.fin+'명 ('+d.rate+'%) · 펼친 사람 '+d.readers+'명<br>읽힌 장수 '+d.cr.toLocaleString()+'장');
+    });
+    document.getElementById('bookTable').innerHTML = BOOK.map(d=>
+      '<tr><td>'+d.book+'</td><td>'+d.ch+'</td><td>'+d.readers+'</td><td>'+d.fin+'</td><td>'+d.rate+'%</td><td>'+d.cr.toLocaleString()+'</td></tr>').join('');
+  })();
+
+  /* ---------------- 5. join trend ---------------- */
+  const JOIN = [0,38,21,28,51,3,9,6,1,1,2,7,0,0,0,1,1,0,0,0,2,1,2,1,1,0,4,6,1,0,0,0,2,0,0,0,1,0,1,1,0,0,1,0,0,1,0,0,0,0,1,1];
+  const JSTART = new Date(2026,6,1);
+  (function(){
+    const W=700,H=250,L=40,R=16,T=22,B=42;
+    const n=JOIN.length, max=55;
+    const x=i=>L+(i/(n-1))*(W-L-R), y=v=>H-B-(v/max)*(H-T-B);
+    const svg=document.getElementById('joinChart');
+    svg.setAttribute('viewBox','0 0 '+W+' '+H);
+    svg.setAttribute('width',W); svg.setAttribute('height',H);
+    let s='<g class="grid">';
+    [0,10,20,30,40,50].forEach(v=>{ s+='<line x1="'+L+'" y1="'+y(v)+'" x2="'+(W-R)+'" y2="'+y(v)+'"/>'; });
+    s+='</g><g class="axis">';
+    [0,10,20,30,40,50].forEach(v=>{ s+='<text x="'+(L-8)+'" y="'+(y(v)+4)+'" text-anchor="end">'+v+'</text>'; });
+    ['7/1','7/11','7/21','7/31','8/10','8/20'].forEach((lb,k)=>{
+      s+='<text x="'+x(k*10)+'" y="'+(H-B+20)+'" text-anchor="middle">'+lb+'</text>';
+    });
+    s+='<text x="'+L+'" y="'+(H-B+38)+'" text-anchor="start">일자별 신규 가입자 수 (명)</text></g>';
+    let area='M '+x(0)+' '+y(0), line='M '+x(0)+' '+y(JOIN[0]);
+    JOIN.forEach((v,i)=>{ if(i){ line+=' L '+x(i)+' '+y(v); } });
+    JOIN.forEach((v,i)=>{ area+=' L '+x(i)+' '+y(v); });
+    area+=' L '+x(n-1)+' '+y(0)+' Z';
+    s+='<path d="'+area+'" fill="'+C('--accent')+'" opacity="0.12"/>';
+    s+='<path d="'+line+'" fill="none" stroke="'+C('--accent')+'" stroke-width="2" stroke-linejoin="round"/>';
+    s+='<circle cx="'+x(4)+'" cy="'+y(51)+'" r="4.5" fill="'+C('--accent')+'" stroke="'+C('--surface')+'" stroke-width="2"/>';
+    s+='<text class="bval" x="'+(x(4)+10)+'" y="'+(y(51)+4)+'">7/5 · 51명</text>';
+    JOIN.forEach((v,i)=>{
+      s+='<rect class="jhit" data-i="'+i+'" x="'+(x(i)-6)+'" y="'+T+'" width="12" height="'+(H-T-B)+'" fill="transparent"/>';
+    });
+    svg.innerHTML=s;
+    svg.querySelectorAll('.jhit').forEach(r=>{
+      const i=+r.dataset.i, d=new Date(JSTART.getTime()+i*86400000);
+      bindTip(r,'<b>'+(d.getMonth()+1)+'월 '+d.getDate()+'일</b> · 신규 '+JOIN[i]+'명');
+    });
+  })();
+})();
+</script>
