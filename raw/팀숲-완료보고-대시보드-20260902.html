@@ -163,6 +163,11 @@ strong{color:var(--ink);font-weight:700;}
 /* ---------- dot grid ---------- */
 .dots{display:flex;flex-wrap:wrap;gap:4px;margin:4px 0 0;}
 .dot{width:12px;height:12px;border-radius:50%;}
+.bookcount{display:flex;gap:2px;margin-top:16px;align-items:flex-end;}
+.bookcount div{flex:1;text-align:center;}
+.bookcount .bar{border-radius:3px 3px 0 0;margin-bottom:6px;}
+.bookcount .bn{font-size:12px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink);}
+.bookcount .bk{font-size:11px;color:var(--ink-3);margin-top:1px;}
 .legend{display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:18px;font-size:12.5px;color:var(--ink-2);}
 .legend i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:7px;vertical-align:-1px;}
 .legend span{font-variant-numeric:tabular-nums;}
@@ -250,7 +255,7 @@ footer{
     <p class="sub">신약 260장을 팀으로 함께 읽고, 읽은 만큼 나무·별·바다생물을 심어 팀의 숲을 키우는 앱. 2026년 여름 대학부에서 운영한 전 기간의 실제 기록입니다.</p>
     <div class="meta">
       <span><b>기간</b> 2026.07.02 – 08.21 (51일)</span>
-      <span><b>대상</b> 대학부 7팀</span>
+      <span><b>대상</b> 대학부 7개 팀</span>
       <span><b>집계 기준</b> 신약 27권 260장</span>
       <span><b>작성</b> 박상준 · 2026.09.02</span>
     </div>
@@ -286,7 +291,8 @@ footer{
       <h2>어디까지 갔나</h2>
       <span class="tag">가입 → 시작 → 사복음서 → 신약 1독</span>
     </div>
-    <p class="lead">숫자 네 개를 따로 보면 그냥 숫자지만, 순서대로 세우면 <strong>사람이 어느 구간에서 빠졌는지</strong>가 보입니다. 사복음서 89장은 신약의 34%라, 절반에 닿기 전 이탈 지점을 정확히 짚어 줍니다.</p>
+    <p class="lead">숫자 네 개를 따로 보면 그냥 숫자지만, 순서대로 세우면 <strong>사람이 어느 구간에서 빠졌는지</strong>가 보입니다. 사복음서는 신약의 34%(89장)라, 절반에 닿기 전 이탈 지점을 정확히 짚어 줍니다.</p>
+    <p>완독 여부는 <strong>권 단위로 판정했습니다</strong> &mdash; 마태 28장, 마가 16장, 누가 24장, 요한 21장을 각각 다 읽었는지를 보고, 네 권을 모두 채운 사람만 완독으로 셌습니다. 읽은 장수를 더해 89장을 넘겼는지로 세지 않았습니다.</p>
 
     <div class="card">
       <div class="funnel" id="funnel"></div>
@@ -298,19 +304,21 @@ footer{
         <div class="kv">
           <div><span class="k">가입만 하고 한 장도 안 읽음</span><span class="v">101명 · 51.5%</span></div>
           <div><span class="k">읽기 시작한 뒤 사복음서 전 이탈</span><span class="v">55명</span></div>
-          <div><span class="k">사복음서(89장)를 넘긴 사람</span><span class="v">40명</span></div>
+          <div><span class="k">신약 89장 이상 읽음 <span class="pill">사복음서 분량</span></span><span class="v">40명</span></div>
           <div><span class="k">그중 신약 1독까지 완주</span><span class="v">11명 · 27.5%</span></div>
         </div>
-        <p class="cap">89장을 넘긴 40명 중 27.5%가 끝까지 갔습니다. 반대로 첫 장을 넘기지 못한 101명이 전체의 절반입니다.</p>
+        <p class="cap">사복음서 분량(89장)만큼 읽어낸 40명 중 27.5%가 끝까지 갔습니다. 반대로 첫 장을 넘기지 못한 101명이 전체의 절반입니다.</p>
       </div>
       <div class="card">
         <h3 style="font-size:15px;font-family:'Noto Sans KR',sans-serif;margin-bottom:14px;">'사복음서 완독'을 어떻게 세느냐</h3>
         <div class="kv">
-          <div><span class="k">89장 전체 완독 <span class="pill">보고 기준</span></span><span class="v">30명</span></div>
+          <div><span class="k">4권 모두 완독 <span class="pill">보고 기준</span></span><span class="v">30명</span></div>
           <div><span class="k">4권 중 1권 이상 완독</span><span class="v">51명</span></div>
           <div><span class="k">사복음서를 한 장이라도 읽음</span><span class="v">72명</span></div>
         </div>
-        <p class="cap">기준에 따라 30명에서 72명까지 달라집니다. 본 보고서는 가장 엄격한 <strong>89장 완독 = 30명</strong>을 헤드라인으로 쓰고, 참고로 두 기준을 함께 적었습니다.</p>
+        <p class="cap">기준에 따라 30명에서 72명까지 달라집니다. 본 보고서는 가장 엄격한 <strong>4권 모두 완독 = 30명</strong>을 헤드라인으로 씁니다.</p>
+        <div class="bookcount" id="bookcount"></div>
+        <p class="cap">완독한 복음서 권수별 인원. 4권을 채운 30명 다음은 1권만 채운 12명으로, 중간이 얇습니다.</p>
       </div>
     </div>
   </section>
@@ -428,7 +436,7 @@ footer{
         <h3 style="font-size:15px;font-family:'Noto Sans KR',sans-serif;margin-bottom:14px;">다음에 하면 좋을 것</h3>
         <ul class="tight">
           <li><b>첫 한 장까지 데려가기</b> &mdash; 가입자의 절반(101명)이 한 장도 읽지 않았습니다. 가입 직후 첫 장을 함께 읽는 자리를 만드는 것이 가장 효과가 클 지점입니다.</li>
-          <li><b>사복음서를 공식 관문으로</b> &mdash; 89장을 넘긴 40명 중 27.5%가 완주했습니다. 중간 목표와 축하를 여기에 두면 완주자가 늘어납니다.</li>
+          <li><b>사복음서를 공식 관문으로</b> &mdash; 89장 분량을 넘긴 40명 중 27.5%가 완주했습니다. 중간 목표와 축하를 여기에 두면 완주자가 늘어납니다.</li>
           <li><b>팀 편차 좁히기</b> &mdash; 참여율이 3팀 69%, 7팀 30%로 갈렸습니다. 앱보다 팀 안의 독려 방식이 만든 차이로 보입니다.</li>
         </ul>
       </div>
@@ -461,6 +469,7 @@ footer{
         <li><b>기간</b> 2026-07-01 이후 기록, 실제 가입은 7/2 시작 &mdash; 8/21 마지막. 테스트·개발자 계정은 제외했습니다.</li>
         <li><b>개인 식별</b> 실명·닉네임 없이 일련번호로만 받았습니다. 따라서 완주자 11명 시상 명단은 이 데이터로 만들 수 없고, 별도 요청이 필요합니다.</li>
         <li><b>중복 제거</b> 같은 사람이 같은 장을 여러 번 저장한 기록은 1장으로 셌습니다.</li>
+        <li><b>완독 판정</b> 사복음서 완독은 <strong>네 권을 각각 끝까지 읽었는지</strong>로 판정했습니다(마태 28 · 마가 16 · 누가 24 · 요한 21). 장수 합계 89로 세는 방식과 대조한 결과 같은 30명이었고, 27권 전부에서 그 책의 장수를 넘긴 기록이 없음을 확인했습니다.</li>
         <li><b>교차 검산</b> 개인별 집계표의 총합(9,007장)과 권별 표의 총합(9,007장)이 일치합니다. 사복음서도 4,102장으로 양쪽이 같습니다. 일자별 가입 합계 196명은 개인별 가입일 분포와 51일 전 일자가 일치합니다.</li>
         <li><b>확인된 예외 1건</b> 읽은 장이 0인데 요소를 1개 보유한 계정이 하나 있습니다. 집계에 미치는 영향은 없습니다.</li>
       </ul>
@@ -498,8 +507,8 @@ footer{
   const F = [
     {k:'가입',            sub:'앱에 등록한 사람', n:196, fill:'--d1', pale:true},
     {k:'한 장 이상',      sub:'읽기를 시작함',   n:95,  fill:'--d2', pale:false},
-    {k:'사복음서 완독',   sub:'89장 전체',       n:30,  fill:'--d3', pale:false},
-    {k:'신약 1독',        sub:'260장 전체',      n:11,  fill:'--d4', pale:false}
+    {k:'사복음서 완독',   sub:'4권 모두 완독',   n:30,  fill:'--d3', pale:false},
+    {k:'신약 1독',        sub:'27권 모두 완독',  n:11,  fill:'--d4', pale:false}
   ];
   const fw = document.getElementById('funnel');
   F.forEach((s,i) => {
@@ -547,6 +556,17 @@ footer{
   });
   document.getElementById('dotlegend').innerHTML = BANDS.map(b =>
     '<span><i style="background:'+C(b.c)+'"></i>'+b.k+' · '+b.n+'명</span>').join('');
+
+  /* ---------------- 2b. gospel books completed ---------------- */
+  (function(){
+    const G=[{k:'0권',n:145},{k:'1권',n:12},{k:'2권',n:5},{k:'3권',n:4},{k:'4권',n:30}];
+    const max=145, wrap=document.getElementById('bookcount');
+    wrap.innerHTML = G.map(g=>{
+      const h = Math.max(4, Math.round(g.n/max*72));
+      const fill = g.k==='4권' ? C('--d3') : C('--d1');
+      return '<div><div class="bn">'+g.n+'</div><div class="bar" style="height:'+h+'px;background:'+fill+'"></div><div class="bk">'+g.k+'</div></div>';
+    }).join('');
+  })();
 
   /* ---------------- 3. team chart ---------------- */
   const TEAM = [
