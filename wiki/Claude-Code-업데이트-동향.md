@@ -2,9 +2,9 @@
 title: Claude Code 업데이트 동향 (2026 W18–W22)
 category: AI/업계 동향
 tags: [claude-code, 동향, 도구, llm, 자동화, 스킬보안, 신뢰경계, daybreak]
-source: "raw/What's new.md, raw/Week 18~22, raw/ai-digest/naver-2026-08-08.md, raw/ai-digest/2026-08-12.md, raw/ai-digest/naver-2026-09-07.md"
+source: "raw/What's new.md, raw/Week 18~22, raw/ai-digest/naver-2026-08-08.md, raw/ai-digest/2026-08-12.md, raw/ai-digest/naver-2026-09-07.md, raw/ai-digest/naver-2026-09-19.md (AGENTS.md 공통 규격화 · v2.1.276 · IPO/Karpathy)"
 created: 2026-06-09
-updated: 2026-09-07
+updated: 2026-09-19
 ---
 
 > [!warning] ⚠ stale — 갱신 대기 (2026-06-15 검진 · 🆕 2026-09-07 정지 사유 **좁힘**)
@@ -44,6 +44,26 @@ updated: 2026-09-07
 - 개발 가속: `/goal`, dynamic workflows, `/code-review`, ultrareview → [[CogInsight-Generator]] 같은 POC를 빠르게 키우는 데 직접 활용.
 - 안전: security-guidance plugin → 직접 만든 [[mailer]]·[[notepad]] 등의 취약점 자동 점검.
 - 자동화: routines/schedule(W16), Monitor/`/loop`(W15) → [[schedule-reporter-kakao]]식 작업의 상위호환.
+
+## 🆕 🔥 **이 페이지가 멈춘 사이 릴리스 번호가 아니라 「지침 파일의 규격」이 바뀌었다** (2026-09-19 · W38 12차 감사)
+
+📄 근거: [[AI-주간-소식-2026-W38]] (KR-W38-142) — 원본 `raw/ai-digest/naver-2026-09-19.md` § Claude AI ([토큰포스트](https://www.tokenpost.kr/news/ai/410545))
+
+> 📄 *"Claude Code가 프로젝트 지침 파일 **AGENTS.md** 읽기 지원 추가. **OpenAI Codex, Google Gemini CLI, Cursor, GitHub Copilot** 등도 AGENTS.md 지원 대상으로 소개. 최신 릴리스 버전 **2.1.276**."*
+
+- 🔥 🧠 **이 페이지의 주차별 표는 전부 「기능이 늘었다」인데, 이건 「규격이 생겼다」다.** 📄 본문 W22 절까지 기록된 변화(dynamic workflows·`/goal`·security plugin)는 전부 **Claude Code 안에서만 의미가 있는 기능**이다. 🧠 AGENTS.md는 반대로 **벤더 5곳이 같은 파일을 읽기로 한 합의**이고, 그러면 값이 남는 자리가 **도구가 아니라 그 파일의 내용**으로 옮겨간다.
+- ✅ 🚨 **이 vault에 직접 걸린다**: 📄 [[CLAUDE]](`sj-wiki/CLAUDE.md`)는 지금 **Claude Code 전용 규격**으로 쓰여 있고, 📄 그 §9-3은 *"클론한 폴더를 작업 디렉토리로 **Claude Code를 실행**하면 이 CLAUDE.md가 프로젝트 지침으로 자동 로드된다"* 고 **도구 이름을 박아 두었다**. 🧠 AGENTS.md가 공통 규격이 됐다는 건, 이 vault의 운영 스키마(§1 소유권 · §7 출처 표기 · §8 git 규약)가 **다른 에이전트에서도 그대로 집행될 수 있게 됐다**는 뜻 — ⏳ 다만 **아직 실행하지 않는다**: ⚠ 📄 raw엔 *"읽기 지원 추가"* 만 있고 **CLAUDE.md와의 우선순위·병합 규칙이 없다**. 🧠 두 파일을 동시에 두면 *어느 쪽이 이기는지 모르는 상태*가 되므로, 공식 문서 확인 전까지 **CLAUDE.md 단일 유지**가 안전하다(이 페이지가 stale을 감수해 온 이유와 같은 원칙).
+- 🧠 **[[내-프로필]] §포지셔닝 축 관점 한 줄**: 같은 날 (KR-W38-133) *"AI가 질문을 스스로 보완 → **프롬프트 엔지니어링의 실효성이 줄어든다**"* 가 나왔다. 🔥 두 기사를 겹치면 **같은 방향**이다 — *프롬프트를 잘 쓰는 기술*은 모델이 흡수하고, *에이전트에게 무엇을 시킬지 규정한 문서*는 **벤더 중립 규격으로 승격**됐다. ✅ 값은 **문장을 다듬는 쪽이 아니라 규칙을 정하는 쪽**에 남는다.
+- ⚠ 📄 **v2.1.276** 은 raw에 명시된 숫자지만, 📄 이 페이지 본문 주차별 표는 여전히 **W22(v2.1.150–157)** 에서 끊겨 있다 — 🧠 **약 120 릴리스 구간이 미기록**이고, 이 항목은 그 공백을 메우지 않는다(추측 금지 원칙 유지). 남은 정지 사유는 §상단 경고문 그대로.
+
+## 🆕 ⭐⭐ **앤트로픽 IPO가 계속 진행 중 — Claude Code 발표에 Karpathy 등장** (2026-09-19 · W38 12차 감사)
+
+📄 근거: [[AI-주간-소식-2026-W38]] (KR-W38-141) — [NYT, 2026-09-18](https://www.nytimes.com/2026/09/18/technology/anthropic-ipo-ai-safety.html?partner=naver)
+
+- 📄 *"앤트로픽 IPO 준비 진행 중. **Claude Code 관련 발표에 Andrej Karpathy가 함께 등장**. AI 안전 논쟁 와중에도 IPO 절차 계속."* 📄 계보: (KR-W38-03) 나스닥 상장 추진·기업가치 최대 2조달러 **거론** → (09-15) **SEC S-1 초안 비공개 제출** → 오늘 **절차 지속**.
+- 🧠 이 페이지 관점에서 IPO 자체보다 **Claude Code가 IPO 서사에 등장하는 제품이 됐다**는 게 실질이다 — 📄 (2026-07) Anthropic 공식 블로그가 Claude Code를 *"자율 소프트웨어 운영 플랫폼"* 으로 규정한 것과 같은 방향이고, 🧠 상장 후엔 **이 제품의 가격·정책이 분기 실적에 묶인다**.
+- ⚠ 📄 Karpathy의 **발표 내용·역할·소속 관계는 raw에 없다** — *"함께 등장"* 이 전부다. 🧠 *영입·자문* 으로 읽지 않는다.
+- ✅ [[mailer|CS SmartHub]]는 Gemini 스택이라 직접 노출은 낮지만, 📄 이 vault의 **자동 위키화 파이프라인 전체가 Claude Code 위에서 돈다**([[에이전트-자동화-도구]]) → 요금제 변동은 **인프라 비용**으로 들어온다.
 
 ## 의외의 연결점
 - 🔥 ⭐⭐ **🆕 (2026-09-18) 코딩 어시스턴트가 「개발자 개인 도구」에서 「전사 표준 도구」로 넘어간 국내 관측** ([[AI-주간-소식-2026-W38]] (KR-W38-117) · 10차 감사): 📄 윈큐브마케팅 — *"**전 직원을 대상으로 AI 코딩 어시스턴트를 정식 도입**해 업무 자동화와 생산성 향상 추진"*([public25](https://www.public25.com/news/articleView.html?idxno=54996)). 🧠 지금까지 이 페이지의 전제는 *"개발자가 쓰는 도구"* 였는데, **마케팅 회사가 전 직원에게 지급**한다 — ✅ [[내-프로필]] §리터러시 계보에서 (KR-W38-60) 제주도청(공공, 계정 8종 1.1억)의 **민간 판본**이다. ⚠ 📄 제품명(Claude Code인지 여부)·도입 규모는 raw에 **없음**. 🚨 같은 기사의 *역대 최대 반기 실적* 과의 **인과는 raw에 없다** → [[프로젝트-포트폴리오]] 수치 서술 규칙.
