@@ -2,9 +2,9 @@
 title: CogInsight-Generator (Dialog JSON Generator)
 category: 프로젝트
 tags: [프로젝트, 챗봇, 시나리오, dialog-json, llm, openai, supabase, 핵심, 캐시효율, 관제실, 페르소나집단, 인간기준선, 모델락인회피, 액션슬롯, 되돌림, 영향분석]
-source: raw/projects/coginsight-generator.md, raw/ai-digest/2026-08-12.md, raw/ai-digest/2026-08-13.md, raw/ai-digest/naver-2026-08-20.md, raw/ai-digest/naver-2026-08-21.md, raw/ai-digest/2026-08-21.md, raw/ai-digest/2026-08-22.md, raw/ai-digest/naver-2026-08-28.md, raw/ai-digest/2026-09-01.md, raw/ai-digest/naver-2026-09-06.md (액션 슬롯 되돌림·영향 분석·중단 지표), raw/ai-digest/naver-2026-09-09.md (§경쟁 축), raw/ai-digest/naver-2026-09-13.md (멀티모델 라우팅 층·입력 UX), raw/ai-digest/naver-2026-09-16.md (지식소스 리스크 3축 · 온톨로지 2호 · KV 캐시=컨텍스트 길이 지렛대), raw/ai-digest/naver-2026-09-17.md (온톨로지 3호=PostgreSQL+Apache AGE · 평가의 유형별 분해 · 8차 감사)
+source: raw/projects/coginsight-generator.md, raw/ai-digest/2026-08-12.md, raw/ai-digest/2026-08-13.md, raw/ai-digest/naver-2026-08-20.md, raw/ai-digest/naver-2026-08-21.md, raw/ai-digest/2026-08-21.md, raw/ai-digest/2026-08-22.md, raw/ai-digest/naver-2026-08-28.md, raw/ai-digest/2026-09-01.md, raw/ai-digest/naver-2026-09-06.md (액션 슬롯 되돌림·영향 분석·중단 지표), raw/ai-digest/naver-2026-09-09.md (§경쟁 축), raw/ai-digest/naver-2026-09-13.md (멀티모델 라우팅 층·입력 UX), raw/ai-digest/naver-2026-09-16.md (지식소스 리스크 3축 · 온톨로지 2호 · KV 캐시=컨텍스트 길이 지렛대), raw/ai-digest/naver-2026-09-17.md (온톨로지 3호=PostgreSQL+Apache AGE · 평가의 유형별 분해 · 8차 감사), raw/ai-digest/naver-2026-09-21.md (§비용 축 — Jev 단가 갈래 vs 카이스트 기기-서버 호출 횟수 갈래)
 created: 2026-06-09
-updated: 2026-09-17
+updated: 2026-09-21
 ---
 
 > [!tip] 핵심 takeaway
@@ -161,6 +161,16 @@ updated: 2026-09-17
 
 - 📄 한컴이노스트림-엔비디아 AI 에이전트 과정 커리큘럼 = *LLM · RAG · **LangChain · LangGraph** · NIM · NeMo*. 🧠 이 파이프라인(Stage1 설계 → Stage2 결정론 전개 → 2.5·2.6 → 안전장치 체인)은 **LangGraph 없이 직접 짰다**.
 - ✅ 처방은 재작성이 아니라 [[프로젝트-포트폴리오]] 한 줄: *"LangGraph에 해당하는 상태·분기·재시도 제어를 결정론 코드로 구현했고, 그 선택의 이유(**구조 정합성을 LLM이 아니라 코드가 보증**)를 설명할 수 있다."* 🧠 같은 처방이 [[올림푸스-Olympus]]에도 걸린다.
+
+### 🆕 ⭐⭐ 비용 축 — **「큰 모델 한 번」의 대안이 같은 날 두 갈래로 왔다** (2026-09-21 · W39 1차 위키화)
+
+> 🧠 이 절은 **판단 영역**이다. 📄 근거는 [[AI-주간-소식-2026-W39]] 2건이고, 이 파이프라인(Stage1 설계 → Stage2 결정론 전개 → 안전장치 체인 2.9~3.6)과 대조한 결과다.
+
+- 📄 **(KR-W39-15) 가격 갈래** — 타입세이프 AI의 첫 모델 **Jev**: *"Claude Sonnet 5 67.8%, GPT-5.6 Sol 74.1%, Claude Opus 5 73.1%와 비교해 **건당 0.0004달러**에 **낮은 지연시간** 달성"*([ZDNet](https://zdnet.co.kr/view/?no=20260920215302)).
+- 📄 **(KR-W39-20)(KR-W39-22) 구조 갈래** — **카이스트** 기기-서버 협업: 기기용 **MobileCLIP2** + 서버용 **EVA-CLIP(180억 파라미터)** 을 적응적으로 오가며 *"대형 서버 모델에 가까운 정확도를 유지하면서 **서버 호출 횟수를 평균 55.61% 절감**"*([아주경제](https://www.ajunews.com/view/20260921084650712)).
+- 🔥 🧠 **두 갈래가 이 파이프라인에 주는 처방이 다르다**: Jev는 ***호출 단가***를 낮추고(모델 교체), 카이스트는 ***호출 횟수***를 낮춘다(작은 판단자를 앞에 세우고 확신 없을 때만 큰 모델). ✅ **후자가 이 프로젝트에 더 맞는다** — 🧠 §해자 절의 결론이 *"구조 정합성을 LLM이 아니라 코드가 보증한다"* 이고, **모델을 바꾸는 건 그 보증을 다시 검증해야 하지만 호출을 줄이는 건 안 그렇다**(왕복 무손실 불변식·회귀 3종을 건드리지 않는다).
+- ✅ 🧠 **적용 후보 한 칸**: Stage2 전개·안전장치 체인처럼 **볼륨이 많고 판정이 이분법에 가까운 레이어**에 *작은 모델 선판정 → 불확실하면 승격* 구조를 얹는다. ⚠ 다만 §모니터링 칸이 비어 있는 상태에서 이걸 먼저 켜면 **어느 쪽이 답했는지 사후에 모른다** — 🚨 순서는 **모니터링(해자의 다음 칸) → 계층화**다.
+- ⚠ 📄 **Jev 수치의 벤치마크 기관·평가 항목·방법론은 raw에 없고**, 📄 카이스트 실험은 ***이미지 분류 데이터셋***에서 검증한 것이다 — 🚨 **텍스트 생성·시나리오 생성으로의 일반화는 근거 없음**(구조적 아이디어까지만 가져온다). 🧠 [[공통-기술스택]] §에이전트 운영 비용과 같은 원칙: **모델 핀 추격보다 호출 설계가 먼저**.
 
 ---
 
