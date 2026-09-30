@@ -3,11 +3,16 @@ title: 작업 이력 (Log)
 category: 시스템
 tags: [log, 이력]
 created: 2026-06-10
-updated: 2026-09-29
----
-
 updated: 2026-09-30
 ---
+
+## [2026-09-30] 자료넣기 | naver-2026-09-30 재검토 — W40 6차 보강(34행 전수 재대조) + §7 정정 3건
+- 📄 대상: `raw/ai-digest/naver-2026-09-30.md` — 오늘 새벽 자동 위키화(5차)로 **이미 반영된 파일이라 신규 페이지 없음**. 5차 수록·중복 목록을 raw 34행과 행 단위로 맞춰 봄.
+- ✅ [[AI-주간-소식-2026-W40]] 6차: 행방이 없던 6행 처리 → 🆕 **KR-W40-44** Zapier·Make·n8n 네이티브 AI 에이전트 · **KR-W40-45** llmgateway 타임라인(GPT-6 Astra 1.05M)·Raschka 논문 목록 · **KR-W40-46** AWS·구글·LG전자·SOC 에이전트 · **KR-W40-47** 오픈애즈 리포트 · 중복 1(Code w/ Claude SF = W31). 결과: raw 34 = 수록 17 + 중복 17. takeaway ⑲ 추가.
+- ✏️ §7 정정: KR-W40-39 *Adaptive Reasoning* 은 Sonnet 5.5가 아니라 **Sonnet 4.6**에 붙은 설명 + "세 트랙 동시 출시"는 과장(출시일 명시는 Sonnet 5.5뿐) · KR-W40-40 CogInsight에는 **음성 입력 흐름 없음** · 5차 중복 목록에 다른 raw의 행(AI World 2026) 섞여 있었음. ⚠ 같은 raw 안에서 "최신 Claude" 표기가 4가지로 갈림 → 버전 인용 금지 규칙 추가.
+- 🔗 교차참조: [[헤르메스-개인비서-Hostinger]](n8n 내장 에이전트 → PoC 순서) · [[에이전트-자동화-도구]](보안 대상 vs 보안 주체 에이전트 · 노코드 경로) · [[Claude-Code-업데이트-동향]](Fable 5 출시일 6/9 vs 6/10 ⚠) · [[index]] W40 항목에 5·6차 반영(5차는 index 누락 상태였음).
+- 🛠 log.md frontmatter 뒤에 끼어 있던 중복 `updated:`·`---` 줄 정리.
+- ⚠ 작업 전 `git pull --rebase`는 권한 승인 대기로 실행되지 못함(§8 ① 미이행).
 
 ## [2026-09-30] 자료넣기 | 자동 위키화 (daily crawl) — W40 5차 보강 (9/30)
 - 📄 대상: `raw/ai-digest/naver-2026-09-30.md` (WebSearch 대체 수집, 약 34건 → 11항목 신규 수록). **신규 페이지 없음** — [[AI-주간-소식-2026-W40]] 5차 보강.
