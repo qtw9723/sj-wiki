@@ -6,6 +6,15 @@ created: 2026-06-10
 updated: 2026-10-02
 ---
 
+updated: 2026-10-03
+---
+
+## [2026-10-03] 자료넣기 | 자동 위키화 (daily crawl) — W40 11차 보강
+- 📄 대상: `raw/ai-digest/naver-2026-10-03.md` (한국어 WebSearch 수집).
+- 📄 신규 8항목(KR-W40-71~78): Claude for Government FedRAMP High + Claude for Microsoft 365 얼리 액세스(71) · Barclays 1.6만명 전사 배포+NVIDIA 파이시스-랭(72) · 신한은행 LLM+멀티에이전트 자율 침투 도구(74) · 호주·캐나다 정부 AI 에이전트 통제 이슈(75) · TwIL-LM3-Pro 형식 논리 3.66B 경량(76) · WEFT·AdaptArena 연구(77) · AI 반도체 설계 IP 충돌(78).
+- 중복 제외: 에이전트고 2026(=04) · 35개 기관 전망(=21) · 2026 in LLMs(=26) · OpenAI Dots(=63) · LLM 10선(=13) · DeepSeek R1(=48) 등.
+- 영향 페이지: `wiki/AI-주간-소식-2026-W40.md` (source·updated·takeaway ㉚~㊲ 추가, 관련 문서 업데이트).
+
 ## [2026-10-02] 자료넣기 | naver-2026-10-02 재검토 — W40 10차 보강(25행 전수 재대조) + 정정 3건
 - 📄 대상: `raw/ai-digest/naver-2026-10-02.md` — 오늘 자동 위키화(9차)로 **이미 반영된 파일이라 신규 페이지 없음**. 9차 수록·중복 목록을 raw 25행과 행 단위로 대조.
 - ✅ [[AI-주간-소식-2026-W40]] 10차: 9차 목록에 없던 3행 처리 → 🆕 **KR-W40-68** "AI가 AI 개발 가속" 지능 폭발 경고(↔ KR-W40-09 R&D 26%·완전 자율 0%, [[올림푸스-Olympus]] 게이트) · 🆕 **KR-W40-69** 국내 오픈소스 LLM 공개 현황(엑사원·HyperCLOVA X·솔라) · CIO Korea IT 전략(중복=KR-W39-155). 🆕 **KR-W40-70** 중복 행에 묻힌 부수 사실 4건(Gemini 4 아르곤 첫 등장 + ⚠ botpress 같은 글이 9/28과 다르게 요약됨 · MakeBot 온디바이스 트렌드 · AI 가전 경량 칩 · DevDay 신제품 20개 → KR-W40-20 📌 확인 항목 해소). 결과: raw 25 = 수록 12 + 중복 13. takeaway ㉘㉙ 추가.
