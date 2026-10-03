@@ -2,9 +2,9 @@
 title: Claude Code 업데이트 동향 (2026 W18–W22)
 category: AI/업계 동향
 tags: [claude-code, 동향, 도구, llm, 자동화, 스킬보안, 신뢰경계, daybreak]
-source: "raw/What's new.md, raw/Week 18~22, raw/ai-digest/naver-2026-08-08.md, raw/ai-digest/2026-08-12.md, raw/ai-digest/naver-2026-09-07.md, raw/ai-digest/naver-2026-09-19.md (AGENTS.md 공통 규격화 · v2.1.276 · IPO/Karpathy), raw/ai-digest/naver-2026-09-20.md ('프로젝트' 병렬 멀티에이전트 개편 · 플러그인4셸 · 체르니 \"코딩은 해결됐다\"), raw/ai-digest/naver-2026-09-21.md (Unity 공식 플러그인 29개 스킬 = 플러그인4셸 처방①의 시급성 · 규격 통합은 지침 파일까지라는 정밀화), raw/ai-digest/naver-2026-09-22.md (도구 확산 계보 = 이 도구의 운영 방식이 교재가 됐다 · AWS Strands Harness = 로컬→클라우드 확장 층), raw/ai-digest/naver-2026-09-23.md (도메인 확장 계보 3칸째=Claude Science · Claude Opus 5.5 공개와 경쟁사 API 50% 인하 · 🚨 공격받는 쪽↔공격하는 쪽이 사흘 안에 둘 다), raw/ai-digest/naver-2026-09-24.md (Opus 5.5 속도·비용 독립 재확인 · 도메인 확장 4칸째=Scientific AI 페르마 정리 · W39 7차 자동), raw/ai-digest/naver-2026-09-25.md (🔥 도메인 확장 5칸째=생명과학 효소 발견), raw/ai-digest/naver-2026-09-26.md (Claude 새 헌법=성문화 5호 후보 · 9월 모델 릴리즈 타임라인), raw/ai-digest/naver-2026-09-27.md (자사 R&D 자동화율 26% 주도·완전 자율 0% · W39 11차 감사), raw/ai-digest/naver-2026-09-28.md (🆕 통제 축 신설 = Enterprise 관리자 API 베타 졸업·웹 검색 도메인 허용/차단 · Fable 5.1 1M 정식 지원·전 채널 확장 · W40 2차 보강)"
+source: "raw/What's new.md, raw/Week 18~22, raw/ai-digest/naver-2026-08-08.md, raw/ai-digest/2026-08-12.md, raw/ai-digest/naver-2026-09-07.md, raw/ai-digest/naver-2026-09-19.md (AGENTS.md 공통 규격화 · v2.1.276 · IPO/Karpathy), raw/ai-digest/naver-2026-09-20.md ('프로젝트' 병렬 멀티에이전트 개편 · 플러그인4셸 · 체르니 \"코딩은 해결됐다\"), raw/ai-digest/naver-2026-09-21.md (Unity 공식 플러그인 29개 스킬 = 플러그인4셸 처방①의 시급성 · 규격 통합은 지침 파일까지라는 정밀화), raw/ai-digest/naver-2026-09-22.md (도구 확산 계보 = 이 도구의 운영 방식이 교재가 됐다 · AWS Strands Harness = 로컬→클라우드 확장 층), raw/ai-digest/naver-2026-09-23.md (도메인 확장 계보 3칸째=Claude Science · Claude Opus 5.5 공개와 경쟁사 API 50% 인하 · 🚨 공격받는 쪽↔공격하는 쪽이 사흘 안에 둘 다), raw/ai-digest/naver-2026-09-24.md (Opus 5.5 속도·비용 독립 재확인 · 도메인 확장 4칸째=Scientific AI 페르마 정리 · W39 7차 자동), raw/ai-digest/naver-2026-09-25.md (🔥 도메인 확장 5칸째=생명과학 효소 발견), raw/ai-digest/naver-2026-09-26.md (Claude 새 헌법=성문화 5호 후보 · 9월 모델 릴리즈 타임라인), raw/ai-digest/naver-2026-09-27.md (자사 R&D 자동화율 26% 주도·완전 자율 0% · W39 11차 감사), raw/ai-digest/naver-2026-09-28.md (🆕 통제 축 신설 = Enterprise 관리자 API 베타 졸업·웹 검색 도메인 허용/차단 · Fable 5.1 1M 정식 지원·전 채널 확장 · W40 2차 보강), raw/ai-digest/naver-2026-10-03.md (통제 축 2칸째 = Claude for Government FedRAMP High · Barclays 전사 배포 · M365 · W40 12차 보강)"
 created: 2026-06-09
-updated: 2026-09-28
+updated: 2026-10-03
 ---
 
 > [!warning] ⚠ stale — 갱신 대기 (2026-06-15 검진 · 🆕 2026-09-07 정지 사유 **좁힘**)
@@ -221,6 +221,15 @@ updated: 2026-09-28
 - ⚠ 📄 **스타트업 에디션의 가격·자격·사례 내용은 raw에 없음**(존재 사실만). ⚠ 📄 주간 36은 **8/31~9/4 노트**라 이번 주 신규가 아니다 — 🚨 "9/28 발표"로 적지 않는다. ✅ 이 페이지 상단 §stale 경고의 정지 사유(*주차별 릴리스 노트 미입수*)는 **여전히 유효**하다 — 이번 건도 2차 요약이지 릴리스 노트 정독이 아니다.
 
 🔗 관련: [[AI-주간-소식-2026-W40]] · [[웹-크롤링-기초]] · [[CogInsight-Generator]] · [[에이전트-자동화-도구]] · [[내-MCP-커넥터-환경]]
+
+### ⑫ 🆕 **통제 축 2칸째 — Claude for Government(FedRAMP High) · 금융 대기업 전사 배포** (2026-10-03 · W40 12차 보강)
+📄 근거: [[AI-주간-소식-2026-W40]] (KR-W40-71)(KR-W40-72)(KR-W40-79 ④) — 원본 `raw/ai-digest/naver-2026-10-03.md`
+- 📄 (KR-W40-71) **Claude for Government 정식 출시** — *FedRAMP High 승인 SaaS*, 민감하지만 비기밀 업무까지, **좌석당 요금 대신 기관 한도 내 사용** 구조. 📄 **Claude for Microsoft 365**(Word·Excel·PowerPoint·Outlook 베타) 얼리 액세스 확대.
+- 📄 (KR-W40-72) **Barclays** — 영국 직원 1.6만 명 전사 배포, Colleague Knowledge Assistant로 100만 건 이상 검색 처리.
+- 🔥 🧠 **§⑩ 통제 축의 다음 칸이다**: ⑩이 *관리자가 쥐는 기계장치(역할 API·검색 도메인 허용/차단)* 였다면, ⑫는 그 장치가 **외부 인증(FedRAMP High)과 규제 산업(금융) 실배포**로 이어진 것이다. ✅ 사내 도입 논의 체크리스트 순서: *권한·감사(⑩) → 외부 인증 등급 → 과금 구조(좌석 vs 기관 한도)*.
+- 🧠 **능력 축과 다른 방향의 채널 확장**: ⑪(Claude Code → IDE·Slack·CI/CD)은 *개발자 채널*, M365는 **사무 채널**. ⚠ 📄 [[AI-주간-소식-2026-W40]] (KR-W40-57) *"MS365 Copilot 통합 3/9"* 와 같은 제품인지는 raw로 **불명**.
+- 🧠 📄 (KR-W40-79 ④) 국내 실용서 『된다! 하루 만에 끝내는 클로드 활용법』(10/13 출간 예정) — 위 §*교재화*(2026-09-22) 계보의 단행본 판본.
+- ⚠ 📄 가격·한국 출시·M365 베타 자격 조건, Barclays 100만 건의 집계 기간은 raw에 **없음**. 🚨 이 페이지 상단 stale 정지 사유(릴리스 노트 미정독)는 여전히 유효 — 이번 건도 뉴스 2차 요약이다.
 
 ## 의외의 연결점
 - 🔥 ⭐⭐ **🆕 (2026-09-18) 코딩 어시스턴트가 「개발자 개인 도구」에서 「전사 표준 도구」로 넘어간 국내 관측** ([[AI-주간-소식-2026-W38]] (KR-W38-117) · 10차 감사): 📄 윈큐브마케팅 — *"**전 직원을 대상으로 AI 코딩 어시스턴트를 정식 도입**해 업무 자동화와 생산성 향상 추진"*([public25](https://www.public25.com/news/articleView.html?idxno=54996)). 🧠 지금까지 이 페이지의 전제는 *"개발자가 쓰는 도구"* 였는데, **마케팅 회사가 전 직원에게 지급**한다 — ✅ [[내-프로필]] §리터러시 계보에서 (KR-W38-60) 제주도청(공공, 계정 8종 1.1억)의 **민간 판본**이다. ⚠ 📄 제품명(Claude Code인지 여부)·도입 규모는 raw에 **없음**. 🚨 같은 기사의 *역대 최대 반기 실적* 과의 **인과는 raw에 없다** → [[프로젝트-포트폴리오]] 수치 서술 규칙.
