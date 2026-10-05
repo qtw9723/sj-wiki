@@ -2,9 +2,9 @@
 title: Claude Code 업데이트 동향 (2026 W18–W22)
 category: AI/업계 동향
 tags: [claude-code, 동향, 도구, llm, 자동화, 스킬보안, 신뢰경계, daybreak]
-source: "raw/What's new.md, raw/Week 18~22, raw/ai-digest/naver-2026-08-08.md, raw/ai-digest/2026-08-12.md, raw/ai-digest/naver-2026-09-07.md, raw/ai-digest/naver-2026-09-19.md (AGENTS.md 공통 규격화 · v2.1.276 · IPO/Karpathy), raw/ai-digest/naver-2026-09-20.md ('프로젝트' 병렬 멀티에이전트 개편 · 플러그인4셸 · 체르니 \"코딩은 해결됐다\"), raw/ai-digest/naver-2026-09-21.md (Unity 공식 플러그인 29개 스킬 = 플러그인4셸 처방①의 시급성 · 규격 통합은 지침 파일까지라는 정밀화), raw/ai-digest/naver-2026-09-22.md (도구 확산 계보 = 이 도구의 운영 방식이 교재가 됐다 · AWS Strands Harness = 로컬→클라우드 확장 층), raw/ai-digest/naver-2026-09-23.md (도메인 확장 계보 3칸째=Claude Science · Claude Opus 5.5 공개와 경쟁사 API 50% 인하 · 🚨 공격받는 쪽↔공격하는 쪽이 사흘 안에 둘 다), raw/ai-digest/naver-2026-09-24.md (Opus 5.5 속도·비용 독립 재확인 · 도메인 확장 4칸째=Scientific AI 페르마 정리 · W39 7차 자동), raw/ai-digest/naver-2026-09-25.md (🔥 도메인 확장 5칸째=생명과학 효소 발견), raw/ai-digest/naver-2026-09-26.md (Claude 새 헌법=성문화 5호 후보 · 9월 모델 릴리즈 타임라인), raw/ai-digest/naver-2026-09-27.md (자사 R&D 자동화율 26% 주도·완전 자율 0% · W39 11차 감사), raw/ai-digest/naver-2026-09-28.md (🆕 통제 축 신설 = Enterprise 관리자 API 베타 졸업·웹 검색 도메인 허용/차단 · Fable 5.1 1M 정식 지원·전 채널 확장 · W40 2차 보강), raw/ai-digest/naver-2026-10-03.md (통제 축 2칸째 = Claude for Government FedRAMP High · Barclays 전사 배포 · M365 · W40 12차 보강)"
+source: "raw/What's new.md, raw/Week 18~22, raw/ai-digest/naver-2026-08-08.md, raw/ai-digest/2026-08-12.md, raw/ai-digest/naver-2026-09-07.md, raw/ai-digest/naver-2026-09-19.md (AGENTS.md 공통 규격화 · v2.1.276 · IPO/Karpathy), raw/ai-digest/naver-2026-09-20.md ('프로젝트' 병렬 멀티에이전트 개편 · 플러그인4셸 · 체르니 \"코딩은 해결됐다\"), raw/ai-digest/naver-2026-09-21.md (Unity 공식 플러그인 29개 스킬 = 플러그인4셸 처방①의 시급성 · 규격 통합은 지침 파일까지라는 정밀화), raw/ai-digest/naver-2026-09-22.md (도구 확산 계보 = 이 도구의 운영 방식이 교재가 됐다 · AWS Strands Harness = 로컬→클라우드 확장 층), raw/ai-digest/naver-2026-09-23.md (도메인 확장 계보 3칸째=Claude Science · Claude Opus 5.5 공개와 경쟁사 API 50% 인하 · 🚨 공격받는 쪽↔공격하는 쪽이 사흘 안에 둘 다), raw/ai-digest/naver-2026-09-24.md (Opus 5.5 속도·비용 독립 재확인 · 도메인 확장 4칸째=Scientific AI 페르마 정리 · W39 7차 자동), raw/ai-digest/naver-2026-09-25.md (🔥 도메인 확장 5칸째=생명과학 효소 발견), raw/ai-digest/naver-2026-09-26.md (Claude 새 헌법=성문화 5호 후보 · 9월 모델 릴리즈 타임라인), raw/ai-digest/naver-2026-09-27.md (자사 R&D 자동화율 26% 주도·완전 자율 0% · W39 11차 감사), raw/ai-digest/naver-2026-09-28.md (🆕 통제 축 신설 = Enterprise 관리자 API 베타 졸업·웹 검색 도메인 허용/차단 · Fable 5.1 1M 정식 지원·전 채널 확장 · W40 2차 보강), raw/ai-digest/naver-2026-10-03.md (통제 축 2칸째 = Claude for Government FedRAMP High · Barclays 전사 배포 · M365 · W40 12차 보강), raw/ai-digest/naver-2026-10-05.md (⑬ 에이전트 뷰 = 멀티에이전트 관리 화면 · Sonnet 5.5 단가 · W41 2차 보강)"
 created: 2026-06-09
-updated: 2026-10-03
+updated: 2026-10-05
 ---
 
 > [!warning] ⚠ stale — 갱신 대기 (2026-06-15 검진 · 🆕 2026-09-07 정지 사유 **좁힘**)
@@ -230,6 +230,14 @@ updated: 2026-10-03
 - 🧠 **능력 축과 다른 방향의 채널 확장**: ⑪(Claude Code → IDE·Slack·CI/CD)은 *개발자 채널*, M365는 **사무 채널**. ⚠ 📄 [[AI-주간-소식-2026-W40]] (KR-W40-57) *"MS365 Copilot 통합 3/9"* 와 같은 제품인지는 raw로 **불명**.
 - 🧠 📄 (KR-W40-79 ④) 국내 실용서 『된다! 하루 만에 끝내는 클로드 활용법』(10/13 출간 예정) — 위 §*교재화*(2026-09-22) 계보의 단행본 판본.
 - ⚠ 📄 가격·한국 출시·M365 베타 자격 조건, Barclays 100만 건의 집계 기간은 raw에 **없음**. 🚨 이 페이지 상단 stale 정지 사유(릴리스 노트 미정독)는 여전히 유효 — 이번 건도 뉴스 2차 요약이다.
+
+### ⑬ 🆕 **'에이전트 뷰' — 여러 에이전트를 동시에 관리하는 화면 + Sonnet 5.5 단가** (2026-10-05 · W41 2차 보강)
+📄 근거: [[AI-주간-소식-2026-W41]] (W41-01) · §Claude Sonnet 5.5 — 원본 `raw/ai-digest/naver-2026-10-05.md`
+- 📄 앤트로픽이 Claude Code에 **여러 AI 에이전트를 동시에 관리할 수 있는 '에이전트 뷰'** 기능 공개 — *개발자 멀티에이전트 워크플로우 지원 강화*([AI타임스](https://www.aitimes.com/news/articleView.html?idxno=210412)).
+- 🔥 🧠 **멀티에이전트 계보의 세 번째 칸**: W22 *dynamic workflows*(일회성 대형 작업) → 2026-09-20 *'프로젝트' 병렬 멀티에이전트 개편*(상시 작업 단위) → **에이전트 뷰(동시 관리 화면)**. 실행 방식 다음에 **관측 화면**이 붙었다 — [[에이전트-자동화-도구]] §관제 층(Govern·Observe·Direct)의 *Observe* 칸이 이 도구 안에 생긴 것.
+- ✅ 🧠 **이 vault 적용 후보**: 자동 위키화와 수동 감사 세션이 서로를 모른 채 같은 페이지를 고치는 구조라(📄 W40 11·13차 자동 → 12·14차 수동 재대조 반복), *여러 세션을 한 화면에서 본다*는 기능이 실제로 필요한 자리다. ⏳ 실사용 확인 전이라 제안에 그친다.
+- 📄 **모델 라인 보강**: Sonnet 5.5(9/28) — *Sonnet 5 대비 30% 이상 빠른 출력, 동일 가격 $2/$10 per million tokens* · Opus 5.5(9/22) (releasebot.io). 🧠 [[AI-주간-소식-2026-W40]] (KR-W40-39)이 비워 둔 단가 칸이 채워졌다.
+- ⚠ 📄 에이전트 뷰의 기능 세부·출시일·요금제 조건은 raw에 **없고**, 🧠 기사번호상 몇 주 이상 된 기사로 추정. Sonnet 5.5 단가는 **집계 사이트 1곳** 출처라 공식 가격표 대조 전이다. 🚨 상단 stale 정지 사유는 그대로 유효.
 
 ## 의외의 연결점
 - 🔥 ⭐⭐ **🆕 (2026-09-18) 코딩 어시스턴트가 「개발자 개인 도구」에서 「전사 표준 도구」로 넘어간 국내 관측** ([[AI-주간-소식-2026-W38]] (KR-W38-117) · 10차 감사): 📄 윈큐브마케팅 — *"**전 직원을 대상으로 AI 코딩 어시스턴트를 정식 도입**해 업무 자동화와 생산성 향상 추진"*([public25](https://www.public25.com/news/articleView.html?idxno=54996)). 🧠 지금까지 이 페이지의 전제는 *"개발자가 쓰는 도구"* 였는데, **마케팅 회사가 전 직원에게 지급**한다 — ✅ [[내-프로필]] §리터러시 계보에서 (KR-W38-60) 제주도청(공공, 계정 8종 1.1억)의 **민간 판본**이다. ⚠ 📄 제품명(Claude Code인지 여부)·도입 규모는 raw에 **없음**. 🚨 같은 기사의 *역대 최대 반기 실적* 과의 **인과는 raw에 없다** → [[프로젝트-포트폴리오]] 수치 서술 규칙.
