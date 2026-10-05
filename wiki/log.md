@@ -3,8 +3,13 @@ title: 작업 이력 (Log)
 category: 시스템
 tags: [log, 이력]
 created: 2026-06-10
-updated: 2026-10-04
+updated: 2026-10-05
 ---
+
+## [2026-10-05] 자료넣기 | 자동 위키화 (daily crawl) — W41 1차 신규 작성
+- 📄 대상: `raw/ai-digest/naver-2026-10-05.md` (한국어 WebSearch 수집). 영문 RSS 파일 없음.
+- ✅ 신규 페이지 [[AI-주간-소식-2026-W41]] 생성: OpenAI DevDay 2026(Decisions API·닷츠·Aeon) · GPT-6.1 솔 · Claude Sonnet 5.5/Opus 5.5 확인 · UiPath 마에스트로 · NVIDIA 네모트론 3 슈퍼 · MS MDASH · 모레 102B · MIT 95% 실패 연구 등 주요 항목 수록.
+- [[index]] AI/업계 동향 W41 항목 추가.
 
 ## [2026-10-04] 자료넣기 | naver-2026-10-04 재검토 — W40 14차 보강(34행 전수 재대조) + 정정 6건
 - 📄 대상: `raw/ai-digest/naver-2026-10-04.md` — 오늘 자동 위키화(13차)로 **이미 반영된 파일이라 신규 페이지 없음**. 13차는 "신규 5 + 중복 29"로 계수만 맞추고 행 대응표가 없었음 → raw 34행과 행 단위로 대조.
