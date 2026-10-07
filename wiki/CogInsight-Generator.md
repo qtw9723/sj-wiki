@@ -2,9 +2,9 @@
 title: CogInsight-Generator (Dialog JSON Generator)
 category: 프로젝트
 tags: [프로젝트, 챗봇, 시나리오, dialog-json, llm, openai, supabase, 핵심, 캐시효율, 관제실, 페르소나집단, 인간기준선, 모델락인회피, 액션슬롯, 되돌림, 영향분석]
-source: raw/projects/coginsight-generator.md, raw/ai-digest/2026-08-12.md, raw/ai-digest/2026-08-13.md, raw/ai-digest/naver-2026-08-20.md, raw/ai-digest/naver-2026-08-21.md, raw/ai-digest/2026-08-21.md, raw/ai-digest/2026-08-22.md, raw/ai-digest/naver-2026-08-28.md, raw/ai-digest/2026-09-01.md, raw/ai-digest/naver-2026-09-06.md (액션 슬롯 되돌림·영향 분석·중단 지표), raw/ai-digest/naver-2026-09-09.md (§경쟁 축), raw/ai-digest/naver-2026-09-13.md (멀티모델 라우팅 층·입력 UX), raw/ai-digest/naver-2026-09-16.md (지식소스 리스크 3축 · 온톨로지 2호 · KV 캐시=컨텍스트 길이 지렛대), raw/ai-digest/naver-2026-09-17.md (온톨로지 3호=PostgreSQL+Apache AGE · 평가의 유형별 분해 · 8차 감사), raw/ai-digest/naver-2026-09-21.md (§비용 축 — Jev 단가 갈래 vs 카이스트 기기-서버 호출 횟수 갈래), raw/ai-digest/naver-2026-09-23.md (§비용 축 갱신 — 단가 갈래가 사흘 만에 무효화 → 모델 라우팅 분리 레이어 · 4단계 AX의 0단계=지식 자산화 · 페르소나 분리 레이어), raw/ai-digest/naver-2026-09-24.md (Opus 5.5 비용 40%↓ · Zeb 초경량 판단 모델), raw/ai-digest/naver-2026-09-25.md (🔥 선택적 기억 개입 +8.3%p=시점 분리 처방 · 에이전트 레디 데이터 · 아웃바운드 경계), raw/ai-digest/naver-2026-09-26.md · naver-2026-09-27.md (모델 크기 갈래 신설=NHN 소형 오픈 모델·정밀도 트레이드오프·오픈소스 과반 · 1M 컨텍스트가 Stage 분리의 서술 근거를 바꾼다 · W39 11차 감사)
+source: raw/projects/coginsight-generator.md, raw/ai-digest/2026-08-12.md, raw/ai-digest/2026-08-13.md, raw/ai-digest/naver-2026-08-20.md, raw/ai-digest/naver-2026-08-21.md, raw/ai-digest/2026-08-21.md, raw/ai-digest/2026-08-22.md, raw/ai-digest/naver-2026-08-28.md, raw/ai-digest/2026-09-01.md, raw/ai-digest/naver-2026-09-06.md (액션 슬롯 되돌림·영향 분석·중단 지표), raw/ai-digest/naver-2026-09-09.md (§경쟁 축), raw/ai-digest/naver-2026-09-13.md (멀티모델 라우팅 층·입력 UX), raw/ai-digest/naver-2026-09-16.md (지식소스 리스크 3축 · 온톨로지 2호 · KV 캐시=컨텍스트 길이 지렛대), raw/ai-digest/naver-2026-09-17.md (온톨로지 3호=PostgreSQL+Apache AGE · 평가의 유형별 분해 · 8차 감사), raw/ai-digest/naver-2026-09-21.md (§비용 축 — Jev 단가 갈래 vs 카이스트 기기-서버 호출 횟수 갈래), raw/ai-digest/naver-2026-09-23.md (§비용 축 갱신 — 단가 갈래가 사흘 만에 무효화 → 모델 라우팅 분리 레이어 · 4단계 AX의 0단계=지식 자산화 · 페르소나 분리 레이어), raw/ai-digest/naver-2026-09-24.md (Opus 5.5 비용 40%↓ · Zeb 초경량 판단 모델), raw/ai-digest/naver-2026-09-25.md (🔥 선택적 기억 개입 +8.3%p=시점 분리 처방 · 에이전트 레디 데이터 · 아웃바운드 경계), raw/ai-digest/naver-2026-09-26.md · naver-2026-09-27.md (모델 크기 갈래 신설=NHN 소형 오픈 모델·정밀도 트레이드오프·오픈소스 과반 · 1M 컨텍스트가 Stage 분리의 서술 근거를 바꾼다 · W39 11차 감사), raw/ai-digest/naver-2026-10-07.md (§의외의 연결점 — 대화 에이전트 30.5%·통합 논의 이동)
 created: 2026-06-09
-updated: 2026-09-28
+updated: 2026-10-07
 ---
 
 > [!tip] 핵심 takeaway
@@ -1012,6 +1012,9 @@ updated: 2026-09-28
   - ✅ 🧠 **두 번째 축은 안전장치 체인과 같은 자리**: *모델 성능*이 아니라 **산출물 자체(생성된 시나리오)를 검증 대상으로 세운다** — 📄 [[AI-주간-소식-2026-W33]] (EN40) *국소 검증은 비이식성을 탐지할 수 없다* 와 같은 방향의 요구다.
   - ✅ 지표 서술 규칙으로도 이어진다 → [[프로젝트-포트폴리오]]: ① 채택 ≠ 임팩트(KR-W38-21) · ② 단계·시간으로 적기(KR-W38-22) · 🆕 **③ 집계 지표는 분해해서 보여주기**.
 - **🆕 (2026-07-31) 입력 다양화(v0.5.0)의 학술 짝**: 📄 arXiv **Aethel** — "어휘 중복이 적은 여러 문서에 흩어진 지표·주체를 빠르게 종합"하는 **그래프 검색** 프레임워크. 🧠 POC 문서·API 문서·엑셀 ESD를 파싱해 시나리오 재료로 쓸 때 겪는 문제 그 자체(기법 후보). 🧠 또한 **Cross-organisational Process Mining**(메시지 로그에서 프로세스 역추출)은 [[mailer|CS SmartHub]]의 CS 로그 → 이 도구의 **시나리오 입력**으로 잇는 경로.
+- 🆕 **(2026-10-07) 시장 배경 숫자 하나** ([[AI-주간-소식-2026-W41]] W41-17 · W41-14):
+  - 📄 Kings Research — LLM 시장에서 **대화 에이전트 부문 30.5%**(기초 모델 48.4%). 🧠 이 도구가 겨냥하는 *챗봇 시나리오* 는 LLM 시장의 약 3분의 1인 "대화" 쪽에 있다 → 포트폴리오 *문제* 절의 배경 문장 후보. ⚠ 기준 연도·정의 raw 없음 — 수치는 배경으로만.
+  - 📄 laxis — 논의 초점이 *"어떤 모델이 최고인가"* → *"LLM을 신뢰성 있게 통합하는 방법"* 으로 이동. 🧠 §비용 축(라우팅 설정)·§왜 중요한가(zod/closed-world 검증)와 같은 방향. ⚠ 벤더 블로그 한 곳의 발언.
 
 ## 관련 문서
 - 🆕 🔥 🚨 ⭐⭐⭐ [[AI-주간-소식-2026-W36]] — (W36-EN3) **캐시를 깨지 않는 컨텍스트 관리**(비용 = 호출수 × 토큰 × (1−캐시적중)) · (W36-EN2) **관제실 층이 국내 경쟁 발표에 비어 있다** · (W36-EN9) 페르소나 포커스그룹(⚠ (W35-EN44)(EN46) 경고 동반) · (W36-EN5) **인간 기준선을 붙인 비교** · (W36-EN14) 소형 모델 다회 탐색 · (W36-EN11) evidence-grounded·auditable 구성
