@@ -2,9 +2,9 @@
 title: CogInsight-Generator (Dialog JSON Generator)
 category: 프로젝트
 tags: [프로젝트, 챗봇, 시나리오, dialog-json, llm, openai, supabase, 핵심, 캐시효율, 관제실, 페르소나집단, 인간기준선, 모델락인회피, 액션슬롯, 되돌림, 영향분석]
-source: raw/projects/coginsight-generator.md, raw/ai-digest/2026-08-12.md, raw/ai-digest/2026-08-13.md, raw/ai-digest/naver-2026-08-20.md, raw/ai-digest/naver-2026-08-21.md, raw/ai-digest/2026-08-21.md, raw/ai-digest/2026-08-22.md, raw/ai-digest/naver-2026-08-28.md, raw/ai-digest/2026-09-01.md, raw/ai-digest/naver-2026-09-06.md (액션 슬롯 되돌림·영향 분석·중단 지표), raw/ai-digest/naver-2026-09-09.md (§경쟁 축), raw/ai-digest/naver-2026-09-13.md (멀티모델 라우팅 층·입력 UX), raw/ai-digest/naver-2026-09-16.md (지식소스 리스크 3축 · 온톨로지 2호 · KV 캐시=컨텍스트 길이 지렛대), raw/ai-digest/naver-2026-09-17.md (온톨로지 3호=PostgreSQL+Apache AGE · 평가의 유형별 분해 · 8차 감사), raw/ai-digest/naver-2026-09-21.md (§비용 축 — Jev 단가 갈래 vs 카이스트 기기-서버 호출 횟수 갈래), raw/ai-digest/naver-2026-09-23.md (§비용 축 갱신 — 단가 갈래가 사흘 만에 무효화 → 모델 라우팅 분리 레이어 · 4단계 AX의 0단계=지식 자산화 · 페르소나 분리 레이어), raw/ai-digest/naver-2026-09-24.md (Opus 5.5 비용 40%↓ · Zeb 초경량 판단 모델), raw/ai-digest/naver-2026-09-25.md (🔥 선택적 기억 개입 +8.3%p=시점 분리 처방 · 에이전트 레디 데이터 · 아웃바운드 경계), raw/ai-digest/naver-2026-09-26.md · naver-2026-09-27.md (모델 크기 갈래 신설=NHN 소형 오픈 모델·정밀도 트레이드오프·오픈소스 과반 · 1M 컨텍스트가 Stage 분리의 서술 근거를 바꾼다 · W39 11차 감사), raw/ai-digest/naver-2026-10-07.md (§의외의 연결점 — 대화 에이전트 30.5%·통합 논의 이동), raw/ai-digest/naver-2026-10-09.md (§의외의 연결점 — 음성 기반 대화형 입구 전망)
+source: raw/projects/coginsight-generator.md, raw/ai-digest/2026-08-12.md, raw/ai-digest/2026-08-13.md, raw/ai-digest/naver-2026-08-20.md, raw/ai-digest/naver-2026-08-21.md, raw/ai-digest/2026-08-21.md, raw/ai-digest/2026-08-22.md, raw/ai-digest/naver-2026-08-28.md, raw/ai-digest/2026-09-01.md, raw/ai-digest/naver-2026-09-06.md (액션 슬롯 되돌림·영향 분석·중단 지표), raw/ai-digest/naver-2026-09-09.md (§경쟁 축), raw/ai-digest/naver-2026-09-13.md (멀티모델 라우팅 층·입력 UX), raw/ai-digest/naver-2026-09-16.md (지식소스 리스크 3축 · 온톨로지 2호 · KV 캐시=컨텍스트 길이 지렛대), raw/ai-digest/naver-2026-09-17.md (온톨로지 3호=PostgreSQL+Apache AGE · 평가의 유형별 분해 · 8차 감사), raw/ai-digest/naver-2026-09-21.md (§비용 축 — Jev 단가 갈래 vs 카이스트 기기-서버 호출 횟수 갈래), raw/ai-digest/naver-2026-09-23.md (§비용 축 갱신 — 단가 갈래가 사흘 만에 무효화 → 모델 라우팅 분리 레이어 · 4단계 AX의 0단계=지식 자산화 · 페르소나 분리 레이어), raw/ai-digest/naver-2026-09-24.md (Opus 5.5 비용 40%↓ · Zeb 초경량 판단 모델), raw/ai-digest/naver-2026-09-25.md (🔥 선택적 기억 개입 +8.3%p=시점 분리 처방 · 에이전트 레디 데이터 · 아웃바운드 경계), raw/ai-digest/naver-2026-09-26.md · naver-2026-09-27.md (모델 크기 갈래 신설=NHN 소형 오픈 모델·정밀도 트레이드오프·오픈소스 과반 · 1M 컨텍스트가 Stage 분리의 서술 근거를 바꾼다 · W39 11차 감사), raw/ai-digest/naver-2026-10-07.md (§의외의 연결점 — 대화 에이전트 30.5%·통합 논의 이동), raw/ai-digest/naver-2026-10-09.md (§의외의 연결점 — 음성 기반 대화형 입구 전망), raw/ai-digest/naver-2026-10-10.md (§안전장치 체인 — 연쇄 환각 전파)
 created: 2026-06-09
-updated: 2026-10-09
+updated: 2026-10-10
 ---
 
 > [!tip] 핵심 takeaway
@@ -226,6 +226,7 @@ updated: 2026-10-09
 - ✅ **처방(구체)**: Stage 경계마다 **넘기는 구조체의 불변식을 런타임에서 한 번 더 확인**하고 실패 시 **다음 Stage로 넘기지 않는다** — 🧠 이건 §해자 절의 *"구조 정합성을 LLM이 아니라 코드가 보증한다"* 를 **단계 경계까지** 넓히는 것이고, 새 의존성이 필요 없다.
 - 🚨 🔥 **아웃바운드 경계도 같이 잠근다** — 📄 (KR-W39-137) **오픈AI 에이전트가 호주 정부 사이트에 허가 없이 접속**한 사고가 같은 주에 확인됐다([[에이전트-자동화-도구]] §가드레일 19호). ✅ 이 프로젝트가 도구 호출·외부 조회를 늘릴 때 **허용 엔드포인트 화이트리스트를 기본값으로** 둔다(사후 차단이 아니라 기본 거부).
 - ⚠ 📄 가트너의 **검증 방법론 상세는 raw에 없음**. 🧠 개념만 가져오고 제품·프레임워크를 전제하지 않는다.
+- 🆕 **(2026-10-10) 이 처방에 위협 이름이 붙었다 — 「연쇄 환각 전파」** (📄 [[AI-주간-소식-2026-W41]] (W41-28)): 📄 Singapore AI Safety Consensus 2026에 인용된 중국 TC260이 다중 에이전트 위협으로 *연쇄 환각 전파 · 충돌 교착 · 자원 과부하* 를 명시했다. 🧠 이 파이프라인은 멀티에이전트가 아니라 **단일 파이프라인의 Stage 체인**이지만, *앞 단계 LLM의 오류가 뒤 단계로 넘어가 커진다*는 구조는 같다 — Stage1 설계 오류는 Stage2가 **결정론적으로 충실하게** 전개하므로 오히려 그대로 보존된다. ✅ 위 *Stage 경계 런타임 불변식* 처방이 이 위협의 직접 대응이다(새 처방 아님, 근거 추가). ⚠ 📄 TC260의 정의·측정 방법은 raw에 **없음**.
 
 ---
 
