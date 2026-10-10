@@ -3,8 +3,13 @@ title: 작업 이력 (Log)
 category: 시스템
 tags: [log, 이력]
 created: 2026-06-10
-updated: 2026-10-09
+updated: 2026-10-10
 ---
+
+## [2026-10-10] 자료넣기 | 자동 위키화 (daily crawl) — naver-2026-10-10.md
+- 📄 naver-2026-10-10.md (34행) 분석. 🆕 신규 6항목: Futurum 에이전틱 AI 우선순위 13→17.1% · Singapore AI Safety Consensus(멀티에이전트 위협 국제 명세) · Medical MASH(의료 멀티에이전트 프레임워크) · UiPath+Talkdesk 의료 콜센터 · TCS BaNCS AI Compass(은행 자동화+설명 가능성) · 강화학습 LLM 추론 연구 리뷰.
+- ✅ [[AI-주간-소식-2026-W41]]: 10/10 섹션(W41-27~32) 추가 + frontmatter source/updated 갱신. 중복 28건 배경 처리.
+- 🔗 연결 후보: [[CogInsight-Generator]] §멀티에이전트 안전(연쇄 환각 전파 경고) · [[에이전트-자동화-도구]] §거버넌스 층.
 
 ## [2026-10-09] 자료넣기 | naver-2026-10-09 재검토 — W41 10/09분 2차 보강(27행 전수 재대조) + 정정 15건
 - 📄 대상: `raw/ai-digest/naver-2026-10-09.md` — 오늘 자동 위키화(1차)로 이미 반영된 파일이라 **새 페이지 없음**. raw는 **27행**(1차는 28행), 1차가 언급한 행은 15행 → 12행 미기재.
