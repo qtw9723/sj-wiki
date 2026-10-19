@@ -4,7 +4,7 @@ category: AI/업계 동향
 tags: [claude-code, 동향, 도구, llm, 자동화, 스킬보안, 신뢰경계, daybreak]
 source: "raw/What's new.md, raw/Week 18~22, raw/ai-digest/naver-2026-08-08.md, raw/ai-digest/2026-08-12.md, raw/ai-digest/naver-2026-09-07.md, raw/ai-digest/naver-2026-09-19.md (AGENTS.md 공통 규격화 · v2.1.276 · IPO/Karpathy), raw/ai-digest/naver-2026-09-20.md ('프로젝트' 병렬 멀티에이전트 개편 · 플러그인4셸 · 체르니 \"코딩은 해결됐다\"), raw/ai-digest/naver-2026-09-21.md (Unity 공식 플러그인 29개 스킬 = 플러그인4셸 처방①의 시급성 · 규격 통합은 지침 파일까지라는 정밀화), raw/ai-digest/naver-2026-09-22.md (도구 확산 계보 = 이 도구의 운영 방식이 교재가 됐다 · AWS Strands Harness = 로컬→클라우드 확장 층), raw/ai-digest/naver-2026-09-23.md (도메인 확장 계보 3칸째=Claude Science · Claude Opus 5.5 공개와 경쟁사 API 50% 인하 · 🚨 공격받는 쪽↔공격하는 쪽이 사흘 안에 둘 다), raw/ai-digest/naver-2026-09-24.md (Opus 5.5 속도·비용 독립 재확인 · 도메인 확장 4칸째=Scientific AI 페르마 정리 · W39 7차 자동), raw/ai-digest/naver-2026-09-25.md (🔥 도메인 확장 5칸째=생명과학 효소 발견), raw/ai-digest/naver-2026-09-26.md (Claude 새 헌법=성문화 5호 후보 · 9월 모델 릴리즈 타임라인), raw/ai-digest/naver-2026-09-27.md (자사 R&D 자동화율 26% 주도·완전 자율 0% · W39 11차 감사), raw/ai-digest/naver-2026-09-28.md (🆕 통제 축 신설 = Enterprise 관리자 API 베타 졸업·웹 검색 도메인 허용/차단 · Fable 5.1 1M 정식 지원·전 채널 확장 · W40 2차 보강), raw/ai-digest/naver-2026-10-03.md (통제 축 2칸째 = Claude for Government FedRAMP High · Barclays 전사 배포 · M365 · W40 12차 보강), raw/ai-digest/naver-2026-10-05.md (⑬ 에이전트 뷰 = 멀티에이전트 관리 화면 · Sonnet 5.5 단가 · W41 2차 보강), raw/ai-digest/naver-2026-10-11.md (Claude Dashboards·Motion · Projects 베타 세부 · 자동 모드 기본 탑재 · 음성 모드 · 자기 최적화 3.1→0.55초 · W41 10/11 2차), raw/ai-digest/naver-2026-10-15.md (네이버 Claude Code 전사 배포 재보도 · W42 6차)"
 created: 2026-06-09
-updated: 2026-10-15
+updated: 2026-10-19
 ---
 
 > [!warning] ⚠ stale — 갱신 대기 (2026-06-15 검진 · 🆕 2026-09-07 정지 사유 **좁힘**)
@@ -249,6 +249,16 @@ updated: 2026-10-15
 - 📄 **음성 모드**(⚠ 2026-03-04, [ZDNet](https://zdnet.co.kr/view/?no=20260304215307)): *자연어 음성으로 코딩 작업 지시.* 🧠 7개월 전 기사 — 계보 기록용 한 줄. [[AI-주간-소식-2026-W41]] (W41-25) *음성이 정보 소비의 입구* 와 같은 방향의 개발 도구 판본.
 - 📄 **Claude가 Claude 최적화 — 웹 서비스 첫 로딩 3.1초 → 0.55초**(⚠ 2026-09, [AI타임스](https://www.aitimes.com/news/articleView.html?idxno=215678)): *Anthropic 내부 연구 모델이 자체 최적화 수행.* 🧠 위 §자사 R&D 자동화율 26% 주도·완전 자율 0%(2026-09-27)와 **같은 줄의 사례**다 — 숫자 하나(약 5.6배, 기사 제목은 *"3배"*)가 붙었을 뿐, *완전 자율* 근거는 아니다. ⚠ 📄 제목 *"속도 3배"* ↔ 본문 *3.1→0.55초*(🧠 계산상 약 5.6배)가 **맞지 않는다** — 수치 인용 시 초 단위 원값만 쓴다.
 - ⚠ 📄 같은 raw의 *Opus 4.6*(02-06)·*Fable 5 재공개 불만*(07-05)·*워터마크*(08-18)는 구버전·기존 수록이라 이 절에 넣지 않는다(→ W41 §10/11 대응표 #12·15·19). 🚨 상단 stale 정지 사유(주차별 릴리스 노트 미입수)는 그대로 유효.
+
+## 🆕 **v2.1.276 → v2.1.302 · Haiku 5.5 · Workspace 베타 — 10월 Anthropic 소식이 한 수집분에 몰렸다** (2026-10-19 · W43 2차 감사)
+
+📄 근거: [[AI-주간-소식-2026-W43]] (W43-02)(W43-03) — 원본 `raw/ai-digest/naver-2026-10-19.md` § Claude AI·AI 자동화
+
+- 📄 **Claude Code 2.1.302**(Releasebot, *10월 17일 확인*). 🧠 이 페이지의 마지막 버전 기록은 §AGENTS.md 절의 **v2.1.276**(2026-09-19) → 약 한 달에 **26 릴리스**. 🚨 상단 stale 정지 사유(주차별 릴리스 노트 미입수)는 그대로 — 이번에도 *번호만* 들어왔고 변경 내용은 raw에 **없음**.
+- 📄 **Haiku 5.5 출시(10월 7일) · *10만 토큰 이하 입출력 단가 90% 인하***(BetaAI 뉴스레터). 🧠 9월 말 Sonnet 5.5·Opus 5.5(📄 AI Tech Model)에 이어 **5.5 세대 3계층이 2주 안에 다 나왔다**. ⚠ 📄 인하 기준(직전 모델 대비인지)·벤치마크는 raw에 **없음**, 출처는 2차 요약 1곳 — 공식 가격표 대조 전 수치 인용 금지. 🧠 [[mailer|CS SmartHub]]·[[CogInsight-Generator]]는 현재 Haiku 사용 기록이 없다 → *단계별로 Haiku로 내릴 수 있는 구간* 은 자체 평가셋으로 검토할 후보일 뿐.
+- 📄 **Google Workspace용 Claude 공개 베타(유료 플랜, 10월 6일)** · **Barclays 은행 전반 도입**. 🧠 §통제 축(Enterprise 관리자 API · for Government)과 같은 **기업 판매 라인**의 연장 — 이번엔 *남의 오피스 제품군 안으로* 들어갔다. → [[내-MCP-커넥터-환경]] 검토 대상.
+- 📄 요금제(AI Creator Lab): *Pro $20 · Max 5x $100 · Max 20x $200, Claude Code 포함* — 🔁 [[AI-주간-소식-2026-W41]] §10/10과 같은 금액.
+- 🚨 같은 수집분의 *"Claude Next" 51초 영상* 은 📄 raw 자체가 **비공식·미검증**으로 표기 → 이 페이지에 사실로 올리지 않는다(W43-X01).
 
 ## 의외의 연결점
 - 🔥 ⭐⭐ **🆕 (2026-09-18) 코딩 어시스턴트가 「개발자 개인 도구」에서 「전사 표준 도구」로 넘어간 국내 관측** ([[AI-주간-소식-2026-W38]] (KR-W38-117) · 10차 감사): 📄 윈큐브마케팅 — *"**전 직원을 대상으로 AI 코딩 어시스턴트를 정식 도입**해 업무 자동화와 생산성 향상 추진"*([public25](https://www.public25.com/news/articleView.html?idxno=54996)). 🧠 지금까지 이 페이지의 전제는 *"개발자가 쓰는 도구"* 였는데, **마케팅 회사가 전 직원에게 지급**한다 — ✅ [[내-프로필]] §리터러시 계보에서 (KR-W38-60) 제주도청(공공, 계정 8종 1.1억)의 **민간 판본**이다. ⚠ 📄 제품명(Claude Code인지 여부)·도입 규모는 raw에 **없음**. 🚨 같은 기사의 *역대 최대 반기 실적* 과의 **인과는 raw에 없다** → [[프로젝트-포트폴리오]] 수치 서술 규칙.
