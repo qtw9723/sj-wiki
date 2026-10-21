@@ -4,7 +4,7 @@ category: 도구/스킬
 tags: [자동화, apps-script, gemini, gmail, google-calendar, 브리핑, 리포팅]
 source: raw/모닝-브리핑-AppsScript.md (사용자 전달 2026-06-24)
 created: 2026-06-24
-updated: 2026-06-24
+updated: 2026-10-21
 ---
 
 > [!tip] 핵심 takeaway
@@ -15,6 +15,11 @@ updated: 2026-06-24
 > [!warning] 보안 — API 키
 > ⚠️ 실제 Gemini API 키는 **이 위키에 두지 않는다**. Apps Script **스크립트 속성(`GEMINI_API_KEY`)** 에만 저장하고, 코드에는 `PropertiesService`로 로드만 한다.
 > 📄 2026-06-24 채팅으로 키 평문이 노출된 적 있음 → **해당 키 폐기·재발급 권고**(아래 할 일).
+
+> [!info] 현재 상태 (2026-10-21) 📄
+> - 소스는 이제 로컬 저장소 `~/IdeaProjects/morning-briefing`(clasp, `clasp push`로 배포·`npm test`). 2026-08 **V2**: Supabase(parking) `briefing_*` 테이블로 스레드 이력·카테고리·Sheet 메모, 렌더는 코드(`render.js`). 라이브 트리거 = `sendDailySummaryReportV2`, 매일 ~08:00.
+> - **DIGEST-1 (2026-10-21)**: 맥의 `~/weekly-report/digest.py`가 평일 07:00(절전 기상)에 git 진행사항·별도 작업 기록·포럼 기술지원(로그인 크롬)을 모아 `briefing_digests`에 올림 → 데일리에 "🧭 진행사항·오늘 할 일"·"💬 포럼 기술지원", 월요일 위클리에 "📊 주간 작업 점검"이 같이 실린다. 별도 주간 메일·12:30 포럼 알림은 중단(알림 한 통으로 통합).
+> - 아래 본문은 2026-06 V1 기준 설명이다.
 
 ## 어떻게 받고 있나 (동작 흐름) 📄
 
