@@ -6,6 +6,10 @@ created: 2026-06-10
 updated: 2026-10-21
 ---
 
+## [2026-10-21] 자료넣기 | REA(Reverse Engineer Anything) 오픈소스 정리
+- 사용자 요청(프로젝트 도입 검토) → GitHub README·npm·기사 확인해 [[REA-Reverse-Engineer-Anything]] 신규 작성(도구/스킬). 구조·대상·설치·보안 주의·도입 제안 포함.
+- index 도구/스킬에 등록, [[내-MCP-커넥터-환경]] 관련 문서에 링크 추가.
+
 ## [2026-10-21] 자료넣기 | 자동 위키화 (daily crawl) — W43 5차 감사
 - 📄 대상: `raw/ai-digest/naver-2026-10-21.md` — 25행 URL 전수 대조. 🆕 **0** · 🔁 **25**(중복률 100%). 10/20 raw와 실질 동일한 URL 집합. **WebSearch 대체 18일 연속**(10-04~10-21).
 - 🔗 반영: [[AI-주간-소식-2026-W43]](frontmatter source·updated 갱신 · takeaway 5차 노트 · 5차 감사 대응표 추가) · [[log]].

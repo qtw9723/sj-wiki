@@ -175,6 +175,7 @@ KakaoMap(장소·길찾기) / KakaotalkCal(캘린더·할일) / KakaotalkChat(�
 - **NaverSearch datalab(연령·성별 트렌드)**: 타게팅·캠페인 설계 시 트렌드 데이터 활용 발상.
 
 ## 관련 문서
+- [[REA-Reverse-Engineer-Anything]] — 도입 검토 중인 역공학 MCP(등록 시 권한 최소화 원칙 적용 대상)
 - [[카카오-Play-MCP]] · [[공통-기술스택]] · [[에이전트-자동화-도구]] · [[schedule-reporter-kakao]] · [[내-프로필]]
 - 🆕 🔥 🚨 [[AI-주간-소식-2026-W36]] — (W36-EN4) SkillSafetyBench(스킬 = 파일·도구·메모리·실행 접근 = 공격면) · (W36-EN7) Logos(cross-process bus · tracked inverse) · (W36-EN6) 오프라인 검증 가능한 증거 번들 · **🆕 (KR-W36-58) 국내 매체가 MCP를 「핵심」으로 명시** · **🆕 (KR-W36-67) NDS n.AI Gateway = 사용량·비용 가시성 컨트롤 타워(§5)** · **🆕 (KR-W36-78) F5 가드레일+레드팀 = 검증 축(§5-1)** · **🆕 (KR-W36-76) 환각 = 인출 실패 → 모델 핀보다 인출 설계(§5-2)** · **🆕 (KR-W36-71) PAIR = 로컬 모델 층 확대(§5-2)** · **🆕 🚨 (KR-W36-82) AI 블랙아웃 + (KR-W36-89) SecFlow 멀티 모델 공격 + (KR-W36-86) 국내 챗GPT 94% 집중 = 모델 단일 의존 리스크(§5-3)**
 - 🆕 🚨 [[AI-주간-소식-2026-W35]] — (KR-W35-108) Claude Code Opus 5 Auto Mode 프롬프트 인젝션 60~80% · (W35-EN37) 조직 경계를 넘는 에이전트 위험 프레임워크
