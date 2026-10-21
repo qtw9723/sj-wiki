@@ -1,0 +1,130 @@
+filters:
+  and:
+    - file.hasProperty("gl_type")
+properties:
+  note.gl_type:
+    displayName: 유형
+  note.gl_domain:
+    displayName: 도메인
+  note.gl_experience:
+    displayName: 경험
+  note.gl_status:
+    displayName: 상태
+  note.gl_genre:
+    displayName: 장르
+  note.gl_games:
+    displayName: 출처 게임
+  note.gl_engine:
+    displayName: 엔진
+  note.gl_lang:
+    displayName: 언어
+  note.gl_difficulty:
+    displayName: 난이도
+  note.gl_evidence:
+    displayName: 근거
+  note.gl_synergy:
+    displayName: 잘 맞는 요소
+  file.mtime:
+    displayName: 수정
+views:
+  - type: table
+    name: 전체
+    groupBy:
+      property: note.gl_type
+      direction: ASC
+    order:
+      - file.name
+      - note.gl_domain
+      - note.gl_experience
+      - note.gl_status
+      - note.gl_games
+      - file.mtime
+  - type: table
+    name: 경험으로 찾기
+    groupBy:
+      property: note.gl_experience
+      direction: ASC
+    order:
+      - file.name
+      - note.gl_type
+      - note.gl_domain
+      - note.gl_status
+  - type: table
+    name: 도메인별
+    groupBy:
+      property: note.gl_domain
+      direction: ASC
+    order:
+      - file.name
+      - note.gl_type
+      - note.gl_experience
+      - note.gl_status
+  - type: table
+    name: 코드
+    filters:
+      and:
+        - note.gl_type == "코드"
+    order:
+      - file.name
+      - note.gl_engine
+      - note.gl_lang
+      - note.gl_difficulty
+      - note.gl_status
+  - type: table
+    name: 수치·레벨
+    filters:
+      or:
+        - note.gl_type == "수치"
+        - note.gl_type == "레벨"
+    order:
+      - file.name
+      - note.gl_type
+      - note.gl_domain
+      - note.gl_evidence
+      - note.gl_status
+  - type: table
+    name: 사례(게임)
+    filters:
+      and:
+        - note.gl_type == "사례"
+    order:
+      - file.name
+      - note.gl_genre
+      - file.mtime
+  - type: table
+    name: 조합
+    filters:
+      and:
+        - note.gl_type == "조합"
+    order:
+      - file.name
+      - note.gl_synergy
+      - note.gl_status
+      - file.mtime
+  - type: table
+    name: 검증됨
+    filters:
+      and:
+        - note.gl_status == "검증"
+    order:
+      - file.name
+      - note.gl_type
+      - note.gl_domain
+      - note.gl_experience
+  - type: table
+    name: 최근 수정
+    order:
+      - file.name
+      - note.gl_type
+      - note.gl_status
+      - file.mtime
+    sort:
+      - property: file.mtime
+        direction: DESC
+    limit: 30
+  - type: cards
+    name: 카드
+    order:
+      - file.name
+      - note.gl_type
+      - note.gl_experience
