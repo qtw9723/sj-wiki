@@ -6,6 +6,9 @@ created: 2026-06-10
 updated: 2026-10-21
 ---
 
+## [2026-10-21] 질문 | REA 데이터 흐름·로컬 LLM 패턴·도메인→챗봇 구조 아이디어
+- 대화 결론을 [[REA-Reverse-Engineer-Anything]]에 추가: §7-1 데이터 흐름 오해 정리, §9 REA+로컬/사내 LLM(CLI 파이프라인·에이전트 방식), §10 도메인→비슷한 구조 챗봇 파이프라인.
+
 ## [2026-10-21] 자료넣기 | REA(Reverse Engineer Anything) 오픈소스 정리
 - 사용자 요청(프로젝트 도입 검토) → GitHub README·npm·기사 확인해 [[REA-Reverse-Engineer-Anything]] 신규 작성(도구/스킬). 구조·대상·설치·보안 주의·도입 제안 포함.
 - index 도구/스킬에 등록, [[내-MCP-커넥터-환경]] 관련 문서에 링크 추가.
