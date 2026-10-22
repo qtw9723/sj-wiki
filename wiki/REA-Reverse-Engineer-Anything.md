@@ -2,9 +2,9 @@
 title: REA (Reverse Engineer Anything) — AI 에이전트용 역공학 MCP
 category: 도구/스킬
 tags: [rea, mcp, 역공학, reverse-engineering, claude-code, 오픈소스, electron, 보안, 공급망, 로컬llm, vllm, 챗봇구조분석]
-source: https://github.com/morluto/rea (README, 2026-10-21 확인), npm rea-agents, https://pasqualepillitteri.it/en/news/23845/rea-reverse-engineer-anything-github-true-false, https://www.inside.com.tw/article/42615-rea-reverse-engineer-anything-open-source-mcp-ai-agent-github
+source: https://github.com/morluto/rea (README, 2026-10-21 확인), npm rea-agents, https://pasqualepillitteri.it/en/news/23845/rea-reverse-engineer-anything-github-true-false, https://www.inside.com.tw/article/42615-rea-reverse-engineer-anything-open-source-mcp-ai-agent-github, raw/ai-digest/naver-2026-10-22.md (ZDNet 국내 보도)
 created: 2026-10-21
-updated: 2026-10-21
+updated: 2026-10-22
 ---
 
 > [!tip] 핵심 takeaway
@@ -26,6 +26,7 @@ updated: 2026-10-21
 | 공식 출처 | morluto/rea, rea.tools, npm `rea-agents` **3곳만** | 📄 README |
 
 - ⚠ 📄 스타 수는 기사마다 다름(10/14 약 23만, 10/17 29만 돌파 보도, 오늘 35만). 🧠 10월 초 GitHub 트렌딩 이후 폭발적으로 증가 중이라 숫자 자체엔 의미 두지 말 것.
+- 🆕 (2026-10-22) 📄 국내 보도: ZDNet Korea *"별 28만 개, 깃허브 뒤흔든 'REA' 정체"*(10/17, [원문](https://zdnet.co.kr/view/?no=20261017111354)) — 자동 수집 `raw/ai-digest/naver-2026-10-22.md`. 🧠 같은 날짜·같은 규모라 이 REA로 보이나 ZDNet 본문 미확인이라 **동일 대상 확정은 아님**(→ [[AI-주간-소식-2026-W43]] W43-35). 🧠 국내 매체가 다루기 시작했다 = 사칭 레포 위험(위 takeaway (1))도 국내로 번질 수 있다는 뜻.
 - 🧠 이슈·PR이 수백 건 열려 있고 릴리스 속도가 매우 빠름 → **버전 고정(pin) 후 도입**이 안전.
 
 ## 3. 구조 (어떻게 동작하나)
@@ -156,3 +157,4 @@ rea CLI ──JSON──▶ 스크립트(요약·청크 분할) ──▶ 로컬
 - [[Claude-Code-업데이트-동향]] — Claude Code와의 연동
 - [[공통-기술스택]] — 적용 대상 스택
 - [[웹-크롤링-기초]] — 웹 동작 파악(Playwright 등)과의 비교 후보
+- [[AI-주간-소식-2026-W43]] — W43-35 국내 보도(ZDNet 별 28만) · 같은 주 에이전트 권한 사고(W43-22·31)
