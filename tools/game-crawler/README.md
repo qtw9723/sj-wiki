@@ -54,7 +54,9 @@ python tools/game-crawler/process.py --offline  # 상점·SteamSpy 조회 없이
 
 `run_daily.py`가 수집 → 정제를 차례로 실행한다(`--push`를 주면 `raw/games`만 커밋·푸시, 기본 꺼짐).
 
-**Windows 작업 스케줄러** (PC에서 직접 실행하는 방식 — 아래 '네트워크' 참고):
+**Windows PC에서 직접 실행 (선택됨, 2026-10-24)** — 저장소를 클론한 뒤 `tools\game-crawler\setup_windows.bat` 을 한 번 실행하면 모의 테스트 → 실제 수집 시험(5개) → 매일 07:30 작업 등록까지 한다. 실패하면 오류 메시지를 Claude에게 붙여넣는다.
+
+수동으로 등록하려면 (아래 '네트워크' 참고):
 ```bat
 schtasks /Create /SC DAILY /ST 07:30 /TN "sj-game-crawler" /TR "\"<저장소경로>\tools\game-crawler\run_daily.bat\"" /F
 ```
