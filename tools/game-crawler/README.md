@@ -35,3 +35,33 @@ Windows PowerShell에서는 `$env:RAPIDAPI_KEY="..."` 로 키를 설정한다. �
 - Metacritic은 공식 API가 없다. `--metacritic`은 robots.txt가 허용할 때만 최선 노력으로 읽으며, 약관은 직접 확인해야 한다.
 - 이름이 정확히 같을 때만 평론가 점수를 채택한다(오매칭 방지). 못 찾은 게임은 `평론가 없음`.
 - 리뷰 본문은 재게시하지 않는다. 위키에는 규칙·수치 요약과 출처만 남긴다(`게임요소-라이브러리` §6).
+
+## 정제·분류 (`process.py`) — 크롤링 다음 단계
+
+```bash
+python tools/game-crawler/process.py            # raw/games 의 가장 최근 steam-critic-*.json 을 정제
+python tools/game-crawler/process.py --offline  # 상점·SteamSpy 조회 없이 검증만
+```
+
+- **탈락**: 게임이 아닌 항목(상점 `type` ≠ game: DLC·데모·소프트웨어 등), 중복 appid, Steam 요약 없음 — 사유와 함께 기록
+- **경고**(통과는 시키되 표시): 긍정 비율 재계산 불일치, 이름 없음, 앞서 해보기(Early Access), 상점 type 확인 실패
+- **장르 분류**: Steam 장르 + SteamSpy 태그 → `genre_map.json` → 통제 어휘 `gl_genre`. 매핑표에 없는 태그는 `미분류 태그`로 모아 보고서에 나온다. 어휘표(`게임요소-라이브러리` §4-3)에 추가할 값이면 `tags`에, 필요 없으면 `ignore_tags`에 넣는다
+- **신규 표시**: `raw/games/state.json`에 본 게임을 기록해 매일 돌릴 때 새로 들어온 게임만 🆕로 구분
+- 출력: `clean-YYYY-MM-DD.json` / `.md`
+- 아직 없음: 리뷰 폭탄(최근 리뷰 급변) 탐지, 요소(메커니즘) 추출 — 후자는 대화에서 사람 확인과 함께 한다
+
+## 매일 아침 실행
+
+`run_daily.py`가 수집 → 정제를 차례로 실행한다(`--push`를 주면 `raw/games`만 커밋·푸시, 기본 꺼짐).
+
+**Windows 작업 스케줄러** (PC에서 직접 실행하는 방식 — 아래 '네트워크' 참고):
+```bat
+schtasks /Create /SC DAILY /ST 07:30 /TN "sj-game-crawler" /TR "\"<저장소경로>\tools\game-crawler\run_daily.bat\"" /F
+```
+- 저장소를 PC에 클론해 두고 `<저장소경로>`를 바꿔 쓴다. Python(`py` 런처)과 git이 필요하다.
+- PC가 꺼져 있으면 실행되지 않는다. 놓친 실행을 켜질 때 따라잡으려면 작업 스케줄러 설정의 '예약된 시작 시간을 놓친 경우 가능한 대로 빨리 작업 실행'을 켠다.
+
+## 네트워크 (테스트 중 확인한 사실)
+
+- Claude 클라우드 작업 환경과 Claude 데스크톱 앱의 작업 VM은 둘 다 접속 허용 목록 방식이라 `api.steampowered.com`이 프록시에서 **403**으로 막혔다(GitHub은 통과). 그래서 이 두 곳에서는 실제 수집을 시험하지 못했다.
+- 해결책은 둘 중 하나: ① PC에서 직접 실행(위 작업 스케줄러), ② 계정의 네트워크 허용 목록에 `api.steampowered.com` · `store.steampowered.com` · `steamspy.com` (+ OpenCritic은 `opencritic-api.p.rapidapi.com`, Metacritic은 `www.metacritic.com`)을 추가.
