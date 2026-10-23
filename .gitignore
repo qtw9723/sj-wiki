@@ -28,3 +28,8 @@ raw/healthcare-*
 wiki/HealthCare-*
 wiki/OpenEMR.md
 wiki/챗봇-플랫폼-용어.md
+
+# === 게임 크롤러 (tools/game-crawler) ===
+tools/game-crawler/.cache/
+raw/games/reviews-*.json
+__pycache__/
