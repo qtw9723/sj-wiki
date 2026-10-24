@@ -3,8 +3,11 @@ title: 작업 이력 (Log)
 category: 시스템
 tags: [log, 이력]
 created: 2026-06-10
-updated: 2026-10-23
+updated: 2026-10-24
 ---
+
+## [2026-10-24] 자료넣기 | 자동 위키화 (daily crawl — naver-2026-10-24.md)
+- 📄 `raw/ai-digest/naver-2026-10-24.md` 22행 대조. 🆕 4건 신규 수록: **W43-43**(Kings Research LLM 시장 $86B→$677B CAGR 34.3%) · **W43-44**(NCBI 강화 추론 서베이, 인간 유사 사고 모사 추론 모델) · **W43-45**(딜로이트 Tech Trends 2026, 조직 구조 재설계·자동화 AI CAGR 29.4%) · **W43-46**(2sync 에이전틱 패턴 = 판단 LLM + 결정론적 실행 코드, 2026-09 주류화). 🔁 18건 중복(thunderbit·speculativechic·barchart×2·arxiv 등). 11차 감사 대응표 추가. [[AI-주간-소식-2026-W43]]·[[index]] 갱신. WebSearch 대체 21일 연속.
 
 ## [2026-10-24] 자료넣기 | 게임 크롤러 실행 방식 확정 — PC 직접 실행(작업 스케줄러 07:30)
 - 📄 사용자 확정: PC는 항상 켜져 있어 PC에서 직접 실행. `tools/game-crawler/setup_windows.bat` 추가(모의 테스트 → 5개 수집 시험 → 작업 등록). [[게임-크롤러-스팀-크리틱]] §7, README 갱신. 첫 실제 실행 결과 대기.
