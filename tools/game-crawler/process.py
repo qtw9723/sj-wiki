@@ -87,8 +87,9 @@ def classify(info: dict, gmap: dict, top_tags: int = 12) -> tuple[list[str], dic
         if v and v not in found:
             found.append(v)
     unmapped = {}
-    ranked = sorted(info["tags"].items(), key=lambda kv: kv[1], reverse=True)[:top_tags]
+    ranked = sorted(((k.strip(), v) for k, v in info["tags"].items()), key=lambda kv: kv[1], reverse=True)[:top_tags]
     for tag, votes in ranked:
+        tag = tag.strip()
         if tag in gmap["ignore_tags"]:
             continue
         v = gmap["tags"].get(tag)

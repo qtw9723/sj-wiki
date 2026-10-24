@@ -9,6 +9,10 @@ updated: 2026-10-24
 ## [2026-10-24] 자료넣기 | 자동 위키화 (daily crawl — naver-2026-10-24.md)
 - 📄 `raw/ai-digest/naver-2026-10-24.md` 22행 대조. 🆕 4건 신규 수록: **W43-43**(Kings Research LLM 시장 $86B→$677B CAGR 34.3%) · **W43-44**(NCBI 강화 추론 서베이, 인간 유사 사고 모사 추론 모델) · **W43-45**(딜로이트 Tech Trends 2026, 조직 구조 재설계·자동화 AI CAGR 29.4%) · **W43-46**(2sync 에이전틱 패턴 = 판단 LLM + 결정론적 실행 코드, 2026-09 주류화). 🔁 18건 중복(thunderbit·speculativechic·barchart×2·arxiv 등). 11차 감사 대응표 추가. [[AI-주간-소식-2026-W43]]·[[index]] 갱신. WebSearch 대체 21일 연속.
 
+## [2026-10-24] 자료넣기 | 게임 크롤러 첫 실제 실행 성공(PC) + .bat 줄바꿈 문제 수정
+- 📄 PC(`Documents\\sj-wiki-run`)에서 `test_windows.bat` 결과: 실제 Steam·SteamSpy·상점 호출 성공, 5개 게임 수집·정제(탈락 0, 신규 5). 처음 만든 `.bat`은 LF+한글 때문에 시작도 못 해 영문·CRLF로 재작성, `.gitattributes`에 `*.bat text eol=crlf`.
+- `process.py` 태그 공백 제거, `genre_map.json`에 FPS→슈팅. 미분류 태그 14종은 어휘표 결정 대기(🧠 `gl_domain` 성격 다수). OpenCritic·Metacritic·스케줄러 등록은 미확인. [[게임-크롤러-스팀-크리틱]] §7~9 갱신.
+
 ## [2026-10-24] 자료넣기 | 게임 크롤러 실행 방식 확정 — PC 직접 실행(작업 스케줄러 07:30)
 - 📄 사용자 확정: PC는 항상 켜져 있어 PC에서 직접 실행. `tools/game-crawler/setup_windows.bat` 추가(모의 테스트 → 5개 수집 시험 → 작업 등록). [[게임-크롤러-스팀-크리틱]] §7, README 갱신. 첫 실제 실행 결과 대기.
 

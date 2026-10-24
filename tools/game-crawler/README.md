@@ -30,7 +30,8 @@ Windows PowerShell에서는 `$env:RAPIDAPI_KEY="..."` 로 키를 설정한다. �
 
 ## 알아둘 점
 
-- 개발 환경에서 외부 사이트에 접속할 수 없어 **실제 API로는 아직 실행하지 못했다.** 첫 실행에서 오류가 나면 `crawler.py`의 `VERIFY` 주석 지점(응답 감싸기, 필드명, 호스트)부터 본다.
+- **2026-10-24 PC에서 실제 실행 성공**(Steam `GetAppReviews`·SteamSpy·상점 appdetails, 5개 게임, 정제까지 약 50초). 아직 안 돌려 본 것: OpenCritic·Metacritic, `--push`, 작업 스케줄러 등록, `--sample-reviews`. 오류가 나면 `crawler.py`의 `VERIFY` 주석 지점부터 본다.
+- `.bat` 파일은 영문·CRLF 줄바꿈이어야 Windows에서 실행된다(`.gitattributes`로 고정). `test_windows.bat`은 작업 등록 없이 모의 테스트 + 실제 5개 수집만 하고 `test_result.txt`에 기록한다.
 - Steam 호출은 키 없이도 되지만 한도가 낮고 429가 올 수 있다. 요청 간 대기와 재시도, 24시간 디스크 캐시(`tools/game-crawler/.cache/`)가 들어 있다.
 - Metacritic은 공식 API가 없다. `--metacritic`은 robots.txt가 허용할 때만 최선 노력으로 읽으며, 약관은 직접 확인해야 한다.
 - 이름이 정확히 같을 때만 평론가 점수를 채택한다(오매칭 방지). 못 찾은 게임은 `평론가 없음`.
@@ -65,5 +66,5 @@ schtasks /Create /SC DAILY /ST 07:30 /TN "sj-game-crawler" /TR "\"<저장소경�
 
 ## 네트워크 (테스트 중 확인한 사실)
 
-- Claude 클라우드 작업 환경과 Claude 데스크톱 앱의 작업 VM은 둘 다 접속 허용 목록 방식이라 `api.steampowered.com`이 프록시에서 **403**으로 막혔다(GitHub은 통과). 그래서 이 두 곳에서는 실제 수집을 시험하지 못했다.
+- Claude 클라우드 작업 환경과 Claude 데스크톱 앱의 작업 VM은 둘 다 접속 허용 목록 방식이라 `api.steampowered.com`이 프록시에서 **403**으로 막힌다(GitHub은 통과). 그래서 이 두 곳에서는 수집이 안 돌고, **PC에서 직접 실행**해야 한다.
 - 해결책은 둘 중 하나: ① PC에서 직접 실행(위 작업 스케줄러), ② 계정의 네트워크 허용 목록에 `api.steampowered.com` · `store.steampowered.com` · `steamspy.com` (+ OpenCritic은 `opencritic-api.p.rapidapi.com`, Metacritic은 `www.metacritic.com`)을 추가.
