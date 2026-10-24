@@ -1,0 +1,106 @@
+{
+  "date": "2026-10-24",
+  "params": {
+    "source": "steamspy-top",
+    "min_reviews": 1000,
+    "min_ratio": 0.8,
+    "limit": 5
+  },
+  "games": [
+    {
+      "appid": 413150,
+      "name": "Stardew Valley",
+      "url": "https://store.steampowered.com/app/413150",
+      "steam": {
+        "positive": 887614,
+        "negative": 13292,
+        "total": 900906,
+        "ratio": 0.9852,
+        "wilson": 0.985,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 98.5,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 400,
+      "name": "Portal",
+      "url": "https://store.steampowered.com/app/400",
+      "steam": {
+        "positive": 172442,
+        "negative": 2545,
+        "total": 174987,
+        "ratio": 0.9855,
+        "wilson": 0.9849,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 98.6,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 3164500,
+      "name": "Schedule I",
+      "url": "https://store.steampowered.com/app/3164500",
+      "steam": {
+        "positive": 286290,
+        "negative": 6416,
+        "total": 292706,
+        "ratio": 0.9781,
+        "wilson": 0.9775,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 97.8,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 220,
+      "name": "Half-Life 2",
+      "url": "https://store.steampowered.com/app/220",
+      "steam": {
+        "positive": 199502,
+        "negative": 4721,
+        "total": 204223,
+        "ratio": 0.9769,
+        "wilson": 0.9762,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 97.7,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 550,
+      "name": "Left 4 Dead 2",
+      "url": "https://store.steampowered.com/app/550",
+      "steam": {
+        "positive": 802987,
+        "negative": 19905,
+        "total": 822892,
+        "ratio": 0.9758,
+        "wilson": 0.9755,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 97.6,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    }
+  ]
+}
