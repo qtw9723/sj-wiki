@@ -7,9 +7,9 @@
       "name": "Stardew Valley",
       "url": "https://store.steampowered.com/app/413150",
       "steam": {
-        "positive": 887614,
+        "positive": 887620,
         "negative": 13292,
-        "total": 900906,
+        "total": 900912,
         "ratio": 0.9852,
         "wilson": 0.985,
         "review_score_desc": "Overwhelmingly Positive"
@@ -25,9 +25,9 @@
         "시뮬레이션",
         "샌드박스"
       ],
-      "release": "Feb 26, 2016",
+      "release": "26 Feb, 2016",
       "warnings": [],
-      "is_new": true
+      "is_new": false
     },
     {
       "appid": 400,
@@ -54,7 +54,7 @@
       ],
       "release": "10 Oct, 2007",
       "warnings": [],
-      "is_new": true
+      "is_new": false
     },
     {
       "appid": 3164500,
@@ -83,16 +83,16 @@
       "warnings": [
         "앞서 해보기(Early Access) — 평가가 변할 수 있음"
       ],
-      "is_new": true
+      "is_new": false
     },
     {
       "appid": 220,
       "name": "Half-Life 2",
       "url": "https://store.steampowered.com/app/220",
       "steam": {
-        "positive": 199502,
+        "positive": 199503,
         "negative": 4721,
-        "total": 204223,
+        "total": 204224,
         "ratio": 0.9769,
         "wilson": 0.9762,
         "review_score_desc": "Overwhelmingly Positive"
@@ -109,16 +109,16 @@
       ],
       "release": "16 Nov, 2004",
       "warnings": [],
-      "is_new": true
+      "is_new": false
     },
     {
       "appid": 550,
       "name": "Left 4 Dead 2",
       "url": "https://store.steampowered.com/app/550",
       "steam": {
-        "positive": 802987,
+        "positive": 802991,
         "negative": 19905,
-        "total": 822892,
+        "total": 822896,
         "ratio": 0.9758,
         "wilson": 0.9755,
         "review_score_desc": "Overwhelmingly Positive"
@@ -135,7 +135,7 @@
       ],
       "release": "16 Nov, 2009",
       "warnings": [],
-      "is_new": true
+      "is_new": false
     }
   ],
   "rejected": [],
@@ -143,7 +143,6 @@
     "Crafting": 2,
     "Building": 2,
     "Classic": 2,
-    "FPS": 2,
     "Zombies": 2,
     "Life Sim": 1,
     "Agriculture": 1,
@@ -153,7 +152,7 @@
     "Management": 1,
     "Base-Building": 1,
     "Automation": 1,
-    "Dystopian ": 1,
+    "Dystopian": 1,
     "Survival": 1,
     "Team-Based": 1
   }

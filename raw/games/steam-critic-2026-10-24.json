@@ -12,9 +12,9 @@
       "name": "Stardew Valley",
       "url": "https://store.steampowered.com/app/413150",
       "steam": {
-        "positive": 887614,
+        "positive": 887620,
         "negative": 13292,
-        "total": 900906,
+        "total": 900912,
         "ratio": 0.9852,
         "wilson": 0.985,
         "review_score_desc": "Overwhelmingly Positive"
@@ -69,9 +69,9 @@
       "name": "Half-Life 2",
       "url": "https://store.steampowered.com/app/220",
       "steam": {
-        "positive": 199502,
+        "positive": 199503,
         "negative": 4721,
-        "total": 204223,
+        "total": 204224,
         "ratio": 0.9769,
         "wilson": 0.9762,
         "review_score_desc": "Overwhelmingly Positive"
@@ -88,9 +88,9 @@
       "name": "Left 4 Dead 2",
       "url": "https://store.steampowered.com/app/550",
       "steam": {
-        "positive": 802987,
+        "positive": 802991,
         "negative": 19905,
-        "total": 822892,
+        "total": 822896,
         "ratio": 0.9758,
         "wilson": 0.9755,
         "review_score_desc": "Overwhelmingly Positive"
