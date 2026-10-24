@@ -1,10 +1,11 @@
 @echo off
+rem Test only (no scheduled task): self-tests + a real 5-game run. Writes tools\game-crawler\test_result.txt
 setlocal
-cd /d "%~dp0"
 set PYTHONIOENCODING=utf-8
 set OUT=%~dp0test_result.txt
+cd /d "%~dp0..\.."
 echo start %date% %time% > "%OUT%"
-echo folder: %~dp0 >> "%OUT%"
+echo repo root: %CD% >> "%OUT%"
 
 set PY=py -3
 %PY% --version >nul 2>nul
@@ -18,7 +19,7 @@ echo ===== self-test: process ===== >> "%OUT%"
 %PY% tools\game-crawler\process.py --self-test >> "%OUT%" 2>&1
 
 echo ===== real run: 5 games ===== >> "%OUT%"
-%PY% tools\game-crawler\crawler.py --source steamspy-top --limit 5 --out "%~dp0raw\games" >> "%OUT%" 2>&1
+%PY% tools\game-crawler\crawler.py --source steamspy-top --limit 5 >> "%OUT%" 2>&1
 echo ===== process ===== >> "%OUT%"
 %PY% tools\game-crawler\process.py >> "%OUT%" 2>&1
 echo ===== files ===== >> "%OUT%"
@@ -30,5 +31,5 @@ goto end
 echo NO PYTHON FOUND (neither py nor python works) >> "%OUT%"
 
 :end
-echo Finished. See test_result.txt in this folder.
+echo Finished. See tools\game-crawler\test_result.txt
 pause

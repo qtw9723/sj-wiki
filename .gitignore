@@ -34,3 +34,4 @@ tools/game-crawler/.cache/
 raw/games/reviews-*.json
 __pycache__/
 tools/game-crawler/run.log
+tools/game-crawler/test_result.txt

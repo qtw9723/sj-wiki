@@ -51,18 +51,38 @@ python tools/game-crawler/process.py --offline  # 상점·SteamSpy 조회 없이
 - 출력: `clean-YYYY-MM-DD.json` / `.md`
 - 아직 없음: 리뷰 폭탄(최근 리뷰 급변) 탐지, 요소(메커니즘) 추출 — 후자는 대화에서 사람 확인과 함께 한다
 
-## 매일 아침 실행
+## 매일 아침 실행 (PC) — 터미널 명령
 
-`run_daily.py`가 수집 → 정제를 차례로 실행한다(`--push`를 주면 `raw/games`만 커밋·푸시, 기본 꺼짐).
+`run_daily.bat`이 pull → 수집 → 정제 → **`raw/games`를 GitHub에 push**까지 하고, 출력은 `tools\game-crawler\run.log`에 쌓는다. Python(`py` 런처)과 git이 필요하고, PC에서 `git push`가 되는 상태(GitHub 로그인)여야 push된다.
 
-**Windows PC에서 직접 실행 (선택됨, 2026-10-24)** — 저장소를 클론한 뒤 `tools\game-crawler\setup_windows.bat` 을 한 번 실행하면 모의 테스트 → 실제 수집 시험(5개) → 매일 07:30 작업 등록까지 한다. 실패하면 오류 메시지를 Claude에게 붙여넣는다.
+cmd(명령 프롬프트)에서 한 번만 실행:
 
-수동으로 등록하려면 (아래 '네트워크' 참고):
 ```bat
-schtasks /Create /SC DAILY /ST 07:30 /TN "sj-game-crawler" /TR "\"<저장소경로>\tools\game-crawler\run_daily.bat\"" /F
+git clone https://github.com/qtw9723/sj-wiki.git "%USERPROFILE%\sj-wiki"
+cd /d "%USERPROFILE%\sj-wiki"
+tools\game-crawler\test_windows.bat
+schtasks /Create /SC DAILY /ST 07:30 /TN "sj-game-crawler" /TR "\"%USERPROFILE%\sj-wiki\tools\game-crawler\run_daily.bat\"" /F
 ```
-- 저장소를 PC에 클론해 두고 `<저장소경로>`를 바꿔 쓴다. Python(`py` 런처)과 git이 필요하다.
-- PC가 꺼져 있으면 실행되지 않는다. 놓친 실행을 켜질 때 따라잡으려면 작업 스케줄러 설정의 '예약된 시작 시간을 놓친 경우 가능한 대로 빨리 작업 실행'을 켠다.
+
+- 1~2번째 줄: 저장소를 홈 폴더에 받는다(`Documents\sj-wiki`에는 예전에 실패한 빈 폴더가 있을 수 있어 피한다).
+- 3번째 줄(선택): 작업 등록 없이 모의 테스트 + 실제 5개 수집을 하고 `tools\game-crawler\test_result.txt`에 기록한다.
+- 4번째 줄: 매일 07:30 작업 등록. `/F`는 같은 이름이 있으면 덮어쓴다.
+
+확인·관리 명령(각각 한 줄씩 실행):
+
+- 지금 바로 실행해 보기: `schtasks /Run /TN "sj-game-crawler"`
+- 다음 실행 시각·마지막 결과 확인: `schtasks /Query /TN "sj-game-crawler" /V /FO LIST`
+- 실행 기록 보기: `type "%USERPROFILE%\sj-wiki\tools\game-crawler\run.log"`
+- 작업 삭제: `schtasks /Delete /TN "sj-game-crawler" /F`
+
+(`setup_windows.bat`은 같은 일을 한 번에 해 주는 래퍼다. 단 위 4번 등록은 `run_daily.bat`을 가리키므로 결과는 같다.)
+
+- 평론가 점수(OpenCritic)를 켜려면 Windows 환경변수 `RAPIDAPI_KEY`를 설정하고 작업에 `--opencritic`을 붙여야 한다(`run_daily.bat`의 인자로 전달됨). 지금은 Metacritic만 시도한다.
+- PC가 꺼져 있으면 그날은 실행되지 않는다(Claude 쪽 예약 작업이 "결과 없음"을 카톡으로 알린다).
+
+## 매일 아침 평론 + 카카오톡 (Claude 예약 작업)
+
+PC 실행(07:30) 뒤 **08:17**에 Claude 예약 작업이 그날 결과 파일을 읽고, 위키 `게임-크롤러-일일-평론`에 평론을 남기고, 카카오톡(나에게 보내기)으로 요약을 보낸다. 결과 파일이 없으면 "오늘 결과 없음"만 카톡으로 보낸다. 작업 이름: `게임 크롤링 일일 평론`.
 
 ## 네트워크 (테스트 중 확인한 사실)
 
