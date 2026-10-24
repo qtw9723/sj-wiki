@@ -6,6 +6,9 @@ created: 2026-06-10
 updated: 2026-10-24
 ---
 
+## [2026-10-24] 자료넣기 | 게임 크롤러 일일 평론
+- 📄 clean/steam-critic-2026-10-24 기준 신규 5개·평론가 점수 없음·미분류 태그 16개를 [[게임-크롤러-일일-평론]]에 기록.
+
 ## [2026-10-24] 자료넣기 | 자동 위키화 (daily crawl — naver-2026-10-24.md)
 - 📄 `raw/ai-digest/naver-2026-10-24.md` 22행 대조. 🆕 4건 신규 수록: **W43-43**(Kings Research LLM 시장 $86B→$677B CAGR 34.3%) · **W43-44**(NCBI 강화 추론 서베이, 인간 유사 사고 모사 추론 모델) · **W43-45**(딜로이트 Tech Trends 2026, 조직 구조 재설계·자동화 AI CAGR 29.4%) · **W43-46**(2sync 에이전틱 패턴 = 판단 LLM + 결정론적 실행 코드, 2026-09 주류화). 🔁 18건 중복(thunderbit·speculativechic·barchart×2·arxiv 등). 11차 감사 대응표 추가. [[AI-주간-소식-2026-W43]]·[[index]] 갱신. WebSearch 대체 21일 연속.
 
