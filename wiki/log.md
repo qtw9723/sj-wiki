@@ -6,6 +6,9 @@ created: 2026-06-10
 updated: 2026-10-26
 ---
 
+## [2026-10-26] 자료넣기 | 게임 요소 자동 정리
+- clean-2026-10-26 큐에서 Lethal Company·Garry's Mod·Counter-Strike 3개 처리(Wallpaper Engine은 비게임이라 제외). 사례 3개 + 요소 4개 신규(할당량 루프, 근접 음성, 모드 선택형 도구, 라운드 경제) + 요소 1개 갱신(물리 오브젝트 조작 도구).
+
 ## [2026-10-26] 자료넣기 | 게임 크롤러 일일 평론
 - 📄 `raw/games/clean-2026-10-26.json`·`steam-critic-2026-10-26.json` 기준 30개 평론(신규 0·평론가 점수 없음·Early Access 5) → [[게임-크롤러-일일-평론]].
 
