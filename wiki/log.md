@@ -6,6 +6,9 @@ created: 2026-06-10
 updated: 2026-10-25
 ---
 
+## [2026-10-25] 자료넣기 | 자동 위키화 (daily crawl)
+- 📄 `raw/ai-digest/naver-2026-10-25.md` 처리. [[AI-주간-소식-2026-W43]] 13차 추가: 신규 W43-47(Sonnet 5.5 Terminal-Bench 역전) · W43-48(MS Guardian Agents) · W43-49(오픈소스 멀티에이전트 3파전) · W43-50(MCP 서버 보안 노출) · W43-51(삼성·테슬라 반도체+중국 수출관리) 5건 수록. 13차 감사 대응표(🆕 14·🔁 15) 추가. source/updated 갱신.
+
 ## [2026-10-25] 자료넣기 | raw/games 10-24·10-25 재검토 — 게임 크롤러 2일차 대조 보강
 - 📄 대상 9개(`raw/games/state.json`, `steam-critic-2026-10-2{4,5}.{json,md}`, `clean-2026-10-2{4,5}.{json,md}`). 이미 반영된 주제라 **새 페이지 없이** 기존 2페이지를 보강했다. 10-24분은 이전 대조(10-24 로그)와 일치해 변경하지 않았다.
 - [[게임-크롤러-스팀-크리틱]] §7 *2일차 실행* 신설: `limit` 5→30, 통과 30·신규 25, FPS·`Dystopian` 공백 수정 검증, Metacritic 35/35 null, **Wallpaper Engine 비게임 통과**(탈락 규칙 보강 제안), md 미분류 30종 vs json 78종, 장르·도메인 매핑 후보. §6-4 state.json 30개, §9-4·5 추가, takeaway·`source:` 갱신.
