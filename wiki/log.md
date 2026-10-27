@@ -6,6 +6,11 @@ created: 2026-06-10
 updated: 2026-10-27
 ---
 
+## [2026-10-27] 자료넣기 | 개인 프로젝트 5개 페이지 신설 (건강검진 후속)
+- 확정 사항(2026-10-27, 사용자 확인): cafe24-monitoring·led-quiz·rag-compare·sdk-sample·websdk-test는 **전부 개인 프로젝트** → 이 vault에 위키화.
+- 📄 각 저장소 README·ROADMAP·CHANGELOG·git log 기반으로 [[cafe24-monitoring]] · [[led-quiz]] · [[rag-compare]] · [[sdk-sample]] · [[websdk-test]] 신설(포트폴리오 구조, 임팩트·회고는 저장소에 없어 🧠 분리). [[index]] 프로젝트 카테고리 등록.
+- 키·토큰·config 값·내부 IP/호스트·고객 실데이터는 제외. ⚠ sdk-sample 10-23 커밋에 실제 API 키 포함 가능 · rag-compare 테스트 세트 실제 요율 값 주의.
+
 ## [2026-10-27] 건강검진 | wiki 전체 점검 (109페이지 · 게임요소 37)
 - ✅ 고아 0 · index 누락 0 · frontmatter/takeaway 누락 0 · 게임요소 속성·통제 어휘·`gl_*` 링크 위반 0.
 - ⚠ 끊긴 링크: 개인 메모리 슬러그가 위키링크로 쓰임 8곳(`schedule-to-todomate`·`intern-education-2026-h2`·`cafe24-daily-monitoring-cron`·`sj-wiki-launchd-autosync`·`coginsight-turn-model`·`coginsight-dev-workflow`) · [[mailer]] 스크린샷 임베드 2개(`raw/assets/` 자체가 없음) · 그 외 `[[Playwright]]`·`[[claude-api]]`·`[[Gemini]]` 등은 작성 후보로 의도된 링크.
