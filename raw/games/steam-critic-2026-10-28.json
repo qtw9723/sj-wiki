@@ -1,0 +1,581 @@
+{
+  "date": "2026-10-28",
+  "params": {
+    "source": "steamspy-top",
+    "min_reviews": 1000,
+    "min_ratio": 0.8,
+    "limit": 30
+  },
+  "games": [
+    {
+      "appid": 413150,
+      "name": "Stardew Valley",
+      "url": "https://store.steampowered.com/app/413150",
+      "steam": {
+        "positive": 888247,
+        "negative": 13290,
+        "total": 901537,
+        "ratio": 0.9853,
+        "wilson": 0.985,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 98.5,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 400,
+      "name": "Portal",
+      "url": "https://store.steampowered.com/app/400",
+      "steam": {
+        "positive": 172571,
+        "negative": 2549,
+        "total": 175120,
+        "ratio": 0.9854,
+        "wilson": 0.9849,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 98.5,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 3164500,
+      "name": "Schedule I",
+      "url": "https://store.steampowered.com/app/3164500",
+      "steam": {
+        "positive": 286570,
+        "negative": 6426,
+        "total": 292996,
+        "ratio": 0.9781,
+        "wilson": 0.9775,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 97.8,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 220,
+      "name": "Half-Life 2",
+      "url": "https://store.steampowered.com/app/220",
+      "steam": {
+        "positive": 199664,
+        "negative": 4718,
+        "total": 204382,
+        "ratio": 0.9769,
+        "wilson": 0.9763,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 97.7,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 550,
+      "name": "Left 4 Dead 2",
+      "url": "https://store.steampowered.com/app/550",
+      "steam": {
+        "positive": 803524,
+        "negative": 19927,
+        "total": 823451,
+        "ratio": 0.9758,
+        "wilson": 0.9755,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 97.6,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 431960,
+      "name": "Wallpaper Engine",
+      "url": "https://store.steampowered.com/app/431960",
+      "steam": {
+        "positive": 929005,
+        "negative": 23338,
+        "total": 952343,
+        "ratio": 0.9755,
+        "wilson": 0.9752,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 97.5,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 105600,
+      "name": "Terraria",
+      "url": "https://store.steampowered.com/app/105600",
+      "steam": {
+        "positive": 1216863,
+        "negative": 30716,
+        "total": 1247579,
+        "ratio": 0.9754,
+        "wilson": 0.9751,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 97.5,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 227300,
+      "name": "Euro Truck Simulator 2",
+      "url": "https://store.steampowered.com/app/227300",
+      "steam": {
+        "positive": 744023,
+        "negative": 19950,
+        "total": 763973,
+        "ratio": 0.9739,
+        "wilson": 0.9735,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 97.4,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 526870,
+      "name": "Satisfactory",
+      "url": "https://store.steampowered.com/app/526870",
+      "steam": {
+        "positive": 230419,
+        "negative": 6267,
+        "total": 236686,
+        "ratio": 0.9735,
+        "wilson": 0.9729,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 97.4,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 1966720,
+      "name": "Lethal Company",
+      "url": "https://store.steampowered.com/app/1966720",
+      "steam": {
+        "positive": 399634,
+        "negative": 12354,
+        "total": 411988,
+        "ratio": 0.97,
+        "wilson": 0.9695,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 97.0,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 4000,
+      "name": "Garry's Mod",
+      "url": "https://store.steampowered.com/app/4000",
+      "steam": {
+        "positive": 1065337,
+        "negative": 33112,
+        "total": 1098449,
+        "ratio": 0.9699,
+        "wilson": 0.9695,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 97.0,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 10,
+      "name": "Counter-Strike",
+      "url": "https://store.steampowered.com/app/10",
+      "steam": {
+        "positive": 165189,
+        "negative": 5158,
+        "total": 170347,
+        "ratio": 0.9697,
+        "wilson": 0.9689,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 97.0,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 1086940,
+      "name": "Baldur's Gate 3",
+      "url": "https://store.steampowered.com/app/1086940",
+      "steam": {
+        "positive": 735435,
+        "negative": 24222,
+        "total": 759657,
+        "ratio": 0.9681,
+        "wilson": 0.9677,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 96.8,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 70,
+      "name": "Half-Life",
+      "url": "https://store.steampowered.com/app/70",
+      "steam": {
+        "positive": 114230,
+        "negative": 4006,
+        "total": 118236,
+        "ratio": 0.9661,
+        "wilson": 0.9651,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 96.6,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 292030,
+      "name": "The Witcher 3: Wild Hunt — Remastered",
+      "url": "https://store.steampowered.com/app/292030",
+      "steam": {
+        "positive": 810334,
+        "negative": 30191,
+        "total": 840525,
+        "ratio": 0.9641,
+        "wilson": 0.9637,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 96.4,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 2358720,
+      "name": "Black Myth: Wukong",
+      "url": "https://store.steampowered.com/app/2358720",
+      "steam": {
+        "positive": 850997,
+        "negative": 32003,
+        "total": 883000,
+        "ratio": 0.9638,
+        "wilson": 0.9634,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 96.4,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 240,
+      "name": "Counter-Strike: Source",
+      "url": "https://store.steampowered.com/app/240",
+      "steam": {
+        "positive": 131118,
+        "negative": 4912,
+        "total": 136030,
+        "ratio": 0.9639,
+        "wilson": 0.9629,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 96.4,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 3241660,
+      "name": "R.E.P.O.",
+      "url": "https://store.steampowered.com/app/3241660",
+      "steam": {
+        "positive": 332096,
+        "negative": 13554,
+        "total": 345650,
+        "ratio": 0.9608,
+        "wilson": 0.9601,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 96.1,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 242760,
+      "name": "The Forest",
+      "url": "https://store.steampowered.com/app/242760",
+      "steam": {
+        "positive": 558014,
+        "negative": 25842,
+        "total": 583856,
+        "ratio": 0.9557,
+        "wilson": 0.9552,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 95.6,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 8930,
+      "name": "Sid Meier's Civilization V",
+      "url": "https://store.steampowered.com/app/8930",
+      "steam": {
+        "positive": 122576,
+        "negative": 5813,
+        "total": 128389,
+        "ratio": 0.9547,
+        "wilson": 0.9536,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 95.5,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 239140,
+      "name": "Dying Light",
+      "url": "https://store.steampowered.com/app/239140",
+      "steam": {
+        "positive": 357689,
+        "negative": 17867,
+        "total": 375556,
+        "ratio": 0.9524,
+        "wilson": 0.9517,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 95.2,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 814380,
+      "name": "Sekiro: Shadows Die Twice - GOTY Edition",
+      "url": "https://store.steampowered.com/app/814380",
+      "steam": {
+        "positive": 248467,
+        "negative": 12971,
+        "total": 261438,
+        "ratio": 0.9504,
+        "wilson": 0.9495,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 95.0,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 322330,
+      "name": "Don't Starve Together",
+      "url": "https://store.steampowered.com/app/322330",
+      "steam": {
+        "positive": 358539,
+        "negative": 19121,
+        "total": 377660,
+        "ratio": 0.9494,
+        "wilson": 0.9487,
+        "review_score_desc": "Very Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 94.9,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 739630,
+      "name": "Phasmophobia",
+      "url": "https://store.steampowered.com/app/739630",
+      "steam": {
+        "positive": 648787,
+        "negative": 37200,
+        "total": 685987,
+        "ratio": 0.9458,
+        "wilson": 0.9452,
+        "review_score_desc": "Very Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 94.6,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 1623730,
+      "name": "Palworld",
+      "url": "https://store.steampowered.com/app/1623730",
+      "steam": {
+        "positive": 393911,
+        "negative": 22567,
+        "total": 416478,
+        "ratio": 0.9458,
+        "wilson": 0.9451,
+        "review_score_desc": "Very Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 94.6,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 477160,
+      "name": "Human Fall Flat",
+      "url": "https://store.steampowered.com/app/477160",
+      "steam": {
+        "positive": 165972,
+        "negative": 9492,
+        "total": 175464,
+        "ratio": 0.9459,
+        "wilson": 0.9448,
+        "review_score_desc": "Very Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 94.6,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 108600,
+      "name": "Project Zomboid",
+      "url": "https://store.steampowered.com/app/108600",
+      "steam": {
+        "positive": 349951,
+        "negative": 21353,
+        "total": 371304,
+        "ratio": 0.9425,
+        "wilson": 0.9417,
+        "review_score_desc": "Very Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 94.2,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 632360,
+      "name": "Risk of Rain 2",
+      "url": "https://store.steampowered.com/app/632360",
+      "steam": {
+        "positive": 227485,
+        "negative": 14781,
+        "total": 242266,
+        "ratio": 0.939,
+        "wilson": 0.938,
+        "review_score_desc": "Very Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 93.9,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 892970,
+      "name": "Valheim",
+      "url": "https://store.steampowered.com/app/892970",
+      "steam": {
+        "positive": 445207,
+        "negative": 30228,
+        "total": 475435,
+        "ratio": 0.9364,
+        "wilson": 0.9357,
+        "review_score_desc": "Very Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 93.6,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 219990,
+      "name": "Grim Dawn",
+      "url": "https://store.steampowered.com/app/219990",
+      "steam": {
+        "positive": 87326,
+        "negative": 6250,
+        "total": 93576,
+        "ratio": 0.9332,
+        "wilson": 0.9316,
+        "review_score_desc": "Very Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 93.3,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    }
+  ]
+}
