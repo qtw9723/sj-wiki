@@ -10,7 +10,7 @@ updated: 2026-10-28
 
 > [!tip] 핵심 takeaway (포트폴리오 관점)
 > ⭐ **"delivery팀용 챗봇 모니터링 허브"로 시작해 3개월 만에 "코드 1·DB 1·모듈 N·허브 N" 통합 플랫폼이 됐고, [[mailer|CS SmartHub]]를 완전히 흡수(컷오버→구 앱 은퇴→구 테이블 폐기)했다.** 팔 포인트는 기능 수가 아니라 **(1) 모듈 레지스트리 + `hub_features` 매트릭스 + 허브=URL 구조로 팀·기능 확장이 "행 추가"가 되게 한 설계, (2) 라이브 서비스를 끊지 않고 단계적으로 옮기고(공유 테이블+`hub_id`→컷오버→폐기, 되돌릴 백업 보존) (3) 운영하면서 "측정할 칸"을 먼저 만들고 그 데이터로 자기 해석을 뒤집은 운영 성숙도**다.
-> 🧠 지금은 허브 2개(cs·delivery)·모듈 5종·크론 4잡이 실가동 중이고 매일 돌아가는 자동화(챗봇 점검·Grafana AI 일일 리포트)가 실사용자 메일로 나간다 → 포트폴리오로는 "만들었다"보다 **"운영하며 고쳐 온 기록"** 이 강점.
+> 🧠 지금은 허브 2개(cs·delivery)·모듈 6종(websdk-test는 10/28 탑재, 아직 어느 허브에도 꺼짐)·크론 4잡이 실가동 중이고 매일 돌아가는 자동화(챗봇 점검·Grafana AI 일일 리포트)가 실사용자 메일로 나간다 → 포트폴리오로는 "만들었다"보다 **"운영하며 고쳐 온 기록"** 이 강점.
 > ⚠️ 불변 원칙: DB 변경은 Management API 멱등 SQL만(`supabase db push` 금지 — [[mailer]]와 동일), 새 테이블 RLS 필수([[Supabase-RLS-정책]]).
 
 ## 한 줄 소개
@@ -26,7 +26,7 @@ updated: 2026-10-28
 ## 3층 구조 (아키텍처) 📄(README)
 ```
 SmartHub (코드 1 · DB 1)
-├─ 모듈(기능): chatbot-monitoring · grafana-reports · mailer · doc-to-esd · doc-to-api
+├─ 모듈(기능): chatbot-monitoring · grafana-reports · mailer · doc-to-esd · doc-to-api · websdk-test(2026-10-28)
 ├─ 허브(팀): CS · Delivery · … (링크 /hub/:hubKey), hub_features(hub_id, feature_key)로 허브별 모듈 on/off
 └─ 백오피스(/admin): 모듈 레지스트리 순회로 허브 × 모듈 관망
 ```
