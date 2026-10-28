@@ -63,7 +63,7 @@ spec/<프로젝트>/  ─▶ [메티스] 요구사항 분석(필수) → require
 ## 헤드리스 무인 실행 📄
 - `bash run.sh` 한 방 — 대상 repo·게이트 지정 불필요(spec 폴더명으로 자동).
 - `PERMISSION_FLAG`(무인 시 `--dangerously-skip-permissions`), 실행 로그(`state/runs/`), `turn=human` 자동중단(`pause_if_human`), `AUTO_APPROVE`(최종 승인까지 생략).
-- `reset.sh`: 새 작업용 state 초기화. state는 런타임(git 미추적), 도구만 버전관리 → 지속 재사용.
+- `reset.sh <프로젝트>`: 새 작업용 state 초기화(프로젝트 인자 필수, 멀티 프로젝트 큐 이후 — [[올림푸스-실행-런북]]). state는 런타임(git 미추적), 도구만 버전관리 → 지속 재사용.
 - 기획자 상시성: `--session-id`/`--resume`로 세션 유지(안 되면 durable 파일로 맥락 유지).
 - **원격 결정 브리지(`REMOTE=1`)** 📄: 사람 개입(진짜 블로커·의도 질문·최종 머지 승인)을 **폰으로** 원격화. 끄면 터미널에서 처리. **개입 종류에 따라 채널을 분리**한다(2026-07-03):
   - **블로커·의도질문**(자유서술 필요) → `olympus-inbox` repo 폴링. 폰 GitHub 앱에서 `## 답변` 채워 commit.

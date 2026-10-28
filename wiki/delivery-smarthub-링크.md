@@ -1,30 +1,29 @@
 ---
-title: Delivery SmartHub — 링크 모음 (현행)
+title: SmartHub (구 Delivery SmartHub) — 링크 모음 (현행)
 category: 프로젝트
-tags: [프로젝트, 링크, delivery-smarthub, 공유용]
-source: 신규 구축 세션 2026-07-21
+tags: [프로젝트, 링크, delivery-smarthub, smarthub, 공유용]
+source: 라이브 저장소 README.md·docs/deploy-notes.md 확인, 2026-10-28
 created: 2026-07-21
-updated: 2026-07-21
+updated: 2026-10-28
 ---
 
 > [!tip] 핵심 takeaway
-> delivery-smarthub 관련 주소를 한 곳에 모아둔 페이지. 현재 **private 레포만 존재**하고 **배포는 아직 안 함**(Phase1) — 그래서 공개 URL은 없다. 배포하면 이 페이지에 Vercel 주소를 추가한다.
+> SmartHub 관련 주소 모음. 2026-07-22 배포되어 **프로덕션 가동 중**이다(허브 cs·delivery, 모듈 5종). 저장소는 private이라 외부 공유는 앱 주소로만 한다.
+
+## 🌐 앱 (배포됨)
+- 📄 **프로덕션**: https://mww-smarthub.vercel.app — 허브 목록(`/`)·백오피스(`/admin`)는 플랫폼 비밀번호, 허브(`/hub/cs`·`/hub/delivery`)는 허브별 비밀번호(없으면 공개).
+  - ⚠️ 팀 슬러그가 붙은 Vercel URL은 SSO 보호라 302. 외부 호출·크론은 반드시 위 깔끔한 도메인 사용. 구 `delivery-smarthub.vercel.app`은 죽음(2026-07-22 도메인 변경).
 
 ## 🔒 소유자 전용 (개인 계정 인증 필요)
-- 📄 **GitHub 저장소** (private): https://github.com/qtw9723/delivery-smarthub
-  - 초기 커밋: `1ecc864` (Phase1 — delivery 허브 챗봇 모니터링 + 중앙 백오피스, 2026-07-21)
-- 📄 **로컬 경로**: `/Users/sangjun/IdeaProjects/delivery-smarthub`
-- 📄 **Supabase 대시보드** (cs와 공유, 프로젝트명 "parking"): https://supabase.com/dashboard/project/enawzdqroidrhtjqhpka
-  - ⚠️ delivery-smarthub는 **`hub_*` 테이블만** 사용. cs 테이블(`chatbots` 등)은 무접근.
+- 📄 **GitHub 저장소** (private): https://github.com/qtw9723/smarthub (옛 이름 delivery-smarthub, 2026-07-22 리네임)
+- 📄 **로컬 경로**: `/Users/sangjun/IdeaProjects/smarthub`
+- 📄 **Supabase**: [[mailer|CS SmartHub]]와 공유 프로젝트(대시보드 "parking", [[parking]]). SmartHub는 `hub_*`·hub 스코프 공유 테이블만 사용.
+- 📄 **Vercel**: main 머지 = 자동 배포. committer는 GitHub noreply여야 통과.
 
-## 📄 프로젝트 내부 문서 (레포 내)
-- 설계 스펙: `docs/superpowers/specs/2026-07-21-delivery-smarthub-phase1-design.md`
-- 구현 계획: `docs/superpowers/plans/2026-07-21-delivery-smarthub-phase1.md`
-- 배포/크론 실등록 절차(미실행): `docs/deploy-notes.md`
-
-## ⏳ 아직 없음 (Phase1 미배포)
-- 🌐 공개/앱 Vercel 주소 — **배포 시 추가 예정** (신규 Vercel 프로젝트, cs와 별개).
-- pg_cron 정시 트리거 잡 — cs jobid 8과 별개의 새 잡으로 등록 예정(사용자 확인 후).
+## 📄 저장소 내부 문서
+- `README.md` — 구조·인증 경계·모듈 계약 / `ROADMAP.md` — 계획(현재 계획 섹션 없음, 백로그만) / `CHANGELOG.md` — 완료 이력
+- `docs/deploy-notes.md` — 배포·pg_cron(jobid 9~12)·컷오버 기록 / `docs/legacy-inventory.md` — 구 mailer 잔재 목록 / `docs/backups/` — 구 테이블 폐기 백업
+- `docs/superpowers/specs·plans/` — 설계 스펙·구현 계획(Phase1, 단계 A, mailer 마이그레이션 M1~M5, grafana 멀티소스, 문서 도구 이식 등)
 
 ## 관련 문서
-- [[delivery-smarthub]] — 프로젝트 본문(설계·진행 현황) · [[mailer]](형제) · [[프로젝트-포트폴리오]] · [[parking]]
+- [[delivery-smarthub]] — 프로젝트 본문(현재 상태·이력) · [[mailer]](형제·기원) · [[프로젝트-포트폴리오]] · [[parking]]
