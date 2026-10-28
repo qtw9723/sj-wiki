@@ -1005,7 +1005,7 @@ updated: 2026-10-23
 - ⭐⭐ **🆕 (2026-09-01) 다양성의 출처를 기획자 밖으로 — 페르소나 포커스그룹** ([[AI-주간-소식-2026-W36]] (W36-EN9) FocusGen `2608.28001`):
   - 📄 *"**Creative professionals rarely design for themselves—they design for audiences whose preferences they must anticipate.** Yet current text-to-image exploration tools **derive diversity entirely from the designer's own input**—their prompts, their chosen d…"*
   - 🧠 *"디자이너"* 를 **"시나리오 기획자"** 로 바꾸면 그대로 이 제품의 문제 정의다 — **다양성이 전적으로 기획자 프롬프트에서 나오면 기획자가 생각 못 한 분기는 영원히 안 나온다.**
-  - ⚠ 🧠 **단, 이 vault엔 이미 반대 방향 경고가 둘 있다**: 📄 (W35-EN44) *생성 에이전트의 사람 대리 결과는 **프롬프트에 민감**하다* · 📄 (W35-EN46) LiveSim *정적 페르소나는 부적절해진다*. ✅ **셋을 합친 결론**: 페르소나 집단은 쓰되 ① **프롬프트 변형 N개의 결과 분산을 함께 보고**하고 ② 페르소나를 **고정 프로필이 아니라 대화 중 갱신되는 상태**로 둔다. 📄 [[coginsight-turn-model|턴 모델]](사용자 발화 ↔ 봇 응답 엄격 교대)에서 **사용자 쪽 변동성**이 정확히 이 문제다.
+  - ⚠ 🧠 **단, 이 vault엔 이미 반대 방향 경고가 둘 있다**: 📄 (W35-EN44) *생성 에이전트의 사람 대리 결과는 **프롬프트에 민감**하다* · 📄 (W35-EN46) LiveSim *정적 페르소나는 부적절해진다*. ✅ **셋을 합친 결론**: 페르소나 집단은 쓰되 ① **프롬프트 변형 N개의 결과 분산을 함께 보고**하고 ② 페르소나를 **고정 프로필이 아니라 대화 중 갱신되는 상태**로 둔다. 📄 턴 모델(사용자 발화 ↔ 봇 응답 엄격 교대)에서 **사용자 쪽 변동성**이 정확히 이 문제다.
 - ⭐⭐ **🆕 (2026-09-01) 「무엇과 비교해서?」 — 자체 평가에 인간 기준선을 붙인다** ([[AI-주간-소식-2026-W36]] (W36-EN5) `2608.28021`):
   - 📄 *"Prior evaluations report **raw vulnerability counts** for model-generated IaC, **but without a hu**…"*(human baseline) — 🧠 *"LLM이 N개 냈다"* 는 **사람이 같은 과제에서 몇 개 내는지 모르면 의미가 없다.**
   - ✅ **적용안**: 위 (2026-08-22) *산출 분산 · 검수 비용* 지표를 낼 때 **사람이 처음부터 작성한 시나리오의 같은 지표를 대조군으로 함께 잰다.** 🧠 (W35-EN33)의 *"교란되지 않은 비교"*·(W35-EN51) 이중맹검·(W35-EN52) 무작위 배정 연구와 같은 계보에서 **가장 값싼 판본**이다.
