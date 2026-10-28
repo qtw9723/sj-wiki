@@ -159,7 +159,7 @@ sj-wiki/
 - **확정/정정 추적**: 사용자가 구두로 확정·정정한 내용(📄로 승격)은 해당 페이지에 `확정 사항(날짜, 사용자 확인)` 노트로 남기고, 어긋나는 원본 자료는 "폐기/구버전"으로 표시한다.
 
 ## 8. 작업 전 pull · 변경 후 push (필수)
-- 이 vault는 **private git에 연결**돼 있다(`origin/main`, GitHub `qtw9723/sj-wiki`). 여러 기기에서 동기화하므로 아래 순서를 지킨다.
+- 이 vault는 **public git에 연결**돼 있다(의도된 공개)(`origin/main`, GitHub `qtw9723/sj-wiki`). 여러 기기에서 동기화하므로 아래 순서를 지킨다.
 - **① 작업 전 pull**: 위키화·편집을 시작하기 전에 **반드시 `git pull --rebase origin main`** 으로 원격 최신을 먼저 반영한다(다른 기기 변경과의 충돌 예방).
 - **② 변경 후 push**: `wiki/`·`raw/`를 변경했으면 작업 마무리에 **반드시 커밋+푸시**한다: `git add -A && git commit -m "…" && git push`. ("위키화가 끝나면 반드시 push" — 사용자 요구.)
 - 커밋 전 `git status`로 회사 기밀/시크릿이 staged되지 않았는지 확인한다(`.gitignore` 안전망 있음).
