@@ -3,7 +3,7 @@ title: 전체 목차 (Index)
 category: 시스템
 tags: [index, 목차]
 created: 2026-06-09
-updated: 2026-10-28
+updated: 2026-10-29
 ---
 
 > [!tip] 핵심 takeaway
@@ -112,6 +112,7 @@ updated: 2026-10-28
 - [[교회-백엔드-회의-2026-06-12]] — 교회 개발팀 백엔드 회의: 메인 개발 완료·개인 브랜치 전략·app/docs 문서화·Vercel용 개인 Git 배포
 
 ### 개념 / 지식
+- [[Jev-TypeSafe-AI]] — 🆕 (2026-10-29) 텍스트 대신 선택·점수·확률만 내는 System One 의사결정 모델. API 3종(Choice·Noul·Score)·confidence 임계값 패턴·한계·생태계. ⚠ 수치 대부분 벤더 주장, W39 "Zeb"=Jev
 _(아직 없음)_
 
 > [!warning] 회사 기밀은 별도 vault
