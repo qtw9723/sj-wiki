@@ -113,7 +113,6 @@ updated: 2026-10-29
 
 ### 개념 / 지식
 - [[Jev-TypeSafe-AI]] — 🆕 (2026-10-29) 텍스트 대신 선택·점수·확률만 내는 System One 의사결정 모델. API 3종(Choice·Noul·Score)·confidence 임계값 패턴·한계·생태계. ⚠ 수치 대부분 벤더 주장, W39 "Zeb"=Jev
-_(아직 없음)_
 
 > [!warning] 회사 기밀은 별도 vault
 > 회사(사내 AI 챗봇) 기밀 콘텐츠는 **PC 전용 `sj-wiki-work` vault**에 분리 보관한다. 이 vault(클라우드 동기화 대상)에는 절대 두지 않는다.
