@@ -2,7 +2,7 @@
 title: Jev (TypeSafe AI) — System One 의사결정 모델
 category: 개념 / 지식
 tags: [jev, typesafe-ai, system-one, 의사결정모델, 분류, 라우팅, 가드레일, llm대안, 저비용모델, 제브]
-source: raw/jev-typesafe-crawl-2026-10-29.md (datanorth.ai · gigazine · docs.typesafe.ai · arXiv 2609.30216 · Bloomberg 등 2026-10-29 크롤링), raw/ai-digest/naver-2026-09-21.md, raw/ai-digest/naver-2026-09-24.md, raw/ai-digest/naver-2026-10-05.md
+source: raw/jev-typesafe-crawl-2026-10-29.md (datanorth.ai · gigazine · docs.typesafe.ai · arXiv 2609.30216 · Bloomberg 등 2026-10-29 크롤링), raw/ai-digest/naver-2026-09-21.md, raw/ai-digest/naver-2026-09-24.md, raw/ai-digest/naver-2026-10-05.md, raw/ai-digest/naver-2026-10-29.md(교차 연결)
 created: 2026-10-29
 updated: 2026-10-29
 ---
@@ -114,6 +114,8 @@ updated: 2026-10-29
 - 🧠 **챗봇 미응답 처리·인텐트 분류 같은 "판정" 업무는 Jev 모양 그대로**다: 인텐트 목록 = Choice 옵션, "미응답인가" = Noul, 심각도 = Score. 단, 업무 데이터는 외부 API 전송 이슈가 먼저.
 - 🧠 [[CogInsight-Generator]] 기존 결론(*"모델 단가 추격보다 호출 설계가 먼저"*)과 충돌하지 않는다 — Jev는 **"작은 판단자를 앞에 세우고 확신 없을 때만 큰 모델"** 구조(카이스트 갈래)의 *판단자 후보*로 보는 게 맞다. §5의 confidence 3단 임계값이 그 구조의 구체적 레시피.
 - 🧠 [[rag-compare]]에 "검색결과 패시지 관련성 Score" 칼럼을 붙이면 store 비교를 사람 눈 대신 수치로 할 수 있다(실험 소재).
+- 🧠 **같은 날 수집한 한국 뉴스([[AI-주간-소식-2026-W44]] 10/29)와 겹치는 지점**: GitHub Copilot 프로젝트 오케스트레이터(W44-49)·MS Agensh(W44-28)·iSODA(W44-57)는 모두 *작업을 어느 에이전트에 줄지* 정해야 한다. 카페24 LLM 라우터(*요청 유형별 모델 자동 선택*)는 §5 *모델 라우팅* 과 같은 문제다. 오케스트레이션이 확산될수록 Jev가 들어갈 *판단 계층* 수요도 커진다고 본다. arXiv 스타가 라우팅·자동화에 몰린 것(§7)과도 방향이 같다.
+- 🧠 W44-54 LFM3(소형 온디바이스)·W44-55 *에이전틱 AI에서 CPU 역할 확대* 와 같은 흐름이다. 큰 LLM 하나로 다 하기보다 **작고 빠른 판단 모델을 따로 둔다**.
 - 🧠 학습용 첫 실습: Early Access 키 → 내 개인 데이터(예: AI 주간 소식 기사 제목)로 Choice 분류 50건 → 사람 라벨과 비교해 **confidence별 정답률(calibration)** 직접 그려보기.
 
 ## 출처
@@ -128,6 +130,8 @@ updated: 2026-10-29
 ## 관련 문서
 - [[AI-주간-소식-2026-W39]] — 최초 수집(KR-W39-15 Jev, KR-W39-102 "Zeb" = Jev)
 - [[AI-주간-소식-2026-W41]] — "제브(Jev)" 재등장, 개발자명
+- [[AI-주간-소식-2026-W44]] — 10/29 오케스트레이터·LLM 라우터·소형 모델 기사(§9 연결점)
+- [[에이전트-자동화-도구]] — 오케스트레이터 계열 도구와 판단 계층 조합
 - [[CogInsight-Generator]] — §비용 축: 단가 갈래 vs 호출 횟수 갈래
 - [[공통-기술스택]] — 에이전트 운영 비용식
 - [[rag-compare]] — 패시지 관련성 채점 실험 후보
