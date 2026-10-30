@@ -3,7 +3,7 @@ title: 전체 목차 (Index)
 category: 시스템
 tags: [index, 목차]
 created: 2026-06-09
-updated: 2026-10-29
+updated: 2026-10-30
 ---
 
 > [!tip] 핵심 takeaway
@@ -24,7 +24,7 @@ updated: 2026-10-29
 - [[내-프로필]] — 커리어·강점·현재 관심사 (모든 답변의 관점 기준)
 
 ### AI / 업계 동향
-- [[AI-주간-소식-2026-W44]] — 10/26~ 주. 신규 핵심: Copilot Critique(생성 AI·검증 AI 분리 = CogInsight 구조), MS Agensh, 구글 클라우드 관리형 Claude. ⚠ "멀티에이전트 1,445% 급증"은 Gartner 문의 증가율 · 10/29: GitHub Copilot 오케스트레이터 등 🆕 6, Jev와 연결
+- [[AI-주간-소식-2026-W44]] — 10/26~ 주. 신규 핵심: Copilot Critique(생성 AI·검증 AI 분리 = CogInsight 구조), MS Agensh, 구글 클라우드 관리형 Claude. ⚠ "멀티에이전트 1,445% 급증"은 Gartner 문의 증가율 · 10/29: GitHub Copilot 오케스트레이터 등 🆕 6, Jev와 연결 · 10/30: 🆕 9/35(1차 13 정정), 한컴 오케스트레이션 검증·에이전트 vs 챗봇
 - [[AI-주간-소식-2026-W43]] — 10/19~ 주. 에이전트 거버넌스 공백 현실화, Haiku 5.5 단가 90% 인하, Anthropic 10월 업데이트, 에이전트 보안·음성 에이전트, 10월 LLM 릴리즈
 - [[AI-주간-소식-2026-W42]] — 10/12~ 주. 수집분 대부분 W41 중복(재확인), Forrester 작업 중심 에이전트 악용 비용 ≥ 멀티에이전트 4배(→ CogInsight 연쇄 환각), AI 비디오·뉴로심볼릭
 - [[AI-주간-소식-2026-W41]] — 10/5~ 주. OpenAI DevDay(Decisions API·닷츠), GPT-6.1 솔, Claude Sonnet 5.5·Opus 5.5, UiPath 마에스트로, MIT "95% 매출 효과 없음", 에이전트 업계 4대 키워드
