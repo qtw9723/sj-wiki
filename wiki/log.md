@@ -8,6 +8,10 @@ updated: 2026-10-31
 
 > 📦 2026-09-30 이전 이력은 [[log-아카이브-2026-06-09]]로 옮겼다(2026-10-28, 원문 그대로). 월별 이력이 커지면 같은 방식으로 분기 단위 아카이브를 만든다.
 
+## [2026-10-31] 자료넣기 | 자동 위키화 (daily crawl)
+- 📄 `raw/ai-digest/naver-2026-10-31.md` 처리. 22개 URL 중 🆕 3 · 🔁 19(86%). WebSearch 폴백 파일로 대부분 1~9월 기사 재수집 — 역대 최고 중복률.
+- 🔗 실반영: [[AI-주간-소식-2026-W44]] W44-73(Anthropic 2026 State of AI Agents) · W44-74(Claude $30B/$380B) · W44-75(AI Agent Daily Oct 권한 운영 권고) 신설. frontmatter updated·source 갱신. ✏️ 10/31 대조 섹션 추가.
+
 ## [2026-10-31] 자료넣기 | 게임 요소 자동 정리
 - clean-2026-10-31에서 Human Fall Flat·Phasmophobia·Palworld 3개 사례 페이지와 요소 5개 신규, 정신력 시스템 1개 갱신.
 
