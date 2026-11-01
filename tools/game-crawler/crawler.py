@@ -43,12 +43,13 @@ UA = "sj-game-crawler/0.1 (personal research; contact: repo owner)"
 HERE = Path(__file__).resolve().parent
 REPO_ROOT = HERE.parent.parent
 CACHE_DIR = HERE / ".cache"
-CACHE_TTL = 24 * 3600
+CACHE_TTL = 6 * 3600  # 매일 같은 시각 실행해도 전날 캐시를 재사용하지 않도록 24h보다 충분히 짧게(재방송 버그 수정)
 
 STEAM_REVIEWS_URL = "https://api.steampowered.com/IUserReviewsService/GetAppReviews/v1/"
 STEAMSPY_URL = "https://steamspy.com/api.php"
 OPENCRITIC_HOST = "opencritic-api.p.rapidapi.com"  # VERIFY: RapidAPI 호스트·요금제
 STORE_APP_URL = "https://store.steampowered.com/app/{appid}"
+APPDETAILS_MC_URL = "https://store.steampowered.com/api/appdetails?appids={appid}&filters=metacritic"
 
 GAP_FLAG = 15  # 유저-평론가 점수 차이가 이 이상이면 '불일치' 표시
 
@@ -197,12 +198,31 @@ def opencritic_lookup(name: str, rapid_key: str) -> dict | None:
     }
 
 
-_robots: urllib.robotparser.RobotFileParser | None = None
+_robots = None  # RobotFileParser | False(읽기 실패) | None(미조회)
 
 
-def metacritic_lookup(name: str) -> dict | None:
-    """Metacritic(비공식, 공식 API 없음). robots.txt 허용 시에만, 최선 노력으로 메타스코어를 읽는다.
-    VERIFY: 이용약관상 허용 여부는 직접 확인할 것. 차단·구조 변경 시 None."""
+def steam_metacritic(appid: int) -> dict | None:
+    """Steam 상점 appdetails 의 metacritic 필드(메타스코어). 이미 쓰는 도메인이라 별도 허용·약관 문제가 없다."""
+    try:
+        d = fetch(APPDETAILS_MC_URL.format(appid=appid))
+    except Exception as e:
+        print(f"  steam metacritic {appid} 실패: {e}", file=sys.stderr)
+        return None
+    node = (d or {}).get(str(appid)) or {}
+    data = node.get("data") if node.get("success") else None
+    mc = data.get("metacritic") if isinstance(data, dict) else None
+    if not mc or mc.get("score") is None:
+        return None
+    return {"score": float(mc["score"]), "url": mc.get("url"), "via": "steam-appdetails"}
+
+
+def metacritic_lookup(name: str, appid: int | None = None) -> dict | None:
+    """메타스코어. 1순위 Steam appdetails(안정적), 2순위 metacritic.com 직접 읽기(최선 노력).
+    실패 사유는 조용히 삼키지 않고 stderr 에 남긴다."""
+    if appid:
+        hit = steam_metacritic(appid)
+        if hit:
+            return hit
     global _robots
     slug = re.sub(r"[^a-z0-9]+", "-", norm_name(name)).strip("-")
     if not slug:
@@ -212,18 +232,23 @@ def metacritic_lookup(name: str) -> dict | None:
         _robots = urllib.robotparser.RobotFileParser("https://www.metacritic.com/robots.txt")
         try:
             _robots.read()
-        except Exception:
+        except Exception as e:
+            print(f"  metacritic.com robots.txt 읽기 실패(직접 조회 생략): {e}", file=sys.stderr)
+            _robots = False  # 이후 재시도 안 함
             return None
+    if _robots is False:
+        return None
     if not _robots.can_fetch(UA, url):
         return None
     try:
-        html = fetch(url, as_json=False, pause=3)
-    except Exception:
+        html = fetch(url, as_json=False, pause=3, retries=1)
+    except Exception as e:
+        print(f"  metacritic.com {slug} 실패: {e}", file=sys.stderr)
         return None
     m = re.search(r'"aggregateRating"\s*:\s*\{[^}]*?"ratingValue"\s*:\s*"?(\d{1,3})', html)
     if not m:
         return None
-    return {"slug": slug, "score": float(m.group(1))}
+    return {"slug": slug, "score": float(m.group(1)), "via": "metacritic.com"}
 
 
 # --------------------------------------------------------------------------- 파이프라인
@@ -275,12 +300,16 @@ def run(args) -> list[dict]:
             except Exception as e:
                 print(f"  opencritic {g['name']} 실패: {e}", file=sys.stderr)
         if args.metacritic:
-            g["metacritic"] = metacritic_lookup(g["name"])
+            g["metacritic"] = metacritic_lookup(g["name"], g["appid"])
         if args.sample_reviews:
             g["sample_reviews"] = steam_sample_reviews(g["appid"], args.sample_reviews)
 
     for g in games:
         merge_scores(g)
+    got = sum(1 for g in games if g["critic_score"] is not None)
+    print(f"평론가 점수 확보 {got}/{len(games)}", file=sys.stderr)
+    if games and not got and (args.opencritic or args.metacritic):
+        print("  ⚠ 평론가 점수를 하나도 못 얻음 — 위 실패 로그와 RAPIDAPI_KEY·네트워크를 확인", file=sys.stderr)
     return games
 
 
@@ -349,6 +378,9 @@ def self_test() -> None:
             v = spy[str(appid)]
             return {"response": {"query_summary": {"total_positive": v["positive"], "total_negative": v["negative"],
                                                    "review_score_desc": "Very Positive"}, "reviews": []}}
+        if "appdetails" in url and "filters=metacritic" in url:
+            aid = url.split("appids=")[1].split("&")[0]
+            return {aid: {"success": True, "data": {"metacritic": {"score": 80, "url": "x"}} if aid == "4" else []}}
         if "/game/search" in url:
             name = urllib.parse.unquote(url.split("criteria=")[1])
             return [{"id": 77, "name": name, "dist": 0}] if name == "Alpha Quest" else []
@@ -363,6 +395,7 @@ def self_test() -> None:
         args = argparse.Namespace(source="steamspy-top", pages=1, appids_file=None, min_reviews=1000,
                                   min_ratio=0.8, limit=5, opencritic=True, metacritic=False, sample_reviews=0)
         games = run(args)
+        assert steam_metacritic(4)["score"] == 80.0 and steam_metacritic(1) is None  # Steam appdetails 메타스코어 경로
     finally:
         fetch = real
     assert [g["appid"] for g in games] == [1, 4], games           # 2(리뷰 수)·3(비율) 탈락, 1이 4보다 위

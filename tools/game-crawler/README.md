@@ -33,6 +33,8 @@ Windows PowerShell에서는 `$env:RAPIDAPI_KEY="..."` 로 키를 설정한다. �
 - **2026-10-24 PC에서 실제 실행 성공**(Steam `GetAppReviews`·SteamSpy·상점 appdetails, 5개 게임, 정제까지 약 50초). 아직 안 돌려 본 것: OpenCritic·Metacritic, `--push`, 작업 스케줄러 등록, `--sample-reviews`. 오류가 나면 `crawler.py`의 `VERIFY` 주석 지점부터 본다.
 - `.bat` 파일은 영문·CRLF 줄바꿈이어야 Windows에서 실행된다(`.gitattributes`로 고정). `test_windows.bat`은 작업 등록 없이 모의 테스트 + 실제 5개 수집만 하고 `test_result.txt`에 기록한다.
 - Steam 호출은 키 없이도 되지만 한도가 낮고 429가 올 수 있다. 요청 간 대기와 재시도, 24시간 디스크 캐시(`tools/game-crawler/.cache/`)가 들어 있다.
+- **메타스코어는 Steam 상점 `appdetails`의 `metacritic` 필드를 1순위로 쓴다**(2026-11-01~, 추가 도메인·키 불필요). 없으면 metacritic.com 직접 읽기를 시도하고, 실패 사유는 stderr/`run.log`에 남는다. 실행 끝에 `평론가 점수 확보 N/M`이 찍힌다(0이면 경고).
+- 캐시 TTL은 6시간이다. 예전 24시간은 매일 07:30 실행 시 전날 캐시가 살아 있어 격일로 같은 데이터(재방송)가 나왔다.
 - Metacritic은 공식 API가 없다. `--metacritic`은 robots.txt가 허용할 때만 최선 노력으로 읽으며, 약관은 직접 확인해야 한다.
 - 이름이 정확히 같을 때만 평론가 점수를 채택한다(오매칭 방지). 못 찾은 게임은 `평론가 없음`.
 - 리뷰 본문은 재게시하지 않는다. 위키에는 규칙·수치 요약과 출처만 남긴다(`게임요소-라이브러리` §6).
