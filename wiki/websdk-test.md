@@ -47,6 +47,7 @@ updated: 2026-10-27
 
 ## 회고 / 다음 단계
 - 📄 **SmartHub 탑재 완료(2026-10-28, smarthub PR #51)** — 사용자가 "지금 형상이 최신, 그걸 모듈로"라며 v0.22.0(독자 기동)을 건너뛰고 탑재를 앞당겼다. 기준 커밋 `477ba46`(태그 `smarthub-base-v0.21.1`).
+- 📄 **SmartHub 봇 프리셋 저장(2026-11-02, smarthub PR #54)** — 허브별로 봇 정보와 API 키(AES-256-GCM 암호화, 열쇠 `WEBSDK_PRESET_SECRET`)를 저장하고, 원본 드롭다운에 "(저장됨)"으로 표시한다. 키는 저장한 서버와 봇 ID가 같을 때만 쓴다(화면 키 > 저장 키 > env 키). 백오피스에서 "비밀번호 필요 모듈"로 경고와 확인을 띄운다. CS 허브에서 V2·XI 토큰 발급(출처 preset)을 실측했다.
   - 화면 4개는 원본 HTML 그대로 iframe, 각색은 `settings.js`·`csp.html`의 서버 경로뿐. 서버는 허브 관문(비밀번호→기능 활성) 아래 모듈 API. `/sso`는 콘솔 관리자 우회 위험으로 제외.
   - 기본 서버 `https://v2.aiware.io`(사용자 지정), 키는 SmartHub Vercel env. 서버 키는 기본 서버로 갈 때만 실린다(최종 리뷰 Critical 반영).
   - 🧠 원본을 고치면 SmartHub는 자동으로 안 따라간다 → `npm run check:websdk-drift`(smarthub)로 확인 후 따라잡기(smarthub `server/modules/websdk-test/README.md`).
