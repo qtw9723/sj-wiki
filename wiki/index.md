@@ -3,7 +3,7 @@ title: 전체 목차 (Index)
 category: 시스템
 tags: [index, 목차]
 created: 2026-06-09
-updated: 2026-11-02
+updated: 2026-11-04
 ---
 
 > [!tip] 핵심 takeaway
@@ -93,7 +93,8 @@ updated: 2026-11-02
 - [[led-quiz]] — 교회 로비 LED용 100문제 협동 탈출게임 퀴즈 (Vercel+Supabase, 백오피스 포함, 2026-10)
 - [[rag-compare]] — 청크 설정이 다른 docstore 저장소별 검색 결과를 MRR·정답 순위로 비교하는 로컬 도구 (python 표준 라이브러리, :8765)
 - [[sdk-sample]] — 웹 SDK 최소 예제(V2/XI × 인증/비인증, config.js 하나로 설정, 2026-10, 53커밋) · ⚠ git 이력에 실제 키 포함 가능
-- [[websdk-test]] — 웹 SDK 연동 3방식(V2·XI·SDK 없이) 실측 테스트 하네스 v0.21.1 · 로드맵: 독자 기동 → SmartHub 탑재(보류 중)
+- [[websdk-test]] — 웹 SDK 연동 3방식(V2·XI·SDK 없이) 실측 테스트 하네스 v0.21.1 · 🆕 사내 k8s 배포·문서 탭·deploy 브랜치 자동 배포(2026-11-04)
+- [[사내-k8s-배포-CI-CD-구축]] — 🆕 포트폴리오 사례: 공용 k8s에 무영향 배포 + CI Runner 제약을 pull 방식 CD로 우회(병합→1분 15초 반영), 트러블슈팅 4건·인사이트 7개
 - [[보안-대응-PHP2Shell-Node-2026-10]] — 🆕 보안 대응 포트폴리오 사례(2026-10-27~28, 단독 2일): 실제 악용 중인 PHP RCE(CVSS 9.2)+Node.js 보안 릴리스 전수 조사·침해 점검·백업/롤백 갖춘 패치. 회사 서버라 일반화본만 보관(상세는 work vault)
 
 ### 프로젝트 (팀숲)
@@ -113,6 +114,7 @@ updated: 2026-11-02
 - [[교회-백엔드-회의-2026-06-12]] — 교회 개발팀 백엔드 회의: 메인 개발 완료·개인 브랜치 전략·app/docs 문서화·Vercel용 개인 Git 배포
 
 ### 개념 / 지식
+- [[Kubernetes-기초]] — 🆕 실습으로 배운 k8s 개념 사전: 요청 경로(VIP→Ingress→Service→Pod)·리소스·apply·digest·RBAC·멀티아키 빌드·push/pull CD·pm2 대응
 - [[Jev-TypeSafe-AI]] — 🆕 (2026-10-29) 텍스트 대신 선택·점수·확률만 내는 System One 의사결정 모델. API 3종(Choice·Noul·Score)·confidence 임계값 패턴·한계·생태계. ⚠ 수치 대부분 벤더 주장, W39 "Zeb"=Jev
 
 > [!warning] 회사 기밀은 별도 vault
