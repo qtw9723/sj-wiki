@@ -4,7 +4,7 @@ category: 개념/지식
 tags: [kubernetes, k8s, docker, ci-cd, 인프라, 학습노트]
 source: 2026-11-03~04 사내 클러스터 조회·배포 실습 세션(직접 실행 결과 해석), [[사내-k8s-배포-CI-CD-구축]]
 created: 2026-11-04
-updated: 2026-11-04
+updated: 2026-11-05
 ---
 
 > [!tip] 핵심 takeaway
@@ -128,3 +128,4 @@ kubectl create secret ... --dry-run=client -o yaml | kubectl apply -f -         
 
 ## 관련 문서
 - [[사내-k8s-배포-CI-CD-구축]] · [[websdk-test]] · [[공통-기술스택]] · [[내-프로필]]
+- [[게임-크롤러-스팀-크리틱]] — 🧠 의외의 연결점(2026-11-05): §3의 *"태그가 아니라 digest로 비교"* 가 크롤러 출시일 문제에도 맞는다. 문자열(태그)이 아니라 정규화한 날짜(digest)로 비교해야 한다. *"어느 노드가 응답했나"* 도 같은 문제다(지역·판본에 따라 값이 달라짐, §7 13일차)
