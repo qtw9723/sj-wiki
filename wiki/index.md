@@ -61,7 +61,7 @@ updated: 2026-11-06
 
 ### 프로젝트
 - [[프로젝트-포트폴리오]] — IdeaProjects 7개 전체 개요·아키텍처 (시작점)
-- [[주식-모니터링-웹페이지]] — 🆕 (2026-11-06) TIGER 미국S&P500 개인 시세 대시보드: 한투 API+구글 뉴스 5분 수집(Supabase)·비밀번호 Vercel 화면·환율/VIX/수급 자동·지표별 영향. ⚠ 수급 단위 미검증
+- [[주식-모니터링-웹페이지]] — 🆕 (2026-11-06) TIGER 미국S&P500 개인 대시보드: 한투 API 5분 수집(Supabase)·1년 위치 기반 장기 판단·Claude 예약 평가(DB 기록)·Vercel 자동 배포. ⚠ 수급 단위 미검증
 - [[notepad]] — 마크다운 메모장 (레퍼런스 프로젝트, 프로덕션 안정)
 - [[mailer]] — ⭐ CS SmartHub(본인 기획·실사용자 CS팀·진행중, 1순위 포트폴리오). Mailer+Grafana 리포트(Gemini 로그분석)+Playwright 챗봇 모니터링(pg_cron). ⚠ 마이그레이션 예외
 - [[delivery-smarthub]] — SmartHub(구 Delivery SmartHub): 모듈 레지스트리·hub_features·허브=링크 멀티허브 통합 플랫폼. 모듈 5종·허브 2개 운영, CS 컷오버·구 앱 은퇴 완료(v0.11.0)
