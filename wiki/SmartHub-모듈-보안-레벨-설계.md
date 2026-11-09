@@ -2,7 +2,7 @@
 title: SmartHub 모듈 보안 레벨 설계 — 리서치부터 의사결정까지
 category: 프로젝트
 tags: [프로젝트, 포트폴리오, 보안설계, 의사결정, 멀티허브, 백오피스, 정책, smarthub]
-source: "2026-11-09 설계 세션(사용자↔Claude) + 웹 리서치(Kubernetes Pod Security Standards, Android protectionLevel, 데이터 분류 4단계, Grafana 플러그인 서명) + 저장소 qtw9723/smarthub docs/superpowers/specs/2026-11-09-module-security-levels-design.md"
+sources: ["raw/smarthub-모듈-보안-레벨-설계-세션-2026-11-09.md (설계 세션 사용자 발화 원문·검색 요지)", "웹 리서치(Kubernetes Pod Security Standards, Android protectionLevel, 데이터 분류 4단계, Grafana 플러그인 서명, Home Assistant 품질 등급, GitHub Danger Zone)", "저장소 qtw9723/smarthub docs/superpowers/specs/2026-11-09-module-security-levels-design.md"]
 status: 배포·실측 완료(2026-11-09, PR #58)
 created: 2026-11-09
 updated: 2026-11-09
@@ -36,6 +36,9 @@ updated: 2026-11-09
 | **데이터 분류 4단계** (예: GitHub의 Hack23 ISMS-PUBLIC `CLASSIFICATION.md`, ISO 27001 A.5.12 정렬) | PUBLIC / INTERNAL / CONFIDENTIAL / RESTRICTED | **"노출되면 어떤 피해가 나는가"** 로 판정(규제·심각한 피해→RESTRICTED, 경쟁·금전 피해→CONFIDENTIAL, 경미→INTERNAL, 없음→PUBLIC). 등급마다 한 줄 정의 + 예시. 미분류는 INTERNAL 기본값. Microsoft 가이드: 보통 3~5단계, 이름은 자기설명적으로 | 높음 — 레벨 정의 문구와 판정 기준 차용 |
 | **Grafana 플러그인 서명 등급** | Grafana / Enterprise / Community / Commercial / Private | 미서명 플러그인은 기본 로드 거부, 설정으로만 허용 | 낮음 — 등급 기준이 **보안 강도가 아니라 만든 주체**라 참고만 |
 | (덤) **GitHub Danger Zone** | — | 위험 설정을 빨간 테두리 구역에 모으고, 저장소 이름 입력 같은 마찰 단계로 확인 | UI 패턴 참고(행동 직전 확인) |
+| **Home Assistant 통합 품질 등급** | Bronze ~ Platinum | 통합(integration)의 **품질** 등급이다. 보안 등급이 아니다 | 부적합 — 검색했지만 축이 달라 버림 |
+
+📄 검색 질의와 요지는 `raw/smarthub-모듈-보안-레벨-설계-세션-2026-11-09.md`에 원문으로 남아 있다. 🧠 Home Assistant처럼 "등급 체계"라는 겉모양만 같고 **무엇을 기준으로 나누는지**가 다른 사례를 걸러낸 것도 리서치 과정의 일부다(Grafana도 같은 이유로 참고만).
 
 🧠 결론: 하나를 통째로 가져오지 않고 **조각을 조합**했다.
 - PSS → 레벨과 "어떻게 다룰지"의 분리, 예외는 레벨을 낮추지 않고 따로 기록
@@ -147,6 +150,13 @@ updated: 2026-11-09
 - **오픈소스 사례는 통째로 이식하기보다 메커니즘 단위로 빌려 쓴다.** 각 조각을 왜 가져왔는지 말할 수 있어야 설계 근거가 된다.
 - **장애 시 안전한 방향으로 실패(fail-safe)**: 레벨 DB를 못 읽으면 기본값으로 판정해 경고가 사라지지 않게.
 
+## 의외의 연결점 🧠
+같은 날(2026-11-09) 들어온 KISA 보안공지가 이 설계의 남은 숙제와 이미 내린 결정을 실제 CVE로 보여 준다.
+- **fail-safe 판정 ↔ OpenSSH "*sshole"**(CVE-2026-123158): 오류값이 "비밀번호 없음" 표시와 같은 값이 돼서 로그인이 통과된 버그다. 이 설계의 *"표에 없으면 L2"*, *"DB를 못 읽으면 기본값으로 경고 유지"* 가 바로 이 함정을 막는 장치다 → [[보안-취약점-공지-모음]].
+- **미뤄 둔 허브 비밀번호 ↔ INFINITT 무차별 대입**(CVE-2026-19877): 비밀번호를 실제로 적용할 때 시도 횟수 제한·지연을 함께 넣어야 한다 → [[보안공지-2026-11]].
+- **L3 "추후 강화 자리" ↔ SonicWall 단일 인증 요소**(CVE-2026-19868): 남의 이름으로 메일을 보내는 L3에는 비밀번호 하나로 부족하다는 근거다. 강화 후보는 2단계 인증이나 발송 직전 재확인이다.
+- **L3 정의 ↔ 에이전트 자동화의 통제 실패 비용**: [[AI-주간-소식-2026-W46]] W46-09가 경고한 "자동화 도구가 통제를 벗어날 때의 비용"은 외부로 행동하는 모듈에서 생긴다. 이 레벨 체계는 에이전트 도구 권한을 나눌 때도 쓸 수 있다.
+
 ## 출처
 - [Kubernetes — Pod Security Standards](https://www.kubernetes.io/docs/concepts/security/pod-security-standards) · [Snyk — Understanding Kubernetes Pod Security Standards](https://snyk.io/blog/understanding-kubernetes-pod-security-standards/)
 - [Android — `<permission>` element (protectionLevel)](https://developer.android.com/guide/topics/manifest/permission-element)
@@ -158,4 +168,6 @@ updated: 2026-11-09
 ## 관련 문서
 - [[delivery-smarthub]] — SmartHub 본 페이지(모듈 레지스트리·허브 구조)
 - [[websdk-test]] — `requiresPassword` 첫 사례(봇 API 키 저장)
+- [[보안-취약점-공지-모음]] · [[보안공지-2026-11]] — 같은 날 KISA 공지와의 연결(fail-safe·무차별 대입·단일 인증)
+- [[AI-주간-소식-2026-W46]] — 자동화 통제 실패 비용(W46-09) ↔ L3
 - [[mailer|CS SmartHub]] · [[Supabase-RLS-정책]] · [[Kubernetes-기초]] · [[프로젝트-포트폴리오]] · [[내-프로필]]

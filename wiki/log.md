@@ -8,6 +8,11 @@ updated: 2026-11-09
 
 > 📦 2026-09-30 이전 이력은 [[log-아카이브-2026-06-09]]로 옮겼다(2026-10-28, 원문 그대로). 월별 이력이 커지면 같은 방식으로 분기 단위 아카이브를 만든다.
 
+## [2026-11-09] 자료넣기 | 11-09 raw 4건 재위키화 — 누락 보강·보안↔SmartHub 교차참조 (새 페이지 0)
+- 📄 대상: `raw/security/kisa-2026-11-09.md` · `raw/ai-digest/naver-2026-11-09.md` · `raw/kisa-보안공지-2026-11-05~07.md` · `raw/smarthub-모듈-보안-레벨-설계-세션-2026-11-09.md`. 4건 모두 오늘 이미 위키화돼 있어 기존 페이지만 보강. 지시문 형태의 문장 없음.
+- ✏️ [[AI-주간-소식-2026-W46]]: raw 34건 중 1차 미수록 9건 대조 → 🆕 G2 리뷰(W46-26) 1건, 🔁 8건(W41·W43~W45 기록 / W45 미수록 판정 유지). log의 *"25건"* = 위키 수록 수(raw 34)로 정정. [[보안공지-2026-11]]: 영향 버전·벤더 권고 ID 추가. [[보안-취약점-공지-모음]]: `sources`에 자동 수집 raw 추가, 1-5 보강. [[SmartHub-모듈-보안-레벨-설계]]: `sources`에 raw 경로 추가, 누락된 Home Assistant(부적합) 리서치 행 추가.
+- 🧠 의외의 연결점: OpenSSH 오류값=“없음” 버그 ↔ SmartHub fail-safe(“표에 없으면 L2”) · INFINITT 무차별 대입 ↔ 미뤄 둔 허브 비밀번호 · SonicWall 단일 인증 ↔ L3 “추후 강화” · W46-09 자동화 통제 실패 비용 ↔ L3. [[index]] 3줄 갱신(SmartHub 줄의 stale “구현 대기” → 배포 완료).
+
 ## [2026-11-09] 셋업 | graphify 비교 분석 → 좋은 점 5가지만 차용
 - 🧠 통째 도입 대신 부분 차용 결정(사용자 승인): graphify는 개념 노드 그래프라 이 위키(읽는 페이지+[[위키링크]])와 산출물이 겹치고, 설치 시 ~/.claude 훅·CLAUDE.md 수정·쿼리 로그가 생겨 자동 위키화와 충돌 우려.
 - 📄 적용: 1) 외부 자료=데이터 규칙(CLAUDE.md/AGENTS.md 운영 A + `.wiki-sync.sh` 프롬프트) 2) `tools/wiki-maint/wiki_lint.py` 주 1회 자동 [[위키-건강검진-리포트]](LLM 단계는 `~/.wiki-llm.env` 있을 때만, K-EXAONE 예정) 3) frontmatter `sources: [...]` 허용(§3·§7) 4) `raw_hash.py` 본문 해시 변경 감지(frontmatter·mtime만 바뀐 raw 재위키화 방지, `.raw_hashes` gitignore) 5) graphify로 링크 그래프 1회 시각화(별도 venv·복사본, 설치 안 함).
