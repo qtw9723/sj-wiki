@@ -1,0 +1,129 @@
+---
+title: SmartHub 모듈 보안 레벨 설계 — 리서치부터 의사결정까지
+category: 프로젝트
+tags: [프로젝트, 포트폴리오, 보안설계, 의사결정, 멀티허브, 백오피스, 정책, smarthub]
+source: "2026-11-09 설계 세션(사용자↔Claude) + 웹 리서치(Kubernetes Pod Security Standards, Android protectionLevel, 데이터 분류 4단계, Grafana 플러그인 서명) + 저장소 qtw9723/smarthub docs/superpowers/specs/2026-11-09-module-security-levels-design.md"
+status: 설계 확정 · 구현 대기
+created: 2026-11-09
+updated: 2026-11-09
+---
+
+> [!tip] 핵심 takeaway (포트폴리오 관점)
+> ⭐ **"공개 허브에 비용 모듈이 켜져 있다"는 플래그 2개짜리 경고를, 오픈소스 보안 모델(쿠버네티스 PSS·안드로이드 권한 등급·데이터 분류)을 비교해 "모듈 레벨 × 허브 보호 수준" 정책으로 일반화한 설계.** 팔 포인트는 결과물보다 **질문을 다듬어 간 과정**이다. "레벨을 모듈에 고정할까, 상황에 따라 바꿀까"에서 시작해 **"누가 레벨을 바꿀 권한이 있는가"** 로 질문을 바꿔 풀었다.
+> 🧠 면접 소재: (1) 사례를 그대로 베끼지 않고 **조각별로 골라 조합**(PSS의 "레벨/처리방식 분리" + 안드로이드의 "등급은 정의자가 정함" + 데이터 분류의 "피해 기준 판정"), (2) 사용자 피드백 세 번으로 설계가 꺾인 지점을 설명할 수 있음, (3) "막지 않고 경고+확인+예외 기록"이라는 운영 현실 중심 원칙.
+
+## 한 줄 요약
+[[delivery-smarthub|SmartHub]]의 모듈마다 **보안 레벨(L0~L3)** 을 매기고, 레벨마다 허브가 갖춰야 할 조건(정책)을 둔다. 정책에 어긋난 허브는 **백오피스가 팝업·상시 경고·행동 직전 확인**으로 알린다. 레벨은 **백오피스 UI에서 관리자만** 조정하고, 알고도 공개로 두는 허브는 **"확인된 예외"** 로 기록한다. 허브 비밀번호를 실제로 거는 일은 당분간 미룬다(사용자 결정).
+
+## 문제 / 배경
+- 📄 SmartHub는 "기능=모듈, 팀=허브(링크)" 구조라 허브마다 모듈을 켜고 끈다. 허브는 비밀번호를 걸 수도, **공개로 둘 수도** 있다.
+- 📄 2026-09 첫 사례: 외부 LLM 비용이 드는 모듈(doc-to-api)을 공개 허브에 켜면 URL을 아는 누구나 비용을 일으킨다 → 모듈 계약에 `externalCost` 플래그를 두고 백오피스가 빨간 경고·확인을 띄웠다.
+- 📄 2026-10-28 두 번째 사례: 웹SDK 연동 테스트 모듈([[websdk-test]])에 **봇 API 키 저장**이 생기면서 `requiresPassword: '<이유>'` 플래그를 추가해 같은 경고에 태웠다(경고와 확인만, 막지 않음 — 사용자 결정).
+- 🧠 플래그가 늘어나는 방식의 한계: (1) 모듈마다 **보안이 필요한 정도가 다른데** 있다/없다 둘뿐, (2) 기준을 바꾸려면 코드 수정, (3) 고객 정보를 다루는 모니터링·리포트·메일 모듈은 아예 표시가 없었다.
+- 사용자 요청(2026-11-09): *"모듈별로 비밀번호 필요한 모듈을 보안이 필요한 정도에 따라서 보안레벨을 정리하면 더 좋을 거 같아. 깃의 오픈소스 중에서 비슷한 사례를 찾아서 차용하고 싶어."*
+
+## 내 역할
+📄 문제 제기·방향 결정은 사용자, 리서치·설계안·문서화는 Claude(AI 페어). 🧠 아래 "의사결정 과정"처럼 **사용자가 세 번 방향을 틀었고, 그때마다 설계 근거를 다시 세웠다.**
+
+---
+
+## 1. 리서치 — 비슷한 오픈소스·표준 사례 📄
+
+| 사례 | 단계 | 핵심 메커니즘 | SmartHub 적합도 |
+|---|---|---|---|
+| **Kubernetes Pod Security Standards** | privileged / baseline / restricted | 레벨과 **처리 방식(enforce=거부 / audit=기록 / warn=경고)** 을 분리. 네임스페이스 라벨로 적용. 흔한 도입 패턴은 "baseline은 enforce, restricted는 warn으로 먼저 보고 정리되면 승격". 시스템 네임스페이스처럼 꼭 필요한 곳은 예외로 둠 | ⭐ 가장 적합 — "경고와 확인만, 막지 않음"이 warn 모드와 같고, 나중에 enforce로 올릴 길이 열림 |
+| **Android 권한 protectionLevel** | normal / dangerous / signature | normal은 설치 시 자동 허용, dangerous는 런타임에 사용자 동의, signature는 같은 서명 앱만. **등급은 권한을 정의한 쪽(플랫폼)이 정하고 앱 사용자가 바꾸지 못함** | 높음 — "위험한 것만 확인을 받는다", "등급을 사용자가 바꾸지 않는다"는 원칙 차용 |
+| **데이터 분류 4단계** (예: GitHub의 Hack23 ISMS-PUBLIC `CLASSIFICATION.md`, ISO 27001 A.5.12 정렬) | PUBLIC / INTERNAL / CONFIDENTIAL / RESTRICTED | **"노출되면 어떤 피해가 나는가"** 로 판정(규제·심각한 피해→RESTRICTED, 경쟁·금전 피해→CONFIDENTIAL, 경미→INTERNAL, 없음→PUBLIC). 등급마다 한 줄 정의 + 예시. 미분류는 INTERNAL 기본값. Microsoft 가이드: 보통 3~5단계, 이름은 자기설명적으로 | 높음 — 레벨 정의 문구와 판정 기준 차용 |
+| **Grafana 플러그인 서명 등급** | Grafana / Enterprise / Community / Commercial / Private | 미서명 플러그인은 기본 로드 거부, 설정으로만 허용 | 낮음 — 등급 기준이 **보안 강도가 아니라 만든 주체**라 참고만 |
+| (덤) **GitHub Danger Zone** | — | 위험 설정을 빨간 테두리 구역에 모으고, 저장소 이름 입력 같은 마찰 단계로 확인 | UI 패턴 참고(행동 직전 확인) |
+
+🧠 결론: 하나를 통째로 가져오지 않고 **조각을 조합**했다.
+- PSS → 레벨과 "어떻게 다룰지"의 분리, 예외는 레벨을 낮추지 않고 따로 기록
+- Android → 등급을 정하는 주체는 사용자가 아님
+- 데이터 분류 → 피해 기준의 레벨 정의
+
+## 2. 의사결정 과정 (대화 흐름 그대로) 📄
+
+**1차안 — 모듈 고정 레벨 4단계.** PSS 구조 + 데이터 분류 기준으로 L0 공개 / L1 내부 / L2 민감 / L3 제한을 제안하고, 챗봇 모니터링은 "고객사 챗봇 주소 정도"라며 **L1(안내만)** 으로 배정.
+
+**사용자 피드백 1 — "L1도 문제가 있어. 고객의 정보가 민감 정도가 다른 거 같아."**
+→ 🧠 맞는 지적. 같은 모듈 안에서도 이미 공개된 챗봇 주소(낮음)와 고객사와의 계약 관계(중간), **장애 이력**(높음, 평판 문제), 내부·스테이징 주소(높음)가 섞여 있고, 금융사 고객이면 한 단계 더 높다.
+→ 2차안: **"가장 높은 등급을 따른다"** (데이터 분류의 high-water mark). 모듈은 최소 레벨만 갖고, 봇·고객사 데이터에 "민감" 체크를 하면 허브 실효 레벨이 올라가는 방식.
+
+**사용자 피드백 2 — "레벨이 모듈 단위여야 하나, 사용 상황에 따라 유동적이어야 하나 고민이야. 사용 상황은 결국 사용자에 의해 변할 텐데, 사용자에 의해서 보안 레벨이 변경되는 게 좀 어색한 거 같아."**
+→ 🧠 핵심을 짚은 질문. 2차안은 **데이터를 넣는 사람이 보안 판정을 움직이는 구조**였다. 질문을 "고정이냐 유동이냐"에서 **"누가 무엇을 정하는가"** 로 바꿔 분리했다.
+- 레벨 기준 = **지금 들어 있는 데이터가 아니라 그 모듈이 설계상 담을 수 있는 최악** → 고객 민감도 걱정은 최악 기준 안에 흡수(챗봇 모니터링 → L2)
+- 상황에 따라 변하는 것 = 레벨이 아니라 **허브의 보호 수준**(공개/비밀번호), 그걸 정하는 사람은 관리자
+- 근거: Android(등급은 정의자가 정함), PSS(파드가 아니라 네임스페이스 정책을 관리자가 정함)
+→ 3차안: 레벨은 코드 고정, 낮춰야 하면 코드 수정.
+
+**사용자 피드백 3 — "코드에서 레벨을 조정하는 건 너무 UX가 떨어지는 거 같아. UI로 레벨 조정 가능하게 하고, 보안 정책에 맞지 않는 상황(예: 비밀번호 미설정)에는 백오피스에서 팝업과 경고를 주면 좋을 거 같아."**
+→ 🧠 "사용자가 바꾸면 어색하다"와 "UI로 바꾸고 싶다"는 충돌하지 않는다. **바꾸는 주체가 다르기 때문**이다. 허브 사용자(데이터 입력자)는 못 바꾸고, **백오피스 관리자(마스터 키)** 가 UI로 바꾼다.
+→ 최종안: 코드에는 기본 레벨만, 실효 레벨은 DB + 백오피스 UI. 정책 위반은 팝업·경고·확인.
+
+**사용자 결정 4 — "L2면 될 거 같긴 한데"** → 허브 비밀번호는 **L2부터** 요구, L1은 안내만.
+
+## 3. 최종 설계 📄 (저장소 spec 요약)
+
+### 레벨과 정책
+| 레벨 | 이름 | 정의(노출·오용되면) | 허브 요구 조건 |
+|---|---|---|---|
+| L0 | 공개 | 피해 없음 | 없음 |
+| L1 | 내부 | 사내 정보가 보이는 정도 | 없음(안내만) |
+| L2 | 민감 | 고객 정보가 드러나거나, 비용이 생기거나, 저장된 비밀이 쓰임 | 허브 비밀번호 |
+| L3 | 제한 | 남의 이름으로 외부에 행동함(메일 발송 등) | 허브 비밀번호(추후 강화 자리) |
+
+### 모듈 기본 레벨 ("담을 수 있는 최악" 기준)
+| 모듈 | 레벨 | 이유 |
+|---|---|---|
+| doc-to-esd | L0 | 시트를 변환만, 외부 호출·저장 비밀 없음 |
+| chatbot-monitoring | L2 | 고객사 챗봇 목록과 장애 이력 |
+| grafana-reports | L2 | 고객 서버 지표·접속 정보·수신자 목록 |
+| doc-to-api | L2 | 호출마다 외부 비용 |
+| websdk-test | L2 | 저장된 봇 API 키로 토큰 발급 |
+| mailer | L3 | 저장된 발신 계정으로 실제 메일 발송 |
+
+→ 지금은 L1인 모듈이 없다. L1은 앞으로 생길 모듈을 위한 자리.
+
+### 동작
+- **실효 레벨** = DB 값(백오피스에서 조정), 없거나 못 읽으면 코드 기본값 → 장애 때문에 경고가 사라지지 않음.
+- **기본보다 낮추기**는 허용하되 사유 필수 + "기본보다 낮음" 배지.
+- **위반** = 허브에 켜진 모듈의 최고 실효 레벨이 비밀번호를 요구하는데 비밀번호가 없음.
+- **알림 3지점**:
+  1. 백오피스 진입 팝업 — 새로 추가, 세션당 1회
+  2. 상단 배너·허브 카드 상시 경고
+  3. 행동 직전 확인 — L2+ 켜기 / 비밀번호 해제 / 레벨 상향으로 위반 발생 시
+- **확인된 예외** — 관리자가 "확인함" → 회색 예외. 확인할 때의 요구 레벨을 기록하고, 현재 요구 레벨이 그보다 높아지면 자동 해제. 비밀번호를 설정하면 기록을 지운다. (PSS의 exemption 개념)
+- 기존 `externalCost`·`requiresPassword` 플래그는 기본 레벨로 흡수.
+
+### 채택하지 않은 대안과 이유 🧠
+| 대안 | 버린 이유 |
+|---|---|
+| 플래그 계속 추가 | 정도 차이를 표현 못 하고 기준 변경이 코드 수정 |
+| 데이터 태그로 레벨 상승(high-water mark) | 데이터 입력자가 보안 판정을 움직임 — 사용자 지적 |
+| 허브 단위 "고객 정보 등급" | 허브 안에 섞인 경우를 구분 못 하고, 역시 상황 의존 |
+| 레벨 코드 고정 | 관리 UX가 나쁨 — 사용자 지적 |
+| 위반 시 접근 차단(enforce) | 운영자가 공개 여부를 판단한다는 기존 원칙과 충돌. 나중에 L3만 막기로 올릴 길은 열어 둠 |
+
+## 4. 진행 현황
+- ✅ 2026-11-09 리서치 → 설계 4회 반복 → spec 작성 → 빌더 관점 검토(질문 4개, 모두 문서에 판단 기록) → 사용자 확정.
+- ⏳ 구현 계획 → 구현(TDD) → 백오피스 실측 예정. 허브 비밀번호 실제 적용은 미룸.
+
+## 5. 회고 / 배운 점 🧠
+- **"고정 vs 유동"은 가짜 양자택일이었다.** 진짜 질문은 "누가 바꿀 권한이 있는가"였고, 주체를 분리하자 두 요구(사용자 입력에 흔들리지 않음 + UI로 조정)가 동시에 풀렸다.
+- **최악 기준(worst-case) 레벨링**은 과보호 비용이 있지만, 막지 않고 경고+확인이면 그 비용은 "확인 한 번"으로 작다. 그래서 판정 단순성을 택했다.
+- **오픈소스 사례는 통째로 이식하기보다 메커니즘 단위로 빌려 쓴다.** 각 조각을 왜 가져왔는지 말할 수 있어야 설계 근거가 된다.
+- **장애 시 안전한 방향으로 실패(fail-safe)**: 레벨 DB를 못 읽으면 기본값으로 판정해 경고가 사라지지 않게.
+
+## 출처
+- [Kubernetes — Pod Security Standards](https://www.kubernetes.io/docs/concepts/security/pod-security-standards) · [Snyk — Understanding Kubernetes Pod Security Standards](https://snyk.io/blog/understanding-kubernetes-pod-security-standards/)
+- [Android — `<permission>` element (protectionLevel)](https://developer.android.com/guide/topics/manifest/permission-element)
+- [Hack23 ISMS 분류 정책(4단계)](https://skills.cat/skills/hack23/cia/classification-policy) · [Data Classification Policy Template (4-Tier)](https://www.securityscientist.net/blog/data-classification-policy-template/) · [Microsoft — Explore data classification](https://learn.microsoft.com/en-us/training/modules/implement-data-classification-sensitive-information/2-explore-data-classification)
+- [Grafana — Plugin signatures](https://grafana.com/docs/grafana/latest/administration/plugin-management/plugin-sign/)
+- [GitHub Docs — Setting repository visibility (Danger Zone)](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/setting-repository-visibility)
+- 저장소: `qtw9723/smarthub` — `docs/superpowers/specs/2026-11-09-module-security-levels-design.md`
+
+## 관련 문서
+- [[delivery-smarthub]] — SmartHub 본 페이지(모듈 레지스트리·허브 구조)
+- [[websdk-test]] — `requiresPassword` 첫 사례(봇 API 키 저장)
+- [[mailer|CS SmartHub]] · [[Supabase-RLS-정책]] · [[Kubernetes-기초]] · [[프로젝트-포트폴리오]] · [[내-프로필]]

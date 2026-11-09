@@ -66,6 +66,7 @@ updated: 2026-11-08
 - [[notepad]] — 마크다운 메모장 (레퍼런스 프로젝트, 프로덕션 안정)
 - [[mailer]] — ⭐ CS SmartHub(본인 기획·실사용자 CS팀·진행중, 1순위 포트폴리오). Mailer+Grafana 리포트(Gemini 로그분석)+Playwright 챗봇 모니터링(pg_cron). ⚠ 마이그레이션 예외
 - [[delivery-smarthub]] — SmartHub(구 Delivery SmartHub): 모듈 레지스트리·hub_features·허브=링크 멀티허브 통합 플랫폼. 모듈 5종·허브 2개 운영, CS 컷오버·구 앱 은퇴 완료(v0.11.0)
+- [[SmartHub-모듈-보안-레벨-설계]] — SmartHub 모듈 보안 레벨(L0~L3)×허브 보호 정책. K8s PSS·Android 권한·데이터 분류 리서치→사용자 피드백 3회로 설계가 꺾인 의사결정 기록(포트폴리오, 구현 대기)
 - [[delivery-smarthub-링크]] — SmartHub 링크 모음(현행): 프로덕션 도메인·저장소(smarthub)·저장소 내 문서
 - [[schedule-reporter-kakao]] — 리포트 스케줄러 (⚠️ 카카오 연동은 코드에서 제거됨, 현재 Grafana 리포트 설정 단일 페이지·[[mailer]] 형제)
 - [[CogInsight-Generator]] — ⭐ Dialog JSON Generator(챗봇 시나리오 축). LLM 6단계 생성 파이프라인 + DB-구동 규칙엔진 + 시나리오/API 레퍼런스 + 테스터 OTP 인증. 프로덕션 v0.4.2
