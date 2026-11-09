@@ -35,3 +35,9 @@ raw/games/reviews-*.json
 __pycache__/
 tools/game-crawler/run.log
 tools/game-crawler/test_result.txt
+
+# === 자동 위키화 보조 상태 (기기 종속) ===
+.raw_hashes
+.raw_hashes.tmp
+.last_wiki_lint
+.wiki-sync.lock

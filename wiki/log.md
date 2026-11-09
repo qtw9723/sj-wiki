@@ -8,6 +8,11 @@ updated: 2026-11-09
 
 > 📦 2026-09-30 이전 이력은 [[log-아카이브-2026-06-09]]로 옮겼다(2026-10-28, 원문 그대로). 월별 이력이 커지면 같은 방식으로 분기 단위 아카이브를 만든다.
 
+## [2026-11-09] 셋업 | graphify 비교 분석 → 좋은 점 5가지만 차용
+- 🧠 통째 도입 대신 부분 차용 결정(사용자 승인): graphify는 개념 노드 그래프라 이 위키(읽는 페이지+[[위키링크]])와 산출물이 겹치고, 설치 시 ~/.claude 훅·CLAUDE.md 수정·쿼리 로그가 생겨 자동 위키화와 충돌 우려.
+- 📄 적용: 1) 외부 자료=데이터 규칙(CLAUDE.md/AGENTS.md 운영 A + `.wiki-sync.sh` 프롬프트) 2) `tools/wiki-maint/wiki_lint.py` 주 1회 자동 [[위키-건강검진-리포트]](LLM 단계는 `~/.wiki-llm.env` 있을 때만, K-EXAONE 예정) 3) frontmatter `sources: [...]` 허용(§3·§7) 4) `raw_hash.py` 본문 해시 변경 감지(frontmatter·mtime만 바뀐 raw 재위키화 방지, `.raw_hashes` gitignore) 5) graphify로 링크 그래프 1회 시각화(별도 venv·복사본, 설치 안 함).
+- 📄 첫 리포트: 끊긴 링크 대상 9 · 고아 2 · 약한 연결 12 · index/source/takeaway 누락 0. 수정은 건강검진 요청 시 승인 후.
+
 ## [2026-11-09] 자료넣기 | KISA 보안공지 자동 수집 2건 (점검 권장 0)
 - 📄 `raw/security/kisa-2026-11-09.md` 보관, [[보안공지-2026-11]]에 요약 추가. 🧠 등급은 자동 분석(security_watch.py).
 
