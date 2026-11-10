@@ -1,0 +1,7 @@
+node_modules
+.vercel
+.env
+.env.*
+# 벡터는 배포(vercel-build) 시 무료 임베딩 API로 생성 — 저장소에는 올리지 않는다
+index/vectors.bin
+index/embedding-meta.json

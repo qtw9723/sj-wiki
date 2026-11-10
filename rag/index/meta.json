@@ -1,0 +1,17 @@
+{
+  "wikiCommit": "22bc3cc9c537ef74bd3ada0c57d71dbd188d9d12",
+  "builtAt": "2026-11-10T15:27:54.600Z",
+  "chunkMaxChars": 900,
+  "pages": 107,
+  "chunks": 3808,
+  "byCategory": {
+    "game": {
+      "pages": 85,
+      "chunks": 493
+    },
+    "ai-news": {
+      "pages": 22,
+      "chunks": 3315
+    }
+  }
+}

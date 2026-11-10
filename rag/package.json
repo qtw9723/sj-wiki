@@ -1,0 +1,15 @@
+{
+  "name": "sj-wiki-rag",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "sj-wiki(게임 요소 · AI 주간 소식) 하이브리드 RAG 검색 API + 웹 UI",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build:index": "node scripts/build-index.mjs",
+    "build:vectors": "node scripts/embed.mjs",
+    "eval": "node eval/run.mjs",
+    "dev": "node scripts/dev-server.mjs",
+    "vercel-build": "node scripts/embed.mjs"
+  }
+}

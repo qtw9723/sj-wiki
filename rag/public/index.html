@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>sj-wiki 검색</title>
+<style>
+:root{--bg:#fafaf9;--card:#fff;--fg:#1c1917;--mut:#78716c;--line:#e7e5e4;--acc:#2563eb;--game:#e76f51;--ai:#2a9d8f}
+@media(prefers-color-scheme:dark){:root{--bg:#1c1917;--card:#292524;--fg:#f5f5f4;--mut:#a8a29e;--line:#44403c;--acc:#60a5fa}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 -apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif}
+main{max-width:760px;margin:0 auto;padding:16px}
+h1{font-size:18px;margin:4px 0 2px}
+.sub{color:var(--mut);font-size:12px;margin-bottom:12px}
+form{display:flex;gap:8px;flex-wrap:wrap}
+input[type=search]{flex:1 1 240px;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--fg);font-size:16px}
+select,button{padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--fg);font-size:14px}
+button.primary{background:var(--acc);color:#fff;border-color:var(--acc)}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;align-items:center}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;margin-top:10px}
+.tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:99px;color:#fff;margin-right:6px}
+.tag.game{background:var(--game)}.tag.ai-news{background:var(--ai)}
+.ttl{font-weight:600}.hd{color:var(--mut);font-size:12px}
+.txt{margin-top:6px;white-space:pre-wrap;word-break:break-word;font-size:14px}
+.meta{color:var(--mut);font-size:11px;margin-top:6px}
+a{color:var(--acc)}
+#ans{white-space:pre-wrap}
+#status{color:var(--mut);font-size:12px;margin-top:10px}
+</style>
+</head>
+<body>
+<main>
+  <h1>sj-wiki 검색</h1>
+  <div class="sub">게임 요소 라이브러리 · AI 주간 소식 — 하이브리드(키워드+벡터) RAG</div>
+  <form id="f">
+    <input type="search" id="q" placeholder="예: 자세 게이지 붕괴 처형 / 에이전트 메모리" autocomplete="off" required>
+    <button class="primary">검색</button>
+  </form>
+  <div class="row">
+    <select id="cat"><option value="">전체</option><option value="game">게임 요소</option><option value="ai-news">AI 주간 소식</option></select>
+    <select id="mode"><option value="hybrid">하이브리드</option><option value="lexical">키워드(BM25)</option><option value="vector">벡터</option></select>
+    <button id="askbtn" type="button">AI 답변</button>
+    <input type="password" id="tok" placeholder="API 토큰(선택)" style="width:130px;padding:9px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--fg)">
+  </div>
+  <div id="status"></div>
+  <div id="ansbox"></div>
+  <div id="out"></div>
+</main>
+<script>
+const $=s=>document.querySelector(s);
+try{$('#tok').value=localStorage.getItem('rag_tok')||''}catch{}
+function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e}
+function card(r){
+  const c=el('div','card');
+  const h=el('div');
+  h.append(el('span','tag '+r.category,r.category==='game'?'게임':'AI뉴스'),el('span','ttl',r.title));
+  c.append(h);
+  if(r.heading)c.append(el('div','hd',r.heading));
+  c.append(el('div','txt',r.text.length>420?r.text.slice(0,420)+'…':r.text));
+  const m=el('div','meta');
+  const a=el('a',null,'원문 보기');a.href=r.url;a.target='_blank';a.rel='noopener';
+  m.append(a,document.createTextNode(` · 점수 ${r.score}`+(r.lexical?` · BM25 #${r.lexical.rank}`:'')+(r.vector?` · 벡터 #${r.vector.rank}`:'')));
+  c.append(m);return c;
+}
+async function run(e){
+  e&&e.preventDefault();
+  const q=$('#q').value.trim();if(!q)return;
+  $('#out').replaceChildren();$('#ansbox').replaceChildren();$('#status').textContent='검색 중…';
+  const p=new URLSearchParams({q,k:8,mode:$('#mode').value});if($('#cat').value)p.set('category',$('#cat').value);
+  const r=await fetch('/api/search?'+p);const j=await r.json();
+  if(!r.ok){$('#status').textContent=j.error||'오류';return}
+  $('#status').textContent=`${j.results.length}건 · ${j.took_ms}ms · 방식 ${j.mode} · 스냅샷 ${j.index.wikiCommit.slice(0,7)}`+(j.index.vectors?'':' · (벡터 미사용: 키워드 검색)');
+  j.results.forEach(x=>$('#out').append(card(x)));
+}
+async function ask(){
+  const q=$('#q').value.trim();if(!q)return;
+  try{localStorage.setItem('rag_tok',$('#tok').value)}catch{}
+  $('#ansbox').replaceChildren();$('#status').textContent='답변 생성 중…';
+  const h={'content-type':'application/json'};if($('#tok').value)h.authorization='Bearer '+$('#tok').value;
+  const r=await fetch('/api/ask',{method:'POST',headers:h,body:JSON.stringify({question:q,category:$('#cat').value||undefined})});
+  const j=await r.json();
+  if(!r.ok){$('#status').textContent=j.error||'오류';return}
+  $('#status').textContent=`답변 모델 ${j.model} · 검색 ${j.retrieval}`;
+  const c=el('div','card');c.append(el('div','ttl','AI 답변'),el('div','txt',j.answer));c.firstChild.nextSibling.id='ans';
+  const m=el('div','meta');m.append(document.createTextNode('근거: '));
+  j.citations.forEach(x=>{const a=el('a',null,`[${x.n}] ${x.title}`);a.href=x.url;a.target='_blank';a.rel='noopener';m.append(a,document.createTextNode('  '))});
+  c.append(m);$('#ansbox').append(c);
+  const s=await fetch('/api/search?'+new URLSearchParams({q,k:6,mode:'hybrid'}));
+}
+$('#f').addEventListener('submit',run);$('#askbtn').addEventListener('click',ask);
+</script>
+</body>
+</html>
