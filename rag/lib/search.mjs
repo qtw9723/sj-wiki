@@ -1,9 +1,15 @@
 // 하이브리드 검색: BM25(한글 bigram) + 벡터(코사인) → RRF 융합.
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { embed, embedConfig } from "./llm.mjs";
 
-const INDEX_DIR = path.join(process.cwd(), "index");
+// Vercel에서는 cwd가 /var/task, 소스는 /var/task/rag 에 놓이므로 모듈 위치 기준으로 찾는다.
+const INDEX_DIR = [
+  fileURLToPath(new URL("../index", import.meta.url)),
+  path.join(process.cwd(), "index"),
+  path.join(process.cwd(), "rag", "index"),
+].find((d) => fs.existsSync(path.join(d, "chunks.json"))) || path.join(process.cwd(), "index");
 let STATE = null;
 
 export function tokenize(s) {
