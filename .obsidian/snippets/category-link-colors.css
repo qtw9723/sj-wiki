@@ -1,0 +1,14 @@
+/* 링크 색 = 대상 페이지 category (그래프 색상 그룹 graph.json과 같은 색).
+   Supercharged Links가 붙이는 data-link-category / data-link-path 속성 사용.
+   그래프에서 위쪽 그룹이 우선이므로, 여기서는 우선순위가 낮은 것부터 써서 뒤의 규칙이 이기게 함. */
+[data-link-category="회의록"]      { color: #a18072 !important; }
+[data-link-category="개념/지식"]   { color: #d6409f !important; }
+[data-link-category="도구/스킬"]   { color: #12a594 !important; }
+[data-link-category="프로젝트"]    { color: #f76b15 !important; }
+[data-link-category="AI/업계 동향"] { color: #3e8eed !important; }
+[data-link-category="게임 요소"]   { color: #8e4ec6 !important; }
+[data-link-path*="악보"], [data-link-path*="교회"],
+[data-link-path*="팀숲"], [data-link-path*="콜링"] { color: #30a46c !important; }
+[data-link-path*="보안"]           { color: #e5484d !important; }
+[data-link-category="나에 대하여"] { color: #c99a1e !important; }
+[data-link-category="시스템"]      { color: #8a8f98 !important; }

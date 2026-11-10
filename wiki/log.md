@@ -8,6 +8,11 @@ updated: 2026-11-10
 
 > 📦 2026-09-30 이전 이력은 [[log-아카이브-2026-06-09]]로 옮겼다(2026-10-28, 원문 그대로). 월별 이력이 커지면 같은 방식으로 분기 단위 아카이브를 만든다.
 
+## [2026-11-10] 셋업 | Obsidian 1.15.0 가시성 플러그인 11종·링크 색·북마크·카테고리 보기
+- 📄 사용자가 앱을 1.15.0으로 올린 뒤 "피할 것 빼고 진행" 지시. GitHub 최신 릴리스에서 main.js·manifest·styles를 받아 `.obsidian/plugins/`에 넣음(전부 manifest id 일치, minAppVersion ≤ 1.15.0 확인): Strange New Worlds 2.3.7, Supercharged Links 0.14.0, Pretty Properties 2.3.4, Notebook Navigator 3.5.0, Omnisearch 1.32.0, Callout Manager 1.1.2, Colored Tags 7.0.2, Iconic 1.1.11, Extended Graph 2.7.6, Excalidraw 2.29.2, ExcaliBrain 0.2.19.
+- ✏️ Supercharged Links는 `category`만 읽게 하고, 색은 자체 스니펫 `category-link-colors.css`(graph.json 색상 그룹과 같은 색·같은 우선순위)로. 북마크에 허브 8개+`wiki/위키-보기.base`(최근 업데이트·카테고리별 5개 표). CLAUDE.md·AGENTS.md §4에 플러그인 목록·금지 목록·새 카테고리 시 CSS도 추가 규칙.
+- 🧠 ADHD Hyperfocus Graph는 "피할 것"은 아니지만 허브 노트 생성·그래프 설정 덮어쓰기라 설치 안 함(격리 vault 시험 대상). "나에 대하여" 링크 색은 밝은 배경 가독성 때문에 그래프 노랑(#f2c14e)보다 진한 #c99a1e.
+
 ## [2026-11-10] 자료넣기 | 자동 위키화 (daily crawl) — AI 뉴스 W46 3차 보강 (naver-2026-11-10)
 - 📄 `raw/ai-digest/naver-2026-11-10.md` 26건 대조. 🆕 3건 추가: **W46-27**(mydailybyte *Gemini 3.0·Kimi K2 LLM 업데이트 현황*) · **W46-28**(maily.so/digitaltoday *미·중 차세대 LLM 격돌·빅테크 주도 코딩AI 재편*) · **W46-29**(@slowcode *에이전틱 AI 혁명·임원 52% 에이전트 운영*). 🔁 23건 중복(88%). [[AI-주간-소식-2026-W46]] sources에 naver-2026-11-10.md 추가·updated 갱신·3차 대조표 추가.
 - 🧠 W46-28(미·중 코딩AI 경쟁)은 [[내-프로필]] §포지셔닝 축의 *"도구 선택보다 고르는 판단"* 근거 보강. W46-29(임원 52%)는 W46-07(기대↔현실 간극)과 함께 읽어야 함을 주의 표기.

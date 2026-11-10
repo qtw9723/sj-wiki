@@ -1,0 +1,67 @@
+filters:
+  and:
+    - file.inFolder("wiki")
+    - file.ext == "md"
+views:
+  - type: table
+    name: 최근 업데이트
+    order:
+      - file.name
+      - category
+      - status
+      - updated
+    sort:
+      - property: updated
+        direction: DESC
+    limit: 40
+  - type: table
+    name: 프로젝트
+    filters:
+      and:
+        - category == "프로젝트"
+    order:
+      - file.name
+      - status
+      - flagship
+      - updated
+    sort:
+      - property: updated
+        direction: DESC
+  - type: table
+    name: AI/업계 동향
+    filters:
+      and:
+        - category == "AI/업계 동향"
+    order:
+      - file.name
+      - updated
+    sort:
+      - property: updated
+        direction: DESC
+  - type: table
+    name: 게임 요소
+    filters:
+      and:
+        - category == "게임 요소"
+    order:
+      - file.name
+      - updated
+    sort:
+      - property: file.name
+        direction: ASC
+  - type: table
+    name: 도구·개념·회의록·시스템
+    filters:
+      or:
+        - category == "도구/스킬"
+        - category == "개념/지식"
+        - category == "회의록"
+        - category == "시스템"
+        - category == "나에 대하여"
+    order:
+      - file.name
+      - category
+      - updated
+    sort:
+      - property: category
+        direction: ASC
