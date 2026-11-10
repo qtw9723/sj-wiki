@@ -41,3 +41,4 @@ tools/game-crawler/test_result.txt
 .raw_hashes.tmp
 .last_wiki_lint
 .wiki-sync.lock
+.obsidian/plugins/*/data.json.backup*

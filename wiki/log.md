@@ -8,6 +8,11 @@ updated: 2026-11-10
 
 > 📦 2026-09-30 이전 이력은 [[log-아카이브-2026-06-09]]로 옮겼다(2026-10-28, 원문 그대로). 월별 이력이 커지면 같은 방식으로 분기 단위 아카이브를 만든다.
 
+## [2026-11-10] 셋업 | 플러그인 적용 확인 — Pretty Properties 비활성화(frontmatter 일괄 재작성 사고)
+- 📄 확인: Obsidian 재시작 후 10개 플러그인이 13:39~13:40 설정 파일(data.json)을 써서 로드됨(SNW·ExcaliBrain은 설정 변경 전엔 파일을 안 씀). Supercharged Links 설정 유지, 링크 색 스니펫 활성.
+- ⚠ 같은 시각(13:39:48) wiki 26개 파일의 frontmatter가 `tags: [a, b]` → 목록형으로 바뀜(값은 같고 표기만 변경). 원인 📄 Pretty Properties `coverClassesMigrated2` 마이그레이션이 모든 노트에 processFrontMatter를 돌림, 완료 표시를 못 남겨 매 시작마다 반복될 구조.
+- ✏️ Pretty Properties를 community-plugins에서 제거. 바뀐 26개는 `git stash`로 보관하고 원상복구(stash에 남아 있음). CLAUDE.md·AGENTS.md 금지 목록에 추가. 🧠 그냥 두면 18:00 자동 위키화의 `git add -A`가 표기만 바뀐 26개를 커밋할 뻔했다.
+
 ## [2026-11-10] 셋업 | Obsidian 1.15.0 가시성 플러그인 11종·링크 색·북마크·카테고리 보기
 - 📄 사용자가 앱을 1.15.0으로 올린 뒤 "피할 것 빼고 진행" 지시. GitHub 최신 릴리스에서 main.js·manifest·styles를 받아 `.obsidian/plugins/`에 넣음(전부 manifest id 일치, minAppVersion ≤ 1.15.0 확인): Strange New Worlds 2.3.7, Supercharged Links 0.14.0, Pretty Properties 2.3.4, Notebook Navigator 3.5.0, Omnisearch 1.32.0, Callout Manager 1.1.2, Colored Tags 7.0.2, Iconic 1.1.11, Extended Graph 2.7.6, Excalidraw 2.29.2, ExcaliBrain 0.2.19.
 - ✏️ Supercharged Links는 `category`만 읽게 하고, 색은 자체 스니펫 `category-link-colors.css`(graph.json 색상 그룹과 같은 색·같은 우선순위)로. 북마크에 허브 8개+`wiki/위키-보기.base`(최근 업데이트·카테고리별 5개 표). CLAUDE.md·AGENTS.md §4에 플러그인 목록·금지 목록·새 카테고리 시 CSS도 추가 규칙.
