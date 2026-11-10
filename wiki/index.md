@@ -51,6 +51,7 @@ updated: 2026-11-09
 ### 도구 / 스킬
 - [[공통-기술스택]] — 개인 프로젝트 주력 스택(React19·Vite8·Tailwind4·Supabase) + 에이전트 운영 비용식(호출수×토큰×(1−캐시적중률)), 가격·릴리스 추적 소스
 - [[에이전트-자동화-도구]] — 자동화/에이전트 도구군(workflows·/goal·routines) → 내 업무 적용. 이 vault 수집·위키화 파이프라인의 실측 스케줄과 경합 결함 기록
+- [[위키-가시성-환경-Obsidian]] — 🆕 (2026-11-10) 이 vault를 보는 법(링크 색·참조 수·Bases·ExcaliBrain·Dataview) + 11/09~10 업데이트 내역(graphify 차용·EXAONE 연결 제안·플러그인 사고 복구). 포트폴리오용
 - [[내-MCP-커넥터-환경]] — 내가 쓰는 MCP 커넥터·Cowork 도구·업무 도구 환경. MCP는 시장 인프라 층, 커넥터별 호출 빈도·사용일 칸 추가가 다음 작업
 - [[REA-Reverse-Engineer-Anything]] — 🆕 (2026-10-21) AI 에이전트용 역공학 MCP(morluto/rea, MIT, npm rea-agents v6.7.0). 웹·Electron/JS·.NET·APK·네이티브 분석, 내 프로젝트엔 **웹/JS 정적 분석부터** 도입 제안. ⚠ 가짜 트로이 레포 유포 중 — 공식 3곳만
 - [[카카오-Play-MCP]] — 카카오 공식 MCP 8개 서비스 도구 사전 (지도·캘린더·검색·주식·유튜브)
