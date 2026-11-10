@@ -4,7 +4,7 @@ category: 프로젝트
 tags: [프로젝트, 게임, 교회-개발, react, supabase, bible-quest]
 source: IdeaProjects/MonsterCollector/Bible-Quest 저장소(README.md·ROADMAP.md·CLAUDE.md), GitHub qtw9723/Bible-Quest, 대화 확인(2026-08-27)
 created: 2026-08-27
-updated: 2026-08-27
+updated: 2026-11-10
 ---
 
 > [!tip] 핵심 takeaway
@@ -90,3 +90,4 @@ DB 테이블: `chapters` · `scenes` · `choices`(스토리 데이터), `players
 - [[팀숲-bible-forest]] — 같은 "신약 성경" 소재의 다른 프로젝트(협업)
 - [[게임-프로젝트-MonsterCollector-MonsterRank]] — 같은 상위 폴더(MonsterCollector)의 게임 프로젝트 묶음 문서
 - [[프로젝트-포트폴리오]] · [[내-프로필]]
+- [[게임요소-메커니즘-스크립트-시퀀스-내러티브]] — 컷신 대신 이동 중 스크립트 이벤트로 서사를 얹는 기법을 텍스트 RPG 진행에 적용할 후보 (🧠 건강검진 연결 제안 채택, 2026-11-10)

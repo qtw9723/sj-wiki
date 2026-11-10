@@ -4,7 +4,7 @@ category: 프로젝트
 tags: [프로젝트, 포트폴리오, kubernetes, k8s, ci-cd, gitlab-ci, docker, devops, 인프라, 학습기록]
 source: websdk-test 저장소(Dockerfile, k8s/*.yaml, docs/k8s-배포-운영.md, CHANGELOG), 회사 GitLab .gitlab-ci.yml, 2026-11-03~04 작업 세션 실측 기록
 created: 2026-11-04
-updated: 2026-11-04
+updated: 2026-11-10
 portfolio: true
 ---
 
@@ -101,3 +101,4 @@ deploy 브랜치 병합 → CI(클라우드, ARM): 빌드 → 레지스트리 pu
 
 ## 관련 문서
 - [[websdk-test]] · [[Kubernetes-기초]] · [[프로젝트-포트폴리오]] · [[내-프로필]] · [[에이전트-자동화-도구]] · [[delivery-smarthub]]
+- [[SmartHub-모듈-보안-레벨-설계]] — 모듈 보호수준을 배포 파이프라인 단계별 등급으로 옮길 때의 기준 (🧠 건강검진 연결 제안 채택, 2026-11-10)

@@ -21,6 +21,10 @@ updated: 2026-11-10
 - ✏️ [[AI-주간-소식-2026-W46]]: raw 34건 중 1차 미수록 9건 대조 → 🆕 G2 리뷰(W46-26) 1건, 🔁 8건(W41·W43~W45 기록 / W45 미수록 판정 유지). log의 *"25건"* = 위키 수록 수(raw 34)로 정정. [[보안공지-2026-11]]: 영향 버전·벤더 권고 ID 추가. [[보안-취약점-공지-모음]]: `sources`에 자동 수집 raw 추가, 1-5 보강. [[SmartHub-모듈-보안-레벨-설계]]: `sources`에 raw 경로 추가, 누락된 Home Assistant(부적합) 리서치 행 추가.
 - 🧠 의외의 연결점: OpenSSH 오류값=“없음” 버그 ↔ SmartHub fail-safe(“표에 없으면 L2”) · INFINITT 무차별 대입 ↔ 미뤄 둔 허브 비밀번호 · SonicWall 단일 인증 ↔ L3 “추후 강화” · W46-09 자동화 통제 실패 비용 ↔ L3. [[index]] 3줄 갱신(SmartHub 줄의 stale “구현 대기” → 배포 완료).
 
+## [2026-11-10] 건강검진 | K-EXAONE '뜻밖의 연결' 첫 처리 + 처리 절차 규약화
+- 🧠 제안 5건 판정: 채택 4([[Bible-Quest]]↔스크립트-시퀀스-내러티브, [[SmartHub-모듈-보안-레벨-설계]]↔[[보안-대응-PHP2Shell-Node-2026-10]]·[[사내-k8s-배포-CI-CD-구축]]·[[주식-모니터링-웹페이지]]), 거절 1(Jev↔크레딧-예산-스폰: 추상 비유뿐). 양쪽 `## 관련 문서`에 링크.
+- 📄 `tools/wiki-maint/link_decisions.tsv` 신설(거절·보류 재제안 방지), 미처리 제안 다음 리포트로 이월, EXAONE 구조화 출력(json_schema)·429 재시도 적용. CLAUDE.md/AGENTS.md 운영 C에 처리 절차 추가. 새 제안 7건은 다음 건강검진 때 처리.
+
 ## [2026-11-09] 셋업 | graphify 비교 분석 → 좋은 점 5가지만 차용
 - 🧠 통째 도입 대신 부분 차용 결정(사용자 승인): graphify는 개념 노드 그래프라 이 위키(읽는 페이지+[[위키링크]])와 산출물이 겹치고, 설치 시 ~/.claude 훅·CLAUDE.md 수정·쿼리 로그가 생겨 자동 위키화와 충돌 우려.
 - 📄 적용: 1) 외부 자료=데이터 규칙(CLAUDE.md/AGENTS.md 운영 A + `.wiki-sync.sh` 프롬프트) 2) `tools/wiki-maint/wiki_lint.py` 주 1회 자동 [[위키-건강검진-리포트]](LLM 단계는 `~/.wiki-llm.env` 있을 때만, K-EXAONE 예정) 3) frontmatter `sources: [...]` 허용(§3·§7) 4) `raw_hash.py` 본문 해시 변경 감지(frontmatter·mtime만 바뀐 raw 재위키화 방지, `.raw_hashes` gitignore) 5) graphify로 링크 그래프 1회 시각화(별도 venv·복사본, 설치 안 함).

@@ -5,7 +5,7 @@ tags: [프로젝트, 포트폴리오, 보안설계, 의사결정, 멀티허브, 
 sources: ["raw/smarthub-모듈-보안-레벨-설계-세션-2026-11-09.md (설계 세션 사용자 발화 원문·검색 요지)", "웹 리서치(Kubernetes Pod Security Standards, Android protectionLevel, 데이터 분류 4단계, Grafana 플러그인 서명, Home Assistant 품질 등급, GitHub Danger Zone)", "저장소 qtw9723/smarthub docs/superpowers/specs/2026-11-09-module-security-levels-design.md"]
 status: 배포·실측 완료(2026-11-09, PR #58)
 created: 2026-11-09
-updated: 2026-11-09
+updated: 2026-11-10
 ---
 
 > [!tip] 핵심 takeaway (포트폴리오 관점)
@@ -171,3 +171,6 @@ updated: 2026-11-09
 - [[보안-취약점-공지-모음]] · [[보안공지-2026-11]] — 같은 날 KISA 공지와의 연결(fail-safe·무차별 대입·단일 인증)
 - [[AI-주간-소식-2026-W46]] — 자동화 통제 실패 비용(W46-09) ↔ L3
 - [[mailer|CS SmartHub]] · [[Supabase-RLS-정책]] · [[Kubernetes-기초]] · [[프로젝트-포트폴리오]] · [[내-프로필]]
+- [[보안-대응-PHP2Shell-Node-2026-10]] — 실제 취약점 분석·전수조사·패치 경험 = 레벨별 격리·패치 우선순위 정책의 현실 근거 (🧠 건강검진 연결 제안 채택, 2026-11-10)
+- [[사내-k8s-배포-CI-CD-구축]] — 모듈 보호수준을 네임스페이스·보안 컨텍스트·머지 게이트(배포 단계별 등급)로 구체화할 자리 (🧠 건강검진 연결 제안 채택, 2026-11-10)
+- [[주식-모니터링-웹페이지]] — 수집→Edge Function→RLS→토큰 인증의 소규모 공개 서비스 사례, 레벨 정의 보정용 대조군 (🧠 건강검진 연결 제안 채택, 2026-11-10)
