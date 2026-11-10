@@ -8,6 +8,10 @@ updated: 2026-11-10
 
 > 📦 2026-09-30 이전 이력은 [[log-아카이브-2026-06-09]]로 옮겼다(2026-10-28, 원문 그대로). 월별 이력이 커지면 같은 방식으로 분기 단위 아카이브를 만든다.
 
+## [2026-11-10] 셋업 | Dataview 추가 — ExcaliBrain 자동 비활성화 해결
+- 📄 ExcaliBrain이 시작 시 "DataView Plugin not found"로 스스로 꺼짐(main.js의 의존성 검사: Dataview → Excalidraw → Excalidraw 최소 버전 순). 설치 때 의존 플러그인 누락.
+- ✏️ Dataview 0.5.68 추가·활성화. 📄 파일 쓰기는 Dataview 작업 목록의 체크박스 클릭 때만(`adapter.write`), frontmatter 일괄 처리 없음. CLAUDE.md·AGENTS.md 플러그인 목록에 의존 관계 명시.
+
 ## [2026-11-10] 셋업 | 플러그인 적용 확인 — Pretty Properties 비활성화(frontmatter 일괄 재작성 사고)
 - 📄 확인: Obsidian 재시작 후 10개 플러그인이 13:39~13:40 설정 파일(data.json)을 써서 로드됨(SNW·ExcaliBrain은 설정 변경 전엔 파일을 안 씀). Supercharged Links 설정 유지, 링크 색 스니펫 활성.
 - ⚠ 같은 시각(13:39:48) wiki 26개 파일의 frontmatter가 `tags: [a, b]` → 목록형으로 바뀜(값은 같고 표기만 변경). 원인 📄 Pretty Properties `coverClassesMigrated2` 마이그레이션이 모든 노트에 processFrontMatter를 돌림, 완료 표시를 못 남겨 매 시작마다 반복될 구조.
