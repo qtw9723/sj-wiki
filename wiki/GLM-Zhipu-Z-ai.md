@@ -1,6 +1,6 @@
 ---
 title: GLM (Zhipu / Z.ai) — 모델·요금 정리
-category: 도구 / 스킬
+category: 도구/스킬
 tags: [llm, glm, zhipu, z-ai, 코딩모델, 요금, api, 오픈소스, 정렬계보, 랩별차이, 실사용점유]
 source: "docs.z.ai/guides/overview/pricing, docs.z.ai/devpack, llm-stats.com/models/glm-4.6, felloai/vibecoding/aipricing.guru (2026-07-07 웹 스크랩), raw/ai-digest/2026-08-13.md, raw/ai-digest/naver-2026-09-08.md (§2 세대 정정·§4.1 티몰 판매 채널), raw/ai-digest/naver-2026-09-12.md (§4.4 벤더 차단 집행=모델 증류 차단), raw/ai-digest/naver-2026-09-15.md (§takeaway 실사용 점유 논거 = 오픈라우터 최다 사용 텐센트), raw/ai-digest/naver-2026-09-16.md (§takeaway 폐쇄형 점유율 급락·가격 인하 = 전환을 서두를 이유 감소)"
 created: 2026-07-07

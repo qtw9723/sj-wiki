@@ -1,6 +1,6 @@
 ---
 title: Jev (TypeSafe AI) — System One 의사결정 모델
-category: 개념 / 지식
+category: 개념/지식
 tags: [jev, typesafe-ai, system-one, 의사결정모델, 분류, 라우팅, 가드레일, llm대안, 저비용모델, 제브]
 source: raw/jev-typesafe-crawl-2026-10-29.md (datanorth.ai · gigazine · docs.typesafe.ai · arXiv 2609.30216 · Bloomberg 등 2026-10-29 크롤링), raw/ai-digest/naver-2026-09-21.md, raw/ai-digest/naver-2026-09-24.md, raw/ai-digest/naver-2026-10-05.md, raw/ai-digest/naver-2026-10-29.md(교차 연결)
 created: 2026-10-29

@@ -5,8 +5,79 @@
   "showAttachments": false,
   "hideUnresolved": false,
   "showOrphans": true,
-  "collapse-color-groups": true,
-  "colorGroups": [],
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "[category:시스템]",
+      "color": {
+        "a": 1,
+        "rgb": 9080728
+      }
+    },
+    {
+      "query": "[category:\"나에 대하여\"]",
+      "color": {
+        "a": 1,
+        "rgb": 15909198
+      }
+    },
+    {
+      "query": "file:보안",
+      "color": {
+        "a": 1,
+        "rgb": 15026253
+      }
+    },
+    {
+      "query": "file:악보 OR file:교회 OR file:팀숲 OR file:콜링",
+      "color": {
+        "a": 1,
+        "rgb": 3187820
+      }
+    },
+    {
+      "query": "[category:\"게임 요소\"]",
+      "color": {
+        "a": 1,
+        "rgb": 9326278
+      }
+    },
+    {
+      "query": "[category:\"AI/업계 동향\"]",
+      "color": {
+        "a": 1,
+        "rgb": 4099821
+      }
+    },
+    {
+      "query": "[category:프로젝트]",
+      "color": {
+        "a": 1,
+        "rgb": 16214805
+      }
+    },
+    {
+      "query": "[category:\"도구/스킬\"]",
+      "color": {
+        "a": 1,
+        "rgb": 1222036
+      }
+    },
+    {
+      "query": "[category:\"개념/지식\"]",
+      "color": {
+        "a": 1,
+        "rgb": 14041247
+      }
+    },
+    {
+      "query": "[category:회의록]",
+      "color": {
+        "a": 1,
+        "rgb": 10584178
+      }
+    }
+  ],
   "collapse-display": true,
   "showArrow": false,
   "textFadeMultiplier": 0,
