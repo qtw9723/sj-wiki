@@ -66,7 +66,7 @@ updated: 2026-11-09
 - [[주식-모니터링-웹페이지]] — 🆕 (2026-11-06) TIGER 미국S&P500 개인 대시보드: 한투 API 5분 수집(Supabase)·1년 위치 기반 장기 판단·Claude 예약 평가(DB 기록)·Vercel 자동 배포. ⚠ 수급 단위 미검증
 - [[notepad]] — 마크다운 메모장 (레퍼런스 프로젝트, 프로덕션 안정)
 - [[mailer]] — ⭐ CS SmartHub(본인 기획·실사용자 CS팀·진행중, 1순위 포트폴리오). Mailer+Grafana 리포트(Gemini 로그분석)+Playwright 챗봇 모니터링(pg_cron). ⚠ 마이그레이션 예외
-- [[delivery-smarthub]] — SmartHub(구 Delivery SmartHub): 모듈 레지스트리·hub_features·허브=링크 멀티허브 통합 플랫폼. 모듈 5종·허브 2개 운영, CS 컷오버·구 앱 은퇴 완료(v0.11.0)
+- [[delivery-smarthub]] — SmartHub: 멀티허브 통합 플랫폼, 모듈 6종·허브 2개. 2026-11-10부터 외부(Vercel)·사내(k8s) 두 에디션(코드 하나), 팀별 주소·로그인 시도 제한
 - [[SmartHub-모듈-보안-레벨-설계]] — SmartHub 모듈 보안 레벨(L0~L3)×허브 보호 정책. K8s PSS·Android 권한·데이터 분류 리서치→사용자 피드백 3회로 설계가 꺾인 의사결정 기록(포트폴리오, PR #58·#59 배포·실측 완료)
 - [[delivery-smarthub-링크]] — SmartHub 링크 모음(현행): 프로덕션 도메인·저장소(smarthub)·저장소 내 문서
 - [[schedule-reporter-kakao]] — 리포트 스케줄러 (⚠️ 카카오 연동은 코드에서 제거됨, 현재 Grafana 리포트 설정 단일 페이지·[[mailer]] 형제)
@@ -97,8 +97,8 @@ updated: 2026-11-09
 - [[led-quiz]] — 교회 로비 LED용 100문제 협동 탈출게임 퀴즈 (Vercel+Supabase, 백오피스 포함, 2026-10)
 - [[rag-compare]] — 청크 설정이 다른 docstore 저장소별 검색 결과를 MRR·정답 순위로 비교하는 로컬 도구 (python 표준 라이브러리, :8765)
 - [[sdk-sample]] — 웹 SDK 최소 예제(V2/XI × 인증/비인증, config.js 하나로 설정, 2026-10, 53커밋) · ⚠ git 이력에 실제 키 포함 가능
-- [[websdk-test]] — 웹 SDK 연동 3방식(V2·XI·SDK 없이) 실측 테스트 하네스 v0.21.1 · 🆕 사내 k8s 배포·문서 탭·deploy 브랜치 자동 배포(2026-11-04)
-- [[사내-k8s-배포-CI-CD-구축]] — 🆕 포트폴리오 사례: 공용 k8s에 무영향 배포 + CI Runner 제약을 pull 방식 CD로 우회(병합→1분 15초 반영), 트러블슈팅 4건·인사이트 7개
+- [[websdk-test]] — 웹 SDK 연동 3방식(V2·XI·SDK 없이) 실측 하네스 · 2026-11-10 SmartHub 모듈로 흡수, 단독 앱·저장소 정리(archive)
+- [[사내-k8s-배포-CI-CD-구축]] — 포트폴리오 사례: 공용 k8s 무영향 배포 + pull 방식 CD, 2026-11-10 SmartHub 사내 에디션으로 확장(DB·정시 작업·팀 주소)
 - [[보안-대응-PHP2Shell-Node-2026-10]] — 🆕 보안 대응 포트폴리오 사례(2026-10-27~28, 단독 2일): 실제 악용 중인 PHP RCE(CVSS 9.2)+Node.js 보안 릴리스 전수 조사·침해 점검·백업/롤백 갖춘 패치. 회사 서버라 일반화본만 보관(상세는 work vault)
 
 ### 프로젝트 (팀숲)

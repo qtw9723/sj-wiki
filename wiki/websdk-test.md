@@ -4,7 +4,7 @@ category: 프로젝트
 tags: [프로젝트, 웹sdk, 챗봇, nodejs, 테스트하네스, 문서화, 개인프로젝트, kubernetes, ci-cd]
 source: ~/IdeaProjects/websdk-test, GitHub qtw9723/websdk-test (private), README·ROADMAP·CHANGELOG·docs
 created: 2026-10-27
-updated: 2026-11-04
+updated: 2026-11-10
 ---
 
 > [!tip] 핵심 takeaway
