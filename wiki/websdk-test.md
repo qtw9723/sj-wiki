@@ -62,5 +62,12 @@ updated: 2026-11-04
   - 🧠 원본을 고치면 SmartHub는 자동으로 안 따라간다 → `npm run check:websdk-drift`(smarthub)로 확인 후 따라잡기(smarthub `server/modules/websdk-test/README.md`).
 - 🧠 계획·변경이력·"확인/추정 구분" 규칙이 이후 sdk-sample 개발 속도(9일 53커밋)의 기반이 됨.
 
+## 마무리 — SmartHub 모듈로 흡수 (2026-11-10)
+- 📄 단독 앱을 내리고 SmartHub의 웹SDK 테스트 모듈 하나로 합쳤다. 사내 서버의 SmartHub 안에서 V2·XI·매트릭스·CSP 탭이 그대로 동작하는 것을 확인한 뒤 정리했다.
+- 📄 정리 내용: 빌드 CI 작업 제거, 회사 저장소 폴더는 보관용 스냅샷으로 표시, 개인 저장소는 archive.
+- 📄 옮기면서 빠졌던 것: 사내 서버 설정에 SDK 서버 주소·봇 ID·키가 없어 XI 연결이 실패 → 단독 앱 값 그대로 Secret에 추가해 해결.
+- 📄 한/영 토글 → 헤더 오른쪽 "Language" 목록(언어 목록 한 줄 + 사전 파일로 확장).
+- 🧠 "원본을 따로 고치고 사본이 따라잡는" 구조는 원본이 멈추는 순간 비용만 남는다 → 사본 쪽을 기준으로 삼고 원본을 닫는 게 맞았다.
+
 ## 관련 문서
 - [[sdk-sample]] · [[delivery-smarthub]] · [[CogInsight-Generator]] · [[사내-k8s-배포-CI-CD-구축]] · [[Kubernetes-기초]] · [[프로젝트-포트폴리오]] · [[내-프로필]]
