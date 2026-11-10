@@ -85,7 +85,6 @@ async function ask(){
   const m=el('div','meta');m.append(document.createTextNode('근거: '));
   j.citations.forEach(x=>{const a=el('a',null,`[${x.n}] ${x.title}`);a.href=x.url;a.target='_blank';a.rel='noopener';m.append(a,document.createTextNode('  '))});
   c.append(m);$('#ansbox').append(c);
-  const s=await fetch('/api/search?'+new URLSearchParams({q,k:6,mode:'hybrid'}));
 }
 $('#f').addEventListener('submit',run);$('#askbtn').addEventListener('click',ask);
 </script>
