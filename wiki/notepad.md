@@ -4,7 +4,7 @@ category: 프로젝트
 tags: [프로젝트, 프론트엔드, supabase, 마크다운]
 source: raw/projects/notepad.md
 created: 2026-06-09
-updated: 2026-07-01
+updated: 2026-11-11
 ---
 
 > [!tip] 핵심 takeaway
@@ -43,3 +43,4 @@ updated: 2026-07-01
 
 ## 관련 문서
 - [[프로젝트-포트폴리오]] · [[parking]] · [[공통-기술스택]] · [[mailer]] · [[올림푸스-Olympus]](=dev-pipeline, notepad가 검증용 첫 대상) · [[헤르메스-개인비서-Hostinger]](§7-2)
+- [[보안공지-2026-11]] — 위험한 파일 업로드 유형(CVE-2026-114432 등) → 이미지 업로드의 내용 기반 유형 검사·렌더링 차단 점검거리
