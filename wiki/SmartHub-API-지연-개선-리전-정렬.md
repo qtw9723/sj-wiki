@@ -77,6 +77,18 @@ updated: 2026-11-12
 - 원인 후보 중 리전만 처리했다. 화면 단위로 느린 곳이 남으면 다음은 순차 쿼리(`Promise.all`)와 RLS 정책(`(select auth.uid())`·인덱스)이다.
 - 같은 Supabase를 쓰는 다른 Vercel 앱에 함수를 새로 올릴 때도 `regions: ["hnd1"]`을 기본으로 둔다.
 
+## 후속: 다른 프로젝트 전수 점검 (같은 날)
+📄 같은 방법(응답 헤더 `x-vercel-id` + Supabase 리전)으로 로컬 Vercel 프로젝트 8개를 모두 확인했다.
+- 함수와 DB가 어긋난 곳은 SmartHub뿐이었다. [[led-quiz]]는 원래 `hnd1`이었다.
+- [[CogInsight-Generator|Cogi]]·[[notepad]]·market-board·[[Bible-Quest]]는 서버 함수가 없는 정적 페이지라 해당 없다. 브라우저가 Supabase를 직접 부른다.
+- sj-wiki RAG API는 `iad1`이지만 DB 없이 로컬 인덱스만 읽어 요청당 약 150ms 차이뿐이다. 사용자 판단으로 그대로 두었다.
+
+🧠 **일반화한 점검 순서** (Vercel·Netlify 같은 서버리스 + 관리형 DB 조합 어디에나 적용):
+1. DB 리전을 확인한다.
+2. 함수가 **실제로** 어디서 도는지 응답 헤더로 확인한다(설정이 아니라 관측값).
+3. 둘이 다르면 함수 리전을 DB 쪽으로 옮긴다. 사용자 쪽이 아니다. 함수와 DB 사이 왕복이 요청 하나에 여러 번 일어나기 때문이다.
+4. DB를 쓰는 엔드포인트와 안 쓰는 엔드포인트를 같이 재서 전후를 비교한다.
+
 ## 관련 문서
 - [[delivery-smarthub]] — SmartHub 본 페이지 · [[SmartHub-모듈-보안-레벨-설계]] — 같은 프로젝트의 다른 의사결정 기록
 - [[led-quiz]] — 이미 `hnd1`로 맞춰 둔 비교 대상 · [[parking]] — 공유 Supabase
