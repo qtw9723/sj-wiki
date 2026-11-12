@@ -202,5 +202,33 @@
   "4500": {
     "name": "S.T.A.L.K.E.R.: Shadow of Chernobyl",
     "first_seen": "2026-11-12"
+  },
+  "2050650": {
+    "name": "Resident Evil 4",
+    "first_seen": "2026-11-13"
+  },
+  "548430": {
+    "name": "Deep Rock Galactic",
+    "first_seen": "2026-11-13"
+  },
+  "284160": {
+    "name": "BeamNG.drive",
+    "first_seen": "2026-11-13"
+  },
+  "264710": {
+    "name": "Subnautica",
+    "first_seen": "2026-11-13"
+  },
+  "367520": {
+    "name": "Hollow Knight",
+    "first_seen": "2026-11-13"
+  },
+  "250900": {
+    "name": "The Binding of Isaac: Rebirth",
+    "first_seen": "2026-11-13"
+  },
+  "204360": {
+    "name": "Castle Crashers",
+    "first_seen": "2026-11-13"
   }
 }

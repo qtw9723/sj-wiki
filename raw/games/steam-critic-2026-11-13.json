@@ -1,0 +1,665 @@
+{
+  "date": "2026-11-13",
+  "params": {
+    "source": "steamspy-top",
+    "min_reviews": 1000,
+    "min_ratio": 0.8,
+    "limit": 30
+  },
+  "games": [
+    {
+      "appid": 620,
+      "name": "Portal 2",
+      "url": "https://store.steampowered.com/app/620",
+      "steam": {
+        "positive": 387758,
+        "negative": 5010,
+        "total": 392768,
+        "ratio": 0.9872,
+        "wilson": 0.9869,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 95.0,
+        "url": "https://www.metacritic.com/game/pc/portal-2?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 98.7,
+      "critic_score": 95.0,
+      "gap": 3.7,
+      "flag": "일치"
+    },
+    {
+      "appid": 413150,
+      "name": "Stardew Valley",
+      "url": "https://store.steampowered.com/app/413150",
+      "steam": {
+        "positive": 890673,
+        "negative": 13313,
+        "total": 903986,
+        "ratio": 0.9853,
+        "wilson": 0.985,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 89.0,
+        "url": "https://www.metacritic.com/game/pc/stardew-valley?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 98.5,
+      "critic_score": 89.0,
+      "gap": 9.5,
+      "flag": "일치"
+    },
+    {
+      "appid": 3164500,
+      "name": "Schedule I",
+      "url": "https://store.steampowered.com/app/3164500",
+      "steam": {
+        "positive": 287628,
+        "negative": 6453,
+        "total": 294081,
+        "ratio": 0.9781,
+        "wilson": 0.9775,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 97.8,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 220,
+      "name": "Half-Life 2",
+      "url": "https://store.steampowered.com/app/220",
+      "steam": {
+        "positive": 200275,
+        "negative": 4727,
+        "total": 205002,
+        "ratio": 0.9769,
+        "wilson": 0.9763,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 96.0,
+        "url": "https://www.metacritic.com/game/pc/half-life-2?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 97.7,
+      "critic_score": 96.0,
+      "gap": 1.7,
+      "flag": "일치"
+    },
+    {
+      "appid": 550,
+      "name": "Left 4 Dead 2",
+      "url": "https://store.steampowered.com/app/550",
+      "steam": {
+        "positive": 805528,
+        "negative": 19999,
+        "total": 825527,
+        "ratio": 0.9758,
+        "wilson": 0.9754,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 89.0,
+        "url": "https://www.metacritic.com/game/pc/left-4-dead-2?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 97.6,
+      "critic_score": 89.0,
+      "gap": 8.6,
+      "flag": "일치"
+    },
+    {
+      "appid": 431960,
+      "name": "Wallpaper Engine",
+      "url": "https://store.steampowered.com/app/431960",
+      "steam": {
+        "positive": 931732,
+        "negative": 23429,
+        "total": 955161,
+        "ratio": 0.9755,
+        "wilson": 0.9752,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 97.5,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 105600,
+      "name": "Terraria",
+      "url": "https://store.steampowered.com/app/105600",
+      "steam": {
+        "positive": 1218888,
+        "negative": 30771,
+        "total": 1249659,
+        "ratio": 0.9754,
+        "wilson": 0.9751,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 83.0,
+        "url": "https://www.metacritic.com/game/pc/terraria?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 97.5,
+      "critic_score": 83.0,
+      "gap": 14.5,
+      "flag": "일치"
+    },
+    {
+      "appid": 227300,
+      "name": "Euro Truck Simulator 2",
+      "url": "https://store.steampowered.com/app/227300",
+      "steam": {
+        "positive": 746503,
+        "negative": 20009,
+        "total": 766512,
+        "ratio": 0.9739,
+        "wilson": 0.9735,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 79.0,
+        "url": "https://www.metacritic.com/game/pc/euro-truck-simulator-2?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 97.4,
+      "critic_score": 79.0,
+      "gap": 18.4,
+      "flag": "유저>평론가"
+    },
+    {
+      "appid": 2050650,
+      "name": "Resident Evil 4",
+      "url": "https://store.steampowered.com/app/2050650",
+      "steam": {
+        "positive": 189784,
+        "negative": 5094,
+        "total": 194878,
+        "ratio": 0.9739,
+        "wilson": 0.9731,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 91.0,
+        "url": "https://www.metacritic.com/game/pc/resident-evil-4?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 97.4,
+      "critic_score": 91.0,
+      "gap": 6.4,
+      "flag": "일치"
+    },
+    {
+      "appid": 526870,
+      "name": "Satisfactory",
+      "url": "https://store.steampowered.com/app/526870",
+      "steam": {
+        "positive": 231062,
+        "negative": 6291,
+        "total": 237353,
+        "ratio": 0.9735,
+        "wilson": 0.9728,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 91.0,
+        "url": "https://www.metacritic.com/game/pc/satisfactory?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 97.4,
+      "critic_score": 91.0,
+      "gap": 6.4,
+      "flag": "일치"
+    },
+    {
+      "appid": 548430,
+      "name": "Deep Rock Galactic",
+      "url": "https://store.steampowered.com/app/548430",
+      "steam": {
+        "positive": 296148,
+        "negative": 8235,
+        "total": 304383,
+        "ratio": 0.9729,
+        "wilson": 0.9724,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 85.0,
+        "url": "https://www.metacritic.com/game/pc/deep-rock-galactic?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 97.3,
+      "critic_score": 85.0,
+      "gap": 12.3,
+      "flag": "일치"
+    },
+    {
+      "appid": 284160,
+      "name": "BeamNG.drive",
+      "url": "https://store.steampowered.com/app/284160",
+      "steam": {
+        "positive": 387515,
+        "negative": 11067,
+        "total": 398582,
+        "ratio": 0.9722,
+        "wilson": 0.9717,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 97.2,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 264710,
+      "name": "Subnautica",
+      "url": "https://store.steampowered.com/app/264710",
+      "steam": {
+        "positive": 334237,
+        "negative": 9790,
+        "total": 344027,
+        "ratio": 0.9715,
+        "wilson": 0.971,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 87.0,
+        "url": "https://www.metacritic.com/game/pc/subnautica?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 97.2,
+      "critic_score": 87.0,
+      "gap": 10.2,
+      "flag": "일치"
+    },
+    {
+      "appid": 4000,
+      "name": "Garry's Mod",
+      "url": "https://store.steampowered.com/app/4000",
+      "steam": {
+        "positive": 1067198,
+        "negative": 33128,
+        "total": 1100326,
+        "ratio": 0.9699,
+        "wilson": 0.9696,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 97.0,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 1966720,
+      "name": "Lethal Company",
+      "url": "https://store.steampowered.com/app/1966720",
+      "steam": {
+        "positive": 399803,
+        "negative": 12398,
+        "total": 412201,
+        "ratio": 0.9699,
+        "wilson": 0.9694,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 97.0,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 367520,
+      "name": "Hollow Knight",
+      "url": "https://store.steampowered.com/app/367520",
+      "steam": {
+        "positive": 493201,
+        "negative": 15363,
+        "total": 508564,
+        "ratio": 0.9698,
+        "wilson": 0.9693,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 87.0,
+        "url": "https://www.metacritic.com/game/pc/hollow-knight?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 97.0,
+      "critic_score": 87.0,
+      "gap": 10.0,
+      "flag": "일치"
+    },
+    {
+      "appid": 10,
+      "name": "Counter-Strike",
+      "url": "https://store.steampowered.com/app/10",
+      "steam": {
+        "positive": 165415,
+        "negative": 5172,
+        "total": 170587,
+        "ratio": 0.9697,
+        "wilson": 0.9689,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 88.0,
+        "url": "https://www.metacritic.com/game/pc/counter-strike?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 97.0,
+      "critic_score": 88.0,
+      "gap": 9.0,
+      "flag": "일치"
+    },
+    {
+      "appid": 250900,
+      "name": "The Binding of Isaac: Rebirth",
+      "url": "https://store.steampowered.com/app/250900",
+      "steam": {
+        "positive": 411853,
+        "negative": 13513,
+        "total": 425366,
+        "ratio": 0.9682,
+        "wilson": 0.9677,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 96.8,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 1086940,
+      "name": "Baldur's Gate 3",
+      "url": "https://store.steampowered.com/app/1086940",
+      "steam": {
+        "positive": 736704,
+        "negative": 24284,
+        "total": 760988,
+        "ratio": 0.9681,
+        "wilson": 0.9677,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 96.0,
+        "url": "https://www.metacritic.com/game/pc/baldurs-gate-3?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 96.8,
+      "critic_score": 96.0,
+      "gap": 0.8,
+      "flag": "일치"
+    },
+    {
+      "appid": 70,
+      "name": "Half-Life",
+      "url": "https://store.steampowered.com/app/70",
+      "steam": {
+        "positive": 114517,
+        "negative": 4020,
+        "total": 118537,
+        "ratio": 0.9661,
+        "wilson": 0.965,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 96.0,
+        "url": "https://www.metacritic.com/game/pc/half-life?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 96.6,
+      "critic_score": 96.0,
+      "gap": 0.6,
+      "flag": "일치"
+    },
+    {
+      "appid": 292030,
+      "name": "The Witcher 3: Wild Hunt — Remastered",
+      "url": "https://store.steampowered.com/app/292030",
+      "steam": {
+        "positive": 812407,
+        "negative": 30257,
+        "total": 842664,
+        "ratio": 0.9641,
+        "wilson": 0.9637,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 93.0,
+        "url": "https://www.metacritic.com/game/pc/the-witcher-3-wild-hunt?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 96.4,
+      "critic_score": 93.0,
+      "gap": 3.4,
+      "flag": "일치"
+    },
+    {
+      "appid": 2358720,
+      "name": "Black Myth: Wukong",
+      "url": "https://store.steampowered.com/app/2358720",
+      "steam": {
+        "positive": 851822,
+        "negative": 32087,
+        "total": 883909,
+        "ratio": 0.9637,
+        "wilson": 0.9633,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 96.4,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 240,
+      "name": "Counter-Strike: Source",
+      "url": "https://store.steampowered.com/app/240",
+      "steam": {
+        "positive": 131216,
+        "negative": 4915,
+        "total": 136131,
+        "ratio": 0.9639,
+        "wilson": 0.9629,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 88.0,
+        "url": "https://www.metacritic.com/game/pc/counter-strike-source?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 96.4,
+      "critic_score": 88.0,
+      "gap": 8.4,
+      "flag": "일치"
+    },
+    {
+      "appid": 204360,
+      "name": "Castle Crashers",
+      "url": "https://store.steampowered.com/app/204360",
+      "steam": {
+        "positive": 106194,
+        "negative": 4077,
+        "total": 110271,
+        "ratio": 0.963,
+        "wilson": 0.9619,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 96.3,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 3241660,
+      "name": "R.E.P.O.",
+      "url": "https://store.steampowered.com/app/3241660",
+      "steam": {
+        "positive": 335886,
+        "negative": 13778,
+        "total": 349664,
+        "ratio": 0.9606,
+        "wilson": 0.9599,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 96.1,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음"
+    },
+    {
+      "appid": 203160,
+      "name": "Tomb Raider Game of the Year",
+      "url": "https://store.steampowered.com/app/203160",
+      "steam": {
+        "positive": 168571,
+        "negative": 7117,
+        "total": 175688,
+        "ratio": 0.9595,
+        "wilson": 0.9586,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 86.0,
+        "url": "https://www.metacritic.com/game/pc/tomb-raider?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 96.0,
+      "critic_score": 86.0,
+      "gap": 10.0,
+      "flag": "일치"
+    },
+    {
+      "appid": 242760,
+      "name": "The Forest",
+      "url": "https://store.steampowered.com/app/242760",
+      "steam": {
+        "positive": 559507,
+        "negative": 25910,
+        "total": 585417,
+        "ratio": 0.9557,
+        "wilson": 0.9552,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 83.0,
+        "url": "https://www.metacritic.com/game/pc/the-forest?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 95.6,
+      "critic_score": 83.0,
+      "gap": 12.6,
+      "flag": "일치"
+    },
+    {
+      "appid": 239140,
+      "name": "Dying Light",
+      "url": "https://store.steampowered.com/app/239140",
+      "steam": {
+        "positive": 359170,
+        "negative": 17955,
+        "total": 377125,
+        "ratio": 0.9524,
+        "wilson": 0.9517,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 87.0,
+        "url": "https://www.metacritic.com/game/pc/dying-light-the-following---enhanced-edition?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 95.2,
+      "critic_score": 87.0,
+      "gap": 8.2,
+      "flag": "일치"
+    },
+    {
+      "appid": 814380,
+      "name": "Sekiro: Shadows Die Twice - GOTY Edition",
+      "url": "https://store.steampowered.com/app/814380",
+      "steam": {
+        "positive": 249084,
+        "negative": 13001,
+        "total": 262085,
+        "ratio": 0.9504,
+        "wilson": 0.9496,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 88.0,
+        "url": "https://www.metacritic.com/game/pc/sekiro-shadows-die-twice?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 95.0,
+      "critic_score": 88.0,
+      "gap": 7.0,
+      "flag": "일치"
+    },
+    {
+      "appid": 322330,
+      "name": "Don't Starve Together",
+      "url": "https://store.steampowered.com/app/322330",
+      "steam": {
+        "positive": 359235,
+        "negative": 19247,
+        "total": 378482,
+        "ratio": 0.9491,
+        "wilson": 0.9484,
+        "review_score_desc": "Very Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 83.0,
+        "url": "https://www.metacritic.com/game/pc/dont-starve-together?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 94.9,
+      "critic_score": 83.0,
+      "gap": 11.9,
+      "flag": "일치"
+    }
+  ]
+}
