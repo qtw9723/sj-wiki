@@ -8,6 +8,9 @@ updated: 2026-11-12
 
 > 📦 2026-09-30 이전 이력은 [[log-아카이브-2026-06-09]]로 옮겼다(2026-10-28, 원문 그대로). 월별 이력이 커지면 같은 방식으로 분기 단위 아카이브를 만든다.
 
+## [2026-11-12] 프로젝트 | SmartHub API 지연 개선 — Vercel 함수 리전 정렬
+- 📄 keep-alive 질문에서 출발 → 구간별로 기각 → 리전 불일치 진단(`x-vercel-id` icn1::iad1, Supabase ap-northeast-1) → `regions: ["hnd1"]`(PR #79) → `/api/hubs/cs` p50 891→137ms. 기록·측정 스크립트 PR #80.
+- 영향 페이지: 🆕 [[SmartHub-API-지연-개선-리전-정렬]], [[delivery-smarthub]](STAR·업데이트 로그·관련 문서), index
 ## [2026-11-12] 자료넣기 | 자동 위키화 (daily crawl) — AI 뉴스 W46 5차 보강
 - 📄 `raw/ai-digest/naver-2026-11-12.md` (19건) → 기존 W46과 대조. 중복 13건 제외, 🆕 6건 추가(W46-39~44).
 - 신규 항목: K-EXAONE 2.5 무료 API(W46-39), 멀티에이전트 실패 패턴(W46-40), Claude Opus 4.6 Agent Teams(W46-41), 앤트로픽·오픈AI 감독 의견서(W46-42), LLM 아키텍처 현주소(W46-43), SKT managed workforce 2차 확인(W46-44).
