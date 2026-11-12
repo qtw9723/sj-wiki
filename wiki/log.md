@@ -8,6 +8,9 @@ updated: 2026-11-12
 
 > 📦 2026-09-30 이전 이력은 [[log-아카이브-2026-06-09]]로 옮겼다(2026-10-28, 원문 그대로). 월별 이력이 커지면 같은 방식으로 분기 단위 아카이브를 만든다.
 
+## [2026-11-12] 프로젝트 | SmartHub 백오피스 조회 병렬화 (리전 개선 2단계)
+- 📄 "사내 서버 속도는 아니다" 체감 → 외부 REST 조회 ~35ms vs 사내 ~1ms, overview ~10단계·activity 7단계 순차 → Promise.all(PR #81, 테스트 2건).
+- 영향 페이지: [[SmartHub-API-지연-개선-리전-정렬]] (2단계 섹션·takeaway·남은 것)
 ## [2026-11-12] 프로젝트 | SmartHub API 지연 개선 — Vercel 함수 리전 정렬
 - 📄 keep-alive 질문에서 출발 → 구간별로 기각 → 리전 불일치 진단(`x-vercel-id` icn1::iad1, Supabase ap-northeast-1) → `regions: ["hnd1"]`(PR #79) → `/api/hubs/cs` p50 891→137ms. 기록·측정 스크립트 PR #80.
 - 영향 페이지: 🆕 [[SmartHub-API-지연-개선-리전-정렬]], [[delivery-smarthub]](STAR·업데이트 로그·관련 문서), index
