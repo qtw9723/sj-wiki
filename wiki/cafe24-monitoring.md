@@ -2,9 +2,9 @@
 title: cafe24-monitoring
 category: 프로젝트
 tags: [프로젝트, 모니터링, 백오피스, react-admin, 자동화, cron, python, 개인프로젝트]
-source: ~/IdeaProjects/cafe24-monitoring (로컬 git, 원격 없음 확인 안 됨), 사용자 메모리(cron·SMTP 운영 사실)
+source: ~/IdeaProjects/cafe24-monitoring (로컬 git, 원격 없음 확인 안 됨), ~/cafe24_automation (GitHub qtw9723/cafe24-automation, private), 사용자 메모리(cron·SMTP 운영 사실)
 created: 2026-10-27
-updated: 2026-10-27
+updated: 2026-11-12
 ---
 
 > [!tip] 핵심 takeaway
@@ -32,7 +32,7 @@ updated: 2026-10-27
 - **로컬 ESD 읽기 전용 모드**(`ESD_WRITE_ENABLED=false`) — 로컬에서 저장해도 운영 데이터가 바뀌지 않게 하는 안전장치.
 - 해지 요청일 입력란 분리는 만들었다가 같은 날 **Revert**(2026-09-16).
 
-**운영 자동화 📄(사용자 메모, 저장소 밖)** — 크론탭 매일 11:00 실행 스크립트(저장소 밖 별도 폴더), 알림은 Gmail SMTP로 발송. 08:00은 클램셸 절전으로 스킵되어 11:00로 이동. 같은 Gmail 계정 재사용 → [[mailer]]의 발송 구조와 연결.
+**운영 자동화 📄(별도 저장소 `cafe24-automation`, 2026-11-12 GitHub private 등록)** — 크론탭 매일 11:00 `run_daily.sh` → Selenium 5단계(Shop 로그 수집 → log stats 합계 → Dashboard 대조 → daily check 에러 비교·메모 → 체크리스트 8개). 2026-05부터 무인 운영. 결과 메일 4종(성공·실패·서버 다운·에러 증가), Gmail SMTP 다크 HTML. 실행 전 TCP 도달성 확인(서버 다운 시 종료코드 2), 전체 2회 재시도, 모든 단계 성공일 때만 exit 0(거짓 성공 방지). 08:00은 클램셸 절전으로 스킵되어 11:00로 이동. 같은 Gmail 계정 재사용 → [[mailer]]의 발송 구조와 연결.
 
 ## 기술
 - 📄 프론트: React 19 · react-admin 5.7.4 · MUI 6 · Vite 6 · TypeScript 5.7 · Playwright 테스트. 백엔드: Node + Express 5(프록시 단일 `server.js`). 컨테이너/PM2 설정 파일 포함.
@@ -44,6 +44,7 @@ updated: 2026-10-27
 - 📄 원격 저장소 정보는 확인하지 못함(로컬 전용으로 보임). ⚠ 백오피스 쓰기는 운영 데이터 직행이라 로컬 실데이터 사용 금지(읽기 전용 모드 이유).
 
 ## 진행사항 업데이트 로그 (git log 기반) 📄
+- **2026-11-12** — 일일 자동화(`~/cafe24_automation`) 정리 후 GitHub `qtw9723/cafe24-automation`(private)에 첫 푸시: 백오피스 주소·수신자·프로브 경로를 .env로 이동, 절대경로 제거, 디버그 스크립트 dev/·옛 문서 docs/history/로 정리, README를 포트폴리오용(운영 중 해결한 문제 7가지)으로 새로 씀.
 - **2026-09-17** — 해지 상점 사용량을 백오피스 집계로 보완 / 과거 사용량 기록 표시 / 해지일자 정렬 / 해지일자 컬럼 + 429 재시도.
 - **2026-09-16** — 백오피스 `/usage` 화면, 사용량 CSV→엑셀, 해지요청 목록 붙여넣기, 월간 사용량 도구, 해지 감지 알림을 데일리 메일에 합침, 프로브 크론 연결, 로컬 ESD 읽기 전용 모드, 도메인별 해지 감지 프로브, 로컬 개발 환경 세팅(스냅샷 import).
 
