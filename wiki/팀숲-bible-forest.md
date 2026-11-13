@@ -4,7 +4,7 @@ category: 프로젝트
 tags: [프로젝트, 교회-개발, bible-forest, next.js, supabase, 협업개발]
 source: (대화 기반, GitHub seongjinYU/bible_forest(public) + 2026-06-22 디스코드 확정 + 2026-06-29 시연 후 피드백 + 2026-07-03 저장소 확인 + raw/팀숲-배포후-현황·이펙트-역제안-사용자전달-2026-07-03.md 2건)
 created: 2026-06-17
-updated: 2026-07-03
+updated: 2026-11-13
 ---
 
 > [!tip] 핵심 takeaway
@@ -329,3 +329,4 @@ challenges (is_active=true인 1건이 체크 기간 제약 기준)
 - [[교회-개발-회의-2026-06-17]] — 2차 회의 (설계 변경·일정 확정)
 - [[콜링]] — 같은 교회 개발팀의 별개 프로젝트
 - [[프로젝트-포트폴리오]] — 전체 프로젝트 목록
+- [[보안공지-2026-11]] — 📄 2026-11-12 KISA React Server Components 역직렬화 취약점(CVE-2026-126187, 19.0~19.3 계열). 🧠 Next.js 16 App Router는 RSC를 내부에 번들해 쓴다. 그래서 package.json이 아니라 Next.js 패치 버전으로 해당 여부를 확인해야 한다. (2026-11-13)
