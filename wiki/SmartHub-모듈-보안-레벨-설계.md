@@ -5,7 +5,7 @@ tags: [프로젝트, 포트폴리오, 보안설계, 의사결정, 멀티허브, 
 sources: ["raw/smarthub-모듈-보안-레벨-설계-세션-2026-11-09.md (설계 세션 사용자 발화 원문·검색 요지)", "웹 리서치(Kubernetes Pod Security Standards, Android protectionLevel, 데이터 분류 4단계, Grafana 플러그인 서명, Home Assistant 품질 등급, GitHub Danger Zone)", "저장소 qtw9723/smarthub docs/superpowers/specs/2026-11-09-module-security-levels-design.md"]
 status: 배포·실측 완료(2026-11-09, PR #58)
 created: 2026-11-09
-updated: 2026-11-12
+updated: 2026-11-13
 ---
 
 > [!tip] 핵심 takeaway (포트폴리오 관점)
@@ -157,6 +157,7 @@ updated: 2026-11-12
 - **L3 "추후 강화 자리" ↔ SonicWall 단일 인증 요소**(CVE-2026-19868): 남의 이름으로 메일을 보내는 L3에는 비밀번호 하나로 부족하다는 근거다. 강화 후보는 2단계 인증이나 발송 직전 재확인이다.
 - **확인된 예외 ↔ Ivanti CSA "중요 기능에 인증 누락"**(CVE-2026-121683, 2026-11-12 공지): 🧠 L3 모듈이 켜진 공개 허브는 CWE 이름으로 바로 *Missing Authentication for Critical Function* 이다. "나중에 L3만 막기로 올릴 길"을 실제로 열지 정할 때 근거로 쓸 수 있다. 같은 날 MongoDB의 *제한 없는 자원 할당* 은 L2 doc-to-api(호출마다 외부 비용)에 호출 횟수 제한이 있는지 묻는다 → [[보안공지-2026-11]] §11-12.
 - **L3 정의 ↔ 에이전트 자동화의 통제 실패 비용**: [[AI-주간-소식-2026-W46]] W46-09가 경고한 "자동화 도구가 통제를 벗어날 때의 비용"은 외부로 행동하는 모듈에서 생긴다. 이 레벨 체계는 에이전트 도구 권한을 나눌 때도 쓸 수 있다.
+- 🧠 **권한 축만 있고 행동 기록 축이 없다 ↔ "AI 권한·행동 관리"** (2026-11-13): 📄 [[AI-주간-소식-2026-W46]] W46-52(디지털데일리 11/10)는 기업 AI 보안 과제를 *"AI 에이전트 권한 관리"* 로, 제목은 *"권한·행동 관리"* 로 적었다. 📄 W46-47(네이버 CEO)은 *"결제·예약 확정은 이용자가 직접"* 이라고 밝혔다. 지금 L0~L3은 *모듈이 무엇을 할 수 있나* 로만 나뉜다(위 레벨 표). 🧠 L3 mailer에 **발송 이력 감사(누가·언제·어느 계정으로)** 를 붙이면 행동 축이 생긴다. 위 *"발송 직전 재확인"* 강화 후보와 함께 검토할 만하다.
 
 ## 출처
 - [Kubernetes — Pod Security Standards](https://www.kubernetes.io/docs/concepts/security/pod-security-standards) · [Snyk — Understanding Kubernetes Pod Security Standards](https://snyk.io/blog/understanding-kubernetes-pod-security-standards/)
