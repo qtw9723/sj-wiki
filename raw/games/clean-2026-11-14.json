@@ -1,0 +1,967 @@
+{
+  "date": "2026-11-14",
+  "source_file": "steam-critic-2026-11-14.json",
+  "passed": [
+    {
+      "appid": 620,
+      "name": "Portal 2",
+      "url": "https://store.steampowered.com/app/620",
+      "steam": {
+        "positive": 387791,
+        "negative": 5010,
+        "total": 392801,
+        "ratio": 0.9872,
+        "wilson": 0.9869,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 95.0,
+        "url": "https://www.metacritic.com/game/pc/portal-2?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 98.7,
+      "critic_score": 95.0,
+      "gap": 3.7,
+      "flag": "일치",
+      "gl_genre": [
+        "액션",
+        "플랫포머",
+        "퍼즐"
+      ],
+      "release": "18 Apr, 2011",
+      "warnings": [],
+      "is_new": false
+    },
+    {
+      "appid": 413150,
+      "name": "Stardew Valley",
+      "url": "https://store.steampowered.com/app/413150",
+      "steam": {
+        "positive": 890825,
+        "negative": 13316,
+        "total": 904141,
+        "ratio": 0.9853,
+        "wilson": 0.985,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 89.0,
+        "url": "https://www.metacritic.com/game/pc/stardew-valley?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 98.5,
+      "critic_score": 89.0,
+      "gap": 9.5,
+      "flag": "일치",
+      "gl_genre": [
+        "RPG",
+        "시뮬레이션",
+        "샌드박스"
+      ],
+      "release": "26 Feb, 2016",
+      "warnings": [],
+      "is_new": false
+    },
+    {
+      "appid": 220,
+      "name": "Half-Life 2",
+      "url": "https://store.steampowered.com/app/220",
+      "steam": {
+        "positive": 200321,
+        "negative": 4727,
+        "total": 205048,
+        "ratio": 0.9769,
+        "wilson": 0.9763,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 96.0,
+        "url": "https://www.metacritic.com/game/pc/half-life-2?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 97.7,
+      "critic_score": 96.0,
+      "gap": 1.7,
+      "flag": "일치",
+      "gl_genre": [
+        "액션",
+        "슈팅"
+      ],
+      "release": "16 Nov, 2004",
+      "warnings": [],
+      "is_new": false
+    },
+    {
+      "appid": 550,
+      "name": "Left 4 Dead 2",
+      "url": "https://store.steampowered.com/app/550",
+      "steam": {
+        "positive": 805648,
+        "negative": 20001,
+        "total": 825649,
+        "ratio": 0.9758,
+        "wilson": 0.9754,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 89.0,
+        "url": "https://www.metacritic.com/game/pc/left-4-dead-2?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 97.6,
+      "critic_score": 89.0,
+      "gap": 8.6,
+      "flag": "일치",
+      "gl_genre": [
+        "액션",
+        "슈팅"
+      ],
+      "release": "19 Nov, 2009",
+      "warnings": [],
+      "is_new": false
+    },
+    {
+      "appid": 431960,
+      "name": "Wallpaper Engine",
+      "url": "https://store.steampowered.com/app/431960",
+      "steam": {
+        "positive": 931913,
+        "negative": 23429,
+        "total": 955342,
+        "ratio": 0.9755,
+        "wilson": 0.9752,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 97.5,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음",
+      "gl_genre": [
+        "액션"
+      ],
+      "release": "16 Nov, 2018",
+      "warnings": [],
+      "is_new": false
+    },
+    {
+      "appid": 105600,
+      "name": "Terraria",
+      "url": "https://store.steampowered.com/app/105600",
+      "steam": {
+        "positive": 1219033,
+        "negative": 30775,
+        "total": 1249808,
+        "ratio": 0.9754,
+        "wilson": 0.9751,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 83.0,
+        "url": "https://www.metacritic.com/game/pc/terraria?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 97.5,
+      "critic_score": 83.0,
+      "gap": 14.5,
+      "flag": "일치",
+      "gl_genre": [
+        "액션",
+        "RPG",
+        "샌드박스"
+      ],
+      "release": "16 May, 2011",
+      "warnings": [],
+      "is_new": false
+    },
+    {
+      "appid": 227300,
+      "name": "Euro Truck Simulator 2",
+      "url": "https://store.steampowered.com/app/227300",
+      "steam": {
+        "positive": 746872,
+        "negative": 20016,
+        "total": 766888,
+        "ratio": 0.9739,
+        "wilson": 0.9735,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 79.0,
+        "url": "https://www.metacritic.com/game/pc/euro-truck-simulator-2?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 97.4,
+      "critic_score": 79.0,
+      "gap": 18.4,
+      "flag": "유저>평론가",
+      "gl_genre": [
+        "시뮬레이션"
+      ],
+      "release": "12 Oct, 2012",
+      "warnings": [],
+      "is_new": false
+    },
+    {
+      "appid": 2050650,
+      "name": "Resident Evil 4",
+      "url": "https://store.steampowered.com/app/2050650",
+      "steam": {
+        "positive": 189900,
+        "negative": 5096,
+        "total": 194996,
+        "ratio": 0.9739,
+        "wilson": 0.9731,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 91.0,
+        "url": "https://www.metacritic.com/game/pc/resident-evil-4?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 97.4,
+      "critic_score": 91.0,
+      "gap": 6.4,
+      "flag": "일치",
+      "gl_genre": [
+        "액션",
+        "슈팅"
+      ],
+      "release": "23 Mar, 2023",
+      "warnings": [],
+      "is_new": false
+    },
+    {
+      "appid": 526870,
+      "name": "Satisfactory",
+      "url": "https://store.steampowered.com/app/526870",
+      "steam": {
+        "positive": 231101,
+        "negative": 6289,
+        "total": 237390,
+        "ratio": 0.9735,
+        "wilson": 0.9729,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 91.0,
+        "url": "https://www.metacritic.com/game/pc/satisfactory?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 97.4,
+      "critic_score": 91.0,
+      "gap": 6.4,
+      "flag": "일치",
+      "gl_genre": [
+        "시뮬레이션",
+        "전략",
+        "샌드박스"
+      ],
+      "release": "10 Sep, 2024",
+      "warnings": [],
+      "is_new": false
+    },
+    {
+      "appid": 548430,
+      "name": "Deep Rock Galactic",
+      "url": "https://store.steampowered.com/app/548430",
+      "steam": {
+        "positive": 296179,
+        "negative": 8237,
+        "total": 304416,
+        "ratio": 0.9729,
+        "wilson": 0.9724,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 85.0,
+        "url": "https://www.metacritic.com/game/pc/deep-rock-galactic?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 97.3,
+      "critic_score": 85.0,
+      "gap": 12.3,
+      "flag": "일치",
+      "gl_genre": [
+        "액션",
+        "슈팅"
+      ],
+      "release": "13 May, 2020",
+      "warnings": [],
+      "is_new": false
+    },
+    {
+      "appid": 284160,
+      "name": "BeamNG.drive",
+      "url": "https://store.steampowered.com/app/284160",
+      "steam": {
+        "positive": 387689,
+        "negative": 11074,
+        "total": 398763,
+        "ratio": 0.9722,
+        "wilson": 0.9717,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 97.2,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음",
+      "gl_genre": [
+        "시뮬레이션",
+        "샌드박스"
+      ],
+      "release": "29 May, 2015",
+      "warnings": [
+        "앞서 해보기(Early Access) — 평가가 변할 수 있음"
+      ],
+      "is_new": false
+    },
+    {
+      "appid": 264710,
+      "name": "Subnautica",
+      "url": "https://store.steampowered.com/app/264710",
+      "steam": {
+        "positive": 334266,
+        "negative": 9792,
+        "total": 344058,
+        "ratio": 0.9715,
+        "wilson": 0.971,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 87.0,
+        "url": "https://www.metacritic.com/game/pc/subnautica?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 97.2,
+      "critic_score": 87.0,
+      "gap": 10.2,
+      "flag": "일치",
+      "gl_genre": [
+        "샌드박스"
+      ],
+      "release": "Jan 23, 2018",
+      "warnings": [],
+      "is_new": false
+    },
+    {
+      "appid": 4000,
+      "name": "Garry's Mod",
+      "url": "https://store.steampowered.com/app/4000",
+      "steam": {
+        "positive": 1067337,
+        "negative": 33126,
+        "total": 1100463,
+        "ratio": 0.9699,
+        "wilson": 0.9696,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 97.0,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음",
+      "gl_genre": [
+        "시뮬레이션",
+        "샌드박스",
+        "슈팅"
+      ],
+      "release": "29 Nov, 2006",
+      "warnings": [],
+      "is_new": false
+    },
+    {
+      "appid": 1966720,
+      "name": "Lethal Company",
+      "url": "https://store.steampowered.com/app/1966720",
+      "steam": {
+        "positive": 399815,
+        "negative": 12398,
+        "total": 412213,
+        "ratio": 0.9699,
+        "wilson": 0.9694,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 97.0,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음",
+      "gl_genre": [
+        "액션"
+      ],
+      "release": "23 Oct, 2023",
+      "warnings": [
+        "앞서 해보기(Early Access) — 평가가 변할 수 있음"
+      ],
+      "is_new": false
+    },
+    {
+      "appid": 367520,
+      "name": "Hollow Knight",
+      "url": "https://store.steampowered.com/app/367520",
+      "steam": {
+        "positive": 493293,
+        "negative": 15364,
+        "total": 508657,
+        "ratio": 0.9698,
+        "wilson": 0.9693,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 87.0,
+        "url": "https://www.metacritic.com/game/pc/hollow-knight?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 97.0,
+      "critic_score": 87.0,
+      "gap": 10.0,
+      "flag": "일치",
+      "gl_genre": [
+        "액션",
+        "메트로배니아",
+        "플랫포머"
+      ],
+      "release": "24 Feb, 2017",
+      "warnings": [],
+      "is_new": false
+    },
+    {
+      "appid": 10,
+      "name": "Counter-Strike",
+      "url": "https://store.steampowered.com/app/10",
+      "steam": {
+        "positive": 165428,
+        "negative": 5173,
+        "total": 170601,
+        "ratio": 0.9697,
+        "wilson": 0.9689,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 88.0,
+        "url": "https://www.metacritic.com/game/pc/counter-strike?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 97.0,
+      "critic_score": 88.0,
+      "gap": 9.0,
+      "flag": "일치",
+      "gl_genre": [
+        "액션",
+        "슈팅"
+      ],
+      "release": "1 Nov, 2000",
+      "warnings": [],
+      "is_new": false
+    },
+    {
+      "appid": 250900,
+      "name": "The Binding of Isaac: Rebirth",
+      "url": "https://store.steampowered.com/app/250900",
+      "steam": {
+        "positive": 411981,
+        "negative": 13520,
+        "total": 425501,
+        "ratio": 0.9682,
+        "wilson": 0.9677,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 96.8,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음",
+      "gl_genre": [
+        "액션",
+        "로그라이크"
+      ],
+      "release": "4 Nov, 2014",
+      "warnings": [],
+      "is_new": false
+    },
+    {
+      "appid": 1086940,
+      "name": "Baldur's Gate 3",
+      "url": "https://store.steampowered.com/app/1086940",
+      "steam": {
+        "positive": 736796,
+        "negative": 24286,
+        "total": 761082,
+        "ratio": 0.9681,
+        "wilson": 0.9677,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 96.0,
+        "url": "https://www.metacritic.com/game/pc/baldurs-gate-3?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 96.8,
+      "critic_score": 96.0,
+      "gap": 0.8,
+      "flag": "일치",
+      "gl_genre": [
+        "RPG",
+        "전략"
+      ],
+      "release": "3 Aug, 2023",
+      "warnings": [],
+      "is_new": false
+    },
+    {
+      "appid": 70,
+      "name": "Half-Life",
+      "url": "https://store.steampowered.com/app/70",
+      "steam": {
+        "positive": 114541,
+        "negative": 4021,
+        "total": 118562,
+        "ratio": 0.9661,
+        "wilson": 0.965,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 96.0,
+        "url": "https://www.metacritic.com/game/pc/half-life?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 96.6,
+      "critic_score": 96.0,
+      "gap": 0.6,
+      "flag": "일치",
+      "gl_genre": [
+        "액션",
+        "슈팅"
+      ],
+      "release": "19 Nov, 1998",
+      "warnings": [],
+      "is_new": false
+    },
+    {
+      "appid": 292030,
+      "name": "The Witcher 3: Wild Hunt — Remastered",
+      "url": "https://store.steampowered.com/app/292030",
+      "steam": {
+        "positive": 812525,
+        "negative": 30269,
+        "total": 842794,
+        "ratio": 0.9641,
+        "wilson": 0.9637,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 93.0,
+        "url": "https://www.metacritic.com/game/pc/the-witcher-3-wild-hunt?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 96.4,
+      "critic_score": 93.0,
+      "gap": 3.4,
+      "flag": "일치",
+      "gl_genre": [
+        "RPG"
+      ],
+      "release": "18 May, 2015",
+      "warnings": [],
+      "is_new": false
+    },
+    {
+      "appid": 240,
+      "name": "Counter-Strike: Source",
+      "url": "https://store.steampowered.com/app/240",
+      "steam": {
+        "positive": 131227,
+        "negative": 4915,
+        "total": 136142,
+        "ratio": 0.9639,
+        "wilson": 0.9629,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 88.0,
+        "url": "https://www.metacritic.com/game/pc/counter-strike-source?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 96.4,
+      "critic_score": 88.0,
+      "gap": 8.4,
+      "flag": "일치",
+      "gl_genre": [
+        "액션",
+        "슈팅"
+      ],
+      "release": "1 Nov, 2004",
+      "warnings": [],
+      "is_new": false
+    },
+    {
+      "appid": 204360,
+      "name": "Castle Crashers",
+      "url": "https://store.steampowered.com/app/204360",
+      "steam": {
+        "positive": 106202,
+        "negative": 4077,
+        "total": 110279,
+        "ratio": 0.963,
+        "wilson": 0.9619,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 96.3,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음",
+      "gl_genre": [
+        "액션",
+        "RPG"
+      ],
+      "release": "26 Sep, 2012",
+      "warnings": [],
+      "is_new": false
+    },
+    {
+      "appid": 203160,
+      "name": "Tomb Raider Game of the Year",
+      "url": "https://store.steampowered.com/app/203160",
+      "steam": {
+        "positive": 168615,
+        "negative": 7121,
+        "total": 175736,
+        "ratio": 0.9595,
+        "wilson": 0.9585,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 86.0,
+        "url": "https://www.metacritic.com/game/pc/tomb-raider?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 96.0,
+      "critic_score": 86.0,
+      "gap": 10.0,
+      "flag": "일치",
+      "gl_genre": [
+        "액션",
+        "슈팅"
+      ],
+      "release": "Mar 4, 2013",
+      "warnings": [],
+      "is_new": false
+    },
+    {
+      "appid": 1426210,
+      "name": "It Takes Two",
+      "url": "https://store.steampowered.com/app/1426210",
+      "steam": {
+        "positive": 211422,
+        "negative": 9574,
+        "total": 220996,
+        "ratio": 0.9567,
+        "wilson": 0.9558,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 89.0,
+        "url": "https://www.metacritic.com/game/pc/it-takes-two?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 95.7,
+      "critic_score": 89.0,
+      "gap": 6.7,
+      "flag": "일치",
+      "gl_genre": [
+        "액션",
+        "퍼즐"
+      ],
+      "release": "25 Mar, 2021",
+      "warnings": [],
+      "is_new": true
+    },
+    {
+      "appid": 242760,
+      "name": "The Forest",
+      "url": "https://store.steampowered.com/app/242760",
+      "steam": {
+        "positive": 559554,
+        "negative": 25911,
+        "total": 585465,
+        "ratio": 0.9557,
+        "wilson": 0.9552,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 83.0,
+        "url": "https://www.metacritic.com/game/pc/the-forest?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 95.6,
+      "critic_score": 83.0,
+      "gap": 12.6,
+      "flag": "일치",
+      "gl_genre": [
+        "액션",
+        "시뮬레이션",
+        "샌드박스"
+      ],
+      "release": "30 Apr, 2018",
+      "warnings": [],
+      "is_new": false
+    },
+    {
+      "appid": 239140,
+      "name": "Dying Light",
+      "url": "https://store.steampowered.com/app/239140",
+      "steam": {
+        "positive": 359261,
+        "negative": 17961,
+        "total": 377222,
+        "ratio": 0.9524,
+        "wilson": 0.9517,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 87.0,
+        "url": "https://www.metacritic.com/game/pc/dying-light-the-following---enhanced-edition?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 95.2,
+      "critic_score": 87.0,
+      "gap": 8.2,
+      "flag": "일치",
+      "gl_genre": [
+        "액션",
+        "RPG",
+        "샌드박스",
+        "슈팅"
+      ],
+      "release": "26 Jan, 2015",
+      "warnings": [],
+      "is_new": false
+    },
+    {
+      "appid": 814380,
+      "name": "Sekiro: Shadows Die Twice - GOTY Edition",
+      "url": "https://store.steampowered.com/app/814380",
+      "steam": {
+        "positive": 249105,
+        "negative": 13007,
+        "total": 262112,
+        "ratio": 0.9504,
+        "wilson": 0.9495,
+        "review_score_desc": "Overwhelmingly Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 88.0,
+        "url": "https://www.metacritic.com/game/pc/sekiro-shadows-die-twice?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 95.0,
+      "critic_score": 88.0,
+      "gap": 7.0,
+      "flag": "일치",
+      "gl_genre": [
+        "액션"
+      ],
+      "release": "21 Mar, 2019",
+      "warnings": [],
+      "is_new": false
+    },
+    {
+      "appid": 322330,
+      "name": "Don't Starve Together",
+      "url": "https://store.steampowered.com/app/322330",
+      "steam": {
+        "positive": 359278,
+        "negative": 19250,
+        "total": 378528,
+        "ratio": 0.9491,
+        "wilson": 0.9484,
+        "review_score_desc": "Very Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 83.0,
+        "url": "https://www.metacritic.com/game/pc/dont-starve-together?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 94.9,
+      "critic_score": 83.0,
+      "gap": 11.9,
+      "flag": "일치",
+      "gl_genre": [
+        "액션",
+        "RPG",
+        "시뮬레이션",
+        "전략",
+        "샌드박스"
+      ],
+      "release": "21 Apr, 2016",
+      "warnings": [],
+      "is_new": false
+    },
+    {
+      "appid": 4115450,
+      "name": "Phantom Blade Zero",
+      "url": "https://store.steampowered.com/app/4115450",
+      "steam": {
+        "positive": 103900,
+        "negative": 5819,
+        "total": 109719,
+        "ratio": 0.947,
+        "wilson": 0.9456,
+        "review_score_desc": "Very Positive"
+      },
+      "opencritic": null,
+      "metacritic": {
+        "score": 88.0,
+        "url": "https://www.metacritic.com/game/pc/phantom-blade-zero?ftag=MCD-06-10aaa1f",
+        "via": "steam-appdetails"
+      },
+      "user_score": 94.7,
+      "critic_score": 88.0,
+      "gap": 6.7,
+      "flag": "일치",
+      "gl_genre": [
+        "액션",
+        "RPG"
+      ],
+      "release": "Oct 28, 2026",
+      "warnings": [],
+      "is_new": true
+    },
+    {
+      "appid": 1623730,
+      "name": "Palworld",
+      "url": "https://store.steampowered.com/app/1623730",
+      "steam": {
+        "positive": 394969,
+        "negative": 22587,
+        "total": 417556,
+        "ratio": 0.9459,
+        "wilson": 0.9452,
+        "review_score_desc": "Very Positive"
+      },
+      "opencritic": null,
+      "metacritic": null,
+      "user_score": 94.6,
+      "critic_score": null,
+      "gap": null,
+      "flag": "평론가 없음",
+      "gl_genre": [
+        "액션",
+        "RPG",
+        "샌드박스"
+      ],
+      "release": "9 Jul, 2026",
+      "warnings": [],
+      "is_new": false
+    }
+  ],
+  "rejected": [],
+  "unmapped_tags": {
+    "Survival": 8,
+    "Crafting": 7,
+    "Building": 5,
+    "Survival Horror": 4,
+    "Action-Adventure": 3,
+    "Classic": 3,
+    "Zombies": 3,
+    "Team-Based": 3,
+    "Moddable": 3,
+    "Base-Building": 3,
+    "Souls-like": 3,
+    "Silent Protagonist": 2,
+    "Driving": 2,
+    "Automobile Sim": 2,
+    "Realistic": 2,
+    "Dark": 2,
+    "Cinematic": 2,
+    "PvE": 2,
+    "Procedural Generation": 2,
+    "Physics": 2,
+    "Competitive": 2,
+    "Tactical": 2,
+    "1990's": 2,
+    "e-sports": 2,
+    "Choices Matter": 2,
+    "Hack and Slash": 2,
+    "Local Multiplayer": 2,
+    "Dark Humor": 1,
+    "Life Sim": 1,
+    "Agriculture": 1,
+    "Dystopian": 1,
+    "Utilities": 1,
+    "Software": 1,
+    "Design & Illustration": 1,
+    "Animation & Modeling": 1,
+    "Memes": 1,
+    "Transportation": 1,
+    "Economy": 1,
+    "Management": 1,
+    "Immersive Sim": 1,
+    "Remake": 1,
+    "Automation": 1,
+    "Resource Management": 1,
+    "Dwarves": 1,
+    "Class-Based": 1,
+    "Loot": 1,
+    "Destruction": 1,
+    "Racing": 1,
+    "Underwater": 1,
+    "Comedy": 1,
+    "Psychological Horror": 1,
+    "Dungeon Crawler": 1,
+    "Character Customization": 1,
+    "Turn-Based Combat": 1,
+    "Sexual Content": 1,
+    "Romance": 1,
+    "Aliens": 1,
+    "Nudity": 1,
+    "Medieval": 1,
+    "Military": 1,
+    "War": 1,
+    "Beat 'em up": 1,
+    "4 Player Local": 1,
+    "Quick-Time Events": 1,
+    "Split Screen": 1,
+    "Co-op Campaign": 1,
+    "Parkour": 1,
+    "Ninja": 1,
+    "Stealth": 1,
+    "Assassins": 1,
+    "Wuxia": 1,
+    "Martial Arts": 1,
+    "Dark Fantasy": 1,
+    "Combat": 1,
+    "Creature Collector": 1
+  }
+}
