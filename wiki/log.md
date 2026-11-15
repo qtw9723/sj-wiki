@@ -8,6 +8,9 @@ updated: 2026-11-15
 
 > 📦 2026-09-30 이전 이력은 [[log-아카이브-2026-06-09]]로 옮겼다(2026-10-28, 원문 그대로). 월별 이력이 커지면 같은 방식으로 분기 단위 아카이브를 만든다.
 
+## [2026-11-15] 자료넣기 | 자동 위키화 (daily crawl)
+- `raw/ai-digest/naver-2026-11-15.md` 처리. [[AI-주간-소식-2026-W46]] 8차 보강 — W46-66~72 신설 7건. 주요 추가: Claude Code 'Don't Ask Again' 보안 사고(W46-66), Moonshot AI Kimi K3·Mira Murati Inkling 오픈 웨이트(W46-68~69), Claude Sonnet 4.5 11/30 은퇴(W46-70).
+
 ## [2026-11-15] 자료넣기 | 게임 요소 자동 정리
 - BeamNG.drive·Isaac Rebirth·Castle Crashers 3개 게임 처리, 요소 페이지 신규 4개·갱신 1개, 사례 3개. [[게임요소-라이브러리]]
 
