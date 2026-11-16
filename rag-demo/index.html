@@ -59,7 +59,7 @@ button.ask{font:inherit;font-size:13.5px;padding:5px 12px;border:1px solid var(-
 </style>
 </head>
 <body>
-<div class="banner">체험판 — 기본은 정적 스냅샷을 브라우저에서 BM25로 검색합니다. 지원 시 안내드린 API 키를 넣으면 실제 API(하이브리드 검색·AI 답변)로 동작합니다. <a href="https://github.com/qtw9723/sj-wiki/tree/main/rag" target="_blank" rel="noopener">소스</a></div>
+<div class="banner">체험판 — 기본은 정적 스냅샷을 브라우저에서 BM25로 검색합니다. 검색은 실제 API(BM25+벡터 하이브리드)를 우선 사용하고, 연결되지 않으면 이 BM25 체험판으로 동작합니다. <a href="https://github.com/qtw9723/sj-wiki/tree/main/rag" target="_blank" rel="noopener">소스</a></div>
 <div class="wrap">
 <header>
   <h1>위키 RAG 검색</h1>
@@ -73,11 +73,6 @@ button.ask{font:inherit;font-size:13.5px;padding:5px 12px;border:1px solid var(-
     <button type="button" data-cat="game" aria-pressed="false">게임 요소</button>
     <button type="button" data-cat="ai-news" aria-pressed="false">AI 뉴스</button>
   </div>
-  <details class="api" id="apipanel">
-    <summary>실제 API로 검색 <span id="apistate">(키가 있으면 하이브리드 검색·AI 답변)</span></summary>
-    <div class="row"><input id="key" type="password" placeholder="API 키" autocomplete="off" aria-label="API 키"><button type="button" id="keysave">저장</button><button type="button" id="keyclear">지우기</button></div>
-    <p class="hint" style="margin-top:6px">키는 이 브라우저 탭에만 저장되고 서버로는 실제 API(sj-wiki-rag)에만 전송됩니다. 키가 없으면 아래 BM25 체험판으로 동작합니다.</p>
-  </details>
   <p class="hint">평가에 쓴 질문 예시 — 눌러서 검색해 보세요</p>
   <div class="ex" id="ex"></div>
 </header>
@@ -109,11 +104,7 @@ function tokenize(s){const out=[];const re=/[a-z0-9]+(?:[._-][a-z0-9]+)*|[가-�
   else if(t.length===1)out.push(t);else for(let i=0;i<t.length-1;i++)out.push(t.slice(i,i+2))}
  return out}
 let S=null,cat="";
-const API="https://sj-wiki-rag.vercel.app";
-let KEY=sessionStorage.getItem("ragkey")||"";
-(function(){const m=location.hash.match(/key=([^&]+)/);if(m){KEY=decodeURIComponent(m[1]);sessionStorage.setItem("ragkey",KEY);history.replaceState(null,"",location.pathname+location.search)}})();
-function keyUi(){ $("key").value=KEY?"••••••••••••":""; $("apistate").textContent=KEY?"— 사용 중 (하이브리드 검색 + AI 답변)":"(키가 있으면 하이브리드 검색·AI 답변)"; if(KEY)$("apipanel").open=true }
-async function api(path,opt){const r=await fetch(API+path,{...opt,headers:{...(opt&&opt.headers),"x-api-key":KEY}});const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(j.error||("HTTP "+r.status));return j}
+async function api(path,opt){const r=await fetch(path,opt);const j=await r.json().catch(()=>({}));if(!r.ok){const e=new Error(j.error||("HTTP "+r.status));e.status=r.status;throw e}return j}
 const $=id=>document.getElementById(id);
 const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 async function load(){
@@ -142,12 +133,12 @@ function card(c,r,sc,extra){return`<li class="hit"><h3><a href="${esc(c.url)}" t
     <div class="sub"><span class="tag ${c.category}">${c.category==="game"?"게임 요소":"AI 뉴스"}</span>${c.heading?`<span>${esc(c.heading)}</span>`:""}<span class="rk">#${r+1} · ${sc}</span></div>
     <p class="snip">${snippet(c.text,extra)}</p></li>`}
 function dedupe(list,get){const seen=new Set(),out=[];for(const x of list){const pg=get(x);if(seen.has(pg))continue;seen.add(pg);out.push(x);if(out.length>=8)break}return out}
-let ticket=0;
+let ticket=0,LIVE=true;
 async function run(q){
   q=q.trim();if(!S||!q)return;
   const my=++ticket;
   history.replaceState(null,"","?q="+encodeURIComponent(q)+(cat?"&c="+cat:""));
-  if(KEY){
+  if(LIVE){
     $("meta").textContent="실제 API에 요청 중…";
     try{
       const u="/api/search?q="+encodeURIComponent(q)+"&k=20"+(cat?"&category="+cat:"");
@@ -158,14 +149,14 @@ async function run(q){
         top.map((c,r)=>card(c,r,`RRF ${c.score}${c.lexical?" · BM25 #"+c.lexical.rank:""}${c.vector?" · 벡터 #"+c.vector.rank:""}`,q)).join("");
       $("askbtn").onclick=()=>ask(q);
       return;
-    }catch(e){if(my!==ticket)return;$("res").innerHTML=`<li class="err" style="list-style:none">실제 API 오류: ${esc(e.message)} — 체험판(BM25)으로 대신 검색합니다.</li>`;
-      return local(q,my,true)}
+    }catch(e){if(my!==ticket)return;if(e.message==="not_configured")LIVE=false;else $("res").innerHTML=`<li class="err" style="list-style:none">실제 API 오류: ${esc(e.message)} — 체험판(BM25)으로 대신 검색합니다.</li>`;
+      return local(q,my,e.message!=="not_configured")}
   }
   local(q,my,false)
 }
 async function ask(q){
   const out=$("askout");out.innerHTML='<div class="ans">답변 생성 중…</div>';
-  try{const d=await api("/api/ask",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({question:q,k:6,category:cat||undefined})});
+  try{const d=await api("/api/ask",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({question:q,category:cat||undefined})});
     out.innerHTML=`<div class="ans">${esc(d.answer)}<small>모델 ${esc(d.model||"")} · 근거: ${(d.citations||[]).map(c=>`[${c.n}] <a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.title)}</a>`).join(" · ")}</small></div>`}
   catch(e){out.innerHTML=`<div class="err">답변 생성 실패: ${esc(e.message)}</div>`}
 }
@@ -182,10 +173,7 @@ $("ex").innerHTML=EXAMPLES.map(([q,c],i)=>`<button type="button" data-i="${i}">$
 $("ex").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const[q,c]=EXAMPLES[b.dataset.i];setCat(c);$("q").value=q;run(q)});
 function setCat(c){cat=c;document.querySelectorAll(".tabs button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.cat===c)))}
 document.querySelector(".tabs").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;setCat(b.dataset.cat);run($("q").value)});
-$("keysave").onclick=()=>{const v=$("key").value.trim();if(v&&!/^•+$/.test(v)){KEY=v;sessionStorage.setItem("ragkey",KEY)}keyUi();run($("q").value)};
-$("keyclear").onclick=()=>{KEY="";sessionStorage.removeItem("ragkey");keyUi();run($("q").value)};
 $("f").addEventListener("submit",e=>{e.preventDefault();run($("q").value)});
-keyUi();
 load().then(()=>{$("q").disabled=$("go").disabled=false;$("res").innerHTML="";
   const p=new URLSearchParams(location.search);
   if(p.get("c"))setCat(p.get("c"));
