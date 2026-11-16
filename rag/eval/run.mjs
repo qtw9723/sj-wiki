@@ -25,8 +25,9 @@ const usable = questions.filter((q) => q.expect.length <= 8);
 let doSearch;
 let vectorOk = false;
 if (BASE) {
-  doSearch = async (q, mode) => (await fetch(`${BASE}/api/search?` + new URLSearchParams({ q, k: 20, mode }))).json();
-  const h = await (await fetch(`${BASE}/api/health`)).json();
+  const H = { "x-api-key": process.env.EVAL_API_KEY || "" };
+  doSearch = async (q, mode) => (await fetch(`${BASE}/api/search?` + new URLSearchParams({ q, k: 20, mode }), { headers: H })).json();
+  const h = await (await fetch(`${BASE}/api/health`, { headers: H })).json();
   vectorOk = !!h.vectorSearchActive;
 } else {
   const { search, vectorsAvailable } = await import("../lib/search.mjs");

@@ -1,10 +1,12 @@
-// GET /api/health — 인덱스 스냅샷/설정 상태(키 값은 노출하지 않음)
+// GET /api/health — 키 없이는 생존 여부만, 유효한 키가 있으면 스냅샷/설정 상태(키 값은 노출하지 않음)
 import { loadIndex, vectorsAvailable } from "../lib/search.mjs";
 import { chatConfig, embedConfig } from "../lib/llm.mjs";
-import { cors, json } from "../lib/http.mjs";
+import { cors, json, authenticate } from "../lib/http.mjs";
 
 export default function handler(req, res) {
   cors(res);
+  if (req.method === "OPTIONS") return res.end();
+  if (!authenticate(req).ok) return json(res, 200, { ok: true });
   const S = loadIndex();
   json(res, 200, {
     ok: true,
@@ -17,6 +19,5 @@ export default function handler(req, res) {
     embeddingModel: S.vmeta?.model || null,
     answerModelConfigured: !!chatConfig(),
     embeddingConfigured: !!embedConfig(),
-    tokenProtectedAsk: !!process.env.RAG_API_TOKEN,
   });
 }
