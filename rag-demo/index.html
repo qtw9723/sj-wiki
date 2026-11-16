@@ -45,11 +45,21 @@ footer b{color:var(--ink)}
 footer ul{margin:8px 0 0;padding-left:20px}
 .skel{height:92px;border-radius:12px;background:linear-gradient(90deg,#f1f2f6,#e8eaf0,#f1f2f6);background-size:200% 100%;animation:sh 1.2s infinite;margin-bottom:12px}
 @keyframes sh{to{background-position:-200% 0}}
+details.api{margin:6px 0 4px;font-size:14px;color:var(--sub)}
+details.api summary{cursor:pointer;font-weight:600;color:var(--ink)}
+details.api .row{display:flex;gap:8px;margin-top:8px}
+details.api input{flex:1;min-width:0;font:inherit;font-size:14px;padding:8px 10px;border:1.5px solid var(--line);border-radius:8px}
+details.api button{font:inherit;font-size:14px;padding:0 14px;border:1px solid var(--line);border-radius:8px;background:#fff;cursor:pointer}
+.mode{display:inline-block;font-size:12px;font-weight:700;padding:1px 8px;border-radius:99px;background:var(--acs);color:#1a2380;margin-right:6px}
+.ans{border:1.5px solid var(--ac);background:#f7f8ff;border-radius:12px;padding:16px 18px;margin-bottom:14px;white-space:pre-wrap;font-size:15px}
+.ans small{display:block;color:var(--sub);margin-top:8px;white-space:normal}
+.err{color:#b3261e;font-size:13.5px;margin:6px 0}
+button.ask{font:inherit;font-size:13.5px;padding:5px 12px;border:1px solid var(--ac);border-radius:8px;background:#fff;color:var(--ac);cursor:pointer;margin:2px 0 6px}
 @media(max-width:520px){header{padding-top:28px}button.go{padding:0 16px}}
 </style>
 </head>
 <body>
-<div class="banner">체험판 — 정적 스냅샷을 브라우저에서 검색합니다(BM25 전용). 실제 API는 키로 보호되며 벡터 검색을 함께 씁니다. <a href="https://github.com/qtw9723/sj-wiki/tree/main/rag" target="_blank" rel="noopener">소스</a></div>
+<div class="banner">체험판 — 기본은 정적 스냅샷을 브라우저에서 BM25로 검색합니다. 지원 시 안내드린 API 키를 넣으면 실제 API(하이브리드 검색·AI 답변)로 동작합니다. <a href="https://github.com/qtw9723/sj-wiki/tree/main/rag" target="_blank" rel="noopener">소스</a></div>
 <div class="wrap">
 <header>
   <h1>위키 RAG 검색</h1>
@@ -63,6 +73,11 @@ footer ul{margin:8px 0 0;padding-left:20px}
     <button type="button" data-cat="game" aria-pressed="false">게임 요소</button>
     <button type="button" data-cat="ai-news" aria-pressed="false">AI 뉴스</button>
   </div>
+  <details class="api" id="apipanel">
+    <summary>실제 API로 검색 <span id="apistate">(키가 있으면 하이브리드 검색·AI 답변)</span></summary>
+    <div class="row"><input id="key" type="password" placeholder="API 키" autocomplete="off" aria-label="API 키"><button type="button" id="keysave">저장</button><button type="button" id="keyclear">지우기</button></div>
+    <p class="hint" style="margin-top:6px">키는 이 브라우저 탭에만 저장되고 서버로는 실제 API(sj-wiki-rag)에만 전송됩니다. 키가 없으면 아래 BM25 체험판으로 동작합니다.</p>
+  </details>
   <p class="hint">평가에 쓴 질문 예시 — 눌러서 검색해 보세요</p>
   <div class="ex" id="ex"></div>
 </header>
@@ -94,6 +109,11 @@ function tokenize(s){const out=[];const re=/[a-z0-9]+(?:[._-][a-z0-9]+)*|[가-�
   else if(t.length===1)out.push(t);else for(let i=0;i<t.length-1;i++)out.push(t.slice(i,i+2))}
  return out}
 let S=null,cat="";
+const API="https://sj-wiki-rag.vercel.app";
+let KEY=sessionStorage.getItem("ragkey")||"";
+(function(){const m=location.hash.match(/key=([^&]+)/);if(m){KEY=decodeURIComponent(m[1]);sessionStorage.setItem("ragkey",KEY);history.replaceState(null,"",location.pathname+location.search)}})();
+function keyUi(){ $("key").value=KEY?"••••••••••••":""; $("apistate").textContent=KEY?"— 사용 중 (하이브리드 검색 + AI 답변)":"(키가 있으면 하이브리드 검색·AI 답변)"; if(KEY)$("apipanel").open=true }
+async function api(path,opt){const r=await fetch(API+path,{...opt,headers:{...(opt&&opt.headers),"x-api-key":KEY}});const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(j.error||("HTTP "+r.status));return j}
 const $=id=>document.getElementById(id);
 const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 async function load(){
@@ -118,26 +138,54 @@ function snippet(text,q){const toks=[...new Set(tokenize(q))].filter(t=>t.length
   let h=esc(s);
   for(const t of toks.sort((a,b)=>b.length-a.length)){h=h.replace(new RegExp(t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"),"gi"),m=>"<mark>"+m+"</mark>")}
   return(start>0?"…":"")+h+(start+300<text.length?"…":"")}
-function run(q){
+function card(c,r,sc,extra){return`<li class="hit"><h3><a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.title)}</a></h3>
+    <div class="sub"><span class="tag ${c.category}">${c.category==="game"?"게임 요소":"AI 뉴스"}</span>${c.heading?`<span>${esc(c.heading)}</span>`:""}<span class="rk">#${r+1} · ${sc}</span></div>
+    <p class="snip">${snippet(c.text,extra)}</p></li>`}
+function dedupe(list,get){const seen=new Set(),out=[];for(const x of list){const pg=get(x);if(seen.has(pg))continue;seen.add(pg);out.push(x);if(out.length>=8)break}return out}
+let ticket=0;
+async function run(q){
   q=q.trim();if(!S||!q)return;
+  const my=++ticket;
+  history.replaceState(null,"","?q="+encodeURIComponent(q)+(cat?"&c="+cat:""));
+  if(KEY){
+    $("meta").textContent="실제 API에 요청 중…";
+    try{
+      const u="/api/search?q="+encodeURIComponent(q)+"&k=20"+(cat?"&category="+cat:"");
+      const d=await api(u);if(my!==ticket)return;
+      const top=dedupe(d.results,x=>x.page);
+      $("meta").innerHTML=`<span class="mode">${d.mode==="hybrid"?"하이브리드 · BM25 + 벡터 · RRF":d.mode}</span>실제 API · 상위 ${top.length}페이지 · ${d.took_ms}ms${d.index&&d.index.embeddingModel?" · "+esc(d.index.embeddingModel):""}`;
+      $("res").innerHTML=`<li style="list-style:none"><button type="button" class="ask" id="askbtn">AI 답변 생성 (/api/ask)</button><div id="askout"></div></li>`+
+        top.map((c,r)=>card(c,r,`RRF ${c.score}${c.lexical?" · BM25 #"+c.lexical.rank:""}${c.vector?" · 벡터 #"+c.vector.rank:""}`,q)).join("");
+      $("askbtn").onclick=()=>ask(q);
+      return;
+    }catch(e){if(my!==ticket)return;$("res").innerHTML=`<li class="err" style="list-style:none">실제 API 오류: ${esc(e.message)} — 체험판(BM25)으로 대신 검색합니다.</li>`;
+      return local(q,my,true)}
+  }
+  local(q,my,false)
+}
+async function ask(q){
+  const out=$("askout");out.innerHTML='<div class="ans">답변 생성 중…</div>';
+  try{const d=await api("/api/ask",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({question:q,k:6,category:cat||undefined})});
+    out.innerHTML=`<div class="ans">${esc(d.answer)}<small>모델 ${esc(d.model||"")} · 근거: ${(d.citations||[]).map(c=>`[${c.n}] <a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.title)}</a>`).join(" · ")}</small></div>`}
+  catch(e){out.innerHTML=`<div class="err">답변 생성 실패: ${esc(e.message)}</div>`}
+}
+function local(q,my,keep){
   const t0=performance.now();
   const hits=bm25(q,i=>!cat||S.chunks[i].category===cat);
-  // 같은 페이지는 최고 점수 청크 1개만 — 중복 페이지 줄이기
-  const seen=new Set(),top=[];
-  for(const[i,s]of hits){const c=S.chunks[i];if(seen.has(c.page))continue;seen.add(c.page);top.push([i,s]);if(top.length>=8)break}
+  const top=dedupe(hits,h=>S.chunks[h[0]].page);
   const ms=(performance.now()-t0).toFixed(0);
-  $("meta").textContent=top.length?`BM25 · 후보 청크 ${hits.length.toLocaleString()}개 중 상위 ${top.length}페이지 · ${ms}ms`:"";
-  $("res").innerHTML=top.length?top.map(([i,s],r)=>{const c=S.chunks[i];
-    return`<li class="hit"><h3><a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.title)}</a></h3>
-    <div class="sub"><span class="tag ${c.category}">${c.category==="game"?"게임 요소":"AI 뉴스"}</span>${c.heading?`<span>${esc(c.heading)}</span>`:""}<span class="rk">#${r+1} · BM25 ${s.toFixed(2)}</span></div>
-    <p class="snip">${snippet(c.text,q)}</p></li>`}).join(""):`<li class="empty">일치하는 청크가 없습니다. 다른 표현으로 검색해 보세요.</li>`;
-  history.replaceState(null,"","?q="+encodeURIComponent(q)+(cat?"&c="+cat:""));
+  $("meta").innerHTML=top.length?`<span class="mode">BM25 체험판</span>후보 청크 ${hits.length.toLocaleString()}개 중 상위 ${top.length}페이지 · ${ms}ms`:"";
+  const html=top.length?top.map(([i,s],r)=>card(S.chunks[i],r,"BM25 "+s.toFixed(2),q)).join(""):`<li class="empty">일치하는 청크가 없습니다. 다른 표현으로 검색해 보세요.</li>`;
+  $("res").innerHTML=(keep?$("res").innerHTML:"")+html;
 }
 $("ex").innerHTML=EXAMPLES.map(([q,c],i)=>`<button type="button" data-i="${i}">${esc(q.length>34?q.slice(0,34)+"…":q)}</button>`).join("");
 $("ex").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const[q,c]=EXAMPLES[b.dataset.i];setCat(c);$("q").value=q;run(q)});
 function setCat(c){cat=c;document.querySelectorAll(".tabs button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.cat===c)))}
 document.querySelector(".tabs").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;setCat(b.dataset.cat);run($("q").value)});
+$("keysave").onclick=()=>{const v=$("key").value.trim();if(v&&!/^•+$/.test(v)){KEY=v;sessionStorage.setItem("ragkey",KEY)}keyUi();run($("q").value)};
+$("keyclear").onclick=()=>{KEY="";sessionStorage.removeItem("ragkey");keyUi();run($("q").value)};
 $("f").addEventListener("submit",e=>{e.preventDefault();run($("q").value)});
+keyUi();
 load().then(()=>{$("q").disabled=$("go").disabled=false;$("res").innerHTML="";
   const p=new URLSearchParams(location.search);
   if(p.get("c"))setCat(p.get("c"));
