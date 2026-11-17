@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>박상준 포트폴리오</title>
+<meta name="description" content="LLM 생성 파이프라인, 코딩 에이전트 개발 파이프라인, 업무 자동화, LLM 위키·RAG 프로젝트 5개를 모은 박상준의 포트폴리오">
+<meta name="theme-color" content="#2B3FF0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=JetBrains+Mono:wght@400&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* World: a blue field that opens the page and indexes the three projects, then a cool white ledger of work.
+   Each project row pairs the person-facing copy with a drawn flow of how the thing works. */
+:root{
+  --field:#2B3FF0;
+  --on-field:#FFFFFF;
+  --ground:#F4F5FA;
+  --ink:#10131F;
+  --muted:#474F63;
+  --rule:#C9CDDB;
+  --link:#2B3FF0;
+  --warn:#B42318;
+  --display:"Black Han Sans","Noto Sans KR",sans-serif;
+  --body:"Noto Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0D1019;--ink:#E8EAF3;--muted:#A5ACC2;--rule:#2A3042;--link:#9DB0FF;--warn:#FF8A80;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0D1019;--ink:#E8EAF3;--muted:#A5ACC2;--rule:#2A3042;--link:#9DB0FF;--warn:#FF8A80;color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scrollbar-color:var(--muted) var(--ground)}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;word-break:keep-all;overflow-wrap:break-word}
+::selection{background:var(--field);color:var(--on-field)}
+a{color:var(--link);text-underline-offset:4px;text-decoration-thickness:1px}
+:focus-visible{outline:3px solid var(--link);outline-offset:3px;border-radius:2px}
+.field :focus-visible{outline-color:var(--on-field)}
+h1,h2,h3{margin:0;font-family:var(--display);font-weight:400;text-wrap:balance}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+svg.i{width:1em;height:1em;flex:none}
+
+/* opening field */
+.field{background:var(--field);color:var(--on-field)}
+.field-in{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px 56px;padding:28px 0 56px;align-items:end}
+.field .bar{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:16px;padding-bottom:56px}
+.field .who{font-family:var(--display);font-size:22px;letter-spacing:.02em}
+.field .bar a{color:var(--on-field);display:inline-flex;align-items:center;min-height:44px}
+.field h1{font-size:clamp(44px,8.2vw,96px);line-height:1.08;letter-spacing:-.02em;animation:rise .9s var(--ease) both}
+.field .lead{max-width:34em;margin:24px 0 0;font-size:17px;color:var(--on-field)}
+.jump h2{font-size:26px;margin-bottom:14px}
+.jump ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.jump a.big{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px;background:var(--on-field);color:#10131F;text-decoration:none;border-radius:2px;transition:transform .35s var(--ease)}
+.jump a.big:hover{transform:translateX(6px)}
+.jump a.big b{display:block;font-weight:700;font-size:17px;line-height:1.4}
+.jump a.big span{display:block;font-size:14px;color:#3A4156;line-height:1.5}
+.jump a.big svg.i{width:22px;height:22px;color:var(--field)}
+@keyframes rise{from{clip-path:inset(0 0 100% 0);transform:translateY(24px)}to{clip-path:inset(0 0 0 0);transform:none}}
+
+/* work */
+section.work-sec{padding:72px 0 8px}
+section.work-sec>.wrap>h2{font-size:clamp(30px,4.6vw,44px);margin-bottom:8px}
+section.work-sec>.wrap>p.sub{margin:0 0 40px;color:var(--muted);max-width:40em}
+.work{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px 56px;padding:44px 0;border-top:1px solid var(--rule);scroll-margin-top:12px}
+.work h3{font-size:clamp(28px,3.6vw,38px);line-height:1.25}
+.work .kind{margin:6px 0 20px;color:var(--muted);font-size:14px}
+.acts{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.act{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;min-height:44px;font:500 15px/1.2 var(--body);text-decoration:none;border:1.5px solid var(--link);color:var(--link);border-radius:2px;background:transparent;transition:background-color .25s var(--ease),color .25s var(--ease)}
+.btn:hover{background:var(--link);color:var(--ground)}
+.btn.demo{background:var(--field);border-color:var(--field);color:var(--on-field)}
+.btn.demo:hover{background:transparent;color:var(--link);border-color:var(--link)}
+.btn.off{border:1.5px dashed var(--rule);color:var(--muted);cursor:default}
+.btn.off:hover{background:transparent;color:var(--muted)}
+.note{font-size:13.5px;color:var(--muted)}
+.flow{list-style:none;margin:0 0 24px;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:8px 0}
+.flow li{display:flex;align-items:center;font-weight:500;font-size:14.5px;line-height:1.4}
+.flow li span{padding:2px 0;border-bottom:2px solid var(--link)}
+.flow li:not(:first-child)::before{content:"";width:34px;height:10px;margin:0 8px;flex:none;background:var(--muted);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 10'%3E%3Cpath d='M0 5h31M27 1l5 4-5 4' fill='none' stroke='black' stroke-width='1.4'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 10'%3E%3Cpath d='M0 5h31M27 1l5 4-5 4' fill='none' stroke='black' stroke-width='1.4'/%3E%3C/svg%3E") center/contain no-repeat}
+.txt dl{margin:0;display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:10px 16px}
+.txt dt{font-weight:700;font-size:14px;color:var(--muted);padding-top:2px}
+.txt dd{margin:0;max-width:62ch}
+.txt ul{margin:0;padding-left:1.1em}
+.txt li{margin:2px 0}
+.stack{margin-top:16px;font-size:13.5px;color:var(--muted)}
+
+
+/* infographic pieces */
+.one{margin:0 0 20px;font-size:15px;color:var(--muted);max-width:26em}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px;padding:0;list-style:none;font-size:13px;color:var(--muted)}
+.legend li{display:flex;align-items:center;gap:8px}
+.sw{width:22px;height:14px;border:1.5px solid var(--link);flex:none}
+.sw.llm{background:var(--field);border-color:var(--field)}
+.sw.ppl{border-style:dashed;border-color:var(--muted)}
+.lane{list-style:none;margin:0 0 24px;padding:0;display:flex;flex-wrap:nowrap;align-items:stretch}
+.lane li{display:flex;align-items:center;flex:1 1 0;min-width:0}
+.lane li:not(:first-child)::before{content:"";width:16px;height:10px;margin:0 3px;flex:none;background:var(--muted);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 10'%3E%3Cpath d='M0 5h31M27 1l5 4-5 4' fill='none' stroke='black' stroke-width='1.4'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 10'%3E%3Cpath d='M0 5h31M27 1l5 4-5 4' fill='none' stroke='black' stroke-width='1.4'/%3E%3C/svg%3E") center/contain no-repeat}
+.st{display:block;width:100%;height:100%;padding:6px 7px;border:1.5px solid var(--link);font-size:13px;font-weight:500;line-height:1.35}
+.st small{display:block;font-size:11px;font-weight:700;letter-spacing:.02em}
+.st.llm{background:var(--field);border-color:var(--field);color:var(--on-field)}
+.st.ppl{border-style:dashed;border-color:var(--muted);color:var(--muted)}
+.why{margin:0 0 24px;font-size:15px;line-height:1.6}.why>div{display:grid;grid-template-columns:5.6em minmax(0,1fr);gap:0 12px;padding:9px 0;border-top:1px solid var(--line,rgba(127,127,127,.25))}.why>div:last-child{border-bottom:1px solid var(--line,rgba(127,127,127,.25))}.why b{font-size:13px;color:var(--muted);font-weight:600}.why ul{margin:0;padding-left:17px}.why li{margin:0 0 3px}
+@media (max-width:760px){.why>div{grid-template-columns:1fr;gap:2px}}
+.facts{list-style:none;margin:0 0 16px;padding:0;display:flex;flex-wrap:wrap;gap:6px 26px;font-size:14px;color:var(--muted)}
+.facts b{display:block;font-family:var(--display);font-weight:400;font-size:22px;line-height:1.2;color:var(--ink)}
+.chips{list-style:none;margin:0 0 16px;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.chips li{margin:0;border:1px solid var(--rule);padding:2px 10px;font-size:13.5px;border-radius:2px}
+.vs{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:0 10px;align-items:stretch;margin:0 0 24px}
+.vs>div{border:1.5px solid var(--rule);padding:10px 14px;font-size:14.5px;line-height:1.55}
+.vs>div b{display:block;font-size:12px;letter-spacing:.02em;color:var(--muted)}
+.vs .bad{border-color:var(--warn)}
+.vs .bad b{color:var(--warn)}
+.vs .go{align-self:center;width:26px;height:10px;background:var(--muted);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 10'%3E%3Cpath d='M0 5h31M27 1l5 4-5 4' fill='none' stroke='black' stroke-width='1.4'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 10'%3E%3Cpath d='M0 5h31M27 1l5 4-5 4' fill='none' stroke='black' stroke-width='1.4'/%3E%3C/svg%3E") center/contain no-repeat}
+.bars{margin:0 0 24px;display:grid;gap:14px}
+.bars h4{margin:0 0 4px;font-size:14px;font-weight:700}
+.brow{display:grid;grid-template-columns:2.6em minmax(0,1fr) auto;gap:10px;align-items:center;font-size:14px;line-height:1.5}
+.brow .tk{height:14px;background:color-mix(in srgb,var(--rule) 45%,transparent)}
+.brow .tk i{display:block;height:100%;background:var(--muted)}
+.brow.after .tk i{background:var(--field);min-width:3px}
+.brow .lb{color:var(--muted);font-weight:700}
+.bars small{font-size:12px;color:var(--muted)}
+
+/* about */
+section.about{padding:72px 0 80px;border-top:1px solid var(--rule)}
+section.about h2{font-size:clamp(30px,4.6vw,44px);margin-bottom:32px}
+.cols{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px 56px}
+.tl{list-style:none;margin:0;padding:0}
+.tl li{padding:0 0 22px}
+.tl h3{font-family:var(--body);font-weight:700;font-size:21px;line-height:1.4}
+.tl p{margin:2px 0 0;color:var(--muted);font-size:15px}
+.skills{margin:0;display:grid;grid-template-columns:7.5em minmax(0,1fr);gap:14px 16px}
+.skills dt{font-weight:700;font-size:14px;color:var(--muted);padding-top:2px}
+.skills dd{margin:0}
+.skills ul{margin:0;padding-left:1.1em}
+footer{border-top:1px solid var(--rule);padding:28px 0 56px;color:var(--muted);font-size:14px}
+
+@media (max-width:820px){
+  .field-in{grid-template-columns:1fr;padding-bottom:40px}
+  .field .bar{padding-bottom:36px}
+  .work,.cols{grid-template-columns:1fr}
+  .work{padding:36px 0}
+  .acts{flex-direction:row;flex-wrap:wrap;gap:10px 16px}
+  .txt dl,.skills{grid-template-columns:1fr;gap:2px 0}
+  .lane{flex-direction:column;align-items:stretch}
+  .lane li{flex-direction:column;align-items:stretch;flex:none}
+  .lane li:not(:first-child)::before{width:10px;height:18px;margin:2px 0 2px 18px;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 34'%3E%3Cpath d='M5 0v31M1 27l4 5 4-5' fill='none' stroke='black' stroke-width='1.4'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 34'%3E%3Cpath d='M5 0v31M1 27l4 5 4-5' fill='none' stroke='black' stroke-width='1.4'/%3E%3C/svg%3E") center/contain no-repeat}
+  .st{font-size:14.5px;padding:8px 12px}
+  .vs{grid-template-columns:1fr;gap:8px 0}
+  .vs .go{transform:rotate(90deg);margin:2px 0}
+  .txt dd,.skills dd{margin-bottom:10px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .field h1{animation:none}
+  .jump a.big,.btn{transition:none}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="arr" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></symbol>
+  <symbol id="dn" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></symbol>
+</svg>
+
+<header class="field">
+  <div class="wrap">
+    <div class="field-in">
+      <div class="bar">
+        <span class="who">박상준</span>
+        <a href="https://github.com/qtw9723" target="_blank" rel="noopener">GitHub qtw9723</a>
+      </div>
+      <div>
+        <h1>LLM이 만들고, 코드가 판정합니다.</h1>
+        <p class="lead">경영학과 출신 웹개발자. SM과 NLP 챗봇 솔루션 회사를 거쳐 개발 3년차입니다. LLM은 설계와 해석에, 합격 판정은 결정론적 코드에 맡겨 만듭니다. 희망 직무는 AX·AI 에이전트 개발.</p>
+      </div>
+      <nav class="jump" aria-label="프로젝트 바로가기">
+        <h2>프로젝트 5개</h2>
+        <ol>
+          <li><a class="big" href="#p1"><div><b>CogInsight Generator</b><span>LLM 서비스를 운영 환경까지 만든 경험</span></div><svg class="i" aria-hidden="true"><use href="#dn"/></svg></a></li>
+          <li><a class="big" href="#p2"><div><b>Olympus</b><span>코딩 에이전트로 개발 프로세스를 바꾼 경험</span></div><svg class="i" aria-hidden="true"><use href="#dn"/></svg></a></li>
+          <li><a class="big" href="#p3"><div><b>CS SmartHub</b><span>문제를 직접 정의해 업무를 자동화한 경험</span></div><svg class="i" aria-hidden="true"><use href="#dn"/></svg></a></li>
+          <li><a class="big" href="#p4"><div><b>LLM 위키</b><span>어느 환경에서나 같은 비서를 만든 경험</span></div><svg class="i" aria-hidden="true"><use href="#dn"/></svg></a></li>
+          <li><a class="big" href="#p5"><div><b>위키 RAG 검색</b><span>많고 반복적인 데이터를 검색으로 푼 경험</span></div><svg class="i" aria-hidden="true"><use href="#dn"/></svg></a></li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="work-sec" id="work">
+  <div class="wrap">
+    <h2>프로젝트</h2>
+    <p class="sub">모든 프로젝트를 같은 원칙으로 설계했습니다. 색이 찬 칸은 LLM, 윤곽선 칸은 코드가 맡는 단계입니다.</p>
+
+    <article class="work" id="p1">
+      <div>
+        <h3>CogInsight Generator</h3>
+        <p class="kind">LLM 파이프라인 · 챗봇 시나리오 · 풀스택</p>
+        <p class="one">챗봇 시나리오와 API 연동 정보를 사람이 처음부터 쓰던 초기 세팅을 자동화했습니다.</p>
+        <div class="acts">
+          <div class="act"><a class="btn demo" href="https://dialog-flow-generator.vercel.app" target="_blank" rel="noopener">앱 화면 체험<svg class="i" aria-hidden="true"><use href="#arr"/></svg></a><span class="note">실운영 아님 · 실제 앱 · 모의 백엔드</span></div>
+          <div class="act"><a class="btn" href="https://github.com/qtw9723/dialog-flow-generator" target="_blank" rel="noopener">소스 보기<svg class="i" aria-hidden="true"><use href="#arr"/></svg></a><span class="note">일반화한 공개본</span></div>
+          <div class="act"><a class="btn" href="https://coginsight-overview.vercel.app" target="_blank" rel="noopener">개요·매뉴얼<svg class="i" aria-hidden="true"><use href="#arr"/></svg></a><span class="note">앱은 승인제 로그인</span></div>
+        </div>
+      </div>
+      <div class="txt">
+        <div class="why">
+          <div><b>문제</b>챗봇 시나리오·변수·API 연동을 사람이 처음부터 손으로 쓰는 초기 세팅이 길고 반복적이었습니다.</div>
+          <div><b>인사이트</b>LLM은 설계에는 강하지만 구조를 보장하지는 못합니다. 설계는 LLM에, 틀리면 안 되는 구조는 코드에 맡깁니다.</div>
+          <div><b>해결방안</b><ul><li>설문·자연어·문서를 입력받아 LLM이 흐름을 설계합니다</li><li>검증·보정·노드 확장은 코드가 맡고, 오류는 적발해 보정하거나 LLM에 되돌립니다</li><li>규칙 문구는 DB, 강제 로직은 코드로 분리했습니다</li><li>업로드한 봇을 잃지 않는 왕복 무손실을 테스트로 고정했습니다</li></ul></div>
+        </div>
+        <ul class="legend" aria-label="범례"><li><span class="sw llm"></span>LLM</li><li><span class="sw"></span>코드</li><li><span class="sw ppl"></span>사람·산출물</li></ul><ol class="lane"><li><span class="st ppl"><small>사람</small>문서·ESD</span></li><li><span class="st llm"><small>LLM</small>흐름 설계</span></li><li><span class="st"><small>코드</small>노드 확장<br>LLM 0회</span></li><li><span class="st llm"><small>LLM</small>값 채우기</span></li><li><span class="st llm"><small>LLM</small>API 도출</span></li><li><span class="st"><small>코드</small>안전 체인</span></li><li><span class="st ppl"><small>산출</small>Dialog JSON</span></li></ol>
+        <ul class="facts"><li><b>운영 중</b>프로덕션</li><li><b>610+</b>커밋</li><li><b>54</b>DB 마이그레이션</li><li><b>8</b>규칙 카테고리</li></ul>
+        <ul class="chips"><li>규칙을 DB로 관리</li><li>API 실호출 테스트 라이브러리</li><li>이메일 OTP·승인제 로그인</li><li>토큰·비용 집계</li></ul>
+        <p class="stack">기획·설계·개발·배포 단독 · React · Supabase Edge Functions(Deno) · PostgreSQL · OpenAI API · Vercel</p>
+      </div>
+    </article>
+
+    <article class="work" id="p2">
+      <div>
+        <h3>Olympus</h3>
+        <p class="kind">코딩 에이전트 · 개발 자동화 · Bash</p>
+        <p class="one">여러 에이전트가 서로 검증하며 개발하고, 자리를 비워도 메일 답장으로 이어갑니다.</p>
+        <p class="kind">오픈소스 Hermes Agent를 참고해, 내 개발 방식에 맞춰 직접 설계·구현한 개인 전용 도구</p>
+        <div class="acts">
+          <!-- 데모 URL 확정 시 아래 .btn.off를 a.btn.demo로 교체하고 .note에 "실운영" 또는 "실운영 아님(데모)"을 표기 -->
+          <div class="act"><a class="btn demo" href="https://olympus-dev-loop.vercel.app" target="_blank" rel="noopener">큐 화면 체험<svg class="i" aria-hidden="true"><use href="#arr"/></svg></a><span class="note">실운영 아님 · 실제 큐 UI · 합성 데이터</span></div>
+          <div class="act"><a class="btn" href="https://github.com/qtw9723/olympus-dev-loop" target="_blank" rel="noopener">소스 보기<svg class="i" aria-hidden="true"><use href="#arr"/></svg></a></div>
+        </div>
+      </div>
+      <div class="txt">
+        <div class="why">
+          <div><b>문제</b>에이전트 하나가 만들고 스스로 "됐다"고 보고하면 검증이 안 됩니다. 개발 중 결정할 일이 생기면 사람이 PC 앞에 없어 멈춥니다.</div>
+          <div><b>인사이트</b><ul><li>만드는 쪽과 확인하는 쪽을 나눠 여러 모델이 서로 검증하게 합니다</li><li>결정이 필요하면 메일로 묻고, 답장으로 이어갑니다. 사람이 자리를 지킬 필요가 없습니다</li></ul></div>
+          <div><b>해결방안</b><ul><li>계획·구현·비평 역할에 각각 모델을 배정하고, 구현은 verify.sh와 비평 역할이 교차 확인합니다</li><li>결정할 사항이 생기면 질문 메일을 보내고, 받은 답장(y/n·답변)을 읽어 개발을 재개합니다</li><li>판정 파일을 바꾸면 비평 역할이 적발해 사람에게 넘깁니다</li></ul></div>
+        </div>
+        <ul class="legend" aria-label="범례"><li><span class="sw llm"></span>LLM</li><li><span class="sw"></span>코드</li><li><span class="sw ppl"></span>사람·산출물</li></ul><ol class="lane"><li><span class="st ppl"><small>사람</small>스펙 폴더</span></li><li><span class="st llm"><small>LLM</small>계획<br>Metis</span></li><li><span class="st llm"><small>LLM</small>구현<br>Hephaestus</span></li><li><span class="st"><small>코드</small>verify.sh<br>심판</span></li><li><span class="st llm"><small>LLM</small>비평<br>Momus</span></li><li><span class="st ppl"><small>사람</small>사람 승인<br>1회</span></li></ol>
+        <div class="vs" role="group" aria-label="판정 파일 변조 적발 장면">
+          <div class="bad"><b>구현 역할이 한 일</b>실패하는 테스트 3개를 가리려고 verify.sh에 <code>|| true</code> 추가 → 게이트는 <code>VERIFY_EXIT=0</code></div>
+          <span class="go" aria-hidden="true"></span>
+          <div><b>비평 역할의 diff 점검</b>심판 파일 변경 적발 → 자동 진행 중단, 사람에게 에스컬레이션</div>
+        </div>
+        <ul class="facts"><li><b>API 키 0</b>구독 플랜만으로 실행</li><li><b>메일 y/n</b>밖에서 보고받고 지시</li><li><b>4</b>역할</li><li><b>1회</b>사람 승인</li></ul>
+        <ul class="chips"><li>무인 헤드리스 실행</li><li>메일 답장으로 원격 승인·지시</li><li>토큰 한도 자동 대기·재개</li><li>신규·기존 코드 자동 감지</li></ul>
+        <p class="stack">개인 전용 도구 · Hermes Agent 참고 · 설계·구현 단독 · Bash · Claude Code(헤드리스) · Git · IMAP</p>
+      </div>
+    </article>
+
+    <article class="work" id="p3">
+      <div>
+        <h3>CS SmartHub</h3>
+        <p class="kind">업무 자동화 · 풀스택 · 사내 도구</p>
+        <p class="one">CS 4인 팀의 반복 업무를 직접 기획해 웹 도구로 줄였습니다. 한 코드로 외부·사내 두 환경에서 돕니다.</p>
+        <div class="acts">
+          <div class="act"><a class="btn demo" href="https://smarthub-core.vercel.app" target="_blank" rel="noopener">백오피스 체험<svg class="i" aria-hidden="true"><use href="#arr"/></svg></a><span class="note">실운영 아님 · 실제 화면 · 모의 백엔드</span></div>
+          <div class="act"><a class="btn" href="https://github.com/qtw9723/smarthub-core" target="_blank" rel="noopener">소스 보기<svg class="i" aria-hidden="true"><use href="#arr"/></svg></a><span class="note">핵심 발췌본 · 실사용 모듈 5개 포함, 회사·고객 정보는 제거</span></div>
+        </div>
+      </div>
+      <div class="txt">
+        <div class="why">
+          <div><b>문제</b>CS 4인 팀이 매일 메일 발송 확인과 아침 로그 점검을 손으로 반복했고, 도구가 낱개 스크립트라 팀이 늘면 복사해서 고쳐 써야 했습니다.</div>
+          <div><b>인사이트</b><ul><li>팀이 달라도 일의 모양은 같다 — 팀(허브)과 기능(모듈)을 분리하면 늘어도 복사하지 않습니다</li><li>내가 매일 쓸 도구라야 끝까지 다듬어집니다</li></ul></div>
+          <div><b>해결방안</b><ul><li>허브×모듈 구조: 모듈 하나를 등록하면 백오피스 토글·요약·보안 표에 자동 반영</li><li>한 코드·두 에디션: 데이터 드라이버만 바꿔 외부(Vercel·Supabase)와 사내(k8s·Postgres)에서 동시 운영</li><li>허브별 비밀번호와 모듈 보안 레벨로 공개 허브의 위험 모듈을 차단</li></ul></div>
+        </div>
+        <ul class="legend" aria-label="범례"><li><span class="sw llm"></span>LLM</li><li><span class="sw"></span>코드</li><li><span class="sw ppl"></span>사람·산출물</li></ul><ol class="lane"><li><span class="st"><small>코드</small>ES·Prometheus 쿼리<br>스케줄 실행</span></li><li><span class="st"><small>코드</small>리포트</span></li><li><span class="st llm"><small>LLM</small>로그 요약<br>Gemini · 최근 14일 이력 참조</span></li><li><span class="st"><small>코드</small>아침 메일 발송</span></li></ol>
+        <div class="bars">
+          <div><h4>메일 발송 확인</h4>
+            <div class="brow"><span class="lb">이전</span><span class="tk"><i style="width:100%"></i></span><span>4명 × 30~60분</span></div>
+            <div class="brow after"><span class="lb">이후</span><span class="tk"><i style="width:0"></i></span><span>0명</span></div></div>
+          <div><h4>아침 Elasticsearch 점검</h4>
+            <div class="brow"><span class="lb">이전</span><span class="tk"><i style="width:33%"></i></span><span>4명 × 10~20분</span></div>
+            <div class="brow after"><span class="lb">이후</span><span class="tk"><i style="width:0"></i></span><span>리포트 메일 확인</span></div></div>
+          <small>막대 길이는 구간 중간값 기준</small>
+        </div>
+        <ul class="facts"><li><b>179</b>커밋</li><li><b>3개월+</b>개발 기간</li><li><b>5</b>모듈(공개본 · 실사용)</li><li><b>2</b>에디션(외부·사내)</li></ul>
+        <ul class="chips"><li>쿼리는 실호출 테스트 통과 후 등록</li><li>Playwright 챗봇 점검</li><li>pg_cron 주기 실행</li></ul>
+        <p class="stack">기획·요구사항 수집·개발·배포·운영 단독 · React 19 · Express · Supabase · Grafana · Gemini · Playwright · Kubernetes</p>
+      </div>
+    </article>
+
+    <article class="work" id="p4">
+      <div>
+        <h3>LLM 위키 (sj-wiki)</h3>
+        <p class="kind">개인 비서 · LLM 메모리 · 운영 규칙</p>
+        <p class="one">LLM의 기억을 모델이 아니라 저장소에 둡니다. 어떤 기기·에이전트로 열어도 같은 규칙과 같은 맥락으로 일하는 나만의 비서입니다.</p>
+        <p class="kind">Karpathy의 LLM Wiki 아이디어를 바탕으로 운영 규칙(스키마)부터 직접 설계하고, 오픈소스를 확인하며 지속적으로 고도화 중</p>
+        <div class="acts">
+          <div class="act"><a class="btn" href="https://github.com/qtw9723/sj-wiki" target="_blank" rel="noopener">소스 보기<svg class="i" aria-hidden="true"><use href="#arr"/></svg></a><span class="note">위키 본문·운영 규칙·수집 도구 포함 · 공개 저장소</span></div>
+        </div>
+      </div>
+      <div class="txt">
+        <div class="why">
+          <div><b>문제</b>LLM은 기기·세션·도구가 바뀌면 나를 처음부터 다시 설명해야 하고, 같은 질문에도 답의 관점과 수준이 달라집니다. 대화 기억이나 기기 안의 메모에 기대면 다른 환경에서는 이어지지 않습니다.</div>
+          <div><b>인사이트</b><ul><li>일관성은 모델의 기억이 아니라 모델이 읽는 문서에서 나옵니다 — 기억을 저장소에 두면 어떤 환경에서도 같은 상태로 시작합니다</li><li>LLM에게 쓰기를 맡길수록, 무엇을 읽기 전용으로 두고 무엇을 점검할지 규칙이 중요합니다</li></ul></div>
+          <div><b>해결방안</b><ul><li>운영 규칙을 저장소에 둠: 같은 스키마를 Claude Code용(CLAUDE.md)과 Codex용(AGENTS.md)으로 두어 어느 에이전트든 같은 방식으로 일함</li><li>내 프로필 페이지를 모든 답변의 관점 기준으로 지정, 모든 페이지 맨 앞에 내 관점의 핵심 요약을 강제</li><li>Git 동기화와 새 기기 시작 절차(pull → 작업 → push)를 문서화 — 기기에 종속된 개인 메모에 의존하지 않음</li><li>원본(raw)은 읽기 전용, 위키는 LLM이 작성·유지하고 변경 이력은 append-only 로그로 기록</li><li>건강검진 점검: 끊긴 링크·고아 페이지·오래된 정보·모순을 코드로 찾아 주 1회 리포트</li><li>회사 기밀은 공개 저장소에 두지 않는 분리 원칙과 .gitignore 안전망</li><li>오픈소스를 확인해 계속 개선: LLM Wiki 아이디어로 시작해, 그래프 가시성은 Obsidian 오픈소스 플러그인으로 보강하고 도입을 검토한 도구는 위키 페이지로 정리해 쓸만한 것만 반영</li><li>반복적이고 양이 많은 데이터(AI 뉴스·게임 요소)는 위키에서 떼어 RAG 검색으로 연결 — 다음 프로젝트</li></ul></div>
+        </div>
+        <ul class="facts"><li><b>190+</b>위키 페이지</li><li><b>2</b>에이전트 동일 규칙</li><li><b>154일</b>AI 뉴스 수집</li><li><b>5개월</b>운영</li></ul>
+        <ul class="chips"><li>주 1회 건강검진 리포트 자동 갱신</li><li>수집 기사 중복·날조 감사</li><li>새 기기 시작 절차 문서화</li><li>오픈소스 확인 후 지속 고도화</li></ul>
+        <p class="stack">설계·운영 단독 · Claude Code · Codex · Obsidian · Git · Python</p>
+      </div>
+    </article>
+
+    <article class="work" id="p5">
+      <div>
+        <h3>위키 RAG 검색</h3>
+        <p class="kind">RAG · 검색 API · 평가</p>
+        <p class="one">LLM 위키에서 반복적이고 양이 많은 데이터만 골라 검색 가능한 RAG 데이터로 만들고, 다른 프로젝트가 호출할 수 있는 API(키 필수)로 열었습니다.</p>
+        <div class="acts">
+          <div class="act"><a class="btn demo" href="https://sj-wiki-rag-demo.vercel.app" target="_blank" rel="noopener">검색 체험<svg class="i" aria-hidden="true"><use href="#arr"/></svg></a><span class="note">실제 API로 검색 · 답변은 실시간 스트리밍 · API 장애 시 정적 BM25로 대체</span></div>
+          <div class="act"><a class="btn" href="https://github.com/qtw9723/sj-wiki/tree/main/rag" target="_blank" rel="noopener">소스 보기<svg class="i" aria-hidden="true"><use href="#arr"/></svg></a><span class="note">API 소스와 평가 질문셋</span></div>
+        </div>
+      </div>
+      <div class="txt">
+        <div class="why">
+          <div><b>문제</b>위키에 AI 뉴스(주간 정리)와 게임 요소 라이브러리처럼 같은 형식이 반복되고 분량이 큰 데이터가 쌓였습니다. 이를 매번 통째로 LLM에 읽히거나 사람이 직접 찾기에는 비효율적입니다.</div>
+          <div><b>인사이트</b><ul><li>정리된 맥락은 위키(LLM의 메모리)에 두고, 분량이 큰 반복 데이터만 검색으로 분리하면 둘이 서로 방해하지 않습니다</li><li>검색은 만들고 끝이 아니라 질문셋으로 재서 고쳐야 합니다 — 직접 재 보니 BM25는 단어가 같은 한국어 질의에는 거의 완벽했지만, 영어·동의어 질의에서는 hit@5 0.20에 그쳤습니다. 의미 검색(임베딩)이 필요한 구간을 감이 아니라 수치로 확인했습니다</li><li>도구를 더 붙이기 전에 근거부터 따집니다 — RRF로 두 검색 결과를 합칠 때 한쪽에만 걸린 청크가 불리해지는 약점을 분석했고, 무료 쿼터와 규모를 고려해 리랭커는 보류했습니다. 평가셋 보강 → 융합 설정 비교 순서로 진행합니다</li></ul></div>
+          <div><b>해결방안</b><ul><li>대상 선별: 위키 107페이지(게임 85·AI뉴스 22)를 헤딩 기준으로 3,808개 청크로 분할</li><li>BM25(한글 bigram) 검색 + 벡터 유사도를 RRF로 합치는 하이브리드 구조로 구현 — 임베딩 모델을 연결하면 켜지고, 현재 배포본은 임베딩 연결 전이라 BM25 기반으로 동작</li><li>검색·답변·상태 확인 API(search·ask·health)를 열어 다른 프로젝트에서 참조 — 모든 엔드포인트가 API 키 필수(키가 없으면 거부하는 fail-closed)</li><li>답변은 LG의 무료 K-EXAONE 2.5(OpenAI 호환 API)로 생성하고 스트리밍으로 글자가 나오는 대로 표시 — 근거를 4개·600자로 줄이고 대기 중에는 진행 표시를 보여 체감 속도를 개선</li><li>키는 환경변수로만 관리하고 저장소에는 두지 않음. 체험 화면은 브라우저가 키를 갖지 않고 서버 쪽 프록시가 대신 호출</li><li>인덱스를 특정 위키 커밋에 고정해, 위키가 매일 바뀌어도 평가 결과가 재현되게 함</li><li>질문 47개로 hit@k·MRR 평가: BM25 기준선 hit@5 0.81 (게임 한국어 질의 1.00, AI뉴스 0.91, 영어·동의어 0.20). 하이브리드 수치는 임베딩 연결 후 같은 스크립트로 측정해 비교할 예정</li></ul></div>
+        </div>
+        <ul class="facts"><li><b>107</b>페이지</li><li><b>3,808</b>청크</li><li><b>47</b>평가 질문</li><li><b>3</b>API</li></ul>
+        <ul class="chips"><li>BM25 + RRF 융합 구조</li><li>스트리밍 답변</li><li>위키 커밋에 고정한 스냅샷</li><li>질문셋 기반 검색 평가</li></ul>
+        <p class="stack">설계·구현 단독 · Node.js · Vercel Functions · BM25 · RRF · K-EXAONE(OpenAI 호환 API) · 스트리밍(NDJSON)</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <h2>이력과 기술</h2>
+    <div class="cols">
+      <ol class="tl">
+        <li><h3>Unity 게임 제작</h3><p>취미로 시작</p></li>
+        <li><h3>웹개발자 전환</h3><p>Java 학습</p></li>
+        <li><h3>SM 1년 8개월</h3><p>Delphi ERP, PHP 웹, 내부 IT·네트워크</p></li>
+        <li><h3>NLP 챗봇 솔루션 회사 (재직 중)</h3><p>챗봇 개발·CS, 팀 자동화 도구, 사내 AI 챗봇 개발</p></li>
+      </ol>
+      <dl class="skills">
+        <dt>프론트엔드</dt><dd>React 19 · Vite · Tailwind CSS · Next.js</dd>
+        <dt>백엔드·데이터</dt><dd>Node.js · Express · Python · Supabase(PostgreSQL, Edge Functions, pg_cron)</dd>
+        <dt>LLM·에이전트</dt><dd>다단계 프롬프트 파이프라인 · 규칙 기반 검증 · 코딩 에이전트 오케스트레이션 · Gemini·OpenAI·Claude API</dd>
+        <dt>테스트·운영</dt><dd>vitest · Playwright · GitHub Actions · Vercel · Kubernetes CD · Grafana</dd>
+        <dt>운영 사례</dt><dd><ul>
+          <li>공용 Kubernetes에 pull 방식 CD 구성, 병합부터 반영까지 1분 15초</li>
+          <li>악용 중인 원격 코드 실행 취약점(CVSS 9.2)을 2일 안에 단독 전수 조사·패치</li>
+        </ul></dd>
+      </dl>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">GitHub <a href="https://github.com/qtw9723" target="_blank" rel="noopener">qtw9723</a> · 2026년 11월 11일 갱신</div>
+</footer>
+
+</body>
+</html>
