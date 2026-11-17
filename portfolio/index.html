@@ -267,7 +267,7 @@ footer{border-top:1px solid var(--rule);padding:28px 0 56px;color:var(--muted);f
         <div class="why">
           <div><b>문제</b>CS 4인 팀이 매일 메일 발송 확인과 아침 로그 점검을 손으로 반복했고, 도구가 낱개 스크립트라 팀이 늘면 복사해서 고쳐 써야 했습니다.</div>
           <div><b>인사이트</b><ul><li>팀이 달라도 일의 모양은 같다 — 팀(허브)과 기능(모듈)을 분리하면 늘어도 복사하지 않습니다</li><li>내가 매일 쓸 도구라야 끝까지 다듬어집니다</li></ul></div>
-          <div><b>해결방안</b><ul><li>허브×모듈 구조: 모듈 하나를 등록하면 백오피스 토글·요약·보안 표에 자동 반영</li><li>한 코드·두 에디션: 데이터 드라이버만 바꿔 외부(Vercel·Supabase)와 사내(k8s·Postgres)에서 동시 운영</li><li>허브별 비밀번호와 모듈 보안 레벨로 공개 허브의 위험 모듈을 차단</li><li>사내 배포 자동화: 서버에 이미지를 직접 올리던 방식을, deploy 브랜치 머지 → GitLab 파이프라인이 이미지 빌드 → 사내 서버가 2분마다 새 이미지를 확인해 자동 배포하는 흐름으로 바꿈</li></ul></div>
+          <div><b>해결방안</b><ul><li>허브×모듈 구조: 모듈 하나를 등록하면 백오피스 토글·요약·보안 표에 자동 반영</li><li>한 코드·두 에디션: 데이터 드라이버만 바꿔 외부(Vercel·Supabase)와 사내(k8s·Postgres)에서 동시 운영</li><li>허브별 비밀번호와 모듈 보안 레벨로 공개 허브의 위험 모듈을 차단</li><li>사내 배포 자동화: 서버에 이미지를 직접 올리던 방식을 deploy 브랜치 머지만으로 끝나게 바꿨습니다. CI 서버가 사내망에 들어올 수 없다는 걸 시험 파이프라인으로 먼저 확인하고, 밀어 넣는(push) 설계를 사내 클러스터가 2분마다 새 이미지를 확인해 가져가는(pull) 방식으로 뒤집었습니다. 배포 권한은 서비스 하나로 한정해 공용 클러스터의 다른 서비스에 닿지 않게 했습니다</li></ul></div>
         </div>
         <ul class="legend" aria-label="범례"><li><span class="sw llm"></span>LLM</li><li><span class="sw"></span>코드</li><li><span class="sw ppl"></span>사람·산출물</li></ul><ol class="lane"><li><span class="st"><small>코드</small>ES·Prometheus 쿼리<br>스케줄 실행</span></li><li><span class="st"><small>코드</small>리포트</span></li><li><span class="st llm"><small>LLM</small>로그 요약<br>Gemini · 최근 14일 이력 참조</span></li><li><span class="st"><small>코드</small>아침 메일 발송</span></li></ol>
         <div class="bars">
@@ -279,7 +279,7 @@ footer{border-top:1px solid var(--rule);padding:28px 0 56px;color:var(--muted);f
             <div class="brow after"><span class="lb">이후</span><span class="tk"><i style="width:0"></i></span><span>리포트 메일 확인</span></div></div>
           <small>막대 길이는 구간 중간값 기준</small>
         </div>
-        <ul class="facts"><li><b>179</b>커밋</li><li><b>3개월+</b>개발 기간</li><li><b>5</b>모듈(공개본 · 실사용)</li><li><b>2</b>에디션(외부·사내)</li></ul>
+        <ul class="facts"><li><b>약 3분</b>머지→운영 반영</li><li><b>0회</b>서버 수동 작업</li><li><b>179</b>커밋</li><li><b>3개월+</b>개발 기간</li><li><b>5</b>모듈(공개본 · 실사용)</li><li><b>2</b>에디션(외부·사내)</li></ul>
         <ul class="chips"><li>GitLab CI/CD 자동 배포</li><li>쿼리는 실호출 테스트 통과 후 등록</li><li>Playwright 챗봇 점검</li><li>pg_cron 주기 실행</li></ul>
         <p class="stack">기획·요구사항 수집·개발·배포·운영 단독 · React 19 · Express · Supabase · Grafana · Gemini · Playwright · Kubernetes · GitLab CI</p>
       </div>
