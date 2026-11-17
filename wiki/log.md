@@ -8,6 +8,9 @@ updated: 2026-11-17
 
 > 📦 2026-09-30 이전 이력은 [[log-아카이브-2026-06-09]]로 옮겼다(2026-10-28, 원문 그대로). 월별 이력이 커지면 같은 방식으로 분기 단위 아카이브를 만든다.
 
+## [2026-11-17] 질문 | Claude Code 스킬 구성 정리
+- 📄 `~/.claude/skills`·플러그인 설정을 읽고 [[Claude-Code-스킬-구성]] 신규 작성: 직접 만든 경량판 3종(qa-only·office-hours=gstack, humanizer=blader/humanizer)의 원본·바꾼 점·규칙, 검증 스킬 경계와 qa-only 승격 조건, superpowers·Orca·claude.ai 동기화·기본 스킬. index 도구/스킬 등록, [[에이전트-자동화-도구]] 관련 문서에 링크.
+
 ## [2026-11-17] 자료넣기 | CogInsight Generator v0.16.2 릴리스(의존성 보안 패치)
 - 📄 npm audit 29건→0건(PR #142), 버전 정리 PR #143, tag v0.16.2·GitHub Release, Vercel·사내 서버 배포, 개요 페이지·아티팩트 v35 갱신. [[CogInsight-Generator]] 현재 프로덕션·버전표 2곳 갱신.
 

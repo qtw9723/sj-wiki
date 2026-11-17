@@ -51,6 +51,7 @@ updated: 2026-11-17
 
 ### 도구 / 스킬
 - [[공통-기술스택]] — 개인 프로젝트 주력 스택(React19·Vite8·Tailwind4·Supabase) + 에이전트 운영 비용식(호출수×토큰×(1−캐시적중률)), 가격·릴리스 추적 소스
+- [[Claude-Code-스킬-구성]] — 🆕 (2026-11-17) 내가 쓰는 스킬 전체: 직접 만든 오픈소스 경량판 3종(qa-only·office-hours·humanizer), superpowers 흐름, Orca·동기화·기본 스킬. 검증=기본 verification, 조건 시 qa-only 승격
 - [[에이전트-자동화-도구]] — 자동화/에이전트 도구군(workflows·/goal·routines) → 내 업무 적용. 이 vault 수집·위키화 파이프라인의 실측 스케줄과 경합 결함 기록
 - [[위키-가시성-환경-Obsidian]] — 🆕 (2026-11-10) 이 vault를 보는 법(링크 색·참조 수·Bases·ExcaliBrain·Dataview) + 11/09~10 업데이트 내역(graphify 차용·EXAONE 연결 제안·플러그인 사고 복구). 포트폴리오용
 - [[내-MCP-커넥터-환경]] — 내가 쓰는 MCP 커넥터·Cowork 도구·업무 도구 환경. MCP는 시장 인프라 층, 커넥터별 호출 빈도·사용일 칸 추가가 다음 작업
