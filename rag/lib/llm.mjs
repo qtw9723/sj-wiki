@@ -61,3 +61,66 @@ export async function chat(messages, { maxTokens = 900, temperature = 0.2 } = {}
   const text = data.choices?.[0]?.message?.content ?? "";
   return { text: text.replace(/<think>[\s\S]*?<\/think>/g, "").trim(), model: c.model };
 }
+
+// 스트리밍 채팅: delta.content 조각을 순서대로 yield. (reasoning_content·<think>는 버린다)
+export async function* chatStream(messages, { maxTokens = 600, temperature = 0.2, timeoutMs = 55000 } = {}) {
+  const c = chatConfig();
+  if (!c) throw new Error("chat model not configured");
+  const body = { model: c.model, messages, max_tokens: maxTokens, temperature, stream: true };
+  if (process.env.WIKI_LLM_REASONING_EFFORT) body.reasoning_effort = process.env.WIKI_LLM_REASONING_EFFORT;
+  const r = await fetch(`${c.base}/chat/completions`, {
+    method: "POST",
+    headers: { "content-type": "application/json", authorization: `Bearer ${c.key}` },
+    body: JSON.stringify(body),
+    signal: AbortSignal.timeout(timeoutMs),
+  });
+  if (!r.ok) throw new Error(`HTTP ${r.status}: ${(await r.text()).slice(0, 200)}`);
+
+  // <think>…</think> 제거용 상태 (태그가 조각 경계에 걸쳐도 안전하게)
+  let inThink = false, pending = "";
+  const OPEN = "<think>", CLOSE = "</think>";
+  const keepTail = (str, tag) => { for (let n = Math.min(tag.length - 1, str.length); n > 0; n--) if (tag.startsWith(str.slice(-n))) return n; return 0; };
+  function* filter(piece) {
+    pending += piece;
+    for (;;) {
+      if (!inThink) {
+        const i = pending.indexOf(OPEN);
+        if (i >= 0) { if (i) yield pending.slice(0, i); pending = pending.slice(i + OPEN.length); inThink = true; continue; }
+        const k = keepTail(pending, OPEN);
+        if (pending.length - k) yield pending.slice(0, pending.length - k);
+        pending = pending.slice(pending.length - k);
+        return;
+      }
+      const i = pending.indexOf(CLOSE);
+      if (i >= 0) { pending = pending.slice(i + CLOSE.length); inThink = false; continue; }
+      pending = pending.slice(pending.length - keepTail(pending, CLOSE));
+      return;
+    }
+  }
+
+  const ct = r.headers.get("content-type") || "";
+  if (!ct.includes("event-stream")) { // 스트리밍 미지원 응답 → 한 번에 도착한 것으로 처리
+    const data = await r.json();
+    const text = String(data.choices?.[0]?.message?.content ?? "");
+    for (const t of filter(text)) yield t;
+    if (!inThink && pending) yield pending;
+    return;
+  }
+  const dec = new TextDecoder();
+  let buf = "";
+  for await (const chunk of r.body) {
+    buf += dec.decode(chunk, { stream: true });
+    let nl;
+    while ((nl = buf.indexOf("\n")) >= 0) {
+      const line = buf.slice(0, nl).trim();
+      buf = buf.slice(nl + 1);
+      if (!line.startsWith("data:")) continue;
+      const payload = line.slice(5).trim();
+      if (!payload || payload === "[DONE]") continue;
+      let j; try { j = JSON.parse(payload); } catch { continue; } // 조각난 JSON은 건너뜀
+      const t = j.choices?.[0]?.delta?.content;
+      if (t) for (const o of filter(t)) yield o;
+    }
+  }
+  if (!inThink && pending) yield pending;
+}

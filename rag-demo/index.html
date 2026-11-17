@@ -155,10 +155,30 @@ async function run(q){
   local(q,my,false)
 }
 async function ask(q){
-  const out=$("askout");out.innerHTML='<div class="ans">답변 생성 중…</div>';
-  try{const d=await api("/api/ask",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({question:q,category:cat||undefined})});
-    out.innerHTML=`<div class="ans">${esc(d.answer)}<small>모델 ${esc(d.model||"")} · 근거: ${(d.citations||[]).map(c=>`[${c.n}] <a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.title)}</a>`).join(" · ")}</small></div>`}
-  catch(e){out.innerHTML=`<div class="err">답변 생성 실패: ${esc(e.message)}</div>`}
+  const out=$("askout");out.innerHTML='<div class="ans" id="ansbox">검색한 근거로 답변을 쓰는 중…</div>';
+  const box=$("ansbox");let text="",cites=[],model="";
+  const render=(done)=>{box.innerHTML=esc(text||"…")+(done&&cites.length?`<small>모델 ${esc(model)} · 근거: ${cites.map(c=>`[${c.n}] <a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.title)}</a>`).join(" · ")}</small>`:"")};
+  try{
+    const r=await fetch("/api/ask",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({question:q,category:cat||undefined})});
+    if(!r.ok){const j=await r.json().catch(()=>({}));throw new Error((j.error||("HTTP "+r.status))+(j.detail?" — "+j.detail:""))}
+    const rd=r.body.getReader(),dec=new TextDecoder();let buf="";
+    for(;;){
+      const {value,done}=await rd.read();if(done)break;
+      buf+=dec.decode(value,{stream:true});
+      let i;while((i=buf.indexOf("\n"))>=0){
+        const line=buf.slice(0,i).trim();buf=buf.slice(i+1);if(!line)continue;
+        let m;try{m=JSON.parse(line)}catch{continue}
+        if(m.type==="meta"){cites=m.citations||[];model=m.model||""}
+        else if(m.type==="delta"){text+=m.t;render(false)}
+        else if(m.type==="error")throw new Error(m.error+(m.detail?" — "+m.detail:""));
+      }
+    }
+    if(!text)throw new Error("빈 답변");
+    render(true);
+  }catch(e){
+    if(text){render(true);out.insertAdjacentHTML("beforeend",`<div class="err">중간에 끊겼어요: ${esc(e.message)}</div>`)}
+    else out.innerHTML=`<div class="err">답변 생성 실패: ${esc(e.message)}</div>`;
+  }
 }
 function local(q,my,keep){
   const t0=performance.now();

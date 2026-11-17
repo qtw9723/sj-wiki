@@ -1,6 +1,6 @@
 // POST /api/ask  {question, k?, category?}  → 검색 + LLM 답변(근거 번호 인용)   (API 키 필요)
 import { search } from "../lib/search.mjs";
-import { chat, chatConfig } from "../lib/llm.mjs";
+import { chat, chatStream, chatConfig } from "../lib/llm.mjs";
 import { cors, json, rateLimit, authenticate, body } from "../lib/http.mjs";
 
 const SYSTEM = `너는 sj-wiki(게임 요소 라이브러리, AI 주간 소식)의 검색 도우미다.
@@ -22,19 +22,36 @@ export default async function handler(req, res) {
   const question = String(p.question || "").trim();
   if (!question) return json(res, 400, { error: "question이 필요해요" });
   if (question.length > 500) return json(res, 400, { error: "question은 500자 이하" });
-  const k = Math.min(Math.max(parseInt(p.k) || 6, 1), 10);
+  const k = Math.min(Math.max(parseInt(p.k) || 4, 1), 10);
   const category = ["game", "ai-news"].includes(p.category) ? p.category : null;
 
   try {
     const found = await search({ q: question, k, category, mode: "hybrid" });
-    const ctx = found.results.map((r, i) => `[${i + 1}] (${r.title} › ${r.heading || "본문"})\n${r.text.slice(0, 900)}`).join("\n\n");
-    const out = await chat([
+    const ctx = found.results.map((r, i) => `[${i + 1}] (${r.title} › ${r.heading || "본문"})\n${r.text.slice(0, 600)}`).join("\n\n");
+    const messages = [
       { role: "system", content: SYSTEM },
       { role: "user", content: `[근거]\n${ctx}\n\n[질문]\n${question}` },
-    ]);
+    ];
+    const citations = found.results.map((r, i) => ({ n: i + 1, page: r.page, title: r.title, heading: r.heading, url: r.url }));
+    if (p.stream) { // NDJSON 스트리밍: meta → delta… → done
+      res.statusCode = 200;
+      res.setHeader("content-type", "application/x-ndjson; charset=utf-8");
+      res.setHeader("cache-control", "no-store, no-transform");
+      res.setHeader("x-accel-buffering", "no");
+      const send = (o) => res.write(JSON.stringify(o) + "\n");
+      send({ type: "meta", question, model: chatConfig().model, retrieval: found.mode, citations, index: found.index });
+      try {
+        for await (const t of chatStream(messages)) send({ type: "delta", t });
+        send({ type: "done" });
+      } catch (e) {
+        send({ type: "error", error: "answer failed", detail: String(e.message).slice(0, 200) });
+      }
+      return res.end();
+    }
+    const out = await chat(messages, { maxTokens: 600 });
     return json(res, 200, {
       question, answer: out.text, model: out.model, retrieval: found.mode,
-      citations: found.results.map((r, i) => ({ n: i + 1, page: r.page, title: r.title, heading: r.heading, url: r.url })),
+      citations,
       index: found.index,
     });
   } catch (e) {
