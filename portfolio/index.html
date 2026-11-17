@@ -239,7 +239,7 @@ footer{border-top:1px solid var(--rule);padding:28px 0 56px;color:var(--muted);f
         <div class="why">
           <div><b>문제</b>에이전트 하나가 만들고 스스로 "됐다"고 보고하면 검증이 안 됩니다. 개발 중 결정할 일이 생기면 사람이 PC 앞에 없어 멈춥니다.</div>
           <div><b>인사이트</b><ul><li>만드는 쪽과 확인하는 쪽을 나눠 여러 모델이 서로 검증하게 합니다</li><li>결정이 필요하면 메일로 묻고, 답장으로 이어갑니다. 사람이 자리를 지킬 필요가 없습니다</li></ul></div>
-          <div><b>해결방안</b><ul><li>계획·구현·비평 역할에 각각 모델을 배정하고, 구현은 verify.sh와 비평 역할이 교차 확인합니다</li><li>결정할 사항이 생기면 질문 메일을 보내고, 받은 답장(y/n·답변)을 읽어 개발을 재개합니다</li><li>판정 파일을 바꾸면 비평 역할이 적발해 사람에게 넘깁니다</li><li>코드 리뷰는 오픈소스를 참고해 직접 만든 qa-only 스킬로 수행해, 사람이 보기 전에 에이전트가 먼저 점검합니다</li></ul></div>
+          <div><b>해결방안</b><ul><li>계획·구현·비평 역할에 각각 모델을 배정하고, 구현은 verify.sh와 비평 역할이 교차 확인합니다</li><li>결정할 사항이 생기면 질문 메일을 보내고, 받은 답장(y/n·답변)을 읽어 개발을 재개합니다</li><li>판정 파일을 바꾸면 비평 역할이 적발해 사람에게 넘깁니다</li><li>검증 단계를 나눴습니다 — 변경 diff는 코드 리뷰 스킬로, 만들어진 기능은 오픈소스(gstack)를 한국어 경량판으로 옮겨 만든 qa-only 스킬로 실제 실행해 점검합니다. qa-only는 코드를 고치지 않고 보고만 하며, 실패는 재현해야 버그로 적고, 화면·API 권한·배포 직전 변경이면 만든 에이전트가 아닌 별도 에이전트가 자동으로 점검합니다</li></ul></div>
         </div>
         <ul class="legend" aria-label="범례"><li><span class="sw llm"></span>LLM</li><li><span class="sw"></span>코드</li><li><span class="sw ppl"></span>사람·산출물</li></ul><ol class="lane"><li><span class="st ppl"><small>사람</small>스펙 폴더</span></li><li><span class="st llm"><small>LLM</small>계획<br>Metis</span></li><li><span class="st llm"><small>LLM</small>구현<br>Hephaestus</span></li><li><span class="st"><small>코드</small>verify.sh<br>심판</span></li><li><span class="st llm"><small>LLM</small>비평<br>Momus</span></li><li><span class="st ppl"><small>사람</small>사람 승인<br>1회</span></li></ol>
         <div class="vs" role="group" aria-label="판정 파일 변조 적발 장면">
@@ -248,7 +248,7 @@ footer{border-top:1px solid var(--rule);padding:28px 0 56px;color:var(--muted);f
           <div><b>비평 역할의 diff 점검</b>심판 파일 변경 적발 → 자동 진행 중단, 사람에게 에스컬레이션</div>
         </div>
         <ul class="facts"><li><b>API 키 0</b>구독 플랜만으로 실행</li><li><b>메일 y/n</b>밖에서 보고받고 지시</li><li><b>4</b>역할</li><li><b>1회</b>사람 승인</li></ul>
-        <ul class="chips"><li>qa-only 코드 리뷰 스킬</li><li>무인 헤드리스 실행</li><li>메일 답장으로 원격 승인·지시</li><li>토큰 한도 자동 대기·재개</li><li>신규·기존 코드 자동 감지</li></ul>
+        <ul class="chips"><li>직접 만든 QA 검증 스킬(qa-only)</li><li>무인 헤드리스 실행</li><li>메일 답장으로 원격 승인·지시</li><li>토큰 한도 자동 대기·재개</li><li>신규·기존 코드 자동 감지</li></ul>
         <p class="stack">개인 전용 도구 · Hermes Agent 참고 · 설계·구현 단독 · Bash · Claude Code(헤드리스) · Git · IMAP</p>
       </div>
     </article>
