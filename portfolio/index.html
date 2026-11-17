@@ -177,7 +177,7 @@ footer{border-top:1px solid var(--rule);padding:28px 0 56px;color:var(--muted);f
       </div>
       <div>
         <h1>LLM이 만들고, 코드가 판정합니다.</h1>
-        <p class="lead">경영학과 출신 웹개발자. SM과 NLP 챗봇 솔루션 회사를 거쳐 개발 3년차입니다. LLM은 설계와 해석에, 합격 판정은 결정론적 코드에 맡겨 만듭니다. 희망 직무는 AX·AI 에이전트 개발.</p>
+        <p class="lead">현업 요구사항에서 문제를 정의하고, LLM과 코딩 에이전트로 업무와 개발 프로세스를 자동화하는 개발 3년차입니다. SM과 NLP 챗봇 솔루션 회사를 거치며 웹 서비스·API·DB를 직접 만들고 운영해 왔습니다. LLM은 설계와 해석에, 합격 판정은 테스트와 결정론적 코드에 맡깁니다.</p>
       </div>
       <nav class="jump" aria-label="프로젝트 바로가기">
         <h2>프로젝트 5개</h2>
@@ -214,7 +214,7 @@ footer{border-top:1px solid var(--rule);padding:28px 0 56px;color:var(--muted);f
         <div class="why">
           <div><b>문제</b>챗봇 시나리오·변수·API 연동을 사람이 처음부터 손으로 쓰는 초기 세팅이 길고 반복적이었습니다.</div>
           <div><b>인사이트</b>LLM은 설계에는 강하지만 구조를 보장하지는 못합니다. 설계는 LLM에, 틀리면 안 되는 구조는 코드에 맡깁니다.</div>
-          <div><b>해결방안</b><ul><li>설문·자연어·문서를 입력받아 LLM이 흐름을 설계합니다</li><li>검증·보정·노드 확장은 코드가 맡고, 오류는 적발해 보정하거나 LLM에 되돌립니다</li><li>규칙 문구는 DB, 강제 로직은 코드로 분리했습니다</li><li>업로드한 봇을 잃지 않는 왕복 무손실을 테스트로 고정했습니다</li></ul></div>
+          <div><b>해결방안</b><ul><li>설문·자연어·문서를 입력받아 LLM이 흐름을 설계합니다</li><li>검증·보정·노드 확장은 코드가 맡고, 오류는 적발해 보정하거나 LLM에 되돌립니다</li><li>규칙 문구는 DB, 강제 로직은 코드로 분리했습니다</li><li>업로드한 봇을 잃지 않는 왕복 무손실을 테스트로 고정했습니다</li><li>규칙·프롬프트를 바꿀 때는 바꾸기 전후로 개발용·봉인 평가셋을 함께 채점해, 개발용 점수만 오르는 과적합을 걸러냅니다</li></ul></div>
         </div>
         <ul class="legend" aria-label="범례"><li><span class="sw llm"></span>LLM</li><li><span class="sw"></span>코드</li><li><span class="sw ppl"></span>사람·산출물</li></ul><ol class="lane"><li><span class="st ppl"><small>사람</small>문서·ESD</span></li><li><span class="st llm"><small>LLM</small>흐름 설계</span></li><li><span class="st"><small>코드</small>노드 확장<br>LLM 0회</span></li><li><span class="st llm"><small>LLM</small>값 채우기</span></li><li><span class="st llm"><small>LLM</small>API 도출</span></li><li><span class="st"><small>코드</small>안전 체인</span></li><li><span class="st ppl"><small>산출</small>Dialog JSON</span></li></ol>
         <ul class="facts"><li><b>운영 중</b>프로덕션</li><li><b>610+</b>커밋</li><li><b>54</b>DB 마이그레이션</li><li><b>8</b>규칙 카테고리</li></ul>
@@ -239,7 +239,7 @@ footer{border-top:1px solid var(--rule);padding:28px 0 56px;color:var(--muted);f
         <div class="why">
           <div><b>문제</b>에이전트 하나가 만들고 스스로 "됐다"고 보고하면 검증이 안 됩니다. 개발 중 결정할 일이 생기면 사람이 PC 앞에 없어 멈춥니다.</div>
           <div><b>인사이트</b><ul><li>만드는 쪽과 확인하는 쪽을 나눠 여러 모델이 서로 검증하게 합니다</li><li>결정이 필요하면 메일로 묻고, 답장으로 이어갑니다. 사람이 자리를 지킬 필요가 없습니다</li></ul></div>
-          <div><b>해결방안</b><ul><li>계획·구현·비평 역할에 각각 모델을 배정하고, 구현은 verify.sh와 비평 역할이 교차 확인합니다</li><li>결정할 사항이 생기면 질문 메일을 보내고, 받은 답장(y/n·답변)을 읽어 개발을 재개합니다</li><li>판정 파일을 바꾸면 비평 역할이 적발해 사람에게 넘깁니다</li></ul></div>
+          <div><b>해결방안</b><ul><li>계획·구현·비평 역할에 각각 모델을 배정하고, 구현은 verify.sh와 비평 역할이 교차 확인합니다</li><li>결정할 사항이 생기면 질문 메일을 보내고, 받은 답장(y/n·답변)을 읽어 개발을 재개합니다</li><li>판정 파일을 바꾸면 비평 역할이 적발해 사람에게 넘깁니다</li><li>코드 리뷰는 오픈소스를 참고해 직접 만든 qa-only 스킬로 수행해, 사람이 보기 전에 에이전트가 먼저 점검합니다</li></ul></div>
         </div>
         <ul class="legend" aria-label="범례"><li><span class="sw llm"></span>LLM</li><li><span class="sw"></span>코드</li><li><span class="sw ppl"></span>사람·산출물</li></ul><ol class="lane"><li><span class="st ppl"><small>사람</small>스펙 폴더</span></li><li><span class="st llm"><small>LLM</small>계획<br>Metis</span></li><li><span class="st llm"><small>LLM</small>구현<br>Hephaestus</span></li><li><span class="st"><small>코드</small>verify.sh<br>심판</span></li><li><span class="st llm"><small>LLM</small>비평<br>Momus</span></li><li><span class="st ppl"><small>사람</small>사람 승인<br>1회</span></li></ol>
         <div class="vs" role="group" aria-label="판정 파일 변조 적발 장면">
@@ -248,7 +248,7 @@ footer{border-top:1px solid var(--rule);padding:28px 0 56px;color:var(--muted);f
           <div><b>비평 역할의 diff 점검</b>심판 파일 변경 적발 → 자동 진행 중단, 사람에게 에스컬레이션</div>
         </div>
         <ul class="facts"><li><b>API 키 0</b>구독 플랜만으로 실행</li><li><b>메일 y/n</b>밖에서 보고받고 지시</li><li><b>4</b>역할</li><li><b>1회</b>사람 승인</li></ul>
-        <ul class="chips"><li>무인 헤드리스 실행</li><li>메일 답장으로 원격 승인·지시</li><li>토큰 한도 자동 대기·재개</li><li>신규·기존 코드 자동 감지</li></ul>
+        <ul class="chips"><li>qa-only 코드 리뷰 스킬</li><li>무인 헤드리스 실행</li><li>메일 답장으로 원격 승인·지시</li><li>토큰 한도 자동 대기·재개</li><li>신규·기존 코드 자동 감지</li></ul>
         <p class="stack">개인 전용 도구 · Hermes Agent 참고 · 설계·구현 단독 · Bash · Claude Code(헤드리스) · Git · IMAP</p>
       </div>
     </article>
@@ -267,7 +267,7 @@ footer{border-top:1px solid var(--rule);padding:28px 0 56px;color:var(--muted);f
         <div class="why">
           <div><b>문제</b>CS 4인 팀이 매일 메일 발송 확인과 아침 로그 점검을 손으로 반복했고, 도구가 낱개 스크립트라 팀이 늘면 복사해서 고쳐 써야 했습니다.</div>
           <div><b>인사이트</b><ul><li>팀이 달라도 일의 모양은 같다 — 팀(허브)과 기능(모듈)을 분리하면 늘어도 복사하지 않습니다</li><li>내가 매일 쓸 도구라야 끝까지 다듬어집니다</li></ul></div>
-          <div><b>해결방안</b><ul><li>허브×모듈 구조: 모듈 하나를 등록하면 백오피스 토글·요약·보안 표에 자동 반영</li><li>한 코드·두 에디션: 데이터 드라이버만 바꿔 외부(Vercel·Supabase)와 사내(k8s·Postgres)에서 동시 운영</li><li>허브별 비밀번호와 모듈 보안 레벨로 공개 허브의 위험 모듈을 차단</li></ul></div>
+          <div><b>해결방안</b><ul><li>허브×모듈 구조: 모듈 하나를 등록하면 백오피스 토글·요약·보안 표에 자동 반영</li><li>한 코드·두 에디션: 데이터 드라이버만 바꿔 외부(Vercel·Supabase)와 사내(k8s·Postgres)에서 동시 운영</li><li>허브별 비밀번호와 모듈 보안 레벨로 공개 허브의 위험 모듈을 차단</li><li>사내 배포 자동화: 서버에 이미지를 직접 올리던 방식을, deploy 브랜치 머지 → GitLab 파이프라인이 이미지 빌드 → 사내 서버가 2분마다 새 이미지를 확인해 자동 배포하는 흐름으로 바꿈</li></ul></div>
         </div>
         <ul class="legend" aria-label="범례"><li><span class="sw llm"></span>LLM</li><li><span class="sw"></span>코드</li><li><span class="sw ppl"></span>사람·산출물</li></ul><ol class="lane"><li><span class="st"><small>코드</small>ES·Prometheus 쿼리<br>스케줄 실행</span></li><li><span class="st"><small>코드</small>리포트</span></li><li><span class="st llm"><small>LLM</small>로그 요약<br>Gemini · 최근 14일 이력 참조</span></li><li><span class="st"><small>코드</small>아침 메일 발송</span></li></ol>
         <div class="bars">
@@ -280,8 +280,8 @@ footer{border-top:1px solid var(--rule);padding:28px 0 56px;color:var(--muted);f
           <small>막대 길이는 구간 중간값 기준</small>
         </div>
         <ul class="facts"><li><b>179</b>커밋</li><li><b>3개월+</b>개발 기간</li><li><b>5</b>모듈(공개본 · 실사용)</li><li><b>2</b>에디션(외부·사내)</li></ul>
-        <ul class="chips"><li>쿼리는 실호출 테스트 통과 후 등록</li><li>Playwright 챗봇 점검</li><li>pg_cron 주기 실행</li></ul>
-        <p class="stack">기획·요구사항 수집·개발·배포·운영 단독 · React 19 · Express · Supabase · Grafana · Gemini · Playwright · Kubernetes</p>
+        <ul class="chips"><li>GitLab CI/CD 자동 배포</li><li>쿼리는 실호출 테스트 통과 후 등록</li><li>Playwright 챗봇 점검</li><li>pg_cron 주기 실행</li></ul>
+        <p class="stack">기획·요구사항 수집·개발·배포·운영 단독 · React 19 · Express · Supabase · Grafana · Gemini · Playwright · Kubernetes · GitLab CI</p>
       </div>
     </article>
 
