@@ -4,6 +4,9 @@
   "buildCommand": "node scripts/embed.mjs",
   "outputDirectory": "public",
   "functions": {
-    "api/*.mjs": { "includeFiles": "index/**", "maxDuration": 30 }
+    "api/*.mjs": {
+      "includeFiles": "index/**",
+      "maxDuration": 60
+    }
   }
 }

@@ -14,7 +14,7 @@ export function embedConfig() {
   return base && key && model ? { base: base.replace(/\/$/, ""), key, model, dims: process.env.EMBED_DIMENSIONS ? +process.env.EMBED_DIMENSIONS : null } : null;
 }
 
-async function post(url, body, key, tries = 4) {
+async function post(url, body, key, tries = 4, timeoutMs = 25000) {
   let last;
   for (let a = 0; a < tries; a++) {
     try {
@@ -22,7 +22,7 @@ async function post(url, body, key, tries = 4) {
         method: "POST",
         headers: { "content-type": "application/json", authorization: `Bearer ${key}` },
         body: JSON.stringify(body),
-        signal: AbortSignal.timeout(25000),
+        signal: AbortSignal.timeout(timeoutMs),
       });
       if (r.ok) return await r.json();
       last = new Error(`HTTP ${r.status}: ${(await r.text()).slice(0, 200)}`);
@@ -57,7 +57,7 @@ export async function chat(messages, { maxTokens = 900, temperature = 0.2 } = {}
   if (!c) throw new Error("chat model not configured");
   const body = { model: c.model, messages, max_tokens: maxTokens, temperature };
   if (process.env.WIKI_LLM_REASONING_EFFORT) body.reasoning_effort = process.env.WIKI_LLM_REASONING_EFFORT;
-  const data = await post(`${c.base}/chat/completions`, body, c.key);
+  const data = await post(`${c.base}/chat/completions`, body, c.key, 1, 50000);
   const text = data.choices?.[0]?.message?.content ?? "";
   return { text: text.replace(/<think>[\s\S]*?<\/think>/g, "").trim(), model: c.model };
 }

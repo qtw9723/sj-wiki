@@ -8,11 +8,12 @@ export async function forward(req, res, path, body) {
       method: body ? "POST" : "GET",
       headers: { "x-api-key": key, ...(body ? { "content-type": "application/json" } : {}) },
       body: body ? JSON.stringify(body) : undefined,
-      signal: AbortSignal.timeout(25000),
+      signal: AbortSignal.timeout(Number(process.env.RAG_PROXY_TIMEOUT_MS) || 50000),
     });
     const text = await r.text();
     res.status(r.status).setHeader("content-type", "application/json").send(text);
   } catch (e) {
-    res.status(502).json({ error: "upstream_unreachable" });
+    const timeout = e && (e.name === "TimeoutError" || e.name === "AbortError");
+    res.status(timeout ? 504 : 502).json({ error: timeout ? "upstream_timeout" : "upstream_unreachable" });
   }
 }
