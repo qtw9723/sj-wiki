@@ -55,6 +55,18 @@ details.api button{font:inherit;font-size:14px;padding:0 14px;border:1px solid v
 .ans small{display:block;color:var(--sub);margin-top:8px;white-space:normal}
 .err{color:#b3261e;font-size:13.5px;margin:6px 0}
 button.ask{font:inherit;font-size:13.5px;padding:5px 12px;border:1px solid var(--ac);border-radius:8px;background:#fff;color:var(--ac);cursor:pointer;margin:2px 0 6px}
+@keyframes pulse{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+@keyframes blink{50%{opacity:0}}
+@keyframes shimmer{0%{background-position:-200px 0}100%{background-position:200px 0}}
+.wait{display:flex;align-items:center;gap:10px;color:var(--sub);font-size:14.5px;white-space:normal}
+.dots{display:inline-flex;gap:4px}
+.dots i{width:7px;height:7px;border-radius:50%;background:var(--ac);display:block;animation:pulse 1.2s infinite ease-in-out}
+.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
+.skel{display:grid;gap:7px;margin-top:12px}
+.skel b{display:block;height:10px;border-radius:5px;background:linear-gradient(90deg,#e8eaf6 25%,#f6f7fd 50%,#e8eaf6 75%);background-size:400px 100%;animation:shimmer 1.4s infinite linear}
+.skel b:nth-child(2){width:88%}.skel b:nth-child(3){width:64%}
+.caret{display:inline-block;width:2px;height:1em;background:var(--ac);vertical-align:-2px;margin-left:2px;animation:blink 1s steps(2) infinite}
+@media(prefers-reduced-motion:reduce){.dots i,.skel b,.caret{animation:none}.dots i{opacity:.6}}
 @media(max-width:520px){header{padding-top:28px}button.go{padding:0 16px}}
 </style>
 </head>
@@ -155,9 +167,16 @@ async function run(q){
   local(q,my,false)
 }
 async function ask(q){
-  const out=$("askout");out.innerHTML='<div class="ans" id="ansbox">검색한 근거로 답변을 쓰는 중…</div>';
-  const box=$("ansbox");let text="",cites=[],model="";
-  const render=(done)=>{box.innerHTML=esc(text||"…")+(done&&cites.length?`<small>모델 ${esc(model)} · 근거: ${cites.map(c=>`[${c.n}] <a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.title)}</a>`).join(" · ")}</small>`:"")};
+  const out=$("askout");
+  out.innerHTML='<div class="ans" id="ansbox"></div>';
+  const box=$("ansbox");let text="",cites=[],model="",phase="search",t0=Date.now();
+  const waitHtml=()=>`<div class="wait" role="status" aria-live="polite"><span class="dots"><i></i><i></i><i></i></span><span>${phase==="search"?"위키에서 근거를 찾는 중":"근거를 읽고 답변을 쓰는 중 · 모델 응답을 기다리고 있어요"} · <b id="el">${Math.floor((Date.now()-t0)/1000)}</b>초</span></div><div class="skel"><b></b><b></b><b></b></div>`;
+  const tick=setInterval(()=>{const e=$("el");if(e)e.textContent=Math.floor((Date.now()-t0)/1000)},500);
+  const render=(done)=>{
+    if(!text&&!done){box.innerHTML=waitHtml();return}
+    box.innerHTML=esc(text.trim()||"…")+(done?"":'<span class="caret"></span>')+(done&&cites.length?`<small>모델 ${esc(model)} · 근거: ${cites.map(c=>`[${c.n}] <a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.title)}</a>`).join(" · ")} · ${Math.round((Date.now()-t0)/1000)}초</small>`:"");
+  };
+  render(false);
   try{
     const r=await fetch("/api/ask",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({question:q,category:cat||undefined})});
     if(!r.ok){const j=await r.json().catch(()=>({}));throw new Error((j.error||("HTTP "+r.status))+(j.detail?" — "+j.detail:""))}
@@ -168,14 +187,15 @@ async function ask(q){
       let i;while((i=buf.indexOf("\n"))>=0){
         const line=buf.slice(0,i).trim();buf=buf.slice(i+1);if(!line)continue;
         let m;try{m=JSON.parse(line)}catch{continue}
-        if(m.type==="meta"){cites=m.citations||[];model=m.model||""}
+        if(m.type==="meta"){cites=m.citations||[];model=m.model||"";phase="model";if(!text){const e=$("el");const w=box.querySelector(".wait span:last-child");if(w)w.innerHTML=`근거를 읽고 답변을 쓰는 중 · 모델 응답을 기다리고 있어요 · <b id="el">${Math.floor((Date.now()-t0)/1000)}</b>초`}}
         else if(m.type==="delta"){text+=m.t;render(false)}
         else if(m.type==="error")throw new Error(m.error+(m.detail?" — "+m.detail:""));
       }
     }
     if(!text)throw new Error("빈 답변");
-    render(true);
+    clearInterval(tick);render(true);
   }catch(e){
+    clearInterval(tick);
     if(text){render(true);out.insertAdjacentHTML("beforeend",`<div class="err">중간에 끊겼어요: ${esc(e.message)}</div>`)}
     else out.innerHTML=`<div class="err">답변 생성 실패: ${esc(e.message)}</div>`;
   }

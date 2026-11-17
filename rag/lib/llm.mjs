@@ -63,7 +63,7 @@ export async function chat(messages, { maxTokens = 900, temperature = 0.2 } = {}
 }
 
 // 스트리밍 채팅: delta.content 조각을 순서대로 yield. (reasoning_content·<think>는 버린다)
-export async function* chatStream(messages, { maxTokens = 600, temperature = 0.2, timeoutMs = 55000 } = {}) {
+async function* chatStreamRaw(messages, { maxTokens = 600, temperature = 0.2, timeoutMs = 55000 } = {}) {
   const c = chatConfig();
   if (!c) throw new Error("chat model not configured");
   const body = { model: c.model, messages, max_tokens: maxTokens, temperature, stream: true };
@@ -123,4 +123,13 @@ export async function* chatStream(messages, { maxTokens = 600, temperature = 0.2
     }
   }
   if (!inThink && pending) yield pending;
+}
+
+// 답변 앞쪽의 공백·줄바꿈(</think> 뒤 "\n\n" 등)을 제거한다.
+export async function* chatStream(messages, opts) {
+  let started = false;
+  for await (let t of chatStreamRaw(messages, opts)) {
+    if (!started) { t = t.replace(/^\s+/, ""); if (!t) continue; started = true; }
+    yield t;
+  }
 }
