@@ -104,7 +104,7 @@ function tokenize(s){const out=[];const re=/[a-z0-9]+(?:[._-][a-z0-9]+)*|[가-�
   else if(t.length===1)out.push(t);else for(let i=0;i<t.length-1;i++)out.push(t.slice(i,i+2))}
  return out}
 let S=null,cat="";
-async function api(path,opt){const r=await fetch(path,opt);const j=await r.json().catch(()=>({}));if(!r.ok){const e=new Error(j.error||("HTTP "+r.status));e.status=r.status;throw e}return j}
+async function api(path,opt){const r=await fetch(path,opt);const j=await r.json().catch(()=>({}));if(!r.ok){const e=new Error((j.error||("HTTP "+r.status))+(j.detail?" — "+j.detail:""));e.status=r.status;throw e}return j}
 const $=id=>document.getElementById(id);
 const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 async function load(){
