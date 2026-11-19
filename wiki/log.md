@@ -11,6 +11,8 @@ updated: 2026-11-19
 ## [2026-11-19] 자료넣기 | docstore 표 검색 테스트 정리
 - 📄 rag-compare 저장소·testset, doctest 정리본/제목청크/카탈로그, 표검색-테스트-샘플(v1·v2, 고객 전달 결과 문서), WORKLOG(10-14~11-03)를 모아 [[docstore-표검색-테스트]] 신규 작성. 고객 실데이터·저장소 ID·키는 제외.
 - ✏️ [[rag-compare]] 관련 문서에 링크, index 등록.
+## [2026-11-19] 자료넣기 | 자동 위키화 (daily crawl)
+- 📄 `raw/ai-digest/naver-2026-11-19.md` 처리. [[AI-주간-소식-2026-W47]] 보강: W47-43 멀티에이전트 병목=조정 인프라(ITWorld), W47-44 Claude Code Auto Mode·GitHub 4% 주장(medium, 출처 미확인), W47-45 Agent-Building Agent(dmomo). 11/16~18 원문과 주제 중복이 많아 vault 첫 등장 3건만 추가. 원문에 지시문 형태의 문장은 없었다.
 
 ## [2026-11-19] 자료넣기 | 게임 요소 자동 정리
 - 📄 clean-2026-11-17 대기열 1개(Cuphead)만 처리: 사례 1·요소 3(패링 오브젝트 슈퍼 미터 충전, 다단계 보스 페이즈 구조, 보스별 난이도 모드 진행 게이트). 전부 gl_status 수집.
