@@ -4,7 +4,7 @@ category: 프로젝트
 tags: [프로젝트, rag, 검색평가, python, 로컬도구, 개인프로젝트]
 source: ~/IdeaProjects/rag-compare (README, server.py, static/index.html)
 created: 2026-10-27
-updated: 2026-11-17
+updated: 2026-11-19
 ---
 
 > [!tip] 핵심 takeaway
@@ -43,5 +43,6 @@ updated: 2026-11-17
 - ⚠ 기본 테스트 세트에 실제 요율 값이 들어 있다고 README가 경고 → 공개 시 제외 필요(값은 여기 미기재).
 
 ## 관련 문서
+- [[docstore-표검색-테스트]] — 이 도구로 진행한 docstore 표 검색 테스트 전체 정리(단계·결과·배운 점)
 - [[RAG-하이브리드-검색]] — sj-wiki RAG의 BM25+임베딩+RRF 설명. 융합 설정(k·가중치) 실험을 MRR로 비교할 때 이 도구의 측정 방식과 같은 지표를 쓴다.
 - [[웹-크롤링-기초]] · [[CogInsight-Generator]] · [[프로젝트-포트폴리오]] · [[공통-기술스택]] · [[내-프로필]]
