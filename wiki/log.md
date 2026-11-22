@@ -4,9 +4,14 @@ category: 시스템
 tags: [log, 이력]
 created: 2026-06-10
 updated: 2026-11-21
+updated: 2026-11-19
+updated: 2026-11-22
 ---
 
 > 📦 2026-09-30 이전 이력은 [[log-아카이브-2026-06-09]]로 옮겼다(2026-10-28, 원문 그대로). 월별 이력이 커지면 같은 방식으로 분기 단위 아카이브를 만든다.
+
+## [2026-11-22] 자료넣기 | 자동 위키화 (daily crawl) — naver-2026-11-22
+- 📄 `raw/ai-digest/naver-2026-11-22.md` 처리. 25건 중 11건 신규(W47-54~64). 56% 중복(주말 신선도 높음). 신규 항목: 11월 LLM 출시 종합(GPT-6.2 Astra·Gemini 4 Carbon/Neon·Qwen4-Max·Kimi K3.1 Pro Prime·Mistral Large 4 오픈웨이트), Claude Meetings 베타(11/12, Google Meet), BC카드×Pickle Agentic Pay MOU, DeepSeek Super Agent, MCP·A2A Linux Foundation 이관(W47-59 보강), AT&T 500 AI 워크플로, 예진 8B v3(국산 처음부터 개발·Apache 2.0), 카카오 에이전트 규제 위기감(위임 동의), Pickle AI 앱스토어 1위·코리아 에이전트 맵, 한국 생성형 AI 40.6%(세계 12위)/Claude 국내 사용자 +45%. [[AI-주간-소식-2026-W47]] 보강. 지시문 형태의 문장 없음.
 
 ## [2026-11-21] 자료넣기 | naver-2026-11-21 2차 검수 (자동 판정 정정)
 - 📄 `raw/ai-digest/naver-2026-11-21.md` URL 27개를 wiki 전체와 이전 raw 전체에서 다시 찾았다. 자동 패스의 *"7건 신규"* 는 틀렸고, 위키 첫 등장은 5건이다(27 = 4 수록 + 1 미수록 + 22 기수록, 중복 81%). W47-51은 같은 주 W47-32와 같은 CIO 기사(4146735, 원 수록 W45)이고, W47-50은 W46-10·KR-W40-49와 같은 youngju 글이다(경로만 다름).
