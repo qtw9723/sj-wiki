@@ -3,12 +3,14 @@ title: 작업 이력 (Log)
 category: 시스템
 tags: [log, 이력]
 created: 2026-06-10
-updated: 2026-11-21
-updated: 2026-11-19
 updated: 2026-11-22
 ---
 
 > 📦 2026-09-30 이전 이력은 [[log-아카이브-2026-06-09]]로 옮겼다(2026-10-28, 원문 그대로). 월별 이력이 커지면 같은 방식으로 분기 단위 아카이브를 만든다.
+
+## [2026-11-22] 자료넣기 | naver-2026-11-22 2차 검수 (자동 판정 정정)
+- 📄 `raw/ai-digest/naver-2026-11-22.md` URL 25개를 wiki 전체와 이전 raw 전체에서 다시 찾았다. 1차 등식 *"25 = 11 + 14"* 는 항목 수와 URL 수를 섞었다. URL 단위로는 25 = 19(첫 등장) + 6(기수록), 중복 24%다. 1차가 🆕로 적은 llmgateway·releasebot·skax·aiagentstore는 7~10월부터 들어오던 URL이다. 다만 skax를 뺀 셋은 내용이 바뀌는 rolling 페이지라 W47-54·55·60 내용은 새것이 맞다.
+- ✏️ [[AI-주간-소식-2026-W47]]: W47-59(A2A LF 표준화 = [[AI-주간-소식-2026-W43]] W43-04 기수록, MCP 줄만 새것)·W47-64(40.6% = [[AI-주간-소식-2026-W45]] W45-20 기수록, MS 출처만 새것)·W47-56(raw에 없는 "2024" 연도 문구) 정정. 대조표 6행·2차 집계·11/22 takeaway(에이전트 결제+위임 동의 / Office Party / 모델 단가)·관련 문서(W43·[[보안공지-2026-11]]) 추가. 🧠 [[웹-크롤링-기초]] ②-i에 rolling 페이지 판정(URL 🔁·내용 🆕 분리) 추가. index W47 설명 갱신. log.md frontmatter의 중복 `updated:` 3줄을 1줄로 정리. 원문에 지시문 형태의 문장은 없었다.
 
 ## [2026-11-22] 자료넣기 | 자동 위키화 (daily crawl) — naver-2026-11-22
 - 📄 `raw/ai-digest/naver-2026-11-22.md` 처리. 25건 중 11건 신규(W47-54~64). 56% 중복(주말 신선도 높음). 신규 항목: 11월 LLM 출시 종합(GPT-6.2 Astra·Gemini 4 Carbon/Neon·Qwen4-Max·Kimi K3.1 Pro Prime·Mistral Large 4 오픈웨이트), Claude Meetings 베타(11/12, Google Meet), BC카드×Pickle Agentic Pay MOU, DeepSeek Super Agent, MCP·A2A Linux Foundation 이관(W47-59 보강), AT&T 500 AI 워크플로, 예진 8B v3(국산 처음부터 개발·Apache 2.0), 카카오 에이전트 규제 위기감(위임 동의), Pickle AI 앱스토어 1위·코리아 에이전트 맵, 한국 생성형 AI 40.6%(세계 12위)/Claude 국내 사용자 +45%. [[AI-주간-소식-2026-W47]] 보강. 지시문 형태의 문장 없음.
