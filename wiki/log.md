@@ -3,10 +3,14 @@ title: 작업 이력 (Log)
 category: 시스템
 tags: [log, 이력]
 created: 2026-06-10
-updated: 2026-11-23
+updated: 2026-11-24
 ---
 
 > 📦 2026-09-30 이전 이력은 [[log-아카이브-2026-06-09]]로 옮겼다(2026-10-28, 원문 그대로). 월별 이력이 커지면 같은 방식으로 분기 단위 아카이브를 만든다.
+
+## [2026-11-24] 자료넣기 | KISA 2026-11-24 위키화 대조 (ONLYOFFICE Docs)
+- 📄 `raw/security/kisa-2026-11-24.md` 1건(Ascensio System ONLYOFFICE Docs, CVE 6건)을 원문과 대조했다. [[보안공지-2026-11]]에 CVE별 유형·영향 시작 버전 표(9.4.0-129·2.5.0 시작 3건)를 넣었다. 원문에 없는 심각도 순위는 🧠로 표시했다. CVSS·KEV·근거 링크가 raw 밖 값이라는 점과 rapid7 "five" ↔ KISA 6건 차이는 ⚠로 남겼다.
+- 🧠 의외의 연결점 4개를 달았다. SSRF·파일 경로 ↔ [[delivery-smarthub]] doc-to-api(OpenAPI 외부 `$ref`), Path Traversal ↔ [[websdk-test]] 문서 탭 화이트리스트, 인가 우회(이달 10번째) ↔ [[SmartHub-모듈-보안-레벨-설계]], OS 명령 주입 2일 연속 ↔ 11-23 자동화 인자 점검. takeaway·관련 문서·index 설명을 갱신하고 양쪽 페이지에 역링크를 추가했다. 지시문 형태의 문장은 없었다.
 
 ## [2026-11-24] 자료넣기 | KISA 보안공지 자동 수집 1건 (점검 권장 0)
 - 📄 `raw/security/kisa-2026-11-24.md` 보관, [[보안공지-2026-11]]에 요약 추가. 🧠 등급은 자동 분석(security_watch.py).

@@ -5,7 +5,7 @@ tags: [프로젝트, 풀스택, 포트폴리오, 자동화, 멀티허브, 모듈
 source: "라이브 저장소 github.com/qtw9723/smarthub (private, 옛 이름 delivery-smarthub) — README.md·ROADMAP.md·CHANGELOG.md·docs/deploy-notes.md·docs/legacy-inventory.md + git log 2026-07-21~10-26 (183커밋) 직접 확인, 2026-10-28 프로젝트 업데이트 / 신규 구축 세션 2026-07-21 / 사내 에디션 구축·운영 전환 세션 2026-11-09~10(PR #60~#76, 사내 태그 internal-v0.12.0~v0.12.10)"
 status: 진행중
 created: 2026-07-21
-updated: 2026-11-17
+updated: 2026-11-24
 ---
 
 > [!tip] 핵심 takeaway (포트폴리오 관점)
@@ -152,7 +152,7 @@ SmartHub (코드 1 · DB 1)
 - [[SmartHub-API-지연-개선-리전-정렬]] — 함수·DB 리전 불일치 진단과 85% 지연 개선(2026-11-12)
 - [[SmartHub-유사-오픈소스-솔루션-비교]] — Backstage·Windmill 등과 비교한 포지셔닝·차별점 4항목(2026-11-17)
 - [[사내-k8s-배포-CI-CD-구축]] — 같은 pull 방식 CD를 SmartHub 사내 에디션으로 확장(이미지 2종·DB·정시 작업·팀 주소, 2026-11-10)
-- [[websdk-test]] — SmartHub 모듈로 흡수된 단독 하네스(11-10 archive) · [[보안공지-2026-11]] — 무차별 대입 유형 공지 → 로그인 시도 제한으로 대응. 🧠 11-12 경쟁 조건(MongoDB) 유형 → DB 실패 카운터가 원자적 증가인지 확인할 것
+- [[websdk-test]] — SmartHub 모듈로 흡수된 단독 하네스(11-10 archive) · [[보안공지-2026-11]] — 무차별 대입 유형 공지 → 로그인 시도 제한으로 대응. 🧠 11-12 경쟁 조건(MongoDB) 유형 → DB 실패 카운터가 원자적 증가인지 확인할 것. 🧠 11-24 ONLYOFFICE(문서 처리 서버) SSRF·파일 경로 유형 → doc-to-api가 OpenAPI 외부 `$ref`를 서버에서 따라가는지, 업로드 파일명이 경로에 쓰이는지 확인할 것
 - [[delivery-smarthub-링크]] — 저장소·문서 링크 모음
 - [[mailer|CS SmartHub]](모듈·스택을 물려준 형제·기원, 이후 이쪽으로 컷오버) · [[프로젝트-포트폴리오]] · [[공통-기술스택]] · [[parking]](공유 Supabase) · [[내-프로필]]
 - 기술: [[Playwright]] · [[GitHub Actions]]

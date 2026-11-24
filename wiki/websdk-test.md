@@ -4,7 +4,7 @@ category: 프로젝트
 tags: [프로젝트, 웹sdk, 챗봇, nodejs, 테스트하네스, 문서화, 개인프로젝트, kubernetes, ci-cd]
 source: ~/IdeaProjects/websdk-test, GitHub qtw9723/websdk-test (private), README·ROADMAP·CHANGELOG·docs
 created: 2026-10-27
-updated: 2026-11-10
+updated: 2026-11-24
 ---
 
 > [!tip] 핵심 takeaway
@@ -74,3 +74,4 @@ updated: 2026-11-10
 
 ## 관련 문서
 - [[sdk-sample]] · [[delivery-smarthub]] · [[CogInsight-Generator]] · [[사내-k8s-배포-CI-CD-구축]] · [[Kubernetes-기초]] · [[프로젝트-포트폴리오]] · [[내-프로필]]
+- [[보안공지-2026-11]] — 🧠 11-24 ONLYOFFICE Path Traversal·파일명 외부 제어 유형 ↔ 문서 탭 화이트리스트(이미 막은 사례). SmartHub로 옮긴 뒤에도 유지되는지 확인
