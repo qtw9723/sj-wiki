@@ -8,6 +8,9 @@ updated: 2026-11-24
 
 > 📦 2026-09-30 이전 이력은 [[log-아카이브-2026-06-09]]로 옮겼다(2026-10-28, 원문 그대로). 월별 이력이 커지면 같은 방식으로 분기 단위 아카이브를 만든다.
 
+## [2026-11-24] 자료넣기 | 자동 위키화 (daily crawl)
+- 📄 `raw/ai-digest/naver-2026-11-24.md` 24건을 위키 전체와 대조. 🆕 URL 4개·🔁 20개(중복 83%). W48-15(MTN 한국 AI 58%·MS 78% 뒤처짐 우려·SKT CEO "AI 새로운 업무 주체"), W48-16(전자신문 에이전트노믹스·뉴시스 IITP 경쟁축 모델→플랫폼), W48-17(SpeakerDeck LLM Genealogy 2023-2026)를 [[AI-주간-소식-2026-W48]]에 추가. frontmatter sources·updated 갱신.
+
 ## [2026-11-24] 자료넣기 | KISA 2026-11-24 위키화 대조 (ONLYOFFICE Docs)
 - 📄 `raw/security/kisa-2026-11-24.md` 1건(Ascensio System ONLYOFFICE Docs, CVE 6건)을 원문과 대조했다. [[보안공지-2026-11]]에 CVE별 유형·영향 시작 버전 표(9.4.0-129·2.5.0 시작 3건)를 넣었다. 원문에 없는 심각도 순위는 🧠로 표시했다. CVSS·KEV·근거 링크가 raw 밖 값이라는 점과 rapid7 "five" ↔ KISA 6건 차이는 ⚠로 남겼다.
 - 🧠 의외의 연결점 4개를 달았다. SSRF·파일 경로 ↔ [[delivery-smarthub]] doc-to-api(OpenAPI 외부 `$ref`), Path Traversal ↔ [[websdk-test]] 문서 탭 화이트리스트, 인가 우회(이달 10번째) ↔ [[SmartHub-모듈-보안-레벨-설계]], OS 명령 주입 2일 연속 ↔ 11-23 자동화 인자 점검. takeaway·관련 문서·index 설명을 갱신하고 양쪽 페이지에 역링크를 추가했다. 지시문 형태의 문장은 없었다.
