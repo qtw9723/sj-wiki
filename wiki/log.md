@@ -8,6 +8,11 @@ updated: 2026-11-26
 
 > 📦 2026-09-30 이전 이력은 [[log-아카이브-2026-06-09]]로 옮겼다(2026-10-28, 원문 그대로). 월별 이력이 커지면 같은 방식으로 분기 단위 아카이브를 만든다.
 
+## [2026-11-26] 자료넣기 | 자동 위키화 (daily crawl) — naver-2026-11-26 → W48 9차 보강
+- 📄 `raw/ai-digest/naver-2026-11-26.md` (23건). 🆕 URL 15개·🔁 8개(URL 중복률 35%). 신규 9항목(W48-27~35) 추가.
+- 주요: **W48-27** Claude Opus 5.5 기본 모델 지정·Claude Meetings(Google Meet)·Claude for Manufacturing(공식 릴리스 노트). **W48-28** Claude 장애 11/13(다중 서비스 오류). **W48-29** LLM Daily 11/14(OpenAI 110억·Meta Muse Spaces). **W48-30** LLM Meter(LangChain 30억 달러). **W48-31** inven 1주차(OpenAI 이미지 모델 2.6·GPT-6 Cyber). **W48-32** inven 2주차(ChatGPT Wallet — 에이전트 첫 결제 상용 사례). **W48-33** AI Agent News 11/12(ServiceNow·Databricks·AWS 플랫폼 운영 성숙). **W48-34** 오픈소스 AI 글로벌. **W48-35** 원티드랩·여기어때 국내 에이전트 사례.
+- frontmatter sources에 naver-2026-11-26.md 추가, updated → 2026-11-26.
+
 ## [2026-11-26] 자료넣기 | KISA 2026-11-26 위키화 대조 (VMware 9건·HPE iLO 5건)
 - 📄 `raw/security/kisa-2026-11-26.md`를 원문 표(VMware 103행·iLO 14행)와 대조해 [[보안공지-2026-11]] §11-26을 보강했다. 추가한 것: VMware vCenter 계열/ESX 계열/데스크톱 3갈래 표, 자동 요약에서 빠진 9.1 ESXi 빌드, 11-23 대비 해결선 상향 ⚠, iLO 65204의 iLO 7 미해당·65208 번호 공백, 의외의 연결점 3개(재패치 패턴·번들 구성 요소·관리 평면). takeaway에 11-26 한 줄을 넣었다.
 - 역링크: [[보안-대응-PHP2Shell-Node-2026-10]](세 번째 재패치 사례), [[SmartHub-모듈-보안-레벨-설계]](관리 평면 ↔ 마스터 키). [[index]] 보안공지 줄은 날짜별 나열을 빼고 약 150자로 줄였다(§5). 지시문 형태의 문장은 없었다.
