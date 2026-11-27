@@ -8,6 +8,11 @@ updated: 2026-11-27
 
 > 📦 2026-09-30 이전 이력은 [[log-아카이브-2026-06-09]]로 옮겼다(2026-10-28, 원문 그대로). 월별 이력이 커지면 같은 방식으로 분기 단위 아카이브를 만든다.
 
+## [2026-11-27] 자료넣기 | 자동 위키화 (daily crawl) — naver-2026-11-27 → W48 10차 보강
+- 📄 `raw/ai-digest/naver-2026-11-27.md` (28건). 🆕 URL 18개·🔁 10개(URL 중복률 36%). 신규 5항목(W48-36~40) 추가.
+- 주요: **W48-36** Digitimes LLM 태그 — DeepSeek API 90% 인하(글로벌 최저가)·Google TurboQuant(메모리 6배 절감)·AMD OTel 2.0. **W48-37** Anthropic 2026 소식 집약(웹 트래픽 1.6%→9.2%·자체 칩 설계 팀 출범·Claude Code 소스코드 노출). **W48-38** LG EXAONE 4.5 오픈 웨이트(Nvidia AI Day Seoul, VLM). **W48-39** K-LLM 5팀 1.56조 토큰 무료 공개·DeepMind 멀티에이전트 안전성 $10M 공모. **W48-40** Code with Claude 2026 멀티에이전트 오케스트레이션·소버린 AI 경쟁.
+- frontmatter sources에 naver-2026-11-27.md 추가, updated → 2026-11-27.
+
 ## [2026-11-27] 자료넣기 | KISA 11-27 원문 대조·보강 (Linux 커널·Drupal)
 - 📄 `raw/security/kisa-2026-11-27.md`를 원문 대조해 [[보안공지-2026-11]] 11-27 절 보강: 커널 7계열 해결선 표, Drupal CVE별 해결선 표(KEV 쪽만 올리면 136716 잔존 ⚠), 018 공백, 원문 밖 값 출처 구분, 자동 요약의 자산 커널 버전 문장 일반화, 의외의 연결점(L3 예외·재패치·KISA 지연·백포트), takeaway·관련 문서·index 설명 갱신. 지시문 없음.
 
