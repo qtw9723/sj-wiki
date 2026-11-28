@@ -3,10 +3,15 @@ title: 작업 이력 (Log)
 category: 시스템
 tags: [log, 이력]
 created: 2026-06-10
-updated: 2026-11-27
+updated: 2026-11-28
 ---
 
 > 📦 2026-09-30 이전 이력은 [[log-아카이브-2026-06-09]]로 옮겼다(2026-10-28, 원문 그대로). 월별 이력이 커지면 같은 방식으로 분기 단위 아카이브를 만든다.
+
+## [2026-11-28] 자료넣기 | 자동 위키화 (daily crawl) — naver-2026-11-28 → W48 11차 보강
+- 📄 `raw/ai-digest/naver-2026-11-28.md` 24건(URL 기준). 🆕 7개·🔁 17개. 신규 5항목(W48-41~45) 추가.
+- 주요: **W48-41** AI EXPO KOREA 2026 에이전트·피지컬 AI + 한국딥러닝 DEEP Agent. **W48-42** Korean Big Tech 개인 AI 에이전트 경쟁·Jensen Huang 사임. **W48-43** 미국 Claude 수출 규제 완화·Messages API 메시지 스레드·Personal Finance in Claude. **W48-44** AI 에이전트 신뢰성·거버넌스 핵심 과제. **W48-45** 멀티에이전트 전략 단일→멀티 전환점(SK AX).
+- frontmatter sources에 naver-2026-11-28.md 추가, updated → 2026-11-28.
 
 ## [2026-11-27] 자료넣기 | 자동 위키화 (daily crawl) — naver-2026-11-27 → W48 10차 보강
 - 📄 `raw/ai-digest/naver-2026-11-27.md` (28건). 🆕 URL 18개·🔁 10개(URL 중복률 36%). 신규 5항목(W48-36~40) 추가.
