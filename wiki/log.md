@@ -8,6 +8,12 @@ updated: 2026-11-28
 
 > 📦 2026-09-30 이전 이력은 [[log-아카이브-2026-06-09]]로 옮겼다(2026-10-28, 원문 그대로). 월별 이력이 커지면 같은 방식으로 분기 단위 아카이브를 만든다.
 
+## [2026-11-28] 자료넣기 | naver-2026-11-28 2차 검수 → W48-41~47 정정·추가
+- 📄 원문 26건·URL 22개를 전체 raw·wiki와 대조했다. 🆕 URL은 **3개**(wikidocs 36524·digitaltoday jp/125862·tilnote)뿐이고 🔁 19개다(중복 86%). 1차의 *"24건·🆕 7개·🔁 17개"* 를 정정했다.
+- ✏️ W48-41(AI EXPO는 5월 행사, DEEP Agent는 W46-72·W47-24)·W48-43(W47-35·W46-30·W47-04·W47-17)·W48-45(SK AX 3626, 7/29~)를 🔁로 다시 적었다. raw에 없는 인용 문구(W48-41 "로봇·드론")와 인용문 변형(W48-44)을 원문대로 고쳤다. 틀린 연결도 지웠다(CS SmartHub "문서 처리", CogInsight Messages API·A2A — CogInsight는 OpenAI gpt-5.2를 쓰는 단일 다단계 파이프라인). W47-18 출처 오기도 고쳤다.
+- ⚠ W48-42 젠슨 황 사임은 헤드라인 한 줄이라 인용 금지로 표시했다. 🆕 W48-46을 추가했다(inven 235 요약이 W48-29·30·32 출처에서 옮겨 옴). 🆕 W48-47도 추가했다. ChatGPT 결제 기능 이름이 Wallet ↔ 'dots'로 충돌하고, GPT-6 Cyber는 Daybreak Red 게이팅이며(↔ W33-EN1), DeepMind RSA 1024 취약점·AI Overview 11%/64.7%, Imagine Enterprise 요약 이동을 담았다.
+- 영향: [[AI-주간-소식-2026-W48]](takeaway ⑤·11/28 머리말·대조표), [[index]] W48 한 줄. 원문에 지시문 형태의 문장은 없었다.
+
 ## [2026-11-28] 자료넣기 | 자동 위키화 (daily crawl) — naver-2026-11-28 → W48 11차 보강
 - 📄 `raw/ai-digest/naver-2026-11-28.md` 24건(URL 기준). 🆕 7개·🔁 17개. 신규 5항목(W48-41~45) 추가.
 - 주요: **W48-41** AI EXPO KOREA 2026 에이전트·피지컬 AI + 한국딥러닝 DEEP Agent. **W48-42** Korean Big Tech 개인 AI 에이전트 경쟁·Jensen Huang 사임. **W48-43** 미국 Claude 수출 규제 완화·Messages API 메시지 스레드·Personal Finance in Claude. **W48-44** AI 에이전트 신뢰성·거버넌스 핵심 과제. **W48-45** 멀티에이전트 전략 단일→멀티 전환점(SK AX).
